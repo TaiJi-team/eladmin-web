@@ -31,19 +31,34 @@ export const constantRouterMap = [
       }
     ]
   },
+  // {
+  //   path: '/',
+  //   component: Layout,
+  //   redirect: '/dashboard',
+  //   children: [
+  //     {
+  //       path: 'dashboard',
+  //       component: (resolve) => require(['@/views/home'], resolve),
+  //       name: 'Dashboard',
+  //       meta: { title: '工作台', icon: 'index', affix: true, noCache: true }
+  //     }
+  //   ]
+  // },
+  { path: '/', redirect: 'home' },
   {
-    path: '/',
-    component: Layout,
-    redirect: '/dashboard',
+    path: '/index', component: resolve => (require(['@/views/index.vue'], resolve)),
     children: [
       {
-        path: 'dashboard',
-        component: (resolve) => require(['@/views/home'], resolve),
-        name: 'Dashboard',
-        meta: { title: '工作台', icon: 'index', affix: true, noCache: true }
+        path: '/home',
+        component: resolve => (require(['@/views/home.vue'], resolve)),
+        props: true,
+        meta: {
+          keepAlive: false
+        }
       }
     ]
   },
+  { path: '/fin-market', component: resolve => (require(['@/views/finance/market.vue'], resolve)) },
   {
     path: '/user',
     component: Layout,

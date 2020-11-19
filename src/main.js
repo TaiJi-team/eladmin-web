@@ -29,6 +29,8 @@ import router from './router/routers'
 import './assets/icons' // icon
 import './router/index' // permission control
 import 'echarts-gl'
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 
 Vue.use(VueHighlightJS)
 Vue.use(mavonEditor)
