@@ -21,7 +21,7 @@
               <button class="fl g-bg search-btn" lay-submit="" lay-filter="formFilter">搜 索</button>
             </div>
             <div class="head-title">
-              <img src="/res/images/t-img.png" alt="">
+              <img :src="t_img" alt="">
               <span class="line-middle t-name">所有产品</span>
             </div>
           </div>
@@ -114,6 +114,7 @@
 import lzhead from '@/views/components/head'
 import lzfooter from '@/views/components/footer'
 import market_banner from '@/assets/images/front/fin-market-banner.jpg'
+import t_img from '@/assets/images/front/t-img.png'
 
 export default {
   name: 'FinMarketList',
@@ -122,7 +123,8 @@ export default {
     return {
       tableData: [],
       wantSelected: 1,
-      market_banner: market_banner
+      market_banner: market_banner,
+      t_img: t_img
     }
   },
   mounted() {
@@ -138,11 +140,9 @@ export default {
 .banner {
   height: 400px;
 }
-
 .banner >>> .el-carousel__container {
   height: 400px;
 }
-
 .bg-white {
     background: #fff;
 }
@@ -153,9 +153,146 @@ export default {
     width: 1200px;
     margin: 0 auto;
 }
-
 .content-filter-box {
     border: 1px solid #cdcdcd;
 }
-
+.grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+  .content-filter-box .box-head {
+    height: 55px;
+    line-height: 55px;
+    background: #f1f1f1;
+}
+.clearfix {
+    zoom: 1;
+}
+.fr {
+    float: right;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+div {
+    display: block;
+}
+.content-filter-box .box-head[data-v-f123e482] {
+    height: 55px;
+    line-height: 55px;
+    background: #f1f1f1;
+}
+.content-filter-box .filter-ul {
+    padding: 10px 13px;
+}
+.bg-white {
+    background: #fff;
+}
+ol, ul, li {
+    list-style: none;
+}
+.content-filter-box .filter-ul li:first-child {
+    border-top: 0;
+}
+.content-filter-box .filter-ul li {
+    position: relative;
+    padding: 20px 12px;
+    border-top: 1px dashed #bbb;
+    overflow: hidden;
+}
+ol, ul, li {
+    list-style: none;
+}
+.content-filter-box .filter-ul .item-label {
+    margin-right: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2a2a2a;
+}
+.content-filter-box .filter-ul .item-on, .content-filter-box .filter-ul .item-on .item-sub_city {
+    height: 22px;
+    overflow: hidden;
+}
+.content-filter-box .filter-ul .item-cont {
+    padding-right: 60px;
+}
+.overflow {
+    overflow: hidden;
+}
+.line-action-hover, .pos-rela {
+    position: relative;
+}
+.clearfix {
+    zoom: 1;
+}
+.content-filter-box .filter-ul .item-on, .content-filter-box .filter-ul .item-on .item-sub_city {
+    height: 22px;
+    overflow: hidden;
+}
+.content-filter-box .filter-ul .item-sub_city {
+    /* max-height: 128px; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.overflow {
+    overflow: hidden;
+}
+.content-filter-box .filter-ul .item-l-on {
+    color: #fff;
+    background: #12c8b2;
+}
+.content-filter-box .filter-ul .item-b {
+    color: #000;
+}
+.content-filter-box .filter-ul .item-l {
+    height: 22px;
+    margin: 0 10px 10px 0;
+    padding: 0 10px;
+    color: #666;
+    cursor: pointer;
+    line-height: 22px;
+    white-space: nowrap;
+}
+.fl {
+    float: left;
+}
+a, a:hover, a:active {
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    color: #555;
+}
+a {
+    color: #333;
+    text-decoration: none;
+}
+.content-filter-box .filter-ul .item-l {
+    height: 22px;
+    margin: 0 10px 10px 0;
+    padding: 0 10px;
+    color: #666;
+    cursor: pointer;
+    line-height: 22px;
+    white-space: nowrap;
+}
+.fl {
+    float: left;
+}
+a, a:hover, a:active {
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    color: #555;
+}
+a {
+    color: #333;
+    text-decoration: none;
+}
 </style>
