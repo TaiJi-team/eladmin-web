@@ -5,7 +5,7 @@
       <el-carousel-item v-for="item in 4" :key="item">
         <el-image
           style="width: 100%; height: 100%"
-          src="https://www.celoan.cn/res/images/banner/city_banner_01.jpg"
+          :src="index_banner"
           fit="fill"
         />
       </el-carousel-item>
@@ -290,13 +290,15 @@
 
 <script>
 import beijingJson from '@/assets/beijing.json'
+import index_banner from '@/assets/images/front/index-banner.jpg'
 
 export default {
   name: 'Home',
   data() {
     return {
       tableData: [],
-      wantSelected: 1
+      wantSelected: 1,
+      index_banner: index_banner
     }
   },
   mounted() {

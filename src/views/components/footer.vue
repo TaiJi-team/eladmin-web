@@ -3,7 +3,7 @@
     <div class="min-width footer">
       <div id="footer" class="min-page">
         <div class="ac foot-copyright">
-          <span>版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息</span>
+          <div class="copy-right">版权信息</div>
         </div>
       </div>
     </div>
@@ -25,5 +25,8 @@ export default {
   height: 62px;
   line-height: 50px;
   color: #9a9a9a;
+}
+.copy-right {
+  margin-left: 47%;
 }
 </style>
