@@ -295,4 +295,68 @@ a {
     color: #333;
     text-decoration: none;
 }
+.content-filter-box .box-head .head-search {
+    margin: 11px 13px 11px 0;
+}
+.fr {
+    float: right;
+}
+.content-filter-box .box-head .search-ipt {
+    width: 457px;
+    height: 32px;
+}
+input[type="text"] {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border: 0;
+}
+.fl {
+    float: left;
+}
+.layui-input, .layui-textarea {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+}
+.layui-input, .layui-select, .layui-textarea {
+    height: 38px;
+    line-height: 1.3;
+    line-height: 38px\9;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    border-radius: 2px;
+}
+.layui-badge-rim, .layui-colla-content, .layui-colla-item, .layui-collapse, .layui-elem-field, .layui-form-pane .layui-form-item[pane], .layui-form-pane .layui-form-label, .layui-input, .layui-layedit, .layui-layedit-tool, .layui-quote-nm, .layui-select, .layui-tab-bar, .layui-tab-card, .layui-tab-title, .layui-tab-title .layui-this:after, .layui-textarea {
+    border-color: #e6e6e6;
+}
+.layui-btn, .layui-input, .layui-select, .layui-textarea, .layui-upload-button {
+    outline: 0;
+    -webkit-appearance: none;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    box-sizing: border-box;
+}
+input {
+    -webkit-appearance: none;
+}
+body, input, textarea, select, button {
+    font: 14px Arial, "Microsoft YaHei", 黑体, 宋体, sans-serif;
+}
+.content-filter-box .box-head .search-btn {
+    width: 69px;
+    height: 32px;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    background-color: #12c8b2;
+    cursor: pointer;
+}
+.g-bg, .bg-hover:hover {
+    background: #00bba4;
+}
+.fl {
+    float: left;
+}
 </style>
