@@ -37,7 +37,10 @@
                   <input type="hidden" name="CityType">
                 </div>
               </div>
-              <span class="filter-switch"><span class="switch-name">更多</span><i class="flip-label switch-arr" /></span>
+              <span class="filter-switch">
+                <!-- TODO -->
+                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
+              </span>
             </li>
             <li class="filter_ds">
               <span class="fl item-label">区县</span>
@@ -59,7 +62,9 @@
                   <input type="hidden" name="OrgType">
                 </div>
               </div>
-              <span class="filter-switch"><span class="switch-name">更多</span><i class="flip-label switch-arr" /></span>
+              <span class="filter-switch">
+                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
+              </span>
             </li>
             <li>
               <span class="fl item-label">担保方式</span>
@@ -115,6 +120,7 @@ import lzhead from '@/views/components/head'
 import lzfooter from '@/views/components/footer'
 import market_banner from '@/assets/images/front/fin-market-banner.jpg'
 import t_img from '@/assets/images/front/t-img.png'
+import more_img from '@/assets/icons/svg/arr-down.png'
 
 export default {
   name: 'FinMarketList',
@@ -124,7 +130,13 @@ export default {
       tableData: [],
       wantSelected: 1,
       market_banner: market_banner,
-      t_img: t_img
+      t_img: t_img,
+      more_icon: {
+        backgroundImage: 'url(' + more_img + ')',
+        backgroundRepeat: 'no-repeat',
+        backgroundPositionX: 'right',
+        backgroundPositionY: 'center'
+      }
     }
   },
   mounted() {
@@ -272,6 +284,12 @@ a {
     color: #333;
     text-decoration: none;
 }
+.content-filter-box .filter-ul .filter-switch {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+}
 .content-filter-box .filter-ul .item-l {
     height: 22px;
     margin: 0 10px 10px 0;
@@ -294,5 +312,19 @@ a {
 a {
     color: #333;
     text-decoration: none;
+}
+.content-filter-box .filter-switch .switch-arr {
+    display: inline-block;
+    width: 13px;
+    height: 7px;
+    margin-left: 5px;
+    /* background: url(images/arr-down.png) no-repeat right center; */
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+}
+i {
+    font-style: italic;
 }
 </style>
