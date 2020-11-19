@@ -58,7 +58,10 @@ export const constantRouterMap = [
       }
     ]
   },
-  { path: '/fin-market', component: resolve => (require(['@/views/finance/market.vue'], resolve)) },
+  {
+    path: '/fin-market',
+    component: resolve => (require(['@/views/front/fin-market/list.vue'], resolve))
+  },
   {
     path: '/user',
     component: Layout,
