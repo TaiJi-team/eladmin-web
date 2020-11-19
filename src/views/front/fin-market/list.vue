@@ -1,23 +1,30 @@
 <template>
-  <div class="div_body">
-    <!-- banner-->
-    <el-carousel class="banner" :autoplay="false">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <el-image
-          style="width: 100%; height: 100%"
-          src="https://www.celoan.cn/res/images/banner/city_banner_01.jpg"
-          fit="fill"
-        />
-      </el-carousel-item>
-    </el-carousel>
+  <div style="background: #f5f5f5">
+    <lzhead />
+    <div class="div_body">
+      <!-- banner-->
+      <el-carousel class="banner" :autoplay="false">
+        <el-carousel-item v-for="item in 4" :key="item">
+          <el-image
+            style="width: 100%; height: 100%"
+            src="https://www.celoan.cn/res/images/banner/city_banner_01.jpg"
+            fit="fill"
+          />
+        </el-carousel-item>
+      </el-carousel>
+    </div>
+    <lzfooter />
   </div>
 </template>
 
 <script>
 // import beijingJson from '@/assets/beijing.json'
+import lzhead from '@/views/components/head'
+import lzfooter from '@/views/components/footer'
 
 export default {
   name: 'FinMarketList',
+  components: { lzhead, lzfooter },
   data() {
     return {
       tableData: [],

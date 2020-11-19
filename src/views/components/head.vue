@@ -73,13 +73,13 @@
         </div>
         <el-menu
           active-text-color="#fd7100"
-          :default-active="activeIndex"
           class="el-menu-demo"
           mode="horizontal"
-          @select="handleSelect"
+          :default-active="this.$router.path"
+          router
         >
-          <el-menu-item index="1">首 页</el-menu-item>
-          <el-menu-item index="2">金融超市</el-menu-item>
+          <el-menu-item index="/index">首 页</el-menu-item>
+          <el-menu-item index="/fin-market">金融超市</el-menu-item>
           <el-menu-item index="3">金融机构</el-menu-item>
           <el-menu-item index="4">信用机构</el-menu-item>
           <el-menu-item index="5">资讯动态</el-menu-item>
@@ -108,9 +108,13 @@ export default {
     }
   },
   methods: {
-    handleSelect() {
-      alert('点击菜单')
+    handleSelect(key, keyPath) {
+      this.$router.push({
+        path: key,
+        params: { data: 'query' }
+      })
     }
+
   }
 }
 </script>

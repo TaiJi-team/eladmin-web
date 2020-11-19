@@ -209,7 +209,7 @@
       <div class="min-page " style="text-align: center">
         <div class="item-title"><span>  企业信用融资比您想的更简单  </span></div>
         <div class="clearfix want-main">
-          <div class="fl step-img">
+          <div class="fl step-img">http://localhost:8013/fin-market
             <img src="https://www.celoan.cn/res/images/index/p-8-2.png" alt="">
           </div>
           <ul class="fr step-list">
@@ -224,7 +224,7 @@
               <div class="line-middle">
                 <p class="li-t">{{ index }}、融资需求发布</p>
                 <p class="li-i">注册认证、企业授权、融资需求发布</p>
-              </div>
+              </div>http://localhost:8013/fin-market
             </li>
           </ul>
         </div>

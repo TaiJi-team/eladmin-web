@@ -46,7 +46,8 @@ export const constantRouterMap = [
   // },
   { path: '/', redirect: 'home' },
   {
-    path: '/index', component: resolve => (require(['@/views/index.vue'], resolve)),
+    path: '/index', redirect: 'home',
+    component: resolve => (require(['@/views/index.vue'], resolve)),
     children: [
       {
         path: '/home',
