@@ -64,6 +64,10 @@ export const constantRouterMap = [
     component: resolve => (require(['@/views/front/fin-market/list.vue'], resolve))
   },
   {
+    path: '/fin-market/detail',
+    component: resolve => (require(['@/views/front/fin-market/detail.vue'], resolve))
+  },
+  {
     path: '/user',
     component: Layout,
     hidden: true,

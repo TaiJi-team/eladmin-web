@@ -1,259 +1,259 @@
 <template>
-<div style="background: #f5f5f5">
+  <div style="background: #f5f5f5">
     <lzhead />
     <div class="div_body">
-        <!-- banner-->
-        <el-carousel class="banner" :autoplay="false">
-            <el-carousel-item v-for="item in 4" :key="item">
-                <el-image style="width: 100%; height: 100%" :src="market_banner" fit="fill" />
-            </el-carousel-item>
-        </el-carousel>
+      <!-- banner-->
+      <el-carousel class="banner" :autoplay="false">
+        <el-carousel-item v-for="item in 4" :key="item">
+          <el-image style="width: 100%; height: 100%" :src="market_banner" fit="fill" />
+        </el-carousel-item>
+      </el-carousel>
 
-        <div class="bg-white mar-top min-page layui-form">
-            <div class="content-filter-box">
-                <div class="clearfix box-head">
-                    <div class="fr head-search">
-                        <input type="text" name="s_key" placeholder="请输入关键字，支持模糊搜索" lay-verify="" class="fl layui-input search-ipt">
-                        <button class="fl g-bg search-btn" lay-submit="" lay-filter="formFilter">搜 索</button>
-                    </div>
-                    <div class="head-title">
-                        <img :src="t_img" alt="">
-                        <span class="line-middle t-name">所有产品</span>
-                    </div>
-                </div>
-                <ul id="filterUl" class="bg-white filter-ul">
-
-                    <li>
-                        <span class="fl item-label">服务区域</span>
-                        <div class="overflow item-cont item-on">
-                            <div class="clearfix pos-rela item-city">
-                                <div class="overflow item-sub_city item-sub_level_1">
-                                    <a class="fl item-l item-b item-l-on" data-type="CityType" data-id="0">不限</a>
-                                    <a class="fl item-l" data-type="CityType" data-id="110100">北京市</a></div>
-                                <input type="hidden" name="CityType">
-                            </div>
-                        </div>
-                        <span class="filter-switch">
-                            <!-- TODO -->
-                            <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
-                        </span>
-                    </li>
-                    <li class="filter_ds">
-                        <span class="fl item-label">区县</span>
-                        <div class="overflow item-cont item-on" style="height: auto;">
-                            <div class="clearfix pos-rela item-city">
-                                <div class="overflow item-sub_level_2">
-                                    <a class="fl item-l item-b item-l-on" data-type="AreaType" data-id="0">不限</a>
-                                </div>
-                                <input type="hidden" name="AreaType">
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <span class="fl item-label">贷款渠道</span>
-                        <div class="overflow item-cont item-on">
-                            <div class="clearfix pos-rela item-city">
-                                <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a><a class="fl item-l" data-type="OrgType" data-id="1">银行</a><a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a><a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a><a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a><a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a><a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a><a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a><a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a><a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a><a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a><a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div>
-                                <input type="hidden" name="OrgType">
-                            </div>
-                        </div>
-                        <span class="filter-switch">
-                            <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
-                        </span>
-                    </li>
-                    <li>
-                        <span class="fl item-label">担保方式</span>
-                        <div class="overflow item-cont item-on">
-                            <div class="clearfix pos-rela item-city">
-                                <div id="GuaranteeModeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="GuaranteeModeType" data-id="0">不限</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="1">抵押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="2">质押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="3">信保基金</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="4">一般保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="5">信用</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="6">保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="7">连带责任保证</a></div>
-                                <input type="hidden" name="GuaranteeModeType">
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="fl item-label">产品类型</span>
-                        <div class="overflow item-cont item-on">
-                            <div class="clearfix pos-rela item-city">
-                                <div id="ProductType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="ProductType" data-id="0">不限</a><a class="fl item-l" data-type="ProductType" data-id="3">线上审批</a><a class="fl item-l" data-type="ProductType" data-id="2">线下审批</a><a class="fl item-l" data-type="ProductType" data-id="1">秒批秒贷</a><a class="fl item-l" data-type="ProductType" data-id="100">抗疫产品</a></div>
-                                <input type="hidden" name="ProductType">
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <span class="fl item-label">贷款期限</span>
-                        <div class="overflow item-cont item-on">
-                            <div class="clearfix pos-rela item-city">
-                                <div id="LoanTimeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanTimeType" data-id="0">不限</a><a class="fl item-l" data-type="LoanTimeType" data-id="1">6个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="2">12个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="3">36个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="4">36个月以上</a></div>
-                                <input type="hidden" name="LoanTimeType">
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="fl item-label">贷款额度</span>
-                        <div class="overflow item-cont item-on">
-                            <div class="clearfix pos-rela item-city">
-                                <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div>
-                                <input type="hidden" name="LoanLimitType">
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <input id="hdSortType" type="hidden" name="SortType">
-
+      <div class="bg-white mar-top min-page layui-form">
+        <div class="content-filter-box">
+          <div class="clearfix box-head">
+            <div class="fr head-search">
+              <input type="text" name="s_key" placeholder="请输入关键字，支持模糊搜索" lay-verify="" class="fl layui-input search-ipt">
+              <button class="fl g-bg search-btn" lay-submit="" lay-filter="formFilter">搜 索</button>
             </div>
+            <div class="head-title">
+              <img :src="t_img" alt="">
+              <span class="line-middle t-name">所有产品</span>
+            </div>
+          </div>
+          <ul id="filterUl" class="bg-white filter-ul">
+
+            <li>
+              <span class="fl item-label">服务区域</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div class="overflow item-sub_city item-sub_level_1">
+                    <a class="fl item-l item-b item-l-on" data-type="CityType" data-id="0">不限</a>
+                    <a class="fl item-l" data-type="CityType" data-id="110100">北京市</a></div>
+                  <input type="hidden" name="CityType">
+                </div>
+              </div>
+              <span class="filter-switch">
+                <!-- TODO -->
+                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
+              </span>
+            </li>
+            <li class="filter_ds">
+              <span class="fl item-label">区县</span>
+              <div class="overflow item-cont item-on" style="height: auto;">
+                <div class="clearfix pos-rela item-city">
+                  <div class="overflow item-sub_level_2">
+                    <a class="fl item-l item-b item-l-on" data-type="AreaType" data-id="0">不限</a>
+                  </div>
+                  <input type="hidden" name="AreaType">
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <span class="fl item-label">贷款渠道</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a><a class="fl item-l" data-type="OrgType" data-id="1">银行</a><a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a><a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a><a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a><a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a><a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a><a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a><a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a><a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a><a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a><a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div>
+                  <input type="hidden" name="OrgType">
+                </div>
+              </div>
+              <span class="filter-switch">
+                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
+              </span>
+            </li>
+            <li>
+              <span class="fl item-label">担保方式</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div id="GuaranteeModeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="GuaranteeModeType" data-id="0">不限</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="1">抵押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="2">质押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="3">信保基金</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="4">一般保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="5">信用</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="6">保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="7">连带责任保证</a></div>
+                  <input type="hidden" name="GuaranteeModeType">
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="fl item-label">产品类型</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div id="ProductType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="ProductType" data-id="0">不限</a><a class="fl item-l" data-type="ProductType" data-id="3">线上审批</a><a class="fl item-l" data-type="ProductType" data-id="2">线下审批</a><a class="fl item-l" data-type="ProductType" data-id="1">秒批秒贷</a><a class="fl item-l" data-type="ProductType" data-id="100">抗疫产品</a></div>
+                  <input type="hidden" name="ProductType">
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <span class="fl item-label">贷款期限</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div id="LoanTimeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanTimeType" data-id="0">不限</a><a class="fl item-l" data-type="LoanTimeType" data-id="1">6个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="2">12个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="3">36个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="4">36个月以上</a></div>
+                  <input type="hidden" name="LoanTimeType">
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="fl item-label">贷款额度</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div>
+                  <input type="hidden" name="LoanLimitType">
+                </div>
+              </div>
+            </li>
+          </ul>
+          <input id="hdSortType" type="hidden" name="SortType">
+
         </div>
+      </div>
 
-        <div class="min-page small-mar-top search-result mar-top-bottom" id="page_template_body_id">
-            <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
-            <div class="list-tool">
-                <div class="fl tool-left" id="listSort">
-                    <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
-                    <div class="tool-item" data-id="1"> <span class="item-name">利率</span> </div>
-                    <div class="tool-item" data-id="2"> <span class="item-name">申请次数</span> </div>
-                </div>
-                <div class="fr tool-right" id="listType">
-                    <div class="tool-item" data-type="block"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
-                    <div class="tool-item on" data-type="line"> <span class="item-name"> <img :src="ico_type2" alt=""> </span> </div>
-                </div>
-            </div>
-            <ul class="clearfix product-list" id="productListBlock" style="display: none;">
-                <li class="fl">
-                    <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=361" target="_blank">
-                            <div class="item-title">
-                                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
-                                <div class="overflow title-cont">
-                                    <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小微企业贷款</span> <br> <em class="org-name">招商银行北京分行</em> </h2>
-                                    <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                                </div>
-                            </div>
-                            <ul class="item-info">
-                                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">5-1000万</span></li>
-                                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-60月</span></li>
-                                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5.22-5.7%</span></li>
-                                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
-                            </ul>
-                            <div class="item-label"> </div> <button class="g-bg g-shadow item-btn">查看详情</button>
-                            <div class="line-top"></div>
-                            <div class="line-bottom"></div>
-                            <div class="line-left"></div>
-                            <div class="line-right"></div>
-                        </a> </div>
-                </li>
-                <li class="fl">
-                    <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=346" target="_blank">
-                            <div class="item-title">
-                                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" class="middle-center" alt=""> </div>
-                                <div class="overflow title-cont">
-                                    <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小企业知识产权质押...</span> <br> <em class="org-name">中国邮政储蓄银行北京分行</em> </h2>
-                                    <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                                </div>
-                            </div>
-                            <ul class="item-info">
-                                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-500万</span></li>
-                                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-12月</span></li>
-                                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
-                                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押,质押,一般保证,信用</span></li>
-                            </ul>
-                            <div class="item-label"> </div> <button class="g-bg g-shadow item-btn">查看详情</button>
-                            <div class="line-top"></div>
-                            <div class="line-bottom"></div>
-                            <div class="line-left"></div>
-                            <div class="line-right"></div>
-                        </a> </div>
-                </li>
-                <li class="fl">
-                    <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=335" target="_blank">
-                            <div class="item-title">
-                                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> </div>
-                                <div class="overflow title-cont">
-                                    <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">首都职工创业小额贷...</span> <br> <em class="org-name">北京农商银行</em> </h2>
-                                    <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                                </div>
-                            </div>
-                            <ul class="item-info">
-                                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-50万</span></li>
-                                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-24月</span></li>
-                                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
-                                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">一般保证</span></li>
-                            </ul>
-                            <div class="item-label"> </div> <button class="g-bg g-shadow item-btn">查看详情</button>
-                            <div class="line-top"></div>
-                            <div class="line-bottom"></div>
-                            <div class="line-left"></div>
-                            <div class="line-right"></div>
-                        </a> </div>
-                </li>
-                <li class="fl">
-                    <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=326" target="_blank">
-                            <div class="item-title">
-                                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" class="middle-center" alt=""> </div>
-                                <div class="overflow title-cont">
-                                    <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">线上快审快贷</span> <br> <em class="org-name">宁波银行</em> </h2>
-                                    <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                                </div>
-                            </div>
-                            <ul class="item-info">
-                                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-800万</span></li>
-                                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-120月</span></li>
-                                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5-7%</span></li>
-                                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
-                            </ul>
-                            <div class="item-label"> </div> <button class="g-bg g-shadow item-btn">查看详情</button>
-                            <div class="line-top"></div>
-                            <div class="line-bottom"></div>
-                            <div class="line-left"></div>
-                            <div class="line-right"></div>
-                        </a> </div>
-                </li>
-            </ul>
-            <ul class="product-list-line" id="productListLine">
-                <li> <a href="/#/requIndex/financingProductDetail#?id=361&amp;guid=aa6607dbb979436581920e4710f3f87f" target="_blank">
-                        <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
-                        <div class="fl item-title"> <span class="t">小微企业贷款—招商银行北京分行</span>
-                            <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-                        </div>
-                        <div class="fl item-info"> <span class="info-c">5.22-5.7%</span> <span class="info-n">参考利率范围</span> </div>
-                        <div class="fl item-info"> <span class="info-c">12-60月</span> <span class="info-n">贷款期限</span> </div>
-                        <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-                    </a> </li>
-                <li> <a href="/#/requIndex/financingProductDetail#?id=346&amp;guid=f93e1b10c3ab4b3086e1428118a535bf" target="_blank">
-                        <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
-                        <div class="fl item-title"> <span class="t">小企业知识产权质押贷—中国邮政储蓄银行北京分行</span>
-                            <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-                        </div>
-                        <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
-                        <div class="fl item-info"> <span class="info-c">1-12月</span> <span class="info-n">贷款期限</span> </div>
-                        <div class="fl item-info"> <span class="info-c">1-500万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-                    </a> </li>
-                <li> <a href="/#/requIndex/financingProductDetail#?id=335&amp;guid=06026fa341924905a302338d354d7466" target="_blank">
-                        <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" alt=""> </div>
-                        <div class="fl item-title"> <span class="t">首都职工创业小额贷款—北京农商银行</span>
-                            <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-                        </div>
-                        <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
-                        <div class="fl item-info"> <span class="info-c">12-24月</span> <span class="info-n">贷款期限</span> </div>
-                        <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-                    </a> </li>
-                <li> <a href="/#/requIndex/financingProductDetail#?id=326&amp;guid=d22aa5c073df419db31f60c07264c564" target="_blank">
-                        <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" alt=""> </div>
-                        <div class="fl item-title"> <span class="t">线上快审快贷—宁波银行</span>
-                            <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-                        </div>
-                        <div class="fl item-info"> <span class="info-c">5-7%</span> <span class="info-n">参考利率范围</span> </div>
-                        <div class="fl item-info"> <span class="info-c">1-120月</span> <span class="info-n">贷款期限</span> </div>
-                        <div class="fl item-info"> <span class="info-c">1-800万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-                    </a> </li>
-            </ul>
-            <div class="ac pagination" id="pagination">
-                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-59"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em"></em><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
-            </div>
+      <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
+        <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
+        <div class="list-tool">
+          <div id="listSort" class="fl tool-left">
+            <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
+            <div class="tool-item" data-id="1"> <span class="item-name">利率</span> </div>
+            <div class="tool-item" data-id="2"> <span class="item-name">申请次数</span> </div>
+          </div>
+          <div id="listType" class="fr tool-right">
+            <div class="tool-item" data-type="block"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
+            <div class="tool-item on" data-type="line"> <span class="item-name"> <img :src="ico_type2" alt=""> </span> </div>
+          </div>
         </div>
+        <ul id="productListBlock" class="clearfix product-list" style="display: none;">
+          <li class="fl">
+            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=361" target="_blank">
+              <div class="item-title">
+                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
+                <div class="overflow title-cont">
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小微企业贷款</span> <br> <em class="org-name">招商银行北京分行</em> </h2>
+                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                </div>
+              </div>
+              <ul class="item-info">
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">5-1000万</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-60月</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5.22-5.7%</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
+              </ul>
+              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
+              <div class="line-top" />
+              <div class="line-bottom" />
+              <div class="line-left" />
+              <div class="line-right" />
+            </a> </div>
+          </li>
+          <li class="fl">
+            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=346" target="_blank">
+              <div class="item-title">
+                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" class="middle-center" alt=""> </div>
+                <div class="overflow title-cont">
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小企业知识产权质押...</span> <br> <em class="org-name">中国邮政储蓄银行北京分行</em> </h2>
+                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                </div>
+              </div>
+              <ul class="item-info">
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-500万</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-12月</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押,质押,一般保证,信用</span></li>
+              </ul>
+              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
+              <div class="line-top" />
+              <div class="line-bottom" />
+              <div class="line-left" />
+              <div class="line-right" />
+            </a> </div>
+          </li>
+          <li class="fl">
+            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=335" target="_blank">
+              <div class="item-title">
+                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> </div>
+                <div class="overflow title-cont">
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">首都职工创业小额贷...</span> <br> <em class="org-name">北京农商银行</em> </h2>
+                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                </div>
+              </div>
+              <ul class="item-info">
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-50万</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-24月</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">一般保证</span></li>
+              </ul>
+              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
+              <div class="line-top" />
+              <div class="line-bottom" />
+              <div class="line-left" />
+              <div class="line-right" />
+            </a> </div>
+          </li>
+          <li class="fl">
+            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=326" target="_blank">
+              <div class="item-title">
+                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" class="middle-center" alt=""> </div>
+                <div class="overflow title-cont">
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">线上快审快贷</span> <br> <em class="org-name">宁波银行</em> </h2>
+                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                </div>
+              </div>
+              <ul class="item-info">
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-800万</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-120月</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5-7%</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
+              </ul>
+              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
+              <div class="line-top" />
+              <div class="line-bottom" />
+              <div class="line-left" />
+              <div class="line-right" />
+            </a> </div>
+          </li>
+        </ul>
+        <ul id="productListLine" class="product-list-line">
+          <li> <a href="/#/requIndex/financingProductDetail#?id=361&amp;guid=aa6607dbb979436581920e4710f3f87f" target="_blank">
+            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
+            <div class="fl item-title"> <span class="t">小微企业贷款—招商银行北京分行</span>
+              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+            </div>
+            <div class="fl item-info"> <span class="info-c">5.22-5.7%</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">12-60月</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn" @click="showDetail(1)">立即申请</button>
+          </a> </li>
+          <li> <a href="/#/requIndex/financingProductDetail#?id=346&amp;guid=f93e1b10c3ab4b3086e1428118a535bf" target="_blank">
+            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
+            <div class="fl item-title"> <span class="t">小企业知识产权质押贷—中国邮政储蓄银行北京分行</span>
+              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+            </div>
+            <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-12月</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-500万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
+          </a> </li>
+          <li> <a href="/#/requIndex/financingProductDetail#?id=335&amp;guid=06026fa341924905a302338d354d7466" target="_blank">
+            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" alt=""> </div>
+            <div class="fl item-title"> <span class="t">首都职工创业小额贷款—北京农商银行</span>
+              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+            </div>
+            <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">12-24月</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
+          </a> </li>
+          <li> <a href="/#/requIndex/financingProductDetail#?id=326&amp;guid=d22aa5c073df419db31f60c07264c564" target="_blank">
+            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" alt=""> </div>
+            <div class="fl item-title"> <span class="t">线上快审快贷—宁波银行</span>
+              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+            </div>
+            <div class="fl item-info"> <span class="info-c">5-7%</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-120月</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-800万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
+          </a> </li>
+        </ul>
+        <div id="pagination" class="ac pagination">
+          <div id="layui-laypage-59" class="layui-box layui-laypage layui-laypage-default"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" /><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
+        </div>
+      </div>
 
     </div>
     <lzfooter />
-</div>
+  </div>
 </template>
 
 <script>
@@ -267,33 +267,38 @@ import ico_type1 from '@/assets/images/front/ico-type1.png'
 import ico_type2 from '@/assets/images/front/ico-type2.png'
 
 export default {
-    name: 'FinMarketList',
-    components: {
-        lzhead,
-        lzfooter
-    },
-    data() {
-        return {
-            tableData: [],
-            wantSelected: 1,
-            market_banner: market_banner,
-            t_img: t_img,
-            ico_type2: ico_type2,
-            ico_type1: ico_type1,
-            more_icon: {
-                backgroundImage: 'url(' + more_img + ')',
-                backgroundRepeat: 'no-repeat',
-                backgroundPositionX: 'right',
-                backgroundPositionY: 'center'
-            }
-        }
-    },
-    mounted() {
-
-    },
-    methods: {
-
+  name: 'FinMarketList',
+  components: {
+    lzhead,
+    lzfooter
+  },
+  data() {
+    return {
+      tableData: [],
+      wantSelected: 1,
+      market_banner: market_banner,
+      t_img: t_img,
+      ico_type2: ico_type2,
+      ico_type1: ico_type1,
+      more_icon: {
+        backgroundImage: 'url(' + more_img + ')',
+        backgroundRepeat: 'no-repeat',
+        backgroundPositionX: 'right',
+        backgroundPositionY: 'center'
+      }
     }
+  },
+  mounted() {
+
+  },
+  methods: {
+    showDetail(id) {
+      this.$router.push({
+        path: '/fin-market/detail'
+        // params: { data: 'query' }
+      })
+    }
+  }
 }
 </script>
 
