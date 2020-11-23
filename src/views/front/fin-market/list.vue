@@ -114,11 +114,12 @@
             <div class="tool-item" data-id="2"> <span class="item-name">申请次数</span> </div>
           </div>
           <div id="listType" class="fr tool-right">
-            <div class="tool-item" data-type="block"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
-            <div class="tool-item on" data-type="line"> <span class="item-name"> <img :src="ico_type2" alt=""> </span> </div>
+            <div class="tool-item" :class="{'on':isBlock==true}" data-type="block" @click="isBlock=true"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
+            <div class="tool-item" :class="{'on':isBlock==false}" data-type="line" @click="isBlock=false"> <span class="item-name"> <img :src="ico_type2" alt=""> </span> </div>
           </div>
         </div>
-        <ul id="productListBlock" class="clearfix product-list" style="display: none;">
+        <!--  style="display: none;" -->
+        <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">
           <li class="fl">
             <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=361" target="_blank">
               <div class="item-title">
@@ -208,7 +209,7 @@
             </a> </div>
           </li>
         </ul>
-        <ul id="productListLine" class="product-list-line">
+        <ul v-show="!isBlock" id="productListLine" class="product-list-line">
           <li> <a href="/#/requIndex/financingProductDetail#?id=361&amp;guid=aa6607dbb979436581920e4710f3f87f" target="_blank">
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
             <div class="fl item-title"> <span class="t">小微企业贷款—招商银行北京分行</span>
@@ -282,6 +283,7 @@ export default {
       t_img: t_img,
       ico_type2: ico_type2,
       ico_type1: ico_type1,
+      isBlock: true,
       more_icon: {
         backgroundImage: 'url(' + more_img + ')',
         backgroundRepeat: 'no-repeat',
