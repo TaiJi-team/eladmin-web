@@ -170,7 +170,7 @@
                 <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> </div>
                 <div class="overflow title-cont">
                   <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">首都职工创业小额贷...</span> <br> <em class="org-name">北京农商银行</em> </h2>
-                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                  <div class="item-adr text-ellipsis"><img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
                 </div>
               </div>
               <ul class="item-info">
@@ -1074,5 +1074,292 @@ address, caption, cite, code, dfn, em, strong, th, var {
 }
 em {
     font-style: italic;
+}
+.product-list {
+    margin-right: -30px;
+}
+.product-list>li {
+    width: 380px;
+    margin: 0 30px 47px 0;
+    padding-bottom: 36px;
+    /* background: url(images/p-14.png) no-repeat center bottom; */
+}
+.fl {
+    float: left;
+}
+ol, ul, li {
+    list-style: none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+user agent stylesheet
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+.product-list .item-main {
+    padding: 17px 17px 30px;
+}
+.line-action-hover, .pos-rela {
+    position: relative;
+}
+.bg-white {
+    background: #fff;
+}
+a, a:hover, a:active {
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    color: #555;
+}
+a {
+    color: #333;
+    text-decoration: none;
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.product-list .item-title {
+    height: 100px;
+    overflow: hidden;
+}
+.product-list .item-img {
+    width: 98px;
+    height: 98px;
+    margin-right: 16px;
+    border: 1px solid #d6d6d6;
+}
+.pos-center {
+    position: relative;
+}
+.overflow {
+    overflow: hidden;
+}
+.fl {
+    float: left;
+}
+.product-list .item-img img {
+    max-width: 98px;
+    max-height: 98px;
+}
+.pos-center .middle-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+img {
+    border: none;
+}
+.layui-btn, .layui-edge, .layui-inline, img {
+    vertical-align: middle;
+}
+.layui-inline, img {
+    display: inline-block;
+    vertical-align: middle;
+}
+.product-list .item-name {
+    margin: 2px 0 15px;
+    font-weight: normal;
+    padding-top: 10px;
+}
+.product-list .item-name {
+    margin: 40px 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.product-list .item-name .line-add, .product-list .item-name .sub-name {
+    font-weight: normal;
+}
+.sub-name {
+    font-weight: bold !important;
+    padding-bottom: 9px;
+}
+.line-middle {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.product-list .item-adr {
+    padding-left: 20px;
+    /* background: url(images/ico-adr.png) no-repeat 0 center; */
+}
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.product-list .adr-label {
+    color: #000;
+}
+.product-list .adr-cont {
+    color: #696969;
+}
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* ol, ul, li {
+    list-style: none;
+}
+li {
+    list-style: none;
+}
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+}
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+} */
+.product-list .item-info {
+    padding: 20px 0;
+    padding-top: 20px;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    overflow: hidden;
+}
+.product-list .item-label {
+    margin-bottom: 18px;
+    margin-top: -10px;
+    height: 25px;
+}
+.product-list .item-btn {
+    display: block;
+    width: 147px;
+    height: 42px;
+    border: 0;
+    border-radius: 42px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+.g-bg, .bg-hover:hover {
+    background: #00bba4;
+}
+.g-shadow {
+    -webkit-box-shadow: 0 0 10px rgba(167, 167, 167, .73);
+    box-shadow: 0 0 10px rgba(167, 167, 167, .73);
+}
+.product-list .item-info li {
+    width: 50%;
+    line-height: 2;
+}
+.product-list .item-info .info-label {
+    color: #000;
+}
+product-list .item-info .info-cont {
+    display: block;
+    color: #ff7e00;
+    line-height: 28px;
+    overflow: hidden;
+}
+/* .line-middle {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+} */
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.product-list .item-info {
+    padding: 20px 0;
+    overflow: hidden;
+}
+div {
+    display: block;
+}
+/* a, a:hover, a:active {
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    color: #555;
+}
+a {
+    color: #333;
+    text-decoration: none;
+} */
+/* user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+} */
+/* ol, ul, li {
+    list-style: none;
+}
+li {
+    list-style: none;
+}
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+} */
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+.product-list .item-info .info-cont {
+    display: block;
+    color: #ff7e00;
+    line-height: 28px;
+    overflow: hidden;
 }
 </style>
