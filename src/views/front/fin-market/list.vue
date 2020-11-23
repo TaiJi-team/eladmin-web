@@ -216,7 +216,9 @@
             </div>
             <div class="fl item-info"> <span class="info-c">5.22-5.7%</span> <span class="info-n">参考利率范围</span> </div>
             <div class="fl item-info"> <span class="info-c">12-60月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn" @click="showDetail(1)">立即申请</button>
+            <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div>
+            <!-- <button type="button" class="fl layui-btn item-btn" @click="showDetail(1)">立即申请</button> -->
+            <router-link class="fl layui-btn item-btn" to="/fin-market/detail" tag="button">立即申请</router-link>
           </a> </li>
           <li> <a href="/#/requIndex/financingProductDetail#?id=346&amp;guid=f93e1b10c3ab4b3086e1428118a535bf" target="_blank">
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>

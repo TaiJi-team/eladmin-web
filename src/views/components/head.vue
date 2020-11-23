@@ -6,10 +6,12 @@
           <img src="https://www.celoan.cn/res/images/ico/ico-2.png" alt="">
           <ul class="line-middle">
             <li class="fl">
-              <a href="javascript:;" class="color-hover changeCity">企业登录</a>
+              <a href="./login.html" class="color-hover changeCity">登录</a>
+              <!-- <router-link class="color-hover changeCity" to='/login' tag="a">登录</router-link> -->
             </li>
             <li class="fl">
-              <a href="javascript:;" class="color-hover changeCity">企业注册</a>
+              <!-- <a href="javascript:;" class="color-hover changeCity">企业注册</a> -->
+              <a href="javascript:;" class="color-hover changeCity">注册</a>
             </li>
             <li class="fl">
               <a href="javascript:;" class="color-hover loginW changeCity">我要融资</a>
