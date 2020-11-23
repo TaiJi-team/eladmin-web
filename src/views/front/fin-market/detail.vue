@@ -102,7 +102,7 @@
                       </ul>
                     </div>
                     <div class="clearfix">
-                      <div class="fr"> <a href="javascript:;" data-id="361" class="fl ac g-bg head-btn loginW">立即申请</a> </div>
+                      <div class="fr"><button type="button" class="fl layui-btn item-btn" @click="showDetail(1)">立即申请</button></div>
                     </div>
                   </div>
                 </div>
@@ -1532,6 +1532,111 @@ blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, 
     margin: 0;
     padding: 0;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+user-login-mobile {
+    position: absolute;
+}
+.layadmin-user-login-main {
+    width: 375px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.layadmin-user-login-header {
+    text-align: center;
+}
+.layadmin-user-login-box {
+    padding: 20px;
+}
+.layadmin-user-login-header h2 {
+    margin-bottom: 10px;
+    font-weight: 300;
+    font-size: 30px;
+    color: #000;
+}
+.layadmin-user-login-box {
+    padding: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+.layadmin-user-login-body .layui-form-item {
+    position: relative;
+}
+.layui-form-item {
+    margin-bottom: 15px;
+    clear: both;
+    *zoom: 1;
+}
+.layadmin-user-login-icon {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 38px;
+    line-height: 36px;
+    text-align: center;
+    color: #d2d2d2;
+}
+.layui-icon {
+    font-family: layui-icon!important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.layui-btn, .layui-disabled, .layui-icon, .layui-unselect {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+user agent stylesheet
+label {
+    cursor: default;
+}
+.layadmin-user-login-body .layui-form-item .layui-input {
+    padding-left: 38px;
+}
+<style>
+.layadmin-user-login-main input {
+    height: 38px;
+    border: 1px solid #dcdcdc;
+}
+input[type="text"] {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border: 0;
+}
+.layui-input, .layui-textarea {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+}
+.layui-input, .layui-select, .layui-textarea {
+    height: 38px;
+    line-height: 1.3;
+    line-height: 38px\9;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    border-radius: 2px;
+}
+.layui-badge-rim, .layui-colla-content, .layui-colla-item, .layui-collapse, .layui-elem-field, .layui-form-pane .layui-form-item[pane], .layui-form-pane .layui-form-label, .layui-input, .layui-layedit, .layui-layedit-tool, .layui-quote-nm, .layui-select, .layui-tab-bar, .layui-tab-card, .layui-tab-title, .layui-tab-title .layui-this:after, .layui-textarea {
+    border-color: #e6e6e6;
+}
+.layui-btn, .layui-input, .layui-select, .layui-textarea, .layui-upload-button {
+    outline: 0;
+    -webkit-appearance: none;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    box-sizing: border-box;
+}
+.layui-form-item:after {
+    content: '\20';
+    clear: both;
+    *zoom: 1;
+    display: block;
+    height: 0;
 }
 
 </style>
