@@ -1486,9 +1486,9 @@ a:-webkit-any-link {
     width: 770px;
     padding: 0 15px;
     padding-top: 0px;
-    padding-right: 15px;
+    padding-right: 10px;
     padding-bottom: 0px;
-    padding-left: 15px;
+    padding-left: 10px;
     margin-right: 20px;
 }
 .bread-crumb {
@@ -1506,4 +1506,32 @@ a:-webkit-any-link {
     margin-bottom: 0px;
     margin-left: auto;
 }
+.side-right-list .list-cont .item-title {
+    line-height: 30px;
+    font-size: 17px;
+    color: #1c1c1c;
+}
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.side-right-list .list-cont .item-label {
+    color: #1c1c1c;
+}
+.line-middle {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+}
+.side-right-list .list-cont .item-info {
+    line-height: 24px;
+    color: #fd7100;
+}
+blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 </style>
