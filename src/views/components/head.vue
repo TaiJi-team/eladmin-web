@@ -82,7 +82,7 @@
         >
           <el-menu-item index="/index">首 页</el-menu-item>
           <el-menu-item index="/fin-market">金融超市</el-menu-item>
-          <el-menu-item index="3">金融机构</el-menu-item>
+          <el-menu-item index="/fin-org">金融机构</el-menu-item>
           <el-menu-item index="4">信用机构</el-menu-item>
           <el-menu-item index="5">资讯动态</el-menu-item>
           <el-submenu index="6">

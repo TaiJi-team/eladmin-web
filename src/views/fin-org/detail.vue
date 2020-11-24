@@ -102,7 +102,7 @@
                       </ul>
                     </div>
                     <div class="clearfix">
-                      <div class="fr"> <button type="button" class="fl layui-btn item-btn" @click="showDetail(1)">立即申请</button></div>
+                      <div class="fr"><button type="button" class="fl layui-btn item-btn" @click="showDetail(1)">立即申请</button></div>
                     </div>
                   </div>
                 </div>
