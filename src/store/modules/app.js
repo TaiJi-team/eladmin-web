@@ -7,6 +7,7 @@ const state = {
   },
   device: 'desktop',
   size: Cookies.get('size') || 'small'
+  // activeIndex: Cookies.get('activeIndex') || '/index'
 }
 
 const mutations = {
@@ -31,6 +32,11 @@ const mutations = {
     state.size = size
     Cookies.set('size', size)
   }
+  // SET_ACTIVEINDEX: (state, activeIndex) => {
+  //   state.activeIndex = activeIndex
+  //   console.log('set activeIndex: ' + activeIndex)
+  //   Cookies.set('activeIndex', activeIndex)
+  // }
 }
 
 const actions = {
@@ -46,6 +52,10 @@ const actions = {
   setSize({ commit }, size) {
     commit('SET_SIZE', size)
   }
+  // setActiveIndex({ commit }, activeIndex) {
+  //   console.log('commit activeIndex')
+  //   commit('SET_ACTIVEINDEX', activeIndex)
+  // }
 }
 
 export default {
