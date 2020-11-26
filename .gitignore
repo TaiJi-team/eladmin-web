@@ -24,3 +24,4 @@ yarn.lock
 src/api/company/finance/need.js
 *.zip
 1.txt
+*.rar

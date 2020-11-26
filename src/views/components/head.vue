@@ -73,18 +73,12 @@
             </el-dropdown>
           </div>
         </div>
-        <el-menu
-          active-text-color="#fd7100"
-          class="el-menu-demo"
-          mode="horizontal"
-          :default-active="this.$router.path"
-          router
-        >
-          <el-menu-item index="/index">首 页</el-menu-item>
-          <el-menu-item index="/fin-market">金融超市</el-menu-item>
-          <el-menu-item index="/fin-org">金融机构</el-menu-item>
+        <el-menu class="el-menu-demo" mode="horizontal" @select="handleSelect">
+          <el-menu-item :class="{'is-active':activeIndex=='/home'}" index="/index">首页</el-menu-item>
+          <el-menu-item :class="{'is-active':activeIndex=='/fin-market'}" index="/fin-market">金融超市</el-menu-item>
+          <el-menu-item :class="{'is-active':activeIndex=='/fin-org'}" index="/fin-org">金融机构</el-menu-item>
           <el-menu-item index="4">信用机构</el-menu-item>
-          <el-menu-item index="5">资讯动态</el-menu-item>
+          <el-menu-item index="5">融资动态</el-menu-item>
           <el-submenu index="6">
             <template slot="title">特色金融服务专区</template>
             <el-menu-item index="6-1">平台推荐名单</el-menu-item>
@@ -103,10 +97,11 @@
 <script>
 export default {
   name: 'Myhead',
+  namespaced: true,
   data() {
     return {
       search: '',
-      activeIndex: '1'
+      activeIndex: this.$route.path
     }
   },
   methods: {
@@ -116,12 +111,27 @@ export default {
         params: { data: 'query' }
       })
     }
-
   }
 }
 </script>
 
 <style scoped>
+.el-menu-item.is-active {
+    border-left:#33A2EF solid 6px !important;
+    background-color: #E2EFF9 !important;
+    color: #38B2FF !important;
+}
+
+/* .el-menu-item.is-active {
+   background:#c95411 !important;
+} */
+
+/* .el-menu-demo >>> .is-active { */
+/* .is-active {
+  border-color: #fd7100;
+  color: #fd7100;
+} */
+
 .top {
   height: 38px;
   font-size: 13px;
@@ -216,9 +226,9 @@ export default {
   margin: 0 9px;
 }
 
-.el-menu-demo >>> .el-menu-item:hover {
+/* .el-menu-demo >>> .el-menu-item:hover {
   color: #ff7200;
-}
+} */
 
 .el-menu-demo >>> .el-submenu__title {
   font-size: 19px;
@@ -228,17 +238,13 @@ export default {
   margin: 0 10px;
 }
 
-.el-menu-demo >>> .is-active {
+/* .el-menu-demo >>> .is-active .el-submenu__title {
   border-bottom: 3px solid #fff;
   font-weight: bold;
-}
-
-.el-menu-demo >>> .is-active .el-submenu__title {
-  border-bottom: 3px solid #fff;
-  font-weight: bold;
-}
+} */
 
 .el-menu.el-menu--horizontal {
   border-bottom: 0;
 }
+
 </style>
