@@ -28,8 +28,8 @@
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <div class="overflow item-sub_city item-sub_level_1">
-                    <a class="fl item-l item-b item-l-on" data-type="CityType" data-id="0">不限</a>
-                    <a class="fl item-l" data-type="CityType" data-id="110100">北京市</a></div>
+                    <a :class="{'item-l-on':activeA==0}" class="fl item-l " data-type="CityType" data-id="0" @click="activeA=0">不限</a>
+                    <a :class="{'item-l-on':activeA==1}" class="fl item-l" data-type="CityType" data-id="110100" @click="activeA=1">北京市</a></div>
                   <input type="hidden" name="CityType">
                 </div>
               </div>
@@ -290,7 +290,8 @@ export default {
         backgroundRepeat: 'no-repeat',
         backgroundPositionX: 'right',
         backgroundPositionY: 'center'
-      }
+      },
+      activeA: 0
     }
   },
   mounted() {

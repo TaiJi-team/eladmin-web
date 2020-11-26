@@ -163,11 +163,11 @@
                   src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/20/2019092003394234724.png"
                   alt="小企业知识产权质押贷"
                 ></div>
-                <ul class="item-label">
+                <!-- <ul class="item-label">
                   <li class="fl">抵押</li>
                   <li class="fl">抵押</li>
                   <li class="fl">抵押</li>
-                </ul>
+                </ul> -->
               </div>
               <ul class="clearfix item-info">
                 <li class="fl">
