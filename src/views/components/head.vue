@@ -74,9 +74,9 @@
           </div>
         </div>
         <el-menu class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          <el-menu-item :class="{'is-active':activeIndex=='/home'}" index="/index">首页</el-menu-item>
-          <el-menu-item :class="{'is-active':activeIndex=='/fin-market'}" index="/fin-market">金融超市</el-menu-item>
-          <el-menu-item :class="{'is-active':activeIndex=='/fin-org'}" index="/fin-org">金融机构</el-menu-item>
+          <el-menu-item :class="{'is-active':activeIndex}" index="/index">首页</el-menu-item>
+          <el-menu-item :class="{'is-active':activeMarket}" index="/fin-market">金融超市</el-menu-item>
+          <el-menu-item :class="{'is-active':activeOrg}" index="/fin-org">金融机构</el-menu-item>
           <el-menu-item index="4">信用机构</el-menu-item>
           <el-menu-item index="5">融资动态</el-menu-item>
           <el-submenu index="6">
@@ -101,7 +101,9 @@ export default {
   data() {
     return {
       search: '',
-      activeIndex: this.$route.path
+      activeIndex: this.$route.path === '/home',
+      activeMarket: this.$route.path.search('/fin-market') !== -1,
+      activeOrg: this.$route.path.search('/fin-org') !== -1
     }
   },
   methods: {

@@ -8,9 +8,9 @@
           <el-image style="width: 100%; height: 100%" :src="orgdetail_banner01" fit="fill" />
         </el-carousel-item>
       </el-carousel>
-     <!-- <div class="banner" id="bannerDetail" style="background :width: 100%; height: 50%" :src="orgdetail_banner01"> <h1 class="bannerDetail__title">招商银行股份有限公司北京分行</h1> </div> -->
-<div class="min-width g-bg"> <div class="min-page ac office-hours" style="display: none;">    </div> </div>
-<div class="bg-white default-mar-top small-mar-bottom min-page clearfix box-sizing finance-head"> <div class="fl pos-center head-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div> <div class="overflow"> <h2 class="head-name">招商银行股份有限公司北京分行<span class="release-time">发布时间：2019-09-12</span></h2> <p class="head-info"> 招商银行1987年成立于中国改革开放的最前沿——深圳蛇口，是中国境内第一家完全由企业法人持股的股份制商业银行，也是国家从体制外推动银行业改革的第一家试点银行。在英国权威金融杂志《银行家》公布的2019年全球银行品牌1,000强中，招商银行品牌品牌价值位列全球第9位，一级资本位列全球第19位；在《财富》世界500强榜单中，招商银行连续8年强势入榜，2019年名列世界第188位。 </p> </div> </div>
+      <!-- <div class="banner" id="bannerDetail" style="background :width: 100%; height: 50%" :src="orgdetail_banner01"> <h1 class="bannerDetail__title">招商银行股份有限公司北京分行</h1> </div> -->
+      <div class="min-width g-bg"> <div class="min-page ac office-hours" style="display: none;" /> </div>
+      <div class="bg-white default-mar-top small-mar-bottom min-page clearfix box-sizing finance-head"> <div class="fl pos-center head-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div> <div class="overflow"> <h2 class="head-name">招商银行股份有限公司北京分行<span class="release-time">发布时间：2019-09-12</span></h2> <p class="head-info"> 招商银行1987年成立于中国改革开放的最前沿——深圳蛇口，是中国境内第一家完全由企业法人持股的股份制商业银行，也是国家从体制外推动银行业改革的第一家试点银行。在英国权威金融杂志《银行家》公布的2019年全球银行品牌1,000强中，招商银行品牌品牌价值位列全球第9位，一级资本位列全球第19位；在《财富》世界500强榜单中，招商银行连续8年强势入榜，2019年名列世界第188位。 </p> </div> </div>
       <div class="bg-white small-mar-bottom min-page finance-achieve"> <ul class="clearfix achieve-list"> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">0<span class="unit">次</span></p> <p class="item-t"> <img src="res/images/f-i-2.png" alt="">成功对接 </p> </div> </li> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">1<span class="unit">个</span></p> <p class="item-t"> <img src="res/images/f-i-3.png" alt="">金融产品数 </p> </div> </li> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">-<span class="unit">分</span></p> <p class="item-t"> <img src="res/images/f-i-4.png" alt="">综合评价 </p> </div> </li> </ul> </div>
       <div class="bg-white mar-top min-page layui-form">
         <div class="content-filter-box">
@@ -86,8 +86,8 @@
         </div>
         <!--  style="display: none;" -->
         <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">
-          <li class="fl">
-            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=361" target="_blank">
+          <router-link to="/fin-market/detail" tag="li">
+            <div class="bg-white line-action-hover item-main"> <a>
               <div class="item-title">
                 <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
                 <div class="overflow title-cont">
@@ -103,13 +103,13 @@
               </ul>
               <div class="item-label" />
               <!-- <button class="g-bg g-shadow item-btn">查看详情</button> -->
-               <router-link class="g-bg g-shadow item-btn" to="/fin-market/detail" tag="button">查看详情</router-link>
+              <router-link class="g-bg g-shadow item-btn" to="/fin-market/detail" tag="button">查看详情</router-link>
               <div class="line-top" />
               <div class="line-bottom" />
               <div class="line-left" />
               <div class="line-right" />
             </a> </div>
-          </li>
+          </router-link>
           <!-- <li class="fl">
             <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=346" target="_blank">
               <div class="item-title">
@@ -178,7 +178,7 @@
           </li>-->
         </ul>
         <ul v-show="!isBlock" id="productListLine" class="product-list-line">
-          <li> <a href="/#/requIndex/financingProductDetail#?id=361&amp;guid=aa6607dbb979436581920e4710f3f87f" target="_blank">
+          <router-link to="/fin-market/detail" tag="li"> <a>
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
             <div class="fl item-title"> <span class="t">小微企业贷款—招商银行北京分行</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
@@ -186,9 +186,9 @@
             <div class="fl item-info"> <span class="info-c">5.22-5.7%</span> <span class="info-n">参考利率范围</span> </div>
             <div class="fl item-info"> <span class="info-c">12-60月</span> <span class="info-n">贷款期限</span> </div>
             <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div>
-            <!-- <button type="button" class="fl layui-btn item-btn" @click="showDetail(1)">立即申请</button> -->
-            <router-link class="fl layui-btn item-btn" to="/fin-market/detail" tag="button">立即申请</router-link>
-          </a> </li>
+            <button type="button" class="fl layui-btn item-btn">立即申请</button>
+            <!-- <router-link class="fl layui-btn item-btn" to="/fin-market/detail" tag="button">立即申请</router-link> -->
+          </a> </router-link>
           <!-- <li> <a href="/#/requIndex/financingProductDetail#?id=346&amp;guid=f93e1b10c3ab4b3086e1428118a535bf" target="_blank">
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
             <div class="fl item-title"> <span class="t">小企业知识产权质押贷—中国邮政储蓄银行北京分行</span>
@@ -230,11 +230,11 @@
 // import beijingJson from '@/assets/beijing.json'
 import lzhead from '@/views/components/head'
 import lzfooter from '@/views/components/footer'
-import orgdetail_banner01 from '@/assets/images/front/orgdetail_banner01.jpg'
-import t_img from '@/assets/images/front/t-img.png'
+import orgdetail_banner01 from '@/assets/images/portal/orgdetail_banner01.jpg'
+import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
-import ico_type1 from '@/assets/images/front/ico-type1.png'
-import ico_type2 from '@/assets/images/front/ico-type2.png'
+import ico_type1 from '@/assets/images/portal/ico-type1.png'
+import ico_type2 from '@/assets/images/portal/ico-type2.png'
 
 export default {
   name: 'FinOrgList',
@@ -263,12 +263,6 @@ export default {
 
   },
   methods: {
-    showDetail(id) {
-      this.$router.push({
-        path: '/fin-market/detail'
-        // params: { data: 'query' }
-      })
-    }
   }
 }
 </script>
