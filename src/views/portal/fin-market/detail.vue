@@ -166,11 +166,11 @@
 // import beijingJson from '@/assets/beijing.json'
 import lzhead from '@/views/components/head'
 import lzfooter from '@/views/components/footer'
-import market_banner from '@/assets/images/front/fin-market-banner.jpg'
-// import t_img from '@/assets/images/front/t-img.png'
+import market_banner from '@/assets/images/portal/fin-market-banner.jpg'
+// import t_img from '@/assets/images/portal/t-img.png'
 // import more_img from '@/assets/icons/svg/arr-down.png'
-// import ico_type1 from '@/assets/images/front/ico-type1.png'
-// import ico_type2 from '@/assets/images/front/ico-type2.png'
+// import ico_type1 from '@/assets/images/portal/ico-type1.png'
+// import ico_type2 from '@/assets/images/portal/ico-type2.png'
 
 export default {
   name: 'FinMarketDetail',

@@ -68,19 +68,19 @@ export const constantRouterMap = [
   },
   {
     path: '/fin-market',
-    component: resolve => (require(['@/views/front/fin-market/list.vue'], resolve))
+    component: resolve => (require(['@/views/portal/fin-market/list.vue'], resolve))
   },
   {
     path: '/fin-market/detail',
-    component: resolve => (require(['@/views/front/fin-market/detail.vue'], resolve))
+    component: resolve => (require(['@/views/portal/fin-market/detail.vue'], resolve))
   },
   {
     path: '/fin-org',
-    component: resolve => (require(['@/views/fin-org/list.vue'], resolve))
+    component: resolve => (require(['@/views/portal/fin-org/list.vue'], resolve))
   },
   {
     path: '/fin-org/detail',
-    component: resolve => (require(['@/views/fin-org/detail.vue'], resolve))
+    component: resolve => (require(['@/views/portal/fin-org/detail.vue'], resolve))
   },
   {
     path: '/user',

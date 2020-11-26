@@ -108,38 +108,36 @@
       <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
         <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
         <!-- <div class="list-tool"> -->
-          <!-- <div id="listSort" class="fl tool-left">
+        <!-- <div id="listSort" class="fl tool-left">
             <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
             <div class="tool-item" data-id="1"> <span class="item-name">利率</span> </div>
             <div class="tool-item" data-id="2"> <span class="item-name">申请次数</span> </div>
           </div> -->
-          <!-- <div id="listType" class="fr tool-right">
+        <!-- <div id="listType" class="fr tool-right">
             <div class="tool-item" :class="{'on':isBlock==true}" data-type="block" @click="isBlock=true"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
             <div class="tool-item" :class="{'on':isBlock==false}" data-type="line" @click="isBlock=false"> <span class="item-name"> <img :src="ico_type2" alt=""> </span> </div>
           </div> -->
         <!-- </div> -->
         <!-- v-show="isBlock" -->
         <!--  style="display: none;" -->
-        <ul  id="productListLine" class="product-list-line">
-          <li> <a href="/#/requIndex/financingProductDetail#?id=361&amp;guid=aa6607dbb979436581920e4710f3f87f" target="_blank">
+        <ul id="productListLine" class="product-list-line">
+          <router-link to="/fin-org/detail" tag="li"> <a>
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
-           <div class="fl item-title">
-                <router-link  class="t" to="/fin-org/detail" tag="span" >招商银行股份有限公司北京分行</router-link>
-                <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-                <span class="t" style="visibility:hidden">招商银行股份有限公司北京分行</span>
+            <div class="fl item-title">
+              <span class="t">招商银行股份有限公司北京分行</span>
+              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+              <span class="t" style="visibility:hidden">招商银行股份有限公司北京分行</span>
             </div>
             <div class="fl item-info"> <span class="info-c">2个</span> <span class="info-n">发布产品数</span> </div>
             <div class="fl item-info"> <span class="info-c">89分</span> <span class="info-n">综合评分</span> </div>
             <!-- <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div> -->
-            <!-- <button type="button" class="fl layui-btn item-btn" @click="showDetail(1)">立即申请</button> -->
-            <!-- <router-link class="fl layui-btn item-btn" to="/fin-market/detail" tag="button">立即申请</router-link> -->
-          </a> </li>
+          </a> </router-link>
           <li> <a href="/#/requIndex/financingProductDetail#?id=346&amp;guid=f93e1b10c3ab4b3086e1428118a535bf" target="_blank">
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
             <div class="fl item-title"> <span class="t">中国邮政储蓄股份有限公司北京分行</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
             </div>
-             <div class="fl item-info"> <span class="info-c">5个</span> <span class="info-n">发布产品数</span> </div>
+            <div class="fl item-info"> <span class="info-c">5个</span> <span class="info-n">发布产品数</span> </div>
             <div class="fl item-info"> <span class="info-c">59分</span> <span class="info-n">综合评分</span> </div>
             <!-- <div class="fl item-info"> <span class="info-c">1-500万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
           </a> </li>
@@ -148,7 +146,7 @@
             <div class="fl item-title"> <span class="t">北京农商银行股份有限公司</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
             </div>
-             <div class="fl item-info"> <span class="info-c">2个</span> <span class="info-n">发布产品数</span> </div>
+            <div class="fl item-info"> <span class="info-c">2个</span> <span class="info-n">发布产品数</span> </div>
             <div class="fl item-info"> <span class="info-c">65分</span> <span class="info-n">综合评分</span> </div>
             <!-- <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
           </a> </li>
@@ -157,7 +155,7 @@
             <div class="fl item-title"> <span class="t">宁波银行</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">宁波市</span> </p>
             </div>
-             <div class="fl item-info"> <span class="info-c">4个</span> <span class="info-n">发布产品数</span> </div>
+            <div class="fl item-info"> <span class="info-c">4个</span> <span class="info-n">发布产品数</span> </div>
             <div class="fl item-info"> <span class="info-c">78分</span> <span class="info-n">综合评分</span> </div>
             <!-- <div class="fl item-info"> <span class="info-c">1-800万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
           </a> </li>
@@ -176,11 +174,11 @@
 // import beijingJson from '@/assets/beijing.json'
 import lzhead from '@/views/components/head'
 import lzfooter from '@/views/components/footer'
-import org_banner from '@/assets/images/front/org_banner01.jpg'
-import t_img from '@/assets/images/front/t-img.png'
+import org_banner from '@/assets/images/portal/org_banner01.jpg'
+import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
-import ico_type1 from '@/assets/images/front/ico-type1.png'
-import ico_type2 from '@/assets/images/front/ico-type2.png'
+import ico_type1 from '@/assets/images/portal/ico-type1.png'
+import ico_type2 from '@/assets/images/portal/ico-type2.png'
 
 export default {
   name: 'FinOrgList',

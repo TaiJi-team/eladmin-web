@@ -290,7 +290,7 @@
 
 <script>
 import beijingJson from '@/assets/beijing.json'
-import index_banner from '@/assets/images/front/index-banner.jpg'
+import index_banner from '@/assets/images/portal/index-banner.jpg'
 
 export default {
   name: 'Home',
