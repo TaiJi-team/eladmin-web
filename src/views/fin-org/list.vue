@@ -62,7 +62,6 @@
                 <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
               </span>
             </li>
-            
             <!-- <li>
               <span class="fl item-label">担保方式</span>
               <div class="overflow item-cont item-on">
@@ -124,8 +123,10 @@
         <ul  id="productListLine" class="product-list-line">
           <li> <a href="/#/requIndex/financingProductDetail#?id=361&amp;guid=aa6607dbb979436581920e4710f3f87f" target="_blank">
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
-           <div class="fl item-title"> <span class="t">招商银行股份有限公司北京分行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+           <div class="fl item-title">
+                <router-link  class="t" to="/fin-org/detail" tag="span" >招商银行股份有限公司北京分行</router-link>
+                <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+                <span class="t" style="visibility:hidden">招商银行股份有限公司北京分行</span>
             </div>
             <div class="fl item-info"> <span class="info-c">2个</span> <span class="info-n">发布产品数</span> </div>
             <div class="fl item-info"> <span class="info-c">89分</span> <span class="info-n">综合评分</span> </div>
@@ -182,7 +183,7 @@ import ico_type1 from '@/assets/images/front/ico-type1.png'
 import ico_type2 from '@/assets/images/front/ico-type2.png'
 
 export default {
-  name: 'FinMarketList',
+  name: 'FinOrgList',
   components: {
     lzhead,
     lzfooter

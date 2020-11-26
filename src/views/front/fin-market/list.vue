@@ -135,7 +135,8 @@
                 <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5.22-5.7%</span></li>
                 <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
               </ul>
-              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
+              <div class="item-label" />
+            <router-link class="g-bg g-shadow item-btn" to="/fin-market/detail" tag="button">查看详情</router-link>
               <div class="line-top" />
               <div class="line-bottom" />
               <div class="line-left" />

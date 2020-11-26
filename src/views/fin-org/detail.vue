@@ -25,8 +25,6 @@
             </div>
           </div>
           <ul id="filterUl" class="bg-white filter-ul">
-
-
             <li>
               <span class="fl item-label">贷款渠道</span>
               <div class="overflow item-cont item-on">
@@ -238,7 +236,6 @@ import more_img from '@/assets/icons/svg/arr-down.png'
 import ico_type1 from '@/assets/images/front/ico-type1.png'
 import ico_type2 from '@/assets/images/front/ico-type2.png'
 
-
 export default {
   name: 'FinOrgList',
   components: {
@@ -246,7 +243,7 @@ export default {
     lzfooter
   },
   data() {
-   return {
+    return {
       tableData: [],
       wantSelected: 1,
       orgdetail_banner01: orgdetail_banner01,
