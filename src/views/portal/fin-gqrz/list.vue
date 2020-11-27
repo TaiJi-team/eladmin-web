@@ -28,9 +28,8 @@
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <div class="overflow item-sub_city item-sub_level_1">
-                    <a :class="{'item-l-on':activeA==0}" class="fl item-l " data-type="CityType" data-id="0" @click="activeA=0">不限</a>
-                    <a :class="{'item-l-on':activeA==1}" class="fl item-l" data-type="CityType" data-id="110100" @click="activeA=1">北京市</a>
-                  </div>
+                    <a class="fl item-l item-b item-l-on" data-type="CityType" data-id="0">不限</a>
+                    <a class="fl item-l" data-type="CityType" data-id="110100">北京市</a></div>
                   <input type="hidden" name="CityType">
                 </div>
               </div>
@@ -44,17 +43,7 @@
               <div class="overflow item-cont item-on" style="height: auto;">
                 <div class="clearfix pos-rela item-city">
                   <div class="overflow item-sub_level_2">
-                    <a :class="{'item-l-on':activeD==0}" class="fl item-l " data-type="AreaType" data-id="0" @click="activeD=0">不限</a>
-                    <a :class="{'item-l-on':activeD==1}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=1">东城区</a>
-                    <a :class="{'item-l-on':activeD==2}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=2">西城区</a>
-                    <a :class="{'item-l-on':activeD==3}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=3">朝阳区</a>
-                    <a :class="{'item-l-on':activeD==4}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=4">丰台区</a>
-                    <a :class="{'item-l-on':activeD==5}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=5">石景山区</a>
-                    <a :class="{'item-l-on':activeD==6}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=6">海淀区</a>
-                    <a :class="{'item-l-on':activeD==7}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=7">门头沟区</a>
-                    <a :class="{'item-l-on':activeD==8}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=8">房山区</a>
-                    <a :class="{'item-l-on':activeD==9}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=9">顺义区</a>
-
+                    <a class="fl item-l item-b item-l-on" data-type="AreaType" data-id="0">不限</a>
                   </div>
                   <input type="hidden" name="AreaType">
                 </div>
@@ -62,44 +51,68 @@
             </li>
 
             <li>
-              <span class="fl item-label">贷款渠道</span>
+              <span class="fl item-label">行业</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="OrgType" class="overflow">
-                    <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">不限</a>
-                    <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=1">银行</a>
-                    <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=2">担保公司</a>
-                    <a :class="{'item-l-on':activeB==3}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=3">融资租赁公司</a>
-                    <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=4">消费金融公司</a>
-                    <a :class="{'item-l-on':activeB==5}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=5">风险投资机构</a>
-                    <a :class="{'item-l-on':activeB==6}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=6">资产管理公司</a>
-                    <a :class="{'item-l-on':activeB==7}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=7">保险公司</a>
-                    <a :class="{'item-l-on':activeB==8}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=8">信托公司</a>
-                    <a :class="{'item-l-on':activeB==9}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=9">保理公司</a>
-                    <a :class="{'item-l-on':activeB==10}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=10">供应链机构</a>
-                    <a :class="{'item-l-on':activeB==11}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=11">其他</a>
-                  </div>
+                  <!-- <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a><a class="fl item-l" data-type="OrgType" data-id="1">银行</a><a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a><a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a><a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a><a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a><a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a><a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a><a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a><a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a><a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a><a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div> -->
+                  <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">电商</a>
+                  <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="1" @click="activeB=1">社交</a>
+                  <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="2" @click="activeB=2">硬件</a>
+                  <a :class="{'item-l-on':activeB==3}" class="fl item-l " data-type="OrgType" data-id="3" @click="activeB=3">文娱传媒</a>
+                  <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="4" @click="activeB=4">工具</a>
+                  <a :class="{'item-l-on':activeB==5}" class="fl item-l" data-type="OrgType" data-id="5" @click="activeB=5">消费生活</a>
+                  <a :class="{'item-l-on':activeB==6}" class="fl item-l " data-type="OrgType" data-id="6" @click="activeB=6">金融</a>
+                  <a :class="{'item-l-on':activeB==7}" class="fl item-l" data-type="OrgType" data-id="7" @click="activeB=7">医疗健康</a>
+                  <a :class="{'item-l-on':activeB==8}" class="fl item-l" data-type="OrgType" data-id="8" @click="activeB=8">企业服务</a>
+                  <a :class="{'item-l-on':activeB==9}" class="fl item-l " data-type="OrgType" data-id="9" @click="activeB=9">旅游</a>
+                  <a :class="{'item-l-on':activeB==10}" class="fl item-l" data-type="OrgType" data-id="10" @click="activeB=1">房产家居</a>
+                  <a :class="{'item-l-on':activeB==11}" class="fl item-l" data-type="OrgType" data-id="11" @click="activeB=10">教育</a>
+                  <a :class="{'item-l-on':activeB==12}" class="fl item-l" data-type="OrgType" data-id="12" @click="activeB=2">汽车</a>
+                  <a :class="{'item-l-on':activeB==13}" class="fl item-l" data-type="OrgType" data-id="13" @click="activeB=2">张三</a><br>
                   <input type="hidden" name="OrgType">
                 </div>
               </div>
-              <span class="filter-switch" />
+              <span class="filter-switch">
+                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
+              </span>
+            </li>
+            <!-- <li>
+              <span class="fl item-label">担保方式</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div id="GuaranteeModeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="GuaranteeModeType" data-id="0">不限</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="1">抵押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="2">质押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="3">信保基金</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="4">一般保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="5">信用</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="6">保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="7">连带责任保证</a></div>
+                  <input type="hidden" name="GuaranteeModeType">
+                </div>
+              </div>
             </li>
             <li>
-              <span class="fl item-label">排序方式</span>
+              <span class="fl item-label">产品类型</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="OrgType" class="overflow">
-
-                    <a :class="{'item-l-on':activeC==0}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeC=0">默认排序</a>
-                    <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeC=1">产品数由高到低</a>
-                    <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeC=2">放款金额由高到低</a>
-
-                  </div>
-                  <input type="hidden" name="OrgType">
+                  <div id="ProductType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="ProductType" data-id="0">不限</a><a class="fl item-l" data-type="ProductType" data-id="3">线上审批</a><a class="fl item-l" data-type="ProductType" data-id="2">线下审批</a><a class="fl item-l" data-type="ProductType" data-id="1">秒批秒贷</a><a class="fl item-l" data-type="ProductType" data-id="100">抗疫产品</a></div>
+                  <input type="hidden" name="ProductType">
                 </div>
               </div>
-              <span class="filter-switch" />
             </li>
+
+            <li>
+              <span class="fl item-label">贷款期限</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div id="LoanTimeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanTimeType" data-id="0">不限</a><a class="fl item-l" data-type="LoanTimeType" data-id="1">6个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="2">12个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="3">36个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="4">36个月以上</a></div>
+                  <input type="hidden" name="LoanTimeType">
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="fl item-label">贷款额度</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div>
+                  <input type="hidden" name="LoanLimitType">
+                </div>
+              </div>
+            </li> -->
           </ul>
           <input id="hdSortType" type="hidden" name="SortType">
 
@@ -168,9 +181,7 @@
 
     </div>
     <lzfooter />
-
   </div>
-
 </template>
 
 <script>
@@ -204,10 +215,7 @@ export default {
         backgroundPositionX: 'right',
         backgroundPositionY: 'center'
       },
-      activeA: 0,
-      activeB: 0,
-      activeC: 0,
-      activeD: 0
+      activeB: 0
     }
   },
   mounted() {
@@ -222,7 +230,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>
@@ -230,7 +237,7 @@ export default {
     height: 400px;
 }
 
-.banner.el-carousel__container {
+.banner>>>.el-carousel__container {
     height: 400px;
 }
 
@@ -313,7 +320,7 @@ li {
 
 .content-filter-box .filter-ul li {
     position: relative;
-    padding: 20px 12px;
+    padding: 50px 50px;
     border-top: 1px dashed #bbb;
     overflow: hidden;
 }
