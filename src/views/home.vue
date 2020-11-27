@@ -926,7 +926,7 @@ a, a:hover, a:active {
   text-align: left;
   position: absolute;
   width: 472px;
-  height: 200px;
+  height: 300px;
   top: 70px;
   right: 0;
   padding: 30px 20px 20px 60px;
@@ -959,5 +959,16 @@ a, a:hover, a:active {
 }
 .org >>> .el-card__body{
   padding: 0;
+}
+.faq-box .answer-box {
+    width: 552px;
+    height: 330px;
+    padding-top: 63px;
+}
+.el-menu-demo{
+    text-align: right;
+    margin-left: 200px;
+    margin-top: 10px;
+    font-size: 19px;
 }
 </style>

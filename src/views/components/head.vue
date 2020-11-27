@@ -78,6 +78,7 @@
           <el-menu-item :class="{'is-active':activeMarket}" index="/fin-market">金融超市</el-menu-item>
           <el-menu-item :class="{'is-active':activeOrg}" index="/fin-org">金融机构</el-menu-item>
           <el-menu-item index="4">信用机构</el-menu-item>
+          <el-menu-item :class="{'is-active':activeGqrz}" index="/fin-gqrz">股权融资</el-menu-item>
           <el-menu-item index="5">融资动态</el-menu-item>
           <el-submenu index="6">
             <template slot="title">特色金融服务专区</template>
@@ -103,7 +104,8 @@ export default {
       search: '',
       activeIndex: this.$route.path === '/home',
       activeMarket: this.$route.path.search('/fin-market') !== -1,
-      activeOrg: this.$route.path.search('/fin-org') !== -1
+      activeOrg: this.$route.path.search('/fin-org') !== -1,
+      activeGqrz: this.$route.path.search('/fin-gqrz') !== -1
     }
   },
   methods: {
@@ -215,7 +217,7 @@ export default {
 
 .el-menu-demo {
   text-align: right;
-  margin-left: 360px;
+  margin-left: 450px;
   margin-top: -10px;
   font-size: 19px;
 }
