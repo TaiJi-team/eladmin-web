@@ -54,7 +54,31 @@
               <span class="fl item-label">贷款渠道</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a><a class="fl item-l" data-type="OrgType" data-id="1">银行</a><a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a><a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a><a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a><a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a><a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a><a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a><a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a><a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a><a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a><a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div>
+                  <!-- <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a> -->
+                  <!-- <a class="fl item-l" data-type="OrgType" data-id="1">银行</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a>
+                  <a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div> -->
+                  <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">不限</a>
+                  <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="1" @click="activeB=1">银行</a>
+                  <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="2" @click="activeB=2">担保公司</a>
+                  <a :class="{'item-l-on':activeB==3}" class="fl item-l " data-type="OrgType" data-id="3" @click="activeB=3">融资租赁公司</a>
+                  <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="4" @click="activeB=4">消费金融公司</a>
+                  <a :class="{'item-l-on':activeB==5}" class="fl item-l" data-type="OrgType" data-id="5" @click="activeB=5">风险投资机构</a>
+                  <a :class="{'item-l-on':activeB==6}" class="fl item-l " data-type="OrgType" data-id="6" @click="activeB=6">资产管理公司</a>
+                  <a :class="{'item-l-on':activeB==7}" class="fl item-l" data-type="OrgType" data-id="7" @click="activeB=7">保险公司</a>
+                  <a :class="{'item-l-on':activeB==8}" class="fl item-l" data-type="OrgType" data-id="8" @click="activeB=8">保理公司</a>
+                  <a :class="{'item-l-on':activeB==9}" class="fl item-l " data-type="OrgType" data-id="9" @click="activeB=9">信托公司</a>
+                  <!-- <a :class="{'item-l-on':activeB==10}" class="fl item-l" data-type="OrgType" data-id="10" @click="activeB=1">供应链机构</a> -->
+                  <a :class="{'item-l-on':activeB==11}" class="fl item-l" data-type="OrgType" data-id="11" @click="activeB=10">其他</a>
+                  <!-- <a :class="{'item-l-on':activeB==12}" class="fl item-l" data-type="OrgType" data-id="12" @click="activeB=2">北京市</a> -->
                   <input type="hidden" name="OrgType">
                 </div>
               </div>
@@ -66,7 +90,15 @@
               <span class="fl item-label">担保方式</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="GuaranteeModeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="GuaranteeModeType" data-id="0">不限</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="1">抵押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="2">质押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="3">信保基金</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="4">一般保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="5">信用</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="6">保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="7">连带责任保证</a></div>
+                  <!-- <div id="GuaranteeModeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="GuaranteeModeType" data-id="0">不限</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="1">抵押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="2">质押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="3">信保基金</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="4">一般保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="5">信用</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="6">保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="7">连带责任保证</a></div> -->
+                  <a :class="{'item-l-on':activeC==0}" class="fl item-l " data-type="GuaranteeModeType" data-id="0" @click="activeC=0">不限</a>
+                  <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="GuaranteeModeType" data-id="1" @click="activeC=1">抵押</a>
+                  <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="GuaranteeModeType" data-id="2" @click="activeC=2">质押</a>
+                  <a :class="{'item-l-on':activeC==3}" class="fl item-l " data-type="GuaranteeModeType" data-id="3" @click="activeC=3">信保基金</a>
+                  <a :class="{'item-l-on':activeC==4}" class="fl item-l" data-type="GuaranteeModeType" data-id="4" @click="activeC=4">一般保证</a>
+                  <a :class="{'item-l-on':activeC==5}" class="fl item-l" data-type="GuaranteeModeType" data-id="5" @click="activeC=5">信用</a>
+                  <a :class="{'item-l-on':activeC==6}" class="fl item-l " data-type="GuaranteeModeType" data-id="6" @click="activeC=6">保证</a>
+                  <a :class="{'item-l-on':activeC==7}" class="fl item-l" data-type="GuaranteeModeType" data-id="7" @click="activeC=7">连带责任保证</a>
                   <input type="hidden" name="GuaranteeModeType">
                 </div>
               </div>
@@ -75,7 +107,12 @@
               <span class="fl item-label">产品类型</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="ProductType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="ProductType" data-id="0">不限</a><a class="fl item-l" data-type="ProductType" data-id="3">线上审批</a><a class="fl item-l" data-type="ProductType" data-id="2">线下审批</a><a class="fl item-l" data-type="ProductType" data-id="1">秒批秒贷</a><a class="fl item-l" data-type="ProductType" data-id="100">抗疫产品</a></div>
+                  <!-- <div id="ProductType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="ProductType" data-id="0">不限</a><a class="fl item-l" data-type="ProductType" data-id="3">线上审批</a><a class="fl item-l" data-type="ProductType" data-id="2">线下审批</a><a class="fl item-l" data-type="ProductType" data-id="1">秒批秒贷</a><a class="fl item-l" data-type="ProductType" data-id="100">抗疫产品</a></div> -->
+                  <a :class="{'item-l-on':activeE==0}" class="fl item-l " data-type="ProductType" data-id="0" @click="activeE=0">不限</a>
+                  <a :class="{'item-l-on':activeE==1}" class="fl item-l" data-type="ProductType" data-id="1" @click="activeE=1">线上审批</a>
+                  <a :class="{'item-l-on':activeE==2}" class="fl item-l" data-type="ProductType" data-id="2" @click="activeE=2">线下审批</a>
+                  <a :class="{'item-l-on':activeE==3}" class="fl item-l " data-type="ProductType" data-id="3" @click="activeE=3">秒批秒贷</a>
+                  <a :class="{'item-l-on':activeE==4}" class="fl item-l" data-type="ProductType" data-id="4" @click="activeE=4">抗疫产品</a>
                   <input type="hidden" name="ProductType">
                 </div>
               </div>
@@ -85,7 +122,12 @@
               <span class="fl item-label">贷款期限</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="LoanTimeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanTimeType" data-id="0">不限</a><a class="fl item-l" data-type="LoanTimeType" data-id="1">6个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="2">12个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="3">36个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="4">36个月以上</a></div>
+                  <!-- <div id="LoanTimeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanTimeType" data-id="0">不限</a><a class="fl item-l" data-type="LoanTimeType" data-id="1">6个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="2">12个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="3">36个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="4">36个月以上</a></div> -->
+                  <a :class="{'item-l-on':activeD==0}" class="fl item-l " data-type="LoanTimeType" data-id="0" @click="activeD=0">不限</a>
+                  <a :class="{'item-l-on':activeD==1}" class="fl item-l" data-type="LoanTimeType" data-id="1" @click="activeD=1">6个月及以下</a>
+                  <a :class="{'item-l-on':activeD==2}" class="fl item-l" data-type="LoanTimeType" data-id="2" @click="activeD=2">12个月及以下</a>
+                  <a :class="{'item-l-on':activeD==3}" class="fl item-l " data-type="LoanTimeType" data-id="3" @click="activeD=3">36个月及以下</a>
+                  <a :class="{'item-l-on':activeD==4}" class="fl item-l" data-type="LoanTimeType" data-id="4" @click="activeD=4">36个月以上</a>
                   <input type="hidden" name="LoanTimeType">
                 </div>
               </div>
@@ -94,7 +136,15 @@
               <span class="fl item-label">贷款额度</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div>
+                  <!-- <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div> -->
+                  <a :class="{'item-l-on':activeF==0}" class="fl item-l " data-type="LoanLimitType" data-id="0" @click="activeF=0">不限</a>
+                  <a :class="{'item-l-on':activeF==1}" class="fl item-l" data-type="LoanLimitType" data-id="1" @click="activeF=1">抵押</a>
+                  <a :class="{'item-l-on':activeF==2}" class="fl item-l" data-type="LoanLimitType" data-id="2" @click="activeF=2">质押</a>
+                  <a :class="{'item-l-on':activeF==3}" class="fl item-l " data-type="LoanLimitType" data-id="3" @click="activeF=3">信保基金</a>
+                  <a :class="{'item-l-on':activeF==4}" class="fl item-l" data-type="LoanLimitType" data-id="4" @click="activeF=4">一般保证</a>
+                  <a :class="{'item-l-on':activeF==5}" class="fl item-l" data-type="LoanLimitType" data-id="5" @click="activeF=5">信用</a>
+                  <a :class="{'item-l-on':activeF==6}" class="fl item-l " data-type="LoanLimitType" data-id="6" @click="activeF=6">保证</a>
+                  <a :class="{'item-l-on':activeF==7}" class="fl item-l" data-type="LoanLimitType" data-id="7" @click="activeF=7">连带责任保证</a>
                   <input type="hidden" name="LoanLimitType">
                 </div>
               </div>
@@ -291,7 +341,12 @@ export default {
         backgroundPositionX: 'right',
         backgroundPositionY: 'center'
       },
-      activeA: 0
+      activeA: 0,
+      activeB: 0,
+      activeC: 0,
+      activeD: 0,
+      activeE: 0,
+      activeF: 0
     }
   },
   mounted() {
