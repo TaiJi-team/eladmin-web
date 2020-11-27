@@ -6,7 +6,7 @@
           <img src="https://www.celoan.cn/res/images/ico/ico-2.png" alt="">
           <ul class="line-middle">
             <li class="fl">
-              <a href="./login.html" class="color-hover changeCity">登录</a>
+              <a href="/login.html" class="color-hover changeCity">登录</a>
               <!-- <router-link class="color-hover changeCity" to='/login' tag="a">登录</router-link> -->
             </li>
             <li class="fl">

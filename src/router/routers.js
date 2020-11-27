@@ -81,21 +81,21 @@ export const constantRouterMap = [
   {
     path: '/fin-org/detail',
     component: resolve => (require(['@/views/portal/fin-org/detail.vue'], resolve))
-  },
-  {
-    path: '/user',
-    component: Layout,
-    hidden: true,
-    redirect: 'noredirect',
-    children: [
-      {
-        path: 'center',
-        component: (resolve) => require(['@/views/system/user/center'], resolve),
-        name: '个人中心',
-        meta: { title: '个人中心' }
-      }
-    ]
   }
+  // {
+  //   path: '/user',
+  //   component: Layout,
+  //   hidden: true,
+  //   redirect: 'noredirect',
+  //   children: [
+  //     {
+  //       path: 'center',
+  //       component: (resolve) => require(['@/views/system/user/center'], resolve),
+  //       name: '个人中心',
+  //       meta: { title: '个人中心' }
+  //     }
+  //   ]
+  // }
 ]
 
 export default new Router({

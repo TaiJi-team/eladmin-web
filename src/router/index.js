@@ -4,8 +4,8 @@ import Config from '@/settings'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
 import { getToken } from '@/utils/auth' // getToken from cookie
-import { buildMenus } from '@/api/system/menu'
-import { filterAsyncRouter } from '@/store/modules/permission'
+// import { buildMenus } from '@/api/system/menu'
+// import { filterAsyncRouter } from '@/store/modules/permission'
 
 NProgress.configure({ showSpinner: false })// NProgress Configuration
 
@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
       if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
         store.dispatch('GetInfo').then(() => { // 拉取user_info
           // 动态路由，拉取菜单
-          loadMenus(next, to)
+          // loadMenus(next, to)
         }).catch(() => {
           store.dispatch('LogOut').then(() => {
             location.reload() // 为了重新实例化vue-router对象 避免bug
@@ -35,7 +35,7 @@ router.beforeEach((to, from, next) => {
       } else if (store.getters.loadMenus) {
         // 修改成false，防止死循环
         store.dispatch('updateLoadMenus')
-        loadMenus(next, to)
+        // loadMenus(next, to)
       } else {
         next()
       }
@@ -52,16 +52,16 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-export const loadMenus = (next, to) => {
-  buildMenus().then(res => {
-    const asyncRouter = filterAsyncRouter(res)
-    asyncRouter.push({ path: '*', redirect: '/404', hidden: true })
-    store.dispatch('GenerateRoutes', asyncRouter).then(() => { // 存储路由
-      router.addRoutes(asyncRouter) // 动态添加可访问路由表
-      next({ ...to, replace: true })
-    })
-  })
-}
+// export const loadMenus = (next, to) => {
+//   buildMenus().then(res => {
+//     const asyncRouter = filterAsyncRouter(res)
+//     asyncRouter.push({ path: '*', redirect: '/404', hidden: true })
+//     store.dispatch('GenerateRoutes', asyncRouter).then(() => { // 存储路由
+//       router.addRoutes(asyncRouter) // 动态添加可访问路由表
+//       next({ ...to, replace: true })
+//     })
+//   })
+// }
 
 router.afterEach(() => {
   NProgress.done() // finish progress bar
