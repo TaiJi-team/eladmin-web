@@ -1,40 +1,39 @@
 <template>
   <div class="app-container">
     <el-row :gutter="20">
-  <div class="block">
-    <span class="demonstration">自定义</span>
-    <el-image :src="src">
-      <div slot="placeholder" class="image-slot">
-        加载中<span class="dot">...</span>
+      <div class="block">
+        <span class="demonstration">自定义</span>
+        <el-image :src="src">
+          <div slot="placeholder" class="image-slot">
+            加载中<span class="dot">...</span>
+          </div>
+        </el-image>
       </div>
-    </el-image>
-  </div>
- 
-<div class="line"></div>
-
-<el-menu
-  :default-active="activeIndex2"
-  class="el-menu-demo"
-  mode="horizontal"
-  @select="handleSelect"
-  background-color="#545c64"
-  text-color="#fff"
-  active-text-color="#ffd04b">
-    <el-menu-item index="1" style="width: 120px">首页</el-menu-item>
-    <el-menu-item index="2" style="width: 139px">金融超市</el-menu-item>
-    <el-menu-item index="3" style="width: 139px">金融机构</el-menu-item>
-    <el-menu-item index="4" style="width: 139px">信用机构</el-menu-item>
-    <el-menu-item index="5" style="width: 139px">股权融资</el-menu-item>
-    <el-menu-item index="6" style="width: 139px">债券融资</el-menu-item>
-    <el-submenu index="7" style="width: 139px">
-    <template slot="title" style="width: 139px">政策中心</template>
-    <el-menu-item index="2-1">新闻资讯</el-menu-item>
-    <el-menu-item index="2-2">政策汇编</el-menu-item>
-    <el-menu-item index="2-3">政策资讯</el-menu-item>
-  </el-submenu>
-  <el-menu-item index="8" style="width: 139px " ><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
-  <el-menu-item index="9" style="width: 139px">宣传服务</el-menu-item>
-</el-menu>
+      <div class="line" />
+      <el-menu
+        :default-active="activeIndex2"
+        class="el-menu-demo"
+        mode="horizontal"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+        @select="handleSelect"
+      >
+        <el-menu-item index="1" style="width: 120px">首页</el-menu-item>
+        <el-menu-item index="2" style="width: 139px">金融超市</el-menu-item>
+        <el-menu-item index="3" style="width: 139px">金融机构</el-menu-item>
+        <el-menu-item index="4" style="width: 139px">信用机构</el-menu-item>
+        <el-menu-item index="5" style="width: 139px">股权融资</el-menu-item>
+        <el-menu-item index="6" style="width: 139px">债券融资</el-menu-item>
+        <el-submenu index="7" style="width: 139px">
+          <template slot="title" style="width: 139px">政策中心</template>
+          <el-menu-item index="2-1">新闻资讯</el-menu-item>
+          <el-menu-item index="2-2">政策汇编</el-menu-item>
+          <el-menu-item index="2-3">政策资讯</el-menu-item>
+        </el-submenu>
+        <el-menu-item index="8" style="width: 139px "><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+        <el-menu-item index="9" style="width: 139px">宣传服务</el-menu-item>
+      </el-menu>
     </el-row>
   </div>
 </template>
@@ -46,12 +45,12 @@ import { getDepts, getDeptSuperior } from '@/api/system/dept'
 import { getAll, getLevel } from '@/api/system/role'
 import { getAllJob } from '@/api/system/job'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
-import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
-import udOperation from '@crud/UD.operation'
-import pagination from '@crud/Pagination'
-import DateRangePicker from '@/components/DateRangePicker'
-import Treeselect from '@riophae/vue-treeselect'
+// import rrOperation from '@crud/RR.operation'
+// import crudOperation from '@crud/CRUD.operation'
+// import udOperation from '@crud/UD.operation'
+// import pagination from '@crud/Pagination'
+// import DateRangePicker from '@/components/DateRangePicker'
+// import Treeselect from '@riophae/vue-treeselect'
 import { mapGetters } from 'vuex'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import { LOAD_CHILDREN_OPTIONS } from '@riophae/vue-treeselect'
@@ -60,7 +59,7 @@ let userJobs = []
 const defaultForm = { id: null, username: null, nickName: null, gender: '男', email: null, enabled: 'false', roles: [], jobs: [], dept: { id: null }, phone: null }
 export default {
   name: 'User',
-  components: { Treeselect, crudOperation, rrOperation, udOperation, pagination, DateRangePicker },
+  // components: { Treeselect, crudOperation, rrOperation, udOperation, pagination, DateRangePicker },
   cruds() {
     return CRUD({ title: '用户', url: 'api/users', crudMethod: { ...crudUser }})
   },
