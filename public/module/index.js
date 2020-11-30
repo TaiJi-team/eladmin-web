@@ -104,7 +104,10 @@ layui.define(['config', 'admin', 'layer', 'laytpl', 'element', 'form'], function
             index.regRouter(admin.getTempData("menus"));
             // index.regRouter(config.menus);
             Q.reg('console', function () {
-                var menuPath = 'pages/console.html'
+                // TODO 根据用户类型,加载对应工作台页面
+
+                // 一般公众用户的工作台
+                var menuPath = 'pages/console/console.html'
                 index.loadView('console', menuPath, '主页');
             });
 
@@ -259,7 +262,7 @@ layui.define(['config', 'admin', 'layer', 'laytpl', 'element', 'form'], function
                     content: '<div id="console"></div>',
                     id: 'console'
                 });
-                $('#console').load('pages/console.html', function () {
+                $('#console').load('pages/console/console.html', function () {
                 });
             } else {
                 $('.layui-layout-admin').removeClass('open-tab');

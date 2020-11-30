@@ -29,6 +29,7 @@ layui.define(function (exports) {
             if (t) {
                 return JSON.parse(t);
             }
+            
         },
         // 清除user
         removeToken: function () {

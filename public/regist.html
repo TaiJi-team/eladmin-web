@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8"/>
+    <title>用户注册</title>
+    <link rel="stylesheet" href="./assets/libs/layui/css/layui.css"/>
+    <link rel="stylesheet" href="./assets/css/login.css" media="all">
+</head>
+
+<body>
+<div class="login-wrapper">
+    <div class="login-body">
+        <div class="layui-card">
+            <div class="layui-card-header">
+                <i class="layui-icon layui-icon-engine"></i>&nbsp;&nbsp;用户注册
+            </div>
+            <form class="layui-card-body layui-form layui-form-pane">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i></label>
+                    <div class="layui-input-block">
+                        <input name="mobile" type="text" lay-verify="required" placeholder="手机号"
+                               class="layui-input" style="width: 64%; float: left;" value="18800003333">
+                        <button type="button" id="sent-verify-code" class="layui-btn" style="width: 33%; float: left; margin-left: 3%;">发 送</button>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i></label>
+                    <div class="layui-input-block">
+                        <input name="verifyCode" type="text" lay-verify="required" placeholder="短信验证码"
+                               class="layui-input" disabled="disabled" value="123456">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i></label>
+                    <div class="layui-input-block">
+                        <input name="password" type="password" lay-verify="required" placeholder="密码"
+                               class="layui-input" value="123456">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i></label>
+                    <div class="layui-input-block">
+                        <input name="repeatPwd" type="password" lay-verify="required" placeholder="确认密码"
+                               class="layui-input" value="123456">
+                    </div>
+                </div>
+                <input name="deviceId" type="hidden"/>
+                <!--<div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i></label>
+                    <div class="layui-input-block">
+                        <div class="layui-row inline-block">
+                            <div class="layui-col-xs7">
+                                <input name="validCode" style="width:170px" type="text" lay-verify="required" placeholder="验证码" class="layui-input">
+                                <input name="deviceId" type="hidden"/>
+                            </div>
+                            <div class="layui-col-xs5" style="padding-left: 10px;">
+                                <img class="login-captcha" src="#" style="display:none">
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                
+                <div class="layui-form-item">
+                    <button lay-filter="login-submit" class="layui-btn layui-btn-fluid" lay-submit>注 册</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- <div class="login-footer">
+        <p>© 2018 <a href="javascript:;" target="_blank">zlt版权所有</a></p>
+    </div> -->
+</div>
+<script type="text/javascript" src="./module/apiUrl.js"></script>
+<script type="text/javascript" src="./assets/libs/layui/layui.js"></script>
+<script type="text/javascript" src="./assets/libs/login.js"></script>
+<script type="text/javascript" src="./module/Math.uuid.js"></script>
+
+<script>
+    layui.config({
+        base: 'module/'
+    }).use(['config', 'form'], function () {
+        //页面唯一标识
+        let uuid = Math.uuid();
+        let $ = layui.jquery;
+        let form = layui.form;
+        let config = layui.config;
+        $("input[name='verifyCode']").attr('disabled', 'disabled')
+        // if (config.getToken()) {
+        //     location.replace('./index-sys.html');
+        //     return;
+        // }
+        // $("input[name='deviceId']").val(uuid);
+
+        // 发送短信验证码
+        var w = 60, func;
+        function resetSent() {
+            w = 60;
+            clearInterval(func);
+            $("#sent-verify-code").html("发 送");
+            $("#sent-verify-code").removeAttr('disabled')
+        }
+        $("#sent-verify-code").click(function(){
+            
+            var mobile = $("[name = 'mobile']").val();
+            if(!mobile){
+                layer.msg('请填写手机号码', {icon: 5, time: 2000});
+                return false;
+            }
+            // if(!(/^1[3456789]d{9}$/.test(mobile))){ 
+            if(!(/^[1][3,4,5,7,8,9][0-9]{9}$/.test(mobile))){ 
+                layer.msg('手机号码有误，请重新填写', {icon: 5, time: 2000});
+                return false; 
+            }
+
+            $("#sent-verify-code").attr('disabled', 'disabled')
+            func = setInterval(function(){
+                w--;
+                $("#sent-verify-code").html("发送中("+w+"s)");
+                if(w == 0){
+                    resetSent()
+                }
+            },1000);
+            $("input[name='verifyCode']").removeAttr('disabled')
+
+            $.ajax({
+                url: config.base_server + 'api-uaa/validata/smsCode/' + mobile,
+                // xhrFields: {
+                //     withCredentials: true
+                // },
+                type: 'GET',
+                // beforeSend: function (xhr) {
+                //     xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa(config.clientId + ":" + config.clientSecret));
+                // },
+                success: function (data) {
+                    if (data.code === 0) {
+                        layer.msg('发送成功', {icon: 1, time: 1000}, function () {
+                            
+                        });
+                    } else {
+                        layer.closeAll('loading');
+                        layer.msg(data.msg, {icon: 5, time: 3000});
+                        resetSent();
+                    }
+                },
+                error: function (xhr) {
+                    //console.log(xhr)
+                    layer.closeAll('loading');
+                    layer.msg('请求失败！', {icon: 5, time: 500});
+                    resetSent()
+                }
+            });
+        })
+
+        // 表单提交
+        form.on('submit(login-submit)', function (obj) {
+            layer.load(2);
+            $.ajax({
+                url: config.base_server + 'api-user/user/register',
+                // xhrFields: {
+                //     withCredentials: true
+                // },
+                data: obj.field,
+                type: 'POST',
+                beforeSend: function (xhr) {
+                    // xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa(config.clientId + ":" + config.clientSecret));
+                    xhr.setRequestHeader('Authorization', 'Bearer 86489b70-5426-472b-b076-2cfbb2c1dece');
+                },
+                success: function (data) {
+                    if (data.code === 0) {
+                        config.putToken(data.datas);
+                        layer.msg('注册成功', {icon: 1, time: 1000}, function () {
+                            location.replace('/login.html');
+                        });
+                    } else {
+                        layer.closeAll('loading');
+                        layer.msg(data.msg, {icon: 5, time: 2000});
+                    }
+                },
+                error: function (xhr) {
+                    //console.log(xhr)
+                    layer.closeAll('loading');
+                    layer.msg('请求失败！', {icon: 5, time: 1000});
+                }
+            });
+            //阻止表单跳转
+            return false;
+        });
+
+        // 图形验证码
+        /*$('.login-captcha').attr("src", config.base_server + "api-uaa/validata/code/"+uuid);
+        $('.login-captcha').attr("style", "");
+
+        // 图形验证码
+        $('.login-captcha').click(function () {
+            this.src = this.src + '?t=' + (new Date).getTime();
+        });*/
+    });
+</script>
+</body>
+</html>

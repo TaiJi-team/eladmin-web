@@ -6,12 +6,14 @@
           <img src="https://www.celoan.cn/res/images/ico/ico-2.png" alt="">
           <ul class="line-middle">
             <li class="fl">
-              <a href="/login.html" class="color-hover changeCity">登录</a>
               <!-- <router-link class="color-hover changeCity" to='/login' tag="a">登录</router-link> -->
+              <a v-show="!isLogin" href="/login.html" class="color-hover changeCity">登录</a>
+              <span v-show="isLogin" class="color-hover changeCity" v-html="userInfo.userName" />
             </li>
             <li class="fl">
-              <!-- <a href="javascript:;" class="color-hover changeCity">企业注册</a> -->
-              <a href="javascript:;" class="color-hover changeCity">注册</a>
+              <!-- <router-link class="fl" to="/register" tag="a">注册</router-link> -->
+              <a v-show="!isLogin" href="/regist.html" class="color-hover changeCity">注册</a>
+              <a v-show="isLogin" href="/index-sys.html" class="color-hover changeCity">工作台</a>
             </li>
             <li class="fl">
               <a href="javascript:;" class="color-hover loginW changeCity">我要融资</a>
@@ -96,16 +98,26 @@
 </template>
 
 <script>
+import { getToken, getUserInfo } from '@/utils/auth'
+
 export default {
   name: 'Myhead',
   namespaced: true,
   data() {
     return {
       search: '',
+      isLogin: false,
+      userInfo: {},
       activeIndex: this.$route.path === '/home',
       activeMarket: this.$route.path.search('/fin-market') !== -1,
       activeOrg: this.$route.path.search('/fin-org') !== -1,
       activeGqrz: this.$route.path.search('/fin-gqrz') !== -1
+    }
+  },
+  mounted: function() {
+    if (getToken() !== null) {
+      this.isLogin = true
+      this.userInfo = getUserInfo()
     }
   },
   methods: {

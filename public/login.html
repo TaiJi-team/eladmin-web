@@ -97,8 +97,9 @@
                     //console.log(JSON.stringify(data));
                     if (data.code === 0) {
                         config.putToken(data.datas);
+                        // Cookie.set(TokenKey: 'EL-ADMIN-TOEKN')
                         layer.msg('登录成功', {icon: 1, time: 500}, function () {
-                            location.replace('./index-sys.html');
+                            location.replace('/index-sys.html');
                         });
                     } else {
                         layer.closeAll('loading');
