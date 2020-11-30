@@ -5,7 +5,7 @@ const TokenKey = Config.TokenKey
 
 export function getToken() {
   // return Cookies.get(TokenKey)
-  if (localStorage.easywe) {
+  if (localStorage.easyweb) {
     return JSON.parse(localStorage.easyweb).token
   }
   return null

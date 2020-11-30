@@ -90,7 +90,6 @@
             <el-menu-item index="6-4">工程信易贷</el-menu-item>
             <el-menu-item index="6-5">抗疫专区</el-menu-item>
           </el-submenu>
-          <el-menu-item index="7">API接口说明</el-menu-item>
         </el-menu>
       </div>
     </div>
