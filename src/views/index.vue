@@ -23,8 +23,9 @@ export default {
 .min-width {
   min-width: 1200PX;
 }
+
 .min-page {
-  width: 1200px;
+  width: 1200PX;
   margin: 0 auto;
   zoom: 1;
 }

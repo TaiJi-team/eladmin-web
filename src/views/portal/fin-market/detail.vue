@@ -539,10 +539,6 @@ button {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.min-page {
-    width: 1200px;
-    margin: 0 auto;
-}
 .search-result .result-text {
     padding-left: 10px;
     margin-bottom: 10px;
@@ -968,10 +964,6 @@ em {
 }
 .mar-bottom {
     margin-bottom: 40px;
-}
-.min-page {
-    width: 1200px;
-    margin: 0 auto;
 }
 .clearfix {
     zoom: 1;
@@ -1498,14 +1490,14 @@ a:-webkit-any-link {
     padding-bottom: 15px;
     padding-left: 0px;
 }
-.min-page {
+/* .min-page {
     width: 1200px;
     margin: 0 auto;
     margin-top: 0px;
     margin-right: auto;
     margin-bottom: 0px;
     margin-left: auto;
-}
+} */
 .side-right-list .list-cont .item-title {
     line-height: 30px;
     font-size: 17px;

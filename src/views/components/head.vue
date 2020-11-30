@@ -132,6 +132,12 @@ export default {
 </script>
 
 <style scoped>
+.min-page {
+  width: 94%;
+  margin: 0 auto;
+  zoom: 1;
+}
+
 .el-menu-item.is-active {
     border-left:#33A2EF solid 6px !important;
     background-color: #E2EFF9 !important;

@@ -87,7 +87,7 @@ mvvm框架 | [pandyle.js](https://gitee.com/pandarrr/pandyle) (专为jquery编�
         <div class="layui-card-header">
             <h2 class="header-title">文章管理</h2>
             <span class="layui-breadcrumb pull-right">
-              <a href="#!console">首页</a>
+              <a href="#!console">工作台</a>
               <a><cite>文章管理</cite></a>
             </span>
         </div>

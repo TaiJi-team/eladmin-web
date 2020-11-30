@@ -5,12 +5,18 @@ const TokenKey = Config.TokenKey
 
 export function getToken() {
   // return Cookies.get(TokenKey)
-  return JSON.parse(localStorage.easyweb).token || null
+  if (localStorage.easywe) {
+    return JSON.parse(localStorage.easyweb).token
+  }
+  return null
 }
 
 export function getUserInfo() {
-  // return Cookies.get(TokenKey)
-  return JSON.parse(JSON.parse(localStorage.easyweb).login_user) || null
+  const user = JSON.parse(localStorage.easyweb).login_user
+  if (user) {
+    return JSON.parse(user)
+  }
+  return {}
 }
 
 export function setToken(token, rememberMe) {

@@ -570,10 +570,6 @@ button {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.min-page {
-    width: 1200px;
-    margin: 0 auto;
-}
 .search-result .result-text {
     padding-left: 10px;
     margin-bottom: 10px;

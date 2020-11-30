@@ -1,0 +1,833 @@
+<style>
+    /* .layadmin-caller {
+        background: #fff;
+        padding: 30px
+    }
+
+    .layadmin-caller em {
+        font-style: normal
+    }
+
+    .layadmin-caller .caller-fl {
+        float: left
+    }
+
+    .layadmin-caller .caller-fr {
+        float: right
+    }
+
+    .layadmin-caller .caller-seach {
+        position: relative;
+        padding-bottom: 40px
+    }
+
+        .layadmin-caller .caller-seach .caller-icon {
+            font-size: 18px;
+            position: absolute;
+            top: 9px
+        }
+
+    .layadmin-caller .caller-seach-icon {
+        left: 6px
+    }
+
+    .layadmin-caller .caller-dump-icon {
+        right: 6px;
+        cursor: pointer
+    }
+
+    .layadmin-caller .caller-pl32 {
+        padding: 0 32px
+    }
+
+    .layadmin-caller .caller-tab {
+        margin: 0
+    }
+
+    .layadmin-caller .caller-contar {
+        padding-bottom: 20px
+    }
+
+    .layadmin-caller .caller-contar .caller-item {
+        padding: 25px 0;
+        overflow: hidden;
+        border-bottom: 1px solid #e0e0e0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main {
+        margin-left: 20px
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main p {
+        line-height: 100%;
+        padding: 8px 0
+    }
+
+        .layadmin-caller .caller-contar .caller-item .caller-main p:first-child {
+            padding-top: 0
+        }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main em {
+        margin-left: 5px
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i {
+        padding-right: 5px;
+        margin: 0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds {
+        padding-bottom: 12px
+    }
+
+    .layadmin-caller .caller-contar .caller-iconset i {
+        margin: 0 5px
+    }
+
+    .layadmin-caller .caller-contar .caller-iconset i:first-child {
+        margin-left: 0
+    }
+
+    .layadmin-caller .caller-contar button {
+        margin-top: 22px
+    }
+
+    .layadmin-caller .caller-contar .caller-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%
+    }
+
+    .layui-fluid{padding: 15px;}
+    .layadmin-header{display: none; height: 50px; line-height: 50px; margin-bottom: 0; border-radius: 0;}
+    .layadmin-header .layui-breadcrumb{padding: 0 15px;}
+    .layui-card-header{position: relative;}
+    .layui-card-header .layui-icon{line-height: initial; position: absolute; right: 15px; top: 50%; margin-top: -7px;}
+    .layadmin-iframe{position: absolute; width: 100%; height: 100%; left: 0; top: 0; right: 0; bottom: 0;}
+     */
+
+    .up-img-box {
+        position: relative;
+        width: 260px;
+        height: 358px;
+        margin: 0 auto;
+        border: 1px solid #eee;
+        background: #fcfcfd;
+        overflow: hidden;
+    }
+
+    .up-img-box .no-up-box,
+    .up-img-box .had-up-box,
+    .up-img-box .hover-tip-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .up-img-box .no-up-box {
+        z-index: 1;
+        background: url(/res/images/up-tip-bg.png) no-repeat center center;
+    }
+
+    .up-img-box .no-img-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    .up-img-box .had-up-box .had-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .up-img-box .hover-tip-box {
+        top: 100%;
+        background: rgba(0,0,0,.45);
+        transition: top .2s ease-in;
+        -webkit-transition: top .2s ease-in;
+    }
+
+    .up-img-box .had-up-box:hover .hover-tip-box {
+        top: 0;
+    }
+
+    .up-img-box .hover-big-img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -24px 0 0 -24px;
+        cursor: pointer;
+    }
+
+    .up-img-box .reload-btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #fff;
+        background-color: #000;
+        filter: alpha(Opacity=60);
+        opacity: .6;
+    }
+
+</style>
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">添加企业</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">工作台</a>
+          <a><cite>添加企业</cite></a>
+        </span>
+    </div>
+    <div class="layui-fluid">
+        <div class="layui-form layui-row layui-col-space15" id="CertificateInfoView" lay-filter="component-form-group"> <div class="layui-col-md12"> <div class="layui-card"> <div class="layui-card-header"> 上传照片要求 </div> <div class="layui-card-body layui-text layadmin-text"> <p>1. 请上传最新证件原件的彩色扫描件或数码照，如使用复印件请加盖公章上传（推荐使用原件电子版）；</p> <p>2. 图片支持格式：jpg/jpeg/png/bmp格式；</p> <p>3. 请使用像素大于600万像素的相机或手机拍摄，图片大小不超过10M；</p> <p>4. 经微信传输过的图片会导致图片失真，请避免使用经微信传输过的图片；</p> </div> </div> </div> <div class="layui-col-md12"> <div class="layui-card"> <div class="layui-card-header"> 营业执照 </div> <div class="layui-card-body"> <div class="layui-row layui-col-space15"> <div class="layui-col-md4 licence"> <div class="up-img-box big-box" title="营业执照"> <div class="no-up-box" id="noImgBtn" style="display:inline-block;"> <div class="card-front-box"> <div class="icon-box back"></div> <p class="icon-text" id="business_licence_TEXT">请上传营业执照</p> </div> </div><input class="layui-upload-file" type="file" accept="undefined" name="file"> <div class="had-up-box" style="display:none;"> <img src="" class="had-img" alt=""> <div class="hover-tip-box"> <input type="hidden" id="hdbusiness_licence" name="hdbusiness_licence" lay-verify="licence" value=""> <img src="../res/images/s-ico.png" class="hover-big-img" id="hoverBigImg" alt=""> <button type="button" class="layui-btn reload-btn" id="reloadBtn">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file"> </div> </div> <div class="card-upload-box uploading" style="display: none;" id="business_licence_UPLOADING"> <div class="process-box"> <div class="process" style="width: 90%;"> <span class="upload-animate"></span> </div> </div> <p class="upload-state-text">图片上传中...</p> </div> </div> <p class="check-big up-example" data-url="/res/images/qy-tydm.jpg"><i class="layui-icon layui-icon-search"></i>查看示例</p> </div> <div class="layui-col-md8"> <div class="layui-form-item" style="display:none;"> <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传营业执照照片，系统将自动识别填写证件信息，再核对识别结果）</span></div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>名称：</label> <div class="layui-input-block"> <input type="text" name="com_name" value="" lay-verify="company|companyname" autocomplete="off" placeholder="请与营业执照上名称一致" class="layui-input"> </div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>统一社会信用代码：</label> <div class="layui-input-block"> <input type="text" name="com_code" value="" lay-verify="creditcode" autocomplete="off" placeholder="请输入统一社会信用代码(18位)" class="layui-input"> </div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>所在区域：</label> <div class="layui-input-block"> <div id="cpArea"><div id="picker_1606710861529" data-action="picker_1606710861529"><div class="layui-input-inline" data-action="province"><select name="province" lay-verify="required" lay-filter="province"><option value="">请选择省</option><option value="110000">北京</option><option value="120000">天津</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择省" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择省</dd><dd lay-value="110000" class="">北京</dd><dd lay-value="120000" class="">天津</dd><dd lay-value="130000" class="">河北省</dd><dd lay-value="140000" class="">山西省</dd><dd lay-value="150000" class="">内蒙古自治区</dd><dd lay-value="210000" class="">辽宁省</dd><dd lay-value="220000" class="">吉林省</dd><dd lay-value="230000" class="">黑龙江省</dd><dd lay-value="310000" class="">上海</dd><dd lay-value="320000" class="">江苏省</dd><dd lay-value="330000" class="">浙江省</dd><dd lay-value="340000" class="">安徽省</dd><dd lay-value="350000" class="">福建省</dd><dd lay-value="360000" class="">江西省</dd><dd lay-value="370000" class="">山东省</dd><dd lay-value="410000" class="">河南省</dd><dd lay-value="420000" class="">湖北省</dd><dd lay-value="430000" class="">湖南省</dd><dd lay-value="440000" class="">广东省</dd><dd lay-value="450000" class="">广西壮族自治区</dd><dd lay-value="460000" class="">海南省</dd><dd lay-value="500000" class="">重庆</dd><dd lay-value="510000" class="">四川省</dd><dd lay-value="520000" class="">贵州省</dd><dd lay-value="530000" class="">云南省</dd><dd lay-value="540000" class="">西藏自治区</dd><dd lay-value="610000" class="">陕西省</dd><dd lay-value="620000" class="">甘肃省</dd><dd lay-value="630000" class="">青海省</dd><dd lay-value="640000" class="">宁夏回族自治区</dd><dd lay-value="650000" class="">新疆维吾尔自治区</dd></dl></div></div><div class="layui-input-inline" data-action="city"><select name="city" lay-verify="required" lay-filter="city"><option value="">请选择市</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择市" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择市</dd></dl></div></div><div class="layui-input-inline" data-action="area"><select name="area" lay-verify="required" lay-filter="area"><option value="">请选择区/县</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择区/县" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择区/县</dd></dl></div></div></div></div> </div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>详细地址：</label> <div class="layui-input-block"> <input type="text" name="address" value="" lay-verify="required" autocomplete="off" placeholder="请准确填写，具体到门牌号" class="layui-input"> </div> </div> <div class="layui-form-item"> <label class="layui-form-label">经营范围：</label> <div class="layui-input-block"> <textarea placeholder="不能填写超出经营范围的类目，不得出现错别字" name="business_scope" class="layui-textarea"></textarea> </div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>营业期限(止)：</label> <div class="layui-input-block"> <div class="layui-input-inline"> <input type="radio" name="business_time_type" value="1" title="长期" lay-filter="business_time_type"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>长期</div></div> <input type="radio" name="business_time_type" value="2" title="固定日期" checked="" lay-filter="business_time_type"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>固定日期</div></div> </div> <div class="layui-input-inline"> <input type="text" class="layui-input" id="business_time" name="business_time" lay-verify="required" value="" placeholder="yyyy-MM-dd" autocomplete="off" lay-key="4"> </div> </div> </div>  </div> </div> </div> </div> </div> <div class="layui-col-md12"> <div class="layui-card"> <div class="layui-card-header"> 经办人证件 </div> <div class="layui-card-body"> <div class="layui-row layui-col-space15"> <div class="layui-col-md4"> <div class="up-img-box up-img-small-box card_urla_file" title="身份证头像页"> <div class="no-up-box" id="card_urla_fileBtn" style="display:inline-block;"> <div class="card-front-box"> <div class="icon-box back"></div> <p class="icon-text" id="card_urla_TEXT">身份证头像页</p> </div> </div><input class="layui-upload-file" type="file" accept="undefined" name="file"> <div class="had-up-box" style="display:none;"> <img src="https://www.celoan.cn/exportPic.aspx?fid=" class="had-img" alt=""> <div class="hover-tip-box"> <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt=""> <input type="hidden" id="hdcard_urla_file" name="hdcard_urla_file" lay-verify="card_urla_file" value="">   <button type="button" class="layui-btn reload-btn" id="card_urla_fileReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file">   </div> </div> <div class="card-upload-box uploading" style="display: none;" id="card_urla_UPLOADING"> <div class="process-box"> <div class="process" style="width: 90%;"> <span class="upload-animate"></span> </div> </div> <p class="upload-state-text">上传中...</p> </div> </div> <div class="up-img-box up-img-small-box card_urlb_file" title="身份证国徽页" style="display:inline-block;"> <div class="no-up-box" id="card_urlb_fileBtn" style="display:inline-block;"> <div class="card-front-box"> <div class="icon-box back"></div> <p class="icon-text" id="card_urlb_TEXT">身份证国徽页</p> </div> </div><input class="layui-upload-file" type="file" accept="undefined" name="file"> <div class="had-up-box" style="display:none;"> <img src="https://www.celoan.cn/exportPic.aspx?fid=" class="had-img" alt=""> <div class="hover-tip-box"> <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt=""> <input type="hidden" id="hdcard_urlb_file" name="hdcard_urlb_file" lay-verify="card_urlb_file" value="">   <button type="button" class="layui-btn reload-btn" id="card_urlb_fileReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file">   </div> </div> <div class="card-upload-box uploading" style="display: none;" id="card_urlb_UPLOADING"> <div class="process-box"> <div class="process" style="width: 90%;"> <span class="upload-animate"></span> </div> </div> <p class="upload-state-text">上传中...</p> </div> </div> <div class="up-img-box up-img-small-box expo-box"> <div class="had-up-box"> <img src="/res/images/sf.png" class="had-img" alt=""> <div class="hover-tip-box"> <div class="exp-center up-example" data-url="/res/images/sf.png"> <img src="/res/images/s-ico.png" class="hover-small-img" alt=""> <p>查看示例</p> </div> </div> </div> </div> </div> <div class="layui-col-md8"> <div class="layui-form-item" style="display:none;"> <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传证件照片，系统将自动识别填写证件信息，再核对识别结果）</span></div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>选择证件类型：</label> <div class="layui-input-block"> <select id="cardtype" lay-verify="required" name="cardtype" lay-filter="cardtype"> <option value="1">中华人民共和国居民身份证</option><option value="2">护照</option><option value="3">港澳居民来往大陆通行证</option><option value="4">台湾居民来往大陆通行证</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="中华人民共和国居民身份证" value="中华人民共和国居民身份证" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="1" class="layui-this">中华人民共和国居民身份证</dd><dd lay-value="2" class="">护照</dd><dd lay-value="3" class="">港澳居民来往大陆通行证</dd><dd lay-value="4" class="">台湾居民来往大陆通行证</dd></dl></div> </div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>姓名：</label> <div class="layui-input-block"> <input type="text" id="cardname" name="cardname" value="" lay-verify="required" autocomplete="off" placeholder="请输入经办人姓名" class="layui-input"> </div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>证件号码：</label> <div class="layui-input-block"> <input type="text" id="cardcode" name="cardcode" value="" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码" class="layui-input"> </div> </div> <div class="layui-form-item"> <label class="layui-form-label"><span style="color: red">*</span>有效期限(止)：</label> <div class="layui-input-block"> <div class="layui-input-inline"> <input type="radio" name="cardtimetype" value="1" title="长期" lay-filter="cardtimetype"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>长期</div></div> <input type="radio" name="cardtimetype" value="2" title="固定日期" checked="" lay-filter="cardtimetype"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>固定日期</div></div> </div> <div class="layui-input-inline"> <input type="text" class="layui-input" id="cardtime" name="cardtime" lay-verify="required" value="" placeholder="yyyy-MM-dd" autocomplete="off" lay-key="6"> </div> </div> </div>  </div> </div> </div> </div> </div> <div class="layui-col-md12"> <div class="layui-card"> <div class="layui-card-header"> 法定代表人证件 </div> <div class="layui-card-body"> <div class="layui-row layui-col-space15"> <div class="layui-col-md4 layui-col-lep"> <div class="up-img-box up-img-small-box lep_urla_file" title="身份证头像页"> <div class="no-up-box" id="lep_urla_fileBtn" style="display:inline-block;"> <div class="card-front-box"> <div class="icon-box back"></div> <p class="icon-text" id="lep_urla_TEXT">身份证头像页</p> </div> </div><input class="layui-upload-file" type="file" accept="undefined" name="file"> <div class="had-up-box" style="display:none;"> <img src="" class="had-img" alt=""> <div class="hover-tip-box"> <input type="hidden" id="hdlep_urla_file" name="hdlep_urla_file" lay-verify="lep_urla_file" value=""> <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt=""> <button type="button" class="layui-btn reload-btn" id="lep_urla_fileReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file"> </div> </div> <div class="card-upload-box uploading" style="display: none;" id="lep_urla_UPLOADING"> <div class="process-box"> <div class="process" style="width: 90%;"> <span class="upload-animate"></span> </div> </div> <p class="upload-state-text">上传中...</p> </div> </div> <div class="up-img-box up-img-small-box lep_urlb_file" title="身份证国徽页" style="display:inline-block;"> <div class="no-up-box" id="lep_urlb_fileBtn" style="display:inline-block;"> <div class="card-front-box"> <div class="icon-box back"></div> <p class="icon-text" id="lep_urlb_TEXT">身份证国徽页</p> </div> </div><input class="layui-upload-file" type="file" accept="undefined" name="file"> <div class="had-up-box" style="display:none;"> <img src="" class="had-img" alt=""> <div class="hover-tip-box"> <input type="hidden" id="hdlep_urlb_file" name="hdlep_urlb_file" lay-verify="lep_urlb_file" value=""> <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt=""> <button type="button" class="layui-btn reload-btn" id="lep_urlb_fileReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file"> </div> </div> <div class="card-upload-box uploading" style="display: none;" id="lep_urlb_UPLOADING"> <div class="process-box"> <div class="process" style="width: 90%;"> <span class="upload-animate"></span> </div> </div> <p class="upload-state-text">上传中...</p> </div> </div> <div class="up-img-box up-img-small-box expo-box"> <div class="had-up-box"> <img src="/res/images/sf.png" class="had-img" alt=""> <div class="hover-tip-box"> <div class="exp-center up-example" data-url="/res/images/sf.png"> <img src="/res/images/s-ico.png" class="hover-small-img" alt=""> <p>查看示例</p> </div> </div> </div> </div> </div> <div class="layui-col-md8"> <div class="layui-form-item layui-col-lep" style="display:none;"> <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传证件照片，系统将自动识别填写证件信息，再核对识别结果）</span></div> </div> <div class="layui-form-item" style="display:none;"> <label class="layui-form-label"></label> <div class="layui-input-block"> <input type="checkbox" name="isLep" title="经办人同法定代表人" value="1" lay-skin="primary" lay-filter="isLep"><div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>经办人同法定代表人</span><i class="layui-icon layui-icon-ok"></i></div> </div> </div> <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span style="color: red">*</span>选择证件类型：</label> <div class="layui-input-block"> <select id="lep_cardtype" lay-verify="required" name="lep_cardtype" lay-filter="lep_cardtype"> <option value="1">中华人民共和国居民身份证</option><option value="2">护照</option><option value="3">港澳居民来往大陆通行证</option><option value="4">台湾居民来往大陆通行证</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="中华人民共和国居民身份证" value="中华人民共和国居民身份证" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="1" class="layui-this">中华人民共和国居民身份证</dd><dd lay-value="2" class="">护照</dd><dd lay-value="3" class="">港澳居民来往大陆通行证</dd><dd lay-value="4" class="">台湾居民来往大陆通行证</dd></dl></div> </div> </div> <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span style="color: red">*</span>姓名：</label> <div class="layui-input-block"> <input type="text" name="lep_name" id="lep_name" value="" lay-verify="required" autocomplete="off" placeholder="请输入法定代表人姓名" class="layui-input"> </div> </div> <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span style="color: red">*</span>证件号码：</label> <div class="layui-input-block"> <input type="text" name="lep_code" id="lep_code" value="" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码" class="layui-input"> </div> </div> <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span style="color: red">*</span>有效期限(止)：</label> <div class="layui-input-block"> <div class="layui-input-inline"> <input type="radio" name="lep_cardtimetype" value="1" title="长期" lay-filter="lep_cardtimetype"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>长期</div></div> <input type="radio" name="lep_cardtimetype" value="2" title="固定日期" checked="" lay-filter="lep_cardtimetype"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>固定日期</div></div> </div> <div class="layui-input-inline"> <input type="text" class="layui-input" id="lep_cardtime" name="lep_cardtime" lay-verify="required" value="" placeholder="yyyy-MM-dd" autocomplete="off" lay-key="5"> </div> </div> </div>  </div> </div> </div> </div> </div> <div class="layui-col-md12"> <div class="layui-card"> <div class="layui-card-header"> 授权委托书 </div> <div class="layui-card-body"> <div class="layui-row layui-col-space15"> <div class="layui-col-md4"> <div class="up-img-box up-img-small-box certificate" title="授权委托书"> <div class="no-up-box" id="certificateBtn" style="display:inline-block;"> <div class="card-front-box"> <div class="icon-box back"></div> <p class="icon-text" id="certificate_TEXT">授权委托书</p> </div> </div><input class="layui-upload-file" type="file" accept="undefined" name="file"> <div class="had-up-box" style="display:none;"> <img src="" class="had-img" alt=""> <div class="hover-tip-box"> <input type="hidden" id="hdcertificate" name="hdcertificate" lay-verify="certificate" value=""> <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt=""> <button type="button" class="layui-btn reload-btn" id="certificateReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file"> </div> </div> <div class="card-upload-box uploading" style="display: none;" id="certificate_UPLOADING"> <div class="process-box"> <div class="process" style="width: 90%;"> <span class="upload-animate"></span> </div> </div> <p class="upload-state-text">上传中...</p> </div> </div> <div class="up-img-box up-img-small-box expo-box"> <div class="had-up-box"> <img src="/res/images/sqwt.jpg" class="had-img" alt=""> <div class="hover-tip-box"> <div class="exp-center up-example" data-url="/res/images/sqwt.jpg"> <img src="/res/images/s-ico.png" class="hover-small-img" alt=""> <p>查看示例</p> </div> </div> </div> </div> </div> <div class="layui-col-md8"> <div class="layui-form-item"> <div class="layui-form-mid layui-word-aux"> <a href="/res/example.pdf" target="_blank">下载《全国中小企业融资综合信用服务示范平台信息采集及信息查询授权委托书》模板</a> 并根据要求填写内容，<span style="color: red">加盖公章</span>后拍照上传 </div> </div>  </div> </div> </div>  <div class="layui-card-body"> <div class="layui-row layui-col-space15"> <div class="layui-form-item"> <div class="layui-input-block"> <input type="hidden" name="hid" value="0"> <input type="hidden" name="action" value="enterpriseCert_post"> <button class="layui-btn" id="addForm" lay-submit="" lay-filter="addForm">立即提交</button> </div> </div> </div> </div>  </div> </div>   </div>
+        <script id="CertificateInfoTpl" type="text/html">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        上传照片要求
+                    </div>
+                    <div class="layui-card-body layui-text layadmin-text">
+                        <p>1. 请上传最新证件原件的彩色扫描件或数码照，如使用复印件请加盖公章上传（推荐使用原件电子版）；</p>
+                        <p>2. 图片支持格式：jpg/jpeg/png/bmp格式；</p>
+                        <p>3. 请使用像素大于600万像素的相机或手机拍摄，图片大小不超过10M；</p>
+                        <p>4. 经微信传输过的图片会导致图片失真，请避免使用经微信传输过的图片；</p>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        营业执照
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md4 licence">
+                                <div class="up-img-box big-box" title="营业执照">                                
+                                    <div class="no-up-box" id="noImgBtn" style="display:{{# if((d.business_licence||'')!=''){ }}none;{{#}else{ }}inline-block;{{#} }}">
+                                            <div class="card-front-box">
+                                            <div class="icon-box back"></div>
+                                            <p class="icon-text" id="business_licence_TEXT">请上传营业执照</p>
+                                        </div>
+                                    </div>
+                                    <div class="had-up-box" style="display:{{# if((d.business_licence||'')!=''){ }}inline-block;{{#}else{ }}none;{{#} }}">
+                                        <img src="{{d.business_licence_src||''}}" class="had-img" alt="">                                    
+                                        <div class="hover-tip-box">
+                                            <input type="hidden" id="hdbusiness_licence" name="hdbusiness_licence" lay-verify="licence" value="{{d.business_licence||''}}" />
+                                            <img src="../res/images/s-ico.png" class="hover-big-img" id="hoverBigImg" alt="">
+                                            <button type="button" class="layui-btn reload-btn" id="reloadBtn">重新上传</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-upload-box uploading" style="display: none;" id="business_licence_UPLOADING">
+                                        <div class="process-box">
+                                            <div class="process" style="width: 90%;">
+                                                <span class="upload-animate"></span>
+                                            </div>
+                                        </div>
+                                        <p class="upload-state-text">图片上传中...</p>
+                                    </div>
+                                </div>
+                                <p class="check-big up-example" data-url="/res/images/qy-tydm.jpg"><i class="layui-icon layui-icon-search"></i>查看示例</p>
+                            </div>
+                            <div class="layui-col-md8">
+                                <div class="layui-form-item" style="display:none;">
+                                    <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传营业执照照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>名称：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="com_name" value="{{d.com_name||''}}" lay-verify="company|companyname" autocomplete="off" placeholder="请与营业执照上名称一致" class="layui-input" {{# if(d.id >0){ }}disabled{{# } }}>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>统一社会信用代码：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="com_code" value="{{d.com_code||''}}" lay-verify="creditcode" autocomplete="off" placeholder="请输入统一社会信用代码(18位)" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>所在区域：</label>
+                                    <div class="layui-input-block">
+                                        <div id="cpArea"></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>详细地址：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="address" value="{{d.address||''}}" lay-verify="required" autocomplete="off" placeholder="请准确填写，具体到门牌号" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">经营范围：</label>
+                                    <div class="layui-input-block">
+                                        <textarea placeholder="不能填写超出经营范围的类目，不得出现错别字" name="business_scope" class="layui-textarea">{{d.business_scope||''}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>营业期限(止)：</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline">
+                                            <input type="radio" name="business_time_type" value="1" title="长期" {{# if((d.business_time_type||2)==1){ }}checked{{# } }} lay-filter="business_time_type">
+                                            <input type="radio" name="business_time_type" value="2" title="固定日期" {{# if((d.business_time_type||2)==2){ }}checked{{# } }} lay-filter="business_time_type">
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="business_time" name="business_time" {{# if((d.business_time_type||2)==2){ }}lay-verify="required"{{#} }} value="{{d.business_time||''}}" placeholder="yyyy-MM-dd" autocomplete="off">
+                                        </div>
+                                     </div>
+                                </div>
+                                {{# if((d.isverify||0)==3){}}
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">审核原因：</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="business_scope" class="layui-textarea" readonly>{{d.verify_remark||''}}</textarea>
+                                    </div>
+                                </div>
+                                {{#} }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        经办人证件
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md4">
+                                <div class="up-img-box up-img-small-box card_urla_file" title="身份证头像页">
+                                    <div class="no-up-box" id="card_urla_fileBtn" style="display:{{# if((d.card_urla_file||'')!=''){ }}none;{{#}else{ }}inline-block;{{#} }}">
+                                        <div class="card-front-box">
+                                            <div class="icon-box back"></div>
+                                            <p class="icon-text" id="card_urla_TEXT">身份证头像页</p>
+                                        </div>
+                                    </div>
+                                    <div class="had-up-box" style="display:{{# if((d.card_urla_file||'')!=''){ }}inline-block;{{#}else{ }}none;{{#} }}">
+                                        <img src="{{d.card_urla_file_src||''}}" class="had-img" alt="">
+                                        <div class="hover-tip-box">
+                                            <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                            <input type="hidden" id="hdcard_urla_file" name="hdcard_urla_file" lay-verify="card_urla_file" value="{{d.card_urla_file||''}}" />
+                                            {{#if(d.id==0){ }}
+                                               {{#if(d.card_isauth!=1){ }}
+                                                <button type="button" class="layui-btn reload-btn" id="card_urla_fileReload">重新上传</button>
+                                               {{#}}}
+                                            {{#}else if(d.id>0){}}
+                                               {{#if(d.stateEdit==2 || d.card_isauth!=1){}}
+                                                <button type="button" class="layui-btn reload-btn" id="card_urla_fileReload">重新上传</button>
+                                                {{#}}}
+                                            {{#}}}
+                                        </div>
+                                    </div>
+                                    <div class="card-upload-box uploading" style="display: none;" id="card_urla_UPLOADING">
+                                        <div class="process-box">
+                                            <div class="process" style="width: 90%;">
+                                                <span class="upload-animate"></span>
+                                            </div>
+                                        </div>
+                                        <p class="upload-state-text">上传中...</p>
+                                    </div>
+                                </div>
+                                <div class="up-img-box up-img-small-box card_urlb_file" title="身份证国徽页" style="display:{{# if(d.cardtype>1){ }}none;{{#}else{ }}inline-block;{{#} }}">
+                                    <div class="no-up-box" id="card_urlb_fileBtn" style="display:{{# if((d.card_urlb_file||'')!=''){ }}none;{{#}else{ }}inline-block;{{#} }}">
+                                        <div class="card-front-box">
+                                            <div class="icon-box back"></div>
+                                            <p class="icon-text" id="card_urlb_TEXT">身份证国徽页</p>
+                                        </div>
+                                    </div>
+                                    <div class="had-up-box" style="display:{{# if((d.card_urlb_file||'')!=''){ }}inline-block;{{#}else{ }}none;{{#} }}">
+                                        <img src="{{d.card_urlb_file_src||''}}" class="had-img" alt="">
+                                        <div class="hover-tip-box">
+                                            <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                            <input type="hidden" id="hdcard_urlb_file" name="hdcard_urlb_file" lay-verify="card_urlb_file" value="{{d.card_urlb_file||''}}" />
+                                            {{#if(d.id==0){ }}
+                                               {{#if(d.card_isauth!=1){ }}
+                                                <button type="button" class="layui-btn reload-btn" id="card_urlb_fileReload">重新上传</button>
+                                            {{#}}}
+                                            {{#}else if(d.id>0){}}
+                                               {{#if(d.stateEdit==2 || d.card_isauth!=1){}}
+                                                <button type="button" class="layui-btn reload-btn" id="card_urlb_fileReload">重新上传</button>
+                                            {{#}}}
+                                            {{#}}}
+                                        </div>
+                                    </div>
+                                    <div class="card-upload-box uploading" style="display: none;" id="card_urlb_UPLOADING">
+                                        <div class="process-box">
+                                            <div class="process" style="width: 90%;">
+                                                <span class="upload-animate"></span>
+                                            </div>
+                                        </div>
+                                        <p class="upload-state-text">上传中...</p>
+                                    </div>
+                                </div>
+                                <div class="up-img-box up-img-small-box expo-box">
+                                    <div class="had-up-box">
+                                        <img src="/res/images/sf.png" class="had-img" alt="">
+                                        <div class="hover-tip-box">
+                                            <div class="exp-center up-example" data-url="/res/images/sf.png">
+                                                <img src="/res/images/s-ico.png" class="hover-small-img" alt="">
+                                                <p>查看示例</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md8">
+                                <div class="layui-form-item" style="display:none;">
+                                    <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传证件照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>选择证件类型：</label>
+                                    <div class="layui-input-block">
+                                        <select id="cardtype" lay-verify="required" name="cardtype" lay-filter="cardtype">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>姓名：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" id="cardname" name="cardname" value="{{d.cardname||''}}" lay-verify="required" autocomplete="off" placeholder="请输入经办人姓名" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>证件号码：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" id="cardcode" name="cardcode" value="{{d.cardcode||''}}" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span style="color: red">*</span>有效期限(止)：</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline">
+                                            <input type="radio" name="cardtimetype" value="1" title="长期" {{# if((d.cardtimetype||2)==1){ }}checked{{# } }} lay-filter="cardtimetype">
+                                            <input type="radio" name="cardtimetype" value="2" title="固定日期" {{# if((d.cardtimetype||2)==2){ }}checked{{# } }} lay-filter="cardtimetype">
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="cardtime" name="cardtime" {{# if((d.cardtimetype||2)==2){ }}lay-verify="required"{{# } }} value="{{d.cardtime||''}}" placeholder="yyyy-MM-dd" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{# if((d.card_verify||0)==3){}}
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">审核原因：</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="business_scope" class="layui-textarea" readonly>{{d.card_verify_remark||''}}</textarea>
+                                    </div>
+                                </div>
+                                {{#} }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        法定代表人证件
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md4 layui-col-lep">
+                                <div class="up-img-box up-img-small-box lep_urla_file" title="身份证头像页">
+                                    <div class="no-up-box" id="lep_urla_fileBtn" style="display:{{# if((d.lep_urla_file||'')!=''){ }}none;{{#}else{ }}inline-block;{{#} }}">
+                                        <div class="card-front-box">
+                                            <div class="icon-box back"></div>
+                                            <p class="icon-text" id="lep_urla_TEXT">身份证头像页</p>
+                                        </div>
+                                    </div>
+                                    <div class="had-up-box" style="display:{{# if((d.lep_urla_file||'')!=''){ }}inline-block;{{#}else{ }}none;{{#} }}">
+                                        <img src="{{d.lep_urla_file_src||''}}" class="had-img" alt="">
+                                        <div class="hover-tip-box">
+                                        <input type="hidden" id="hdlep_urla_file" name="hdlep_urla_file" lay-verify="lep_urla_file" value="{{d.lep_urla_file||''}}" />
+                                            <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                            <button type="button" class="layui-btn reload-btn" id="lep_urla_fileReload">重新上传</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-upload-box uploading" style="display: none;" id="lep_urla_UPLOADING">
+                                        <div class="process-box">
+                                            <div class="process" style="width: 90%;">
+                                                <span class="upload-animate"></span>
+                                            </div>
+                                        </div>
+                                        <p class="upload-state-text">上传中...</p>
+                                    </div>
+                                </div>
+                                <div class="up-img-box up-img-small-box lep_urlb_file" title="身份证国徽页" style="display:{{# if(d.lep_cardtype>1){ }}none;{{#}else{ }}inline-block;{{#} }}">
+                                    <div class="no-up-box" id="lep_urlb_fileBtn" style="display:{{# if((d.lep_urlb_file||'')!=''){ }}none;{{#}else{ }}inline-block;{{#} }}">
+                                           <div class="card-front-box">
+                                            <div class="icon-box back"></div>
+                                            <p class="icon-text" id="lep_urlb_TEXT">身份证国徽页</p>
+                                        </div>
+                                    </div>
+                                    <div class="had-up-box" style="display:{{# if((d.lep_urlb_file||'')!=''){ }}block;{{#}else{ }}none;{{#} }}">
+                                        <img src="{{d.lep_urlb_file_src||''}}" class="had-img" alt="">
+                                        <div class="hover-tip-box">
+                                        <input type="hidden" id="hdlep_urlb_file" name="hdlep_urlb_file" lay-verify="lep_urlb_file" value="{{d.lep_urlb_file||''}}" />
+                                            <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                            <button type="button" class="layui-btn reload-btn" id="lep_urlb_fileReload">重新上传</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-upload-box uploading" style="display: none;" id="lep_urlb_UPLOADING">
+                                        <div class="process-box">
+                                            <div class="process" style="width: 90%;">
+                                                <span class="upload-animate"></span>
+                                            </div>
+                                        </div>
+                                        <p class="upload-state-text">上传中...</p>
+                                    </div>
+                                </div>
+                                <div class="up-img-box up-img-small-box expo-box">
+                                    <div class="had-up-box">
+                                        <img src="/res/images/sf.png" class="had-img" alt="">
+                                        <div class="hover-tip-box">
+                                            <div class="exp-center up-example" data-url="/res/images/sf.png">
+                                                <img src="/res/images/s-ico.png" class="hover-small-img" alt="">
+                                                <p>查看示例</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md8">
+                                <div class="layui-form-item layui-col-lep" style="display:none;">
+                                    <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传证件照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
+                                </div>
+                                <div class="layui-form-item" style="display:none;">
+                                    <label class="layui-form-label"></label>
+                                    <div class="layui-input-block">
+                                       <input type="checkbox" name="isLep" title="经办人同法定代表人" value="1" lay-skin="primary" lay-filter="isLep">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lep">
+                                    <label class="layui-form-label"><span style="color: red">*</span>选择证件类型：</label>
+                                    <div class="layui-input-block">
+                                        <select id="lep_cardtype" lay-verify="required" name="lep_cardtype" lay-filter="lep_cardtype">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lep">
+                                    <label class="layui-form-label"><span style="color: red">*</span>姓名：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="lep_name" id="lep_name" value="{{d.lep_name||''}}" lay-verify="required" autocomplete="off" placeholder="请输入法定代表人姓名" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lep">
+                                    <label class="layui-form-label"><span style="color: red">*</span>证件号码：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="lep_code" id="lep_code" value="{{d.lep_code||''}}" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lep">
+                                    <label class="layui-form-label"><span style="color: red">*</span>有效期限(止)：</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-input-inline">
+                                            <input type="radio" name="lep_cardtimetype" value="1" title="长期" {{# if((d.lep_cardtimetype||2)==1){ }}checked{{# } }} lay-filter="lep_cardtimetype">
+                                            <input type="radio" name="lep_cardtimetype" value="2" title="固定日期" {{# if((d.lep_cardtimetype||2)==2){ }}checked{{# } }} lay-filter="lep_cardtimetype">
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="lep_cardtime" name="lep_cardtime" {{# if((d.lep_cardtimetype||2)==2){ }}lay-verify="required"{{# } }} value="{{d.lep_cardtime||''}}" placeholder="yyyy-MM-dd" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{# if((d.lep_verify||0)==3){}}
+                                <div class="layui-form-item layui-col-lep">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">审核原因：</label>
+                                        <div class="layui-input-block">
+                                            <textarea name="business_scope" class="layui-textarea" readonly>{{d.lep_verify_remark||''}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{#} }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        授权委托书
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md4">
+                                <div class="up-img-box up-img-small-box certificate" title="授权委托书">
+                                    <div class="no-up-box" id="certificateBtn" style="display:{{# if((d.certificate||'')!=''){ }}none;{{#}else{ }}inline-block;{{#} }}">
+                                        <div class="card-front-box">
+                                            <div class="icon-box back"></div>
+                                            <p class="icon-text" id="certificate_TEXT">授权委托书</p>
+                                        </div>
+                                    </div>
+                                    <div class="had-up-box" style="display:{{# if((d.certificate||'')!=''){ }}inline-block;{{#}else{ }}none;{{#} }}">
+                                        <img src="{{d.certificate_src||''}}" class="had-img" alt="">
+                                        <div class="hover-tip-box">
+                                        <input type="hidden" id="hdcertificate" name="hdcertificate" lay-verify="certificate" value="{{d.certificate||''}}" />
+                                            <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                            <button type="button" class="layui-btn reload-btn" id="certificateReload">重新上传</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-upload-box uploading" style="display: none;" id="certificate_UPLOADING">
+                                        <div class="process-box">
+                                            <div class="process" style="width: 90%;">
+                                                <span class="upload-animate"></span>
+                                            </div>
+                                        </div>
+                                        <p class="upload-state-text">上传中...</p>
+                                    </div>
+                                </div>
+                                <div class="up-img-box up-img-small-box expo-box">
+                                    <div class="had-up-box">
+                                        <img src="/res/images/sqwt.jpg" class="had-img" alt="">
+                                        <div class="hover-tip-box">
+                                            <div class="exp-center up-example" data-url="/res/images/sqwt.jpg">
+                                                <img src="/res/images/s-ico.png" class="hover-small-img" alt="">
+                                                <p>查看示例</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md8">
+                                <div class="layui-form-item">
+                                    <div class="layui-form-mid layui-word-aux">
+                                        <a href="/res/example.pdf" target="_blank">下载《全国中小企业融资综合信用服务示范平台信息采集及信息查询授权委托书》模板</a> 并根据要求填写内容，<span style="color: red">加盖公章</span>后拍照上传
+                                    </div>
+                                </div>
+                                {{# if((d.cer_verify||0)==3){}}
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">审核原因：</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="business_scope" class="layui-textarea" readonly>{{d.cer_verify_remark||''}}</textarea>
+                                    </div>
+                                </div>
+                            {{#} }}
+                            </div>
+                        </div>
+                    </div>
+                    
+            {{# if((d.stateEdit||0)!=1){ }}
+                    <div class="layui-card-body">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <input type="hidden" name="hid" value="{{d.id||0}}" />
+    
+                                    <input type="hidden" name="action" value="enterpriseCert_post" />
+                                    
+                                    <button class="layui-btn" id="addForm" lay-submit="" lay-filter="addForm">立即提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {{#} }}
+                </div>
+            </div>
+            {{# if((d.certState||0)==0||(d.certState||0)==1){}}
+            
+                
+            {{#}}}
+        </script>
+    </div>
+</div>
+
+
+<!-- 表格操作列 -->
+<!-- <script type="text/html" id="user-table-bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-xs" lay-event="reset">重置密码</a>
+    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+</script> -->
+
+<!-- 表格状态列 -->
+<!-- <script type="text/html" id="user-tpl-state">
+    <input type="checkbox" lay-filter="user-tpl-state" value="{{d.id}}" lay-skin="switch" lay-text="正常|锁定"
+           {{d.enabled==true?'checked':''}}/>
+</script> -->
+
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        //上传
+        var upload = layui.upload;
+
+        // 渲染表格
+        table.render({
+            elem: '#user-table',
+            url: config.base_server + 'api-user/users',
+            method: 'GET',
+            headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
+            page: true,
+            cols: [[
+                {type: 'numbers'},
+                {field: 'id', sort: true, title: '用户编号'},
+                {field: 'username', sort: true, title: '账号'},
+                {field: 'nickname', sort: true, title: '用户名'},
+                {field: 'mobile', sort: true, title: '手机号'},
+                {sort: true, title: '性别',templet:function (d) {
+                        return d.sex==0?"男":"女"
+                    }},
+                {
+                    sort: true, templet: function (d) {
+                        return util.toDateString(d.createTime);
+                    }, title: '创建时间'
+                },
+                {field: 'enabled', sort: true, templet: '#user-tpl-state', title: '状态'},
+                {fixed: 'right', align: 'center', toolbar: '#user-table-bar', title: '操作', width: 175}
+            ]]
+        });
+
+        // 添加按钮点击事件
+        $('#user-btn-add').click(function () {
+            showEditModel();
+        });
+
+        // 工具条点击事件
+        table.on('tool(user-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'edit') { // 修改
+                showEditModel(data);
+            } else if (layEvent === 'reset') { // 重置密码
+                layer.confirm('确定重置此用户的密码吗？', function (i) {
+                    layer.close(i);
+                    layer.load(2);
+                    admin.req('api-user/users/'+obj.data.id+'/password', {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, {icon: 1, time: 500});
+                        } else {
+                            layer.msg(data.msg, {icon: 2, time: 500});
+                        }
+                    }, 'PUT');
+                });
+            } else if (layEvent === 'del') { // 删除
+                layer.confirm('确定删除此用户吗？', function (i) {
+                    layer.close(i);
+                    layer.load(2);
+                    admin.req('api-user/users/'+obj.data.id, {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, {icon: 1, time: 500});
+                            table.reload('user-table', {});
+                        } else {
+                            layer.msg(data.msg, {icon: 2, time: 500});
+                        }
+                    }, 'delete');
+                });
+            }
+        });
+
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            //修改sex值
+            if (data){
+                data.sex = data.sex+'';
+            }
+            admin.putTempData('t_user', data);
+            var title = data ? '修改用户' : '添加用户';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/system/user_form.html',
+                finish: function () {
+                    table.reload('user-table', {});
+                }
+            });
+        };
+
+        // 搜索按钮点击事件
+        $('#user-btn-search').click(function () {
+            var key = $('#user-search-key').val();
+            var value = $('#user-search-value').val();
+            table.reload('user-table', {where: {searchKey: key, searchValue: value}});
+        });
+
+        // 导出
+        $('#user-btn-export').click(function () {
+            var url = config.base_server + 'api-user/users/export';
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.responseType = "blob";
+            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+            xhr.setRequestHeader("Authorization", "Bearer " + config.getToken().access_token);
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    var fileName = "user.xlsx";
+                    var blob = this.response;
+                    var a = document.createElement('a');
+                    a.innerHTML = fileName;
+                    // 指定生成的文件名
+                    a.download = fileName;
+                    a.href = URL.createObjectURL(blob);
+                    document.body.appendChild(a);
+                    var evt = document.createEvent("MouseEvents");
+                    evt.initEvent("click", false, false);
+                    a.dispatchEvent(evt);
+                    document.body.removeChild(a);
+                }
+            }
+            xhr.send();
+        });
+
+        // 修改user状态
+        form.on('switch(user-tpl-state)', function (obj) {
+            layer.load(2);
+            admin.req('api-user/users/updateEnabled', {
+                id: obj.elem.value,
+                enabled: obj.elem.checked ? true : false
+            }, function (data) {
+                layer.closeAll('loading');
+                if (data.code == 0) {
+                    layer.msg(data.msg, {icon: 1, time: 500});
+                    //table.reload('table-user', {});
+                } else {
+                    layer.msg(data.msg, {icon: 2, time: 500});
+                    $(obj.elem).prop('checked', !obj.elem.checked);
+                    form.render('checkbox');
+                }
+            }, 'GET');
+        });
+
+        //上传
+        var importUrl = config.base_server + 'api-user/users/import';
+        upload.render({
+            elem: '#user-btn-import'
+            ,url: importUrl
+            ,accept: 'file' //普通文件
+            ,multiple: false
+            ,headers: {"Authorization" : "Bearer " + config.getToken().access_token}
+            ,done: function(data){
+                if (data.code == 0) {
+                    layer.msg(data.msg, {icon: 1, time: 500});
+                    table.reload('user-table', {});
+                } else {
+                    layer.msg(data.msg, {icon: 2, time: 500});
+                }
+            }
+        });
+
+        //判断权限，没有权限则隐藏按钮
+        /*let resList = ['user-btn-add','user-btn-export','user-btn-import'];
+        for(let i = 0; i < resList.length; i++){
+            if (!admin.hasPerm(resList[i])) {
+                $('#'+resList[i]).hide();
+            }
+        }*/
+    });
+</script>

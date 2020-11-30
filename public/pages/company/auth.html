@@ -1,12 +1,197 @@
+<style>
+    .layadmin-caller {
+        background: #fff;
+        padding: 30px
+    }
+
+    .layadmin-caller em {
+        font-style: normal
+    }
+
+    .layadmin-caller .caller-fl {
+        float: left
+    }
+
+    .layadmin-caller .caller-fr {
+        float: right
+    }
+
+    .layadmin-caller .caller-seach {
+        position: relative;
+        padding-bottom: 40px
+    }
+
+        .layadmin-caller .caller-seach .caller-icon {
+            font-size: 18px;
+            position: absolute;
+            top: 9px
+        }
+
+    .layadmin-caller .caller-seach-icon {
+        left: 6px
+    }
+
+    .layadmin-caller .caller-dump-icon {
+        right: 6px;
+        cursor: pointer
+    }
+
+    .layadmin-caller .caller-pl32 {
+        padding: 0 32px
+    }
+
+    .layadmin-caller .caller-tab {
+        margin: 0
+    }
+
+    .layadmin-caller .caller-contar {
+        padding-bottom: 20px
+    }
+
+    .layadmin-caller .caller-contar .caller-item {
+        padding: 25px 0;
+        overflow: hidden;
+        border-bottom: 1px solid #e0e0e0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main {
+        margin-left: 20px
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main p {
+        line-height: 100%;
+        padding: 8px 0
+    }
+
+        .layadmin-caller .caller-contar .caller-item .caller-main p:first-child {
+            padding-top: 0
+        }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main em {
+        margin-left: 5px
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i {
+        padding-right: 5px;
+        margin: 0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds {
+        padding-bottom: 12px
+    }
+
+    .layadmin-caller .caller-contar .caller-iconset i {
+        margin: 0 5px
+    }
+
+    .layadmin-caller .caller-contar .caller-iconset i:first-child {
+        margin-left: 0
+    }
+
+    .layadmin-caller .caller-contar button {
+        margin-top: 22px
+    }
+
+    .layadmin-caller .caller-contar .caller-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%
+    }
+
+    .layui-fluid{padding: 15px;}
+    .layadmin-header{display: none; height: 50px; line-height: 50px; margin-bottom: 0; border-radius: 0;}
+    .layadmin-header .layui-breadcrumb{padding: 0 15px;}
+    .layui-card-header{position: relative;}
+    .layui-card-header .layui-icon{line-height: initial; position: absolute; right: 15px; top: 50%; margin-top: -7px;}
+    .layadmin-iframe{position: absolute; width: 100%; height: 100%; left: 0; top: 0; right: 0; bottom: 0;}
+</style>
 <div class="layui-card">
     <div class="layui-card-header">
-        <h2 class="header-title">用户管理</h2>
+        <h2 class="header-title">企业入驻</h2>
         <span class="layui-breadcrumb pull-right">
           <a href="#!console">工作台</a>
-          <a><cite>用户管理</cite></a>
+          <a><cite>企业入驻</cite></a>
         </span>
     </div>
-    <div class="layui-card-body">
+    <div class="layui-fluid">
+        <div class="layadmin-caller">
+            <div class="layui-form">
+                <div class="layui-inline">
+                    <a href="#!comp-add" class="layui-btn layui-btn-normal" lay-href="enterpriseCert">添加新企业</a>
+                </div>
+            </div>
+            <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">   
+                <div class="caller-item"> <img src="/res/images/default_face.jpg" alt="" class="caller-img caller-fl" data-id="98966"> 
+                    <div class="caller-main caller-fl"> <p> </p><h2> <strong>乔禾教育</strong>  
+                        <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">未认证</em>
+                        <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>  
+                    </h2> <p></p> <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>北京市海淀区</p> 
+                    <p class="caller-iconset"></p> </div> 
+                    <a lay-href="financingList#?keyword=乔禾教育" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看 </a>
+                    <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;"> 
+                        <a lay-href="financingList#?keyword=乔禾教育" class="layui-blue layui-text-site20">3笔</a><br> 融资需求 </div> 
+                </div>  
+
+                <div class="ac pagination" id="pagination">
+                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-11">
+                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                        <span class="layui-laypage-curr">
+                            <em class="layui-laypage-em"></em><em>1</em>
+                        </span>
+                        <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a>
+                    </div>
+                </div>  
+            </div>
+            <script id="page_template_id" type="text/html">
+                {{# if(d.count==0){ }}
+                <div class="result-cont">
+                    <img src="/res/images/f-tip.png" alt="">
+                    <span>抱歉！您还没有企业认证信息，请先添加企业认证。</span>
+                </div>
+                {{#}else{ }}
+                 {{# layui.each(d.data, function(index, item){ }} 
+                <div class="caller-item">
+                    <img src="{{item.logo}}" alt="" class="caller-img caller-fl" data-id="{{item.id}}">
+                    <div class="caller-main caller-fl">
+                        <p>
+                            <h2>
+                                <strong>{{item.com_name}}</strong>
+                                {{# if(item.certState==2){ }}
+                               <em class="layui-btn layui-btn-sm layui-btn-radius">已认证</em><em><a lay-href="enterpriseCert#?id={{item.id}}" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">认证资料更新</a></em>
+                                {{#} else if(item.certState==1){ }}
+                            <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">认证审核中</em>
+                                {{#} else if(item.certState==0){ }}
+                            <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">未认证</em><em><a lay-href="enterpriseCert#?id={{item.id}}" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>
+                                {{#} else if(item.certState==3){ }}
+                            <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">认证未通过</em><em><a lay-href="enterpriseCert#?id={{item.id}}" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">修改认证</a></em>
+                                {{# } }}
+                                
+                            </h2>
+                        </p>
+                        <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>{{item.address}}</p>
+                        <p class="caller-iconset">
+                            {{#if(item.state>0){}}
+                            <em>认证时间：{{item.authtime}}</em>
+                            <em><a lay-href="enterpriseView#?id={{item.id}}&type=view" class="layui-blue">查看认证信息</a></em>
+                            <em><a href="javascript:;" class="certView" data-id="{{item.id}}">查看认证记录</a></em>
+                            {{#} }}
+                        </p>
+                    </div>
+                    <a lay-href="financingList#?keyword={{item.com_name}}" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看
+                    </a>
+                    <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;">
+                        <a lay-href="financingList#?keyword={{item.com_name}}" class="layui-blue layui-text-site20">{{item.financingNum}}笔</a><br />
+                        融资需求
+                    </div>
+                </div>
+                {{# }); }}
+                <div class="ac pagination" id="pagination"></div>
+                {{#} }}
+            </script>
+        </div>
+    </div>
+
+    <!-- <div class="layui-card-body">
         <div class="layui-form toolbar">
             搜索：
             <select id="user-search-key">
@@ -26,22 +211,23 @@
         </div>
 
         <table class="layui-table" id="user-table" lay-filter="user-table"></table>
-    </div>
+    </div> -->
 </div>
 
 
 <!-- 表格操作列 -->
-<script type="text/html" id="user-table-bar">
+<!-- <script type="text/html" id="user-table-bar">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-xs" lay-event="reset">重置密码</a>
     <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-</script>
+</script> -->
 
 <!-- 表格状态列 -->
-<script type="text/html" id="user-tpl-state">
+<!-- <script type="text/html" id="user-tpl-state">
     <input type="checkbox" lay-filter="user-tpl-state" value="{{d.id}}" lay-skin="switch" lay-text="正常|锁定"
            {{d.enabled==true?'checked':''}}/>
-</script>
+</script> -->
+
 
 <script>
     layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {

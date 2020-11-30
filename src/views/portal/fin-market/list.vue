@@ -364,6 +364,7 @@ export default {
 </script>
 
 <style scoped>
+
 .banner {
     height: 400px;
 }
@@ -381,8 +382,9 @@ export default {
 }
 
 .min-page {
-    width: 1200px;
-    margin: 0 auto;
+  width: 94%;
+  margin: 0 auto;
+  zoom: 1;
 }
 
 .content-filter-box {
@@ -707,10 +709,6 @@ button {
 .mar-top-bottom {
     margin-top: 50px;
     margin-bottom: 50px;
-}
-.min-page {
-    width: 1200px;
-    margin: 0 auto;
 }
 .search-result .result-text {
     padding-left: 10px;
