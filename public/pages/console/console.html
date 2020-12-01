@@ -35,6 +35,9 @@
         .my-tab-content {
             height: 300px;
         }
+        .comp-sign {
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -141,6 +144,24 @@
     </div>
 </div> -->
 
+    <!-- 企业签约 -->
+    <div class="comp-sign" style="display: none;">
+        <h2>企业签约</h2>
+        <p>正文 条款</p>
+    </div>
+    
+    <!-- 金融机构签约 -->
+    <div class="fin-org-sign" style="display: none;">
+        <h2>金融机构签约</h2>
+        <p>正文 条款</p>
+    </div>
+
+    <!-- 运营机构签约 -->
+    <div class="oper-org-sign" style="display: none;">
+        <h2>运营机构签约</h2>
+        <p>正文 条款</p>
+    </div>
+
 <script type="text/javascript">
     layui.use(['admin', "echarts"], function () {
         let admin = layui.admin;
@@ -149,18 +170,116 @@
 
         $('button.layui-btn').on('click', function(){
             let type = $(this).attr('auth-type');
-            layer.msg(type, {icon: 5, time: 1000});
+            // layer.msg(type, {icon: 5, time: 1000});
+            const config = {
+                type: type
+            };
             if(type === '1'){
-                location.href = '#!comp-auth'
+                // 企业签约
+                config.ele = 'comp-sign'
+                config.title = '企业签约'
+                config.pageUrl = '/pages/sign/comp-sign.html'
+                toSign(config)
                 return;
             }
             if(type === '3'){
-
+                // 金融机构签约
+                config.ele = 'fin-org-sign'
+                config.title = '运营机构签约'
+                config.pageUrl = '/pages/sign/oper-org-sign.html'
+                toSign(config)
                 return;
             }
-
+            config.ele = 'oper-org-sign'
+            config.title = '金融机构签约'
+            config.pageUrl = '/pages/sign/fin-org-sign.html'
+            toSign(config)
         })
     });
+
+    function toSign(cfg) {
+        layer.open({
+            type: 2,
+            // area: '70%',
+            // shadeClose: false,
+            area: ['600px', '680px'],
+            shade: 0,
+            content: cfg.pageUrl,
+            zIndex: layer.zIndex,
+            success: function() {
+                $('.layui-layer').css({
+                    'z-index': '10000000',
+                    'width': '86%',
+                    'height': '90%',
+                    'top': '8%',
+                    'left': '13%'
+                })
+                $('.layui-layer-page .layui-layer-content').css({
+                    'overflow': 'hidden'
+                })
+                $('.layui-layer-btn').css({
+                    'text-align': 'center',
+                    'display': 'none'
+                })
+                $($('iframe')[0].contentWindow).scroll(function() {
+                    const sHeight = document.getElementsByTagName('iframe')[0].contentDocument.body.scrollHeight;
+                    const sTop = frames[0].document.documentElement.scrollTop;
+                    // layer.msg('sHeight: ' + sHeight + ', sTop: ' + sTop, {icon: 5, time: 2000})
+                    if(sTop / sHeight > 0.8) {
+                        $('.layui-layer-btn').css({
+                            'display': 'block'
+                        })
+                    } else{
+                        $('.layui-layer-btn').css({
+                            'display': 'none'
+                        })
+                    }
+
+                });
+            },
+            // cancel: function(){
+            //     // $('.' + cfg.ele).css({"display": "none"})
+            // },
+            btn: ['我同意', '关闭'],
+            yes: function(){
+                layer.closeAll();
+                localStorage.setItem('auth-redirect', 'console')
+                location.href = '#!comp-auth'
+            },
+            btn2: function(){
+                layer.closeAll();
+            }
+        });
+        
+    }
+
+    function toSignByDom(cfg) {
+        layer.open({
+            type: 1,
+            title: cfg.title,
+            area: '70%',
+            // shadeClose: false,
+            shade: 0,
+            content: $('.' + cfg.ele),
+            zIndex: layer.zIndex,
+            success: function() {
+                $('.layui-layer').css({
+                    'z-index': '10000000',
+                    'width': '75%',
+                    'top': '25%',
+                    'left': '20%'
+                })
+                $('.layui-layer-page .layui-layer-content').css({
+                    'overflow': 'visible'
+                })
+            },
+            cancel: function(){
+                $('.' + cfg.ele).css({"display": "none"})
+            },
+        });
+        
+    }
 </script>
 </body>
+
 </html>

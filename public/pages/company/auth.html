@@ -117,7 +117,7 @@
         <div class="layadmin-caller">
             <div class="layui-form">
                 <div class="layui-inline">
-                    <a href="#!comp-add" class="layui-btn layui-btn-normal" lay-href="enterpriseCert">添加新企业</a>
+                    <a class="layui-btn layui-btn-normal" lay-href="enterpriseCert">添加新企业</a>
                 </div>
             </div>
             <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">   
@@ -129,7 +129,7 @@
                     <p class="caller-iconset"></p> </div> 
                     <a lay-href="financingList#?keyword=乔禾教育" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看 </a>
                     <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;"> 
-                        <a lay-href="financingList#?keyword=乔禾教育" class="layui-blue layui-text-site20">3笔</a><br> 融资需求 </div> 
+                        <a href="#!fin-need?compId=1" class="layui-blue layui-text-site20" style="cursor: pointer;color: #29b2ac;">3笔</a><br> 融资需求 </div> 
                 </div>  
 
                 <div class="ac pagination" id="pagination">
@@ -142,52 +142,6 @@
                     </div>
                 </div>  
             </div>
-            <script id="page_template_id" type="text/html">
-                {{# if(d.count==0){ }}
-                <div class="result-cont">
-                    <img src="/res/images/f-tip.png" alt="">
-                    <span>抱歉！您还没有企业认证信息，请先添加企业认证。</span>
-                </div>
-                {{#}else{ }}
-                 {{# layui.each(d.data, function(index, item){ }} 
-                <div class="caller-item">
-                    <img src="{{item.logo}}" alt="" class="caller-img caller-fl" data-id="{{item.id}}">
-                    <div class="caller-main caller-fl">
-                        <p>
-                            <h2>
-                                <strong>{{item.com_name}}</strong>
-                                {{# if(item.certState==2){ }}
-                               <em class="layui-btn layui-btn-sm layui-btn-radius">已认证</em><em><a lay-href="enterpriseCert#?id={{item.id}}" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">认证资料更新</a></em>
-                                {{#} else if(item.certState==1){ }}
-                            <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">认证审核中</em>
-                                {{#} else if(item.certState==0){ }}
-                            <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">未认证</em><em><a lay-href="enterpriseCert#?id={{item.id}}" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>
-                                {{#} else if(item.certState==3){ }}
-                            <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">认证未通过</em><em><a lay-href="enterpriseCert#?id={{item.id}}" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">修改认证</a></em>
-                                {{# } }}
-                                
-                            </h2>
-                        </p>
-                        <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>{{item.address}}</p>
-                        <p class="caller-iconset">
-                            {{#if(item.state>0){}}
-                            <em>认证时间：{{item.authtime}}</em>
-                            <em><a lay-href="enterpriseView#?id={{item.id}}&type=view" class="layui-blue">查看认证信息</a></em>
-                            <em><a href="javascript:;" class="certView" data-id="{{item.id}}">查看认证记录</a></em>
-                            {{#} }}
-                        </p>
-                    </div>
-                    <a lay-href="financingList#?keyword={{item.com_name}}" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看
-                    </a>
-                    <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;">
-                        <a lay-href="financingList#?keyword={{item.com_name}}" class="layui-blue layui-text-site20">{{item.financingNum}}笔</a><br />
-                        融资需求
-                    </div>
-                </div>
-                {{# }); }}
-                <div class="ac pagination" id="pagination"></div>
-                {{#} }}
-            </script>
         </div>
     </div>
 
@@ -230,6 +184,7 @@
 
 
 <script>
+
     layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
         var form = layui.form;
         var table = layui.table;
@@ -239,6 +194,24 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
+
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            var title = data ? '修改企业' : '添加企业';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/company/add.html',
+                finish: function () {
+                    // table.reload('user-table', {});
+                }
+            });
+        };
+
+        if (!!localStorage.getItem('auth-redirect')) {
+            showEditModel();
+            localStorage.removeItem('auth-redirect')
+            // return;
+        }
 
         // 渲染表格
         table.render({
@@ -267,10 +240,11 @@
         });
 
         // 添加按钮点击事件
-        $('#user-btn-add').click(function () {
+        $('.layui-btn-normal').click(function () {
             showEditModel();
         });
 
+        
         // 工具条点击事件
         table.on('tool(user-table)', function (obj) {
             var data = obj.data;
@@ -307,23 +281,6 @@
                 });
             }
         });
-
-        //显示表单弹窗
-        var showEditModel = function (data) {
-            //修改sex值
-            if (data){
-                data.sex = data.sex+'';
-            }
-            admin.putTempData('t_user', data);
-            var title = data ? '修改用户' : '添加用户';
-            admin.popupCenter({
-                title: title,
-                path: 'pages/system/user_form.html',
-                finish: function () {
-                    table.reload('user-table', {});
-                }
-            });
-        };
 
         // 搜索按钮点击事件
         $('#user-btn-search').click(function () {
