@@ -38,11 +38,27 @@
         .comp-sign {
             z-index: 1000;
         }
+
+        .layui-table-cell{
+            line-height: 35px;
+            margin: 3% 0 0 0;
+        }
+        .layui-col-xs3 {
+          width: 33%;
+        }
+        .layui-col-xs3 div {
+          text-align: center;
+        }
+        .layui-col-xs3 img {
+          width: 80%;
+        }
+        .layui-col-xs3 p {
+          margin: 5% 0 0 0;
+        }
     </style>
 </head>
 <body>
-
-    <div class="layui-btn-container" style="margin: 2% 0 0 18%;">
+    <div class="layui-btn-container" style="margin: 2% 0 0 18%; display: none;">
         <button class="layui-btn" type="button" style="float: left;" auth-type="1">企业入驻</button>
         <ul class="layui-nav layui-bg-green btnz" lay-filter="" style="font-size: 12px;border-radius: 0px;float: left;padding:0px 0px 0px 0px;margin: 0 1% 0 0%;">
             <li class="layui-nav-item" style="line-height: 34px;">
@@ -59,115 +75,236 @@
         <button class="layui-btn" type="button" style="float: left;" auth-type="3">运营公司入驻</button>
     </div>
 
-<!-- <div class="layui-card-body" style="text-align: center;">
-    <div class="layui-row layui-col-space10">
-        <div class="layui-col-sm2 layui-col-md2">
-            <div class="layui-card">
-                <div class="layui-card-header">在线人数
-                    <span class="layui-badge layui-bg-cyan layuiadmin-badge">时</span>
-                </div>
-                <div class="layui-card-body layuiadmin-card-list">
-                    <p class="big-font" id="userCnt"></p>
-                </div>
-            </div>
+    <div id="view"></div>
+    <script id="conTpl" type="text/html">
+        {{#  if(!d.isAuthed){ }}
+        <!-- 企业工作台 -->
+        {{#  if(d.compType === 1){ }}
+        <div class="comp-console">
+            <h3>企业工作台</h3>
         </div>
-        <div class="layui-col-sm2 layui-col-md2">
-            <div class="layui-card">
-                <div class="layui-card-header">PV
-                    <span class="layui-badge layui-bg-green layuiadmin-badge">天</span>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md8">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md6">
+                            <div class="layui-card">
+                              <div class="layui-card-header">产品推荐</div>
+                              <div class="layui-card-body">
+                                
+                                <div class="layui-carousel layadmin-carousel layadmin-shortcut" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;">
+                                  <div carousel-item="">
+                                    <ul class="layui-row layui-col-space10 layui-this">
+                                      <li class="layui-col-xs3">
+                                        <a href="home/homepage1.html">
+                                          <div>
+                                            <img src="assets/images/product.png"/>
+                                            <p>产品一</p>
+                                          </div>
+                                        </a>
+                                      </li>
+                                      <li class="layui-col-xs3">
+                                        <a href="home/homepage1.html">
+                                          <div>
+                                            <img src="assets/images/product.png"/>
+                                            <p>产品二</p>
+                                          </div>
+                                        </a>
+                                      </li>
+                                      <li class="layui-col-xs3">
+                                        <a href="home/homepage1.html">
+                                          <div>
+                                            <img src="assets/images/product.png"/>
+                                            <p>产品三</p>
+                                          </div>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+        
+                          <div class="layui-col-md6">
+                            <div class="layui-card">
+                              <div class="layui-card-header">我的消息</div>
+                              <div class="layui-card-body">
+                
+                                <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;">
+                                  <div carousel-item="">
+                                    <ul class="layui-row layui-col-space10 layui-this">
+                                      <li class="layui-col-xs6">
+                                        <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                          <h3>待审评论</h3>
+                                          <p><cite>66</cite></p>
+                                        </a>
+                                      </li>
+                                      <li class="layui-col-xs6">
+                                        <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
+                                          <h3>待审帖子</h3>
+                                          <p><cite>12</cite></p>
+                                        </a>
+                                      </li>
+                                      <li class="layui-col-xs6">
+                                        <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                          <h3>待审商品</h3>
+                                          <p><cite>99</cite></p>
+                                        </a>
+                                      </li>
+                                      <li class="layui-col-xs6">
+                                        <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
+                                          <h3>待发货</h3>
+                                          <p><cite>20</cite></p>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                    
+                                  </div>
+                                <div class="layui-carousel-ind">
+                                    <!-- <ul><li class="layui-this"></li><li></li></ul> -->
+                                </div>
+                                    <!-- <button class="layui-icon layui-carousel-arrow" lay-type="sub"></button><button class="layui-icon layui-carousel-arrow" lay-type="add"></button> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+        
+                          <div class="layui-col-md12">
+                            <div class="layui-card">
+                              <div class="layui-tab layui-tab-brief layadmin-latestData">
+                                <ul class="layui-tab-title" style="width: 83%;margin: 0 0 0 1%;">
+                                  <li class="layui-this">入驻记录</li>
+                                </ul>
+                                <div class="layui-tab-content">
+                                    <table class="layui-table" id="auth-table"></table>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="layui-card-body layuiadmin-card-list">
-                    <p class="big-font" id="pv"></p>
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-sm2 layui-col-md2">
-            <div class="layui-card">
-                <div class="layui-card-header">UV
-                    <span class="layui-badge layui-bg-green layuiadmin-badge">天</span>
-                </div>
-                <div class="layui-card-body layuiadmin-card-list">
-                    <p class="big-font" id="uv"></p>
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-sm3 layui-col-md3">
-            <div class="layui-card">
-                <div class="layui-card-header">周访问量
-                    <span class="layui-badge layui-bg-blue layuiadmin-badge">周</span>
-                </div>
-                <div class="layui-card-body layuiadmin-card-list">
-                    <p class="big-font" id="weekPv"></p>
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-sm3 layui-col-md3">
-            <div class="layui-card">
-                <div class="layui-card-header">月访问量
-                    <span class="layui-badge layui-bg-orange layuiadmin-badge">月</span>
-                </div>
-                <div class="layui-card-body layuiadmin-card-list">
-                    <p class="big-font" id="monthPv"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="layui-row layui-col-space10">
-        <div class="layui-col-lg12 layui-col-md12">
-            <div class="layui-card">
-                <div class="layui-card-header">
-                    <a id="weekTab" class="my-tab-item my-tab-item-select">周流量趋势</a>
-                    <a id="dayTab" class="my-tab-item">天流量趋势</a>
-                </div>
-                <div class="layui-card-body">
-                    <div id="week-container" tabId="weekTab" class="my-tab-content"></div>
-                    <div id="date-container" tabId="dayTab" class="my-tab-content" style="display: none"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="layui-row layui-col-space10">
-        <div class="layui-col-lg6 layui-col-md6">
-            <div class="layui-card">
-                <div class="card-block">
-                    <div id="browser-container" style="height:300px"></div>
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-lg6 layui-col-lg6">
-            <div class="layui-card">
-                <div class="card-block">
-                    <div id="operatingSystem-container" style="height:300px"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
-    <!-- 企业签约 -->
-    <div class="comp-sign" style="display: none;">
-        <h2>企业签约</h2>
-        <p>正文 条款</p>
-    </div>
-    
-    <!-- 金融机构签约 -->
-    <div class="fin-org-sign" style="display: none;">
-        <h2>金融机构签约</h2>
-        <p>正文 条款</p>
-    </div>
-
-    <!-- 运营机构签约 -->
-    <div class="oper-org-sign" style="display: none;">
-        <h2>运营机构签约</h2>
-        <p>正文 条款</p>
-    </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                      <div class="layui-card-header">企业信息</div>
+                      <div class="layui-card-body layui-text">
+                        <table class="layui-table">
+                          <colgroup>
+                            <col width="100">
+                            <col>
+                          </colgroup>
+                          <tbody>
+                            <tr>
+                              <td>当前版本</td>
+                              <td>
+                                <a href="http://fly.layui.com/docs/3/" target="_blank" style="padding-left: 10px;">日志</a>
+                                <a href="http://fly.layui.com/docs/3/" target="_blank" style="padding-left: 10px;">日志</a> 
+                                <a href="javascript:;" layadmin-event="update" style="padding-left: 5px;">检查更新</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>基于框架</td>
+                              <td>
+                             </td>
+                            </tr>
+                            <tr>
+                              <td>主要特色</td>
+                              <td>零门槛 / 响应式 / 清爽 / 极简</td>
+                            </tr>
+                            <tr>
+                              <td>获取渠道</td>
+                              <td style="padding-bottom: 0;">
+                                <div class="layui-btn-container">
+                                  <a href="http://www.layui.com/admin/" target="_blank" class="layui-btn layui-btn-danger">获取授权</a>
+                                  <a href="http://fly.layui.com/download/layuiAdmin/" target="_blank" class="layui-btn">立即下载</a>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="layui-card">
+                      <div class="layui-card-header">
+                        企业简介
+                        <i class="layui-icon layui-icon-, width: "10%", width: "10%"ips" lay-tips="要支持的噢" lay-offset="5"></i>
+                      </div>
+                      <div class="layui-card-body layui-text layadmin-text">
+                        <p>一直以来，layui 秉承无偿开源的初心，虔诚致力于服务各层次前后端 Web 开发者，在商业横飞的当今时代，这一信念从未动摇。即便身单力薄，仍然重拾决心，埋头造轮，以尽可能地填补产品本身的缺口。</p>
+                        <p>在过去的一段的时间，我一直在寻求持久之道，已维持你眼前所见的一切。而 layuiAdmin 是我们尝试解决的手段之一。我相信真正有爱于 layui 生态的你，定然不会错过这一拥抱吧。</p>
+                        <p>子曰：君子不用防，小人防不住。请务必通过官网正规渠道，获得 <a href="http://www.layui.com/admin/" target="_blank">layuiAdmin</a>！</p>
+                        <p>—— 贤心（<a href="http://www.layui.com/" target="_blank">layui.com</a>）</p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        {{#  } }} 
+        
+        <!-- 金融机构工作台 -->
+        {{#  if(d.compType === 2){ }}
+        <div class="fin-org-console">
+            <h3>金融机构工作台</h3>
+        </div>
+        {{#  } }} 
+        
+        <!-- 运营机构工作台 -->
+        {{#  if(d.compType === 3){ }}
+        <div class="oper-org-console">
+            <h3>运营机构工作台</h3>
+        </div>
+        {{#  } }} 
+        {{#  } }} 
+    </script>
 
 <script type="text/javascript">
-    layui.use(['admin', "echarts"], function () {
+    layui.use(['admin', 'echarts', 'laytpl', 'table', 'util'], function () {
         let admin = layui.admin;
         let echarts = layui.echarts;
+        let laytpl = layui.laytpl;
+        let $ = layui.$;
+        let conTpl = document.getElementById('conTpl').innerHTML;
+        let $view = $("#view");
+        let table = layui.table;
+        let util = layui.util;
         let statData;
 
+        const data = {
+            isAuthed: false,
+            compType: 1
+        }
+
+        if (data.isAuthed) {
+            $('.layui-btn-container').show()
+        }
+        laytpl(conTpl).render(data, function(html) {
+            $view.html(html)
+            renderTable()
+        })
+        function renderTable() {
+            // 渲染表格
+            table.render({
+                elem: '#auth-table',
+                url: '/assets/data/comp-auth.json',
+                method: 'GET',
+                page: true,
+                cols: [[
+                    {field: 'id', title: '序号', width: "8%"},
+                    {field: 'compName', title: '企业名称', width: "15%"},
+                    {field: 'uniCreCode', title: '统一社会信用代码', width: "20.5%"},
+                    {field: 'legalRep', title: '法人代表', width: "12%"},
+                    {field: 'operater', title: '操作人', width: "10%"},
+                    {field: 'createTime', sort: true, templet: function (d) {
+                            return util.toDateString(d.createTime);
+                        }, title: '创建时间', width: "22%"
+                    },
+                    {field: 'status', sort: true, templet: function (d) {
+                            return d.status == 0 ? '审核中' : '入驻成功'
+                        }, title: '状态', width: "13%"}
+                ]]
+            });
+        }
         $('button.layui-btn').on('click', function(){
             let type = $(this).attr('auth-type');
             // layer.msg(type, {icon: 5, time: 1000});
