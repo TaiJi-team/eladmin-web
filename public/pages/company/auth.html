@@ -199,8 +199,11 @@
         var showEditModel = function (data) {
             var title = data ? '修改企业' : '添加企业';
             admin.popupCenter({
+                type:2,
                 title: title,
+                area: ['1000px', '1000px'],
                 path: 'pages/company/add.html',
+                btn: ['提交', '取消'],
                 finish: function () {
                     // table.reload('user-table', {});
                 }
