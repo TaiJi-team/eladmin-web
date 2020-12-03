@@ -278,8 +278,11 @@
                                                         <td></td>
                                                         <td>订单取消</td>
                                                         <td>36天18小时</td>
-                                                        <td><a href="#!fin-need-detail"
-                                                                class="color-blue">详情</a></td>
+                                                        <td>
+                                                            <!-- <a href="#!fin-need-detail"
+                                                                class="color-blue">详情</a> -->
+                                                            <a class="color-blue">详情</a>
+                                                            </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -359,8 +362,11 @@
                                                         <td></td>
                                                         <td>订单取消</td>
                                                         <td>97天15小时</td>
-                                                        <td><a href="#!fin-need-detail"
-                                                                class="color-blue">详情</a></td>
+                                                        <td>
+                                                            <!-- <a href="#!fin-need-detail"
+                                                                class="color-blue">详情</a> -->
+                                                            <a class="color-blue">详情</a>
+                                                            </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -499,13 +505,41 @@
         //     } 
         // });
 
+        // 选择金融产品
         $('#select-prod').on({
             click: function() {
                 localStorage.setItem('toSele', true)
                 location.href="#!fin-need-apply"
-                // $('#fin-need-apply').unbind('click')
-                // location.reload()
             }
         })
+        $('a.color-blue').on({
+            click: function() {
+                showDetailModel()
+            }
+        })
+
+        //显示表单弹窗
+        var showDetailModel = function () {
+            var title = '融资订单详情';
+            admin.popupCenter({
+                type:2,
+                title: title,
+                area: ['1280px', '600px'],
+                path: 'pages/company/fin-need-detail.html',
+                btn: ['取消'],
+                success: function() {
+                    $('.layui-layer').css({
+                        // 'z-index': '10000000',
+                        // 'width': '86%',
+                        // 'height': '90%',
+                        'top': '8%',
+                        'left': '12%'
+                    })
+                },
+                finish: function () {
+                    // table.reload('user-table', {});
+                }
+            });
+        };
     });
 </script>

@@ -1,0 +1,949 @@
+<style>
+    .color-yellow {
+        color: #FF5722;
+    }
+
+    td[data-field=id],
+    th[data-field=id] {
+        display: none;
+    }
+
+    .layui-table-cell {
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .layui-colla-title {
+        height: auto;
+        padding: 5px;
+        line-height: 28px;
+        overflow: inherit;
+    }
+
+    .layui-collapse .layui-form-item {
+        margin-bottom: 0;
+    }
+
+    .layui-form-label {
+        padding: 5px 10px;
+    }
+
+    .layui-form-item .layui-input-inline {
+        width: auto;
+        margin-right: 0;
+    }
+
+    .layui-card-body .layui-table {
+        margin: 0px 0;
+    }
+
+    .layui-colla-title .layui-form-label {
+        padding: 5px 0px;
+    }
+
+    .layui-colla-title .layui-colla-icon {
+        display: none;
+    }
+
+    .layui-colla-title .layui-nav {
+        position: relative;
+        padding: 0 0px;
+        background-color: #f2f2f2;
+        float: right;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-item {
+        line-height: 40px;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-item a {
+        display: block;
+        padding: 0 20px;
+        color: #333;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-item a:hover {
+        color: #333;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-more {
+        border-top-color: #333;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-mored,
+    .layui-nav-itemed>a .layui-nav-more {
+        margin-top: -9px;
+        border-style: dashed dashed solid;
+        border-color: transparent transparent #333;
+    }
+
+    .layui-colla-title .layui-nav .layui-lasta {
+        white-space: initial;
+        text-overflow: ellipsis;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .layui-colla-title .layui-nav dd:hover .layui-lasta {
+        -webkit-line-clamp: 100;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-mored,
+    .layui-nav-itemed>a .layui-nav-more {
+        margin-top: -9px;
+        border-style: dashed dashed solid;
+        border-color: transparent transparent #333;
+    }
+
+    .layui-nav-child {
+        margin: -22% 0 0 0%;
+    }
+
+    .fin-need-list {
+        margin: 0 0 2% 0;
+    }
+
+    .color-blue {
+        color: #1E9FFF;
+    }
+
+    a:hover {
+        color: #333;
+        cursor: pointer;
+    }
+</style>
+
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">融资订单详情</h2>
+        <span class="layui-breadcrumb pull-right">
+            <a href="#!console">工作台</a>
+            <a><cite>融资订单详情</cite></a>
+        </span>
+    </div>
+
+    <div class="layui-card-body">
+        <div class="layui-fluid">
+            <div class="layui-form" id="financingOrderInfo" lay-filter="component-form-group">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md8">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header"> <span class="color-yellow">当前进度：<em
+                                                id="stateName">订单取消</em></span> </div>
+                                    <div class="layui-card-body">
+                                        <ul class="pro-process">
+                                            <li class="on"> <i class="li-ico"></i> <span class="li-text">待指派客户经理</span>
+                                            </li>
+                                            <li class="on"> <i class="li-ico"></i> <span class="li-text">待客户经理接收</span>
+                                            </li>
+                                            <li class="on"> <i class="li-ico"></i> <span class="li-text">业务对接中</span>
+                                            </li>
+                                            <li class="on"> <i class="li-ico"></i> <span class="li-text">订单取消</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">融资需求</div>
+                                    <div class="layui-card">
+                                        <div class="layui-card-body layadmin-maillist-fluid layui-row">
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="100">
+                                                    <col width="180">
+                                                    <col width="100">
+                                                    <col width="180">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #f2f2f2;">订单编号</td>
+                                                        <td colspan="3">110120082719170452503</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-color: #f2f2f2;">融资金额</td>
+                                                        <td>1000万元</td>
+                                                        <td style="background-color: #f2f2f2;">年利率</td>
+                                                        <td>5%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-color: #f2f2f2;">融资期限</td>
+                                                        <td>12月</td>
+                                                        <td style="background-color: #f2f2f2;">融资投向</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-color: #f2f2f2;">担保方式</td>
+                                                        <td>不限</td>
+                                                        <td style="background-color: #f2f2f2;">还款方式</td>
+                                                        <td>不限</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-color: #f2f2f2;">申请企业</td>
+                                                        <td>乔禾教育</td>
+                                                        <td style="background-color: #f2f2f2;">法定代表人</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-color: #f2f2f2;">对接机构</td>
+                                                        <td>中国光大银行股份有限公司</td>
+                                                        <td style="background-color: #f2f2f2;">对接产品</td>
+                                                        <td><a href="javascript:;" class="product-detail-btn color-blue"
+                                                                data-id="824">阳光e餐贷</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-color: #f2f2f2;">创建时间</td>
+                                                        <td>2020-08-27 19:17:04</td>
+                                                        <td style="background-color: #f2f2f2;">订单耗时</td>
+                                                        <td>97天19小时</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header"> 预审材料列表 </div>
+                                    <div class="layui-card-body">
+                                        <table id="table-operate" class="layui-hide" lay-filter="table-operate"></table>
+                                        <div class="layui-form layui-border-box layui-table-view"
+                                            lay-filter="LAY-table-3" style=" ">
+                                            <div class="layui-table-box">
+                                                <div class="layui-table-header">
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        class="layui-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th data-field="id" data-key="3-0-0" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0"
+                                                                        align="center"><span>ID</span></div>
+                                                                </th>
+                                                                <th data-field="pretrialname" data-key="3-0-1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1"
+                                                                        align="center"><span>材料名称</span></div>
+                                                                </th>
+                                                                <th data-field="state" data-key="3-0-2" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2"
+                                                                        align="center"><span>是否上传</span></div>
+                                                                </th>
+                                                                <th data-field="state" data-key="3-0-3" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3"
+                                                                        align="center"><span>提交状态</span></div>
+                                                                </th>
+                                                                <th data-field="4" data-key="3-0-4"
+                                                                    class=" layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4"
+                                                                        align="center"><span>操作</span></div>
+                                                                </th>
+                                                                <th class="layui-table-patch">
+                                                                    <div class="layui-table-cell" style="width: 0px;">
+                                                                    </div>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                                <div class="layui-table-body layui-table-main">
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        class="layui-table">
+                                                        <tbody>
+                                                            <tr data-index="0">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51515</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        企业营业执照</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="1">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51516</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        法人及经办人身份证</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="2">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51517</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        企业经营情况</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="3">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51518</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        企业纳税信息</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="4">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51519</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        企业基本信息</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="5">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51520</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        企业银行账户</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="6">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51521</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        公司章程</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="7">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51522</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        验资报告</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="8">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51523</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        企业人行征信报告</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="9">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51524</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        贷款用途资料</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="10">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51525</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        主要供销客户的销购合同/协议</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="11">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51526</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        法定代表人（实际控制人）婚姻状况</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-index="12">
+                                                                <td data-field="id" data-key="3-0-0" align="center"
+                                                                    class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
+                                                                        51527</div>
+                                                                </td>
+                                                                <td data-field="pretrialname" data-key="3-0-1"
+                                                                    align="center" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
+                                                                        法定代表人（实际控制人）人行征信报告</div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-2" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
+                                                                        未上传 </div>
+                                                                </td>
+                                                                <td data-field="state" data-key="3-0-3" align="center"
+                                                                    data-content="1" class="">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
+                                                                        待提交 </div>
+                                                                </td>
+                                                                <td data-field="4" data-key="3-0-4" align="center"
+                                                                    data-off="true" class="layui-table-col-special">
+                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
+                                                                        <a class="layui-btn layui-btn-xs"
+                                                                            lay-event="upload">上传</a> </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="layui-table-fixed layui-table-fixed-r layui-hide"
+                                                    style="right: -1.475px;">
+                                                    <div class="layui-table-header">
+                                                        <table cellspacing="0" cellpadding="0" border="0"
+                                                            class="layui-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th data-field="4" data-key="3-0-4"
+                                                                        class=" layui-table-col-special">
+                                                                        <div class="layui-table-cell laytable-cell-3-0-4"
+                                                                            align="center"><span>操作</span></div>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                        <div class="layui-table-mend"></div>
+                                                    </div>
+                                                    <div class="layui-table-body" style="height: 499px;">
+                                                        <table cellspacing="0" cellpadding="0" border="0"
+                                                            class="layui-table">
+                                                            <tbody>
+                                                                <tr data-index="0">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="1">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="2">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="3">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="4">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="5">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="6">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="7">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="8">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="9">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="10">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="11">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr data-index="12">
+                                                                    <td data-field="4" data-key="3-0-4" align="center"
+                                                                        data-off="true" class="layui-table-col-special">
+                                                                        <div
+                                                                            class="layui-table-cell laytable-cell-3-0-4">
+                                                                            <a class="layui-btn layui-btn-xs"
+                                                                                lay-event="upload">上传</a> </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">平台融资顾问 <span class="layui-out-chat"> <a
+                                                href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"
+                                                target="_blank"> <i class="layui-icon layui-icon-reply-fill">
+                                                    <span>交谈</span> </i> </a> </span> </div>
+                                    <div class="layui-card-body layadmin-maillist-fluid layui-row">
+                                        <div class="layadmin-contact-box" style="padding: 10px 10px;">
+                                            <div class="layui-col-md6 layui-col-sm6"> <a
+                                                    href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"
+                                                    target="_blank">
+                                                    <div class="layadmin-text-center"> <img
+                                                            src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/sysfile/2019/05/10/2019051008114476718.jpg">
+                                                        <div class="layadmin-maillist-img layadmin-font-blod">江季垚</div>
+                                                    </div>
+                                                </a> </div>
+                                            <div class="layui-col-md6 layui-col-sm6">
+                                                <div class="layadmin-address">
+                                                    <p>对接需求：26772次 </p>
+                                                    <p>成功授信：5136次 </p>
+                                                    <p>成功率：19.18% </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">机构客户经理 </div>
+                                    <div class="layui-card-body layadmin-maillist-fluid layui-row">
+                                        <div class="layadmin-homepage-panel layadmin-homepage-shadow">
+                                            <div style="text-align: center;">
+                                                <div class="layui-card-body LAY-senior-im-chat">
+                                                    <div class="layadmin-homepage-pad-ver"> <img
+                                                            class="layadmin-homepage-pad-img"
+                                                            src="/res/images/default_face.png" width="96" height="96">
+                                                    </div>
+                                                    <h4 class="layadmin-homepage-font">企业实名认证审核通过后，将为您分配客户经理</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header" style="cursor:pointer;"> 订单进度情况 </div>
+                                    <div class="layui-card-body">
+                                        <ul class="layui-timeline" id="ScheduleId">
+                                            <li class="layui-timeline-item"> <i
+                                                    class="layui-icon layui-timeline-axis"></i>
+                                                <div class="layui-timeline-content layui-text">
+                                                    <h3 class="layui-timeline-title">2020-08-31 16:23:36</h3>
+                                                    <p> 【平台】结束融资需求 </p>
+                                                </div>
+                                            </li>
+                                            <li class="layui-timeline-item"> <i
+                                                    class="layui-icon layui-timeline-axis"></i>
+                                                <div class="layui-timeline-content layui-text">
+                                                    <h3 class="layui-timeline-title">2020-08-31 16:23:23</h3>
+                                                    <p> 【乔禾教育】融资需求不匹配，订单终止 </p>
+                                                </div>
+                                            </li>
+                                            <li class="layui-timeline-item"> <i
+                                                    class="layui-icon layui-timeline-axis"></i>
+                                                <div class="layui-timeline-content layui-text">
+                                                    <h3 class="layui-timeline-title">2020-08-27 19:17:04</h3>
+                                                    <p> 【乔禾教育】完成金融产品的选择 </p>
+                                                </div>
+                                            </li>
+                                            <li class="layui-timeline-item"> <i
+                                                    class="layui-icon layui-timeline-axis"></i>
+                                                <div class="layui-timeline-content layui-text">
+                                                    <h3 class="layui-timeline-title">2020-08-27 19:14:19</h3>
+                                                    <p> 【平台】已为【乔禾教育】智能匹配金融产品，待企业自主选择金融产品 </p>
+                                                </div>
+                                            </li>
+                                            <li class="layui-timeline-item"> <i
+                                                    class="layui-icon layui-timeline-axis"></i>
+                                                <div class="layui-timeline-content layui-text">
+                                                    <h3 class="layui-timeline-title">2020-08-27 19:08:55</h3>
+                                                    <p> 【平台】已为【乔禾教育】智能匹配金融产品，待企业自主选择金融产品 </p>
+                                                </div>
+                                            </li>
+                                            <li class="layui-timeline-item"> <i
+                                                    class="layui-icon layui-timeline-axis"></i>
+                                                <div class="layui-timeline-content layui-text">
+                                                    <h3 class="layui-timeline-title">2020-08-27 19:07:56</h3>
+                                                    <p> 【平台】已为【乔禾教育】智能匹配金融产品，待企业自主选择金融产品 </p>
+                                                </div>
+                                            </li>
+                                            <li class="layui-timeline-item"> <i
+                                                    class="layui-icon layui-timeline-axis"></i>
+                                                <div class="layui-timeline-content layui-text">
+                                                    <h3 class="layui-timeline-title">2020-08-27 19:07:52</h3>
+                                                    <p> 【平台】已指派融资顾问：张文骁(4001016871)对接【乔禾教育】 </p>
+                                                </div>
+                                            </li>
+                                            <li class="layui-timeline-item"> <i
+                                                    class="layui-icon layui-timeline-axis"></i>
+                                                <div class="layui-timeline-content layui-text">
+                                                    <h3 class="layui-timeline-title">2020-08-27 19:07:52</h3>
+                                                    <p> 【乔禾教育】提交了融资业务申请 </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+
+        // $('.fin-need-list').removeClass('overflow-y')
+        // $('.layui-nav-item').on('mouse', function() {
+        //     $($(this).find('span')[0]).addClass('layui-nav-mored')
+        //     $($(this).find('dl')[0]).addClass('layui-show')
+        // })
+        var cur_span = null;
+        var cur_dl = null;
+        $('.layui-nav-item').on({
+            click: function () {
+                cur_span = $(this).find('span')[0]
+                cur_dl = $(this).find('dl')[0]
+                $(cur_span).addClass('layui-nav-mored')
+                $(cur_dl).addClass('layui-show')
+            }
+        })
+        // $('ul.layui-nav').on({
+        //     mouseover: function(){
+        //         cur_span = $(this).find('span')[0]
+        //         cur_dl = $(this).find('dl')[0]
+        //         $(cur_span).addClass('layui-nav-mored')
+        //         $(cur_dl).addClass('layui-show')
+        //     } ,
+        //     mouseout: function(){
+        //         $(cur_span).removeClass('layui-nav-mored')
+        //         $(cur_dl).removeClass('layui-show')
+        //     } 
+        // });
+
+        $('#select-prod').on({
+            click: function () {
+                localStorage.setItem('toSele', true)
+                location.href = "#!fin-need-apply"
+                // $('#fin-need-apply').unbind('click')
+                // location.reload()
+            }
+        })
+    });
+</script>
