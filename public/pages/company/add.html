@@ -27,7 +27,7 @@
                                 <div class="no-up-box" id="noImgBtn" style="display:inline-block;">
                                     <div class="card-front-box">
                                         <div class="icon-box back"></div>
-                                        <p class="icon-text" id="business_licence_TEXT">请上传营业执照</p>
+                                        <!-- <p class="icon-text" id="business_licence_TEXT">请上传营业执照</p> -->
                                     </div>
                                     <div class="layui-upload-drag" id="png" style="width:250px; height:300px;">
                                         <i class="layui-icon"></i>
@@ -55,8 +55,6 @@
                                     <p class="upload-state-text">图片上传中...</p>
                                 </div>
                             </div>
-                            <p class="check-big up-example" data-url="/res/images/qy-tydm.jpg"><i
-                                    class="layui-icon layui-icon-search"></i>查看示例</p> -->
                         </div>
                         <div class="layui-col-md8">
                             <div class="layui-form-item" style="display:none;">
@@ -625,7 +623,7 @@
                                 <div class="no-up-box" id="noImgBtn" style="display:{{# if((d.business_licence||'')!=''){ }}none;{{#}else{ }}inline-block;{{#} }}">
                                         <div class="card-front-box">
                                         <div class="icon-box back"></div>
-                                        <p class="icon-text" id="business_licence_TEXT">请上传营业执照</p>
+                                        <!-- <p class="icon-text" id="business_licence_TEXT">请上传营业执照</p> -->
                                     </div>
                                 </div>
                                 <div class="had-up-box" style="display:{{# if((d.business_licence||'')!=''){ }}inline-block;{{#}else{ }}none;{{#} }}">
@@ -1076,7 +1074,7 @@
             ,before: function(obj){
             //预读本地文件示例，不支持ie8
             obj.preview(function(index, file, result){
-                $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'"width="'+ 50 +'"height="'+ 50 +'" class="layui-upload-img">')
+                $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'"width="'+ 50 +'"height="'+ 50 +'" class="layui-upload-img">&nbsp&nbsp')
                 });
             }
             ,done: function(res){
@@ -1091,7 +1089,7 @@
             ,before: function(obj){
             //预读本地文件示例，不支持ie8
             obj.preview(function(index, file, result){
-                $('#demo3').append('<img src="'+ result +'" alt="'+ file.name +'"width="'+ 50 +'"height="'+ 50 +'" class="layui-upload-img">')
+                $('#demo3').append('<img src="'+ result +'" alt="'+ file.name +'"width="'+ 50 +'"height="'+ 50 +'" class="layui-upload-img">&nbsp&nbsp')
                 });
             }
             ,done: function(res){
