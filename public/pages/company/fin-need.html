@@ -1,47 +1,466 @@
+<style>
+    .color-yellow {
+        color: #FF5722;
+    }
+    td[data-field=id],
+    th[data-field=id] {
+        display: none;
+    }
+    .layui-table-cell {
+        height: auto;
+        overflow-y: auto;
+    }
+    .layui-colla-title {
+        height: auto;
+        padding: 5px;
+        line-height: 28px;
+        overflow:inherit;
+    }
+    .layui-collapse .layui-form-item {
+        margin-bottom: 0;
+    }
+    .layui-form-label {
+        padding: 5px 10px;
+    }
+    .layui-form-item .layui-input-inline {
+        width: auto;
+        margin-right: 0;
+    }
+    .layui-card-body .layui-table {
+        margin: 0px 0;
+    }
+    .layui-colla-title .layui-form-label {
+        padding: 5px 0px;
+    }
+    .layui-colla-title .layui-colla-icon {
+        display: none;
+    }
+    .layui-colla-title .layui-nav {
+        position: relative;
+        padding: 0 0px;
+        background-color: #f2f2f2;
+            float: right;
+    }
+    .layui-colla-title .layui-nav .layui-nav-item {
+        line-height: 40px;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-item a {
+        display: block;
+        padding: 0 20px;
+        color: #333;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-item a:hover {
+        color: #333;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-more {
+        border-top-color: #333;
+    }
+
+    .layui-colla-title .layui-nav .layui-nav-mored, .layui-nav-itemed > a .layui-nav-more {
+        margin-top: -9px;
+        border-style: dashed dashed solid;
+        border-color: transparent transparent #333;
+    }
+    .layui-colla-title .layui-nav .layui-lasta{
+        white-space: initial;
+        text-overflow: ellipsis;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow:hidden;
+    }
+    .layui-colla-title .layui-nav dd:hover .layui-lasta{
+        -webkit-line-clamp: 100;
+    }
+    .layui-colla-title .layui-nav .layui-nav-mored, .layui-nav-itemed > a .layui-nav-more {
+        margin-top: -9px;
+        border-style: dashed dashed solid;
+        border-color: transparent transparent #333;
+    }
+    .layui-nav-child {
+        margin: -22% 0 0 0%;
+    }
+    .fin-need-list {
+        margin: 0 0 2% 0;
+    }
+    .color-blue {
+        color: #1E9FFF;
+    }
+    a:hover {
+        color: #333;
+        cursor: pointer;
+    }
+</style>
+
 <div class="layui-card">
     <div class="layui-card-header">
-        <h2 class="header-title">融资需求管理</h2>
+        <h2 class="header-title">我的融资需求</h2>
         <span class="layui-breadcrumb pull-right">
-          <a href="#!console">工作台</a>
-          <a><cite>融资需求管理</cite></a>
+            <a href="#!console">工作台</a>
+            <a><cite>我的融资需求</cite></a>
         </span>
     </div>
-    <div class="layui-card-body">
-        <div class="layui-form toolbar">
-            搜索：
-            <select id="user-search-key">
-                <option value="">-请选择-</option>
-                <option value="user_id">ID</option>
-                <option value="username">账号</option>
-                <option value="nick_name">用户名</option>
-                <option value="mobile">手机号</option>
-            </select>&emsp;
-            <input id="user-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
-            <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-            <button id="user-btn-add" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
-            <button id="user-btn-export" class="layui-btn icon-btn"><i class="layui-icon">&#xe601;</i>导出</button>
-            <button type="button" class="layui-btn" id="user-btn-import">
-                <i class="layui-icon">&#xe67c;</i>导入
-            </button>
-        </div>
 
-        <table class="layui-table" id="user-table" lay-filter="user-table"></table>
+    <div class="layui-card-body">
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <div class="layui-field-box">
+                            <div class="layui-form">
+                                关键字：
+                                <div class="layui-inline" style="width: 350px;">
+                                    <input type="text" value="" name="s_key" placeholder="请输入需求编号、订单编号或企业名称"
+                                        class="layui-input search_input">
+                                </div>
+                                <div class="layui-inline">
+                                    <a class="layui-btn" lay-submit="" lay-filter="searchForm">查询</a>
+                                </div>
+                                <div class="layui-inline">
+                                    <a class="layui-btn layui-btn-normal" href="#!fin-need-apply">发布融资需求</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fin-need-list layui-show">
+                            <div class="layui-row layui-col-space15" id="page_template_body_id">
+                                <div class="layui-card">
+                                    <div class="layui-collapse" style="margin-top: 10px; border: 0px;">
+                                        <div class="layui-colla-item">
+                                            <div class="layui-colla-title">
+                                                <div class="layui-form-item">
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">需求编号：</label>
+                                                        <div class="layui-input-inline"> 110020092217230948837 </div>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <div class="layui-input-inline"> 乔禾教育<a
+                                                                lay-href="enterpriseCert#?id=98966"><span
+                                                                    class="color-yellow">【待实名认证】</span></a> </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">需求金额：</label>
+                                                        <div class="layui-input-inline"> 100万元 </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label class="layui-form-label"
+                                                            style="line-height: 30px;">贷款期限：</label>
+                                                        <div class="layui-input-inline" style="line-height: 40px;"> 20个月
+                                                            <ul class="layui-nav">
+                                                                <li class="layui-nav-item"> <a 
+                                                                        style="color: #1E9FFF;">详情<span
+                                                                            class="layui-nav-more"></span></a>
+                                                                    <dl class="layui-nav-child">
+                                                                        <dd><a href="javascript:;">年利率：3.5%</a></dd>
+                                                                        <dd><a href="javascript:;">担保方式：不限</a></dd>
+                                                                        <dd><a href="javascript:;">还款方式：不限</a></dd>
+                                                                        <dd><a href="javascript:;">意向产品：-</a></dd>
+                                                                        <dd><a href="javascript:;">需求进度：<em
+                                                                                    class="color-yellow">需求取消</em></a>
+                                                                        </dd>
+                                                                        <dd><a href="javascript:;"
+                                                                                class="layui-lasta">取消理由: 其他原因 </a></dd>
+                                                                    </dl>
+                                                                </li> <span class="layui-nav-bar"></span>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">融资顾问：</label>
+                                                        <div class="layui-input-inline"> 江季垚4001016871 </div>
+                                                    </div>
+                                                </div> <i class="layui-icon layui-colla-icon"></i>
+                                            </div>
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                    <col width="20%">
+                                                    <col width="10%">
+                                                    <col>
+                                                    <col width="10%">
+                                                    <col width="8%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>订单编号</th>
+                                                        <th>金融产品名称</th>
+                                                        <th>对接机构</th>
+                                                        <th>客户经理</th>
+                                                        <th>订单进度</th>
+                                                        <th>订单耗时</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <!-- <tbody>
+                                                    <tr>
+                                                        <td colspan="7" style="text-align: center;">暂无订单数据</td>
+                                                    </tr>
+                                                </tbody> -->
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="layui-collapse" style="margin-top: 10px; border: 0px;">
+                                        <div class="layui-colla-item">
+                                            <div class="layui-colla-title">
+                                                <div class="layui-form-item">
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">需求编号：</label>
+                                                        <div class="layui-input-inline"> 110020102716410817815 </div>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <div class="layui-input-inline"> 乔禾教育<a
+                                                                lay-href="enterpriseCert#?id=98966"><span
+                                                                    class="color-yellow">【待实名认证】</span></a> </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">需求金额：</label>
+                                                        <div class="layui-input-inline"> 20万元 </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label class="layui-form-label"
+                                                            style="line-height: 30px;">贷款期限：</label>
+                                                        <div class="layui-input-inline" style="line-height: 40px;"> 12个月
+                                                            <ul class="layui-nav">
+                                                                <li class="layui-nav-item"> <a href="javascript:;"
+                                                                        style="color: #1E9FFF;">详情<span
+                                                                            class="layui-nav-more"></span></a>
+                                                                    <dl class="layui-nav-child">
+                                                                        <dd><a href="javascript:;">年利率：5%</a></dd>
+                                                                        <dd><a href="javascript:;">担保方式：不限</a></dd>
+                                                                        <dd><a href="javascript:;">还款方式：不限</a></dd>
+                                                                        <dd><a href="javascript:;">意向产品：-</a></dd>
+                                                                        <dd><a href="javascript:;">需求进度：<em
+                                                                                    class="color-yellow">需求取消</em></a>
+                                                                        </dd>
+                                                                        <dd><a href="javascript:;"
+                                                                                class="layui-lasta">取消理由: 其他原因 </a></dd>
+                                                                    </dl>
+                                                                </li> <span class="layui-nav-bar"></span>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">融资顾问：</label>
+                                                        <div class="layui-input-inline"> 江季垚4001016871 </div>
+                                                    </div>
+                                                </div> <i class="layui-icon layui-colla-icon"></i>
+                                            </div>
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                    <col width="20%">
+                                                    <col width="10%">
+                                                    <col>
+                                                    <col width="10%">
+                                                    <col width="8%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>订单编号</th>
+                                                        <th>金融产品名称</th>
+                                                        <th>对接机构</th>
+                                                        <th>客户经理</th>
+                                                        <th>订单进度</th>
+                                                        <th>订单耗时</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>110120102716425993575</td>
+                                                        <td>线上快审快贷</td>
+                                                        <td>宁波银行股份有限公司</td>
+                                                        <td></td>
+                                                        <td>订单取消</td>
+                                                        <td>36天18小时</td>
+                                                        <td><a href="#!fin-need-detail"
+                                                                class="color-blue">详情</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="layui-collapse" style="margin-top: 10px; border: 0px;">
+                                        <div class="layui-colla-item">
+                                            <div class="layui-colla-title">
+                                                <div class="layui-form-item">
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">需求编号：</label>
+                                                        <div class="layui-input-inline"> 11012008271907526161 </div>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <div class="layui-input-inline"> 乔禾教育<a
+                                                                lay-href="enterpriseCert#?id=98966"><span
+                                                                    class="color-yellow">【待实名认证】</span></a> </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">需求金额：</label>
+                                                        <div class="layui-input-inline"> 1000万元 </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label class="layui-form-label"
+                                                            style="line-height: 30px;">贷款期限：</label>
+                                                        <div class="layui-input-inline" style="line-height: 40px;"> 12个月
+                                                            <ul class="layui-nav">
+                                                                <li class="layui-nav-item"> <a href="javascript:;"
+                                                                        style="color: #1E9FFF;">详情<span
+                                                                            class="layui-nav-more"></span></a>
+                                                                    <dl class="layui-nav-child">
+                                                                        <dd><a href="javascript:;">年利率：5%</a></dd>
+                                                                        <dd><a href="javascript:;">担保方式：不限</a></dd>
+                                                                        <dd><a href="javascript:;">还款方式：不限</a></dd>
+                                                                        <dd><a href="javascript:;">意向产品：-</a></dd>
+                                                                        <dd><a href="javascript:;">需求进度：<em
+                                                                                    class="color-yellow">对接失败</em></a>
+                                                                        </dd>
+                                                                        <dd><a href="javascript:;"
+                                                                                class="layui-lasta">取消理由: 其他原因 </a></dd>
+                                                                    </dl>
+                                                                </li> <span class="layui-nav-bar"></span>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">融资顾问：</label>
+                                                        <div class="layui-input-inline"> 江季垚4001016871 </div>
+                                                    </div>
+                                                </div> <i class="layui-icon layui-colla-icon"></i>
+                                            </div>
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                    <col width="20%">
+                                                    <col width="10%">
+                                                    <col>
+                                                    <col width="10%">
+                                                    <col width="8%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>订单编号</th>
+                                                        <th>金融产品名称</th>
+                                                        <th>对接机构</th>
+                                                        <th>客户经理</th>
+                                                        <th>订单进度</th>
+                                                        <th>订单耗时</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>110120082719170452503</td>
+                                                        <td>阳光e餐贷</td>
+                                                        <td>中国光大银行股份有限公司</td>
+                                                        <td></td>
+                                                        <td>订单取消</td>
+                                                        <td>97天15小时</td>
+                                                        <td><a href="#!fin-need-detail"
+                                                                class="color-blue">详情</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="layui-collapse" style="margin-top: 10px; border: 0px;">
+                                        <div class="layui-colla-item">
+                                            <div class="layui-colla-title">
+                                                <div class="layui-form-item">
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">需求编号：</label>
+                                                        <div class="layui-input-inline"> 110020120218074877413 </div>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <div class="layui-input-inline"> 乔禾教育<a
+                                                                lay-href="enterpriseCert#?id=98966"><span
+                                                                    class="color-yellow">【待实名认证】</span></a> </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">需求金额：</label>
+                                                        <div class="layui-input-inline"> 100万元 </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label class="layui-form-label"
+                                                            style="line-height: 30px;">贷款期限：</label>
+                                                        <div class="layui-input-inline" style="line-height: 40px;"> 16个月
+                                                            <ul class="layui-nav">
+                                                                <li class="layui-nav-item"> <a href="javascript:;"
+                                                                        style="color: #1E9FFF;">详情<span
+                                                                            class="layui-nav-more"></span></a>
+                                                                    <dl class="layui-nav-child">
+                                                                        <dd><a href="javascript:;">年利率：5%</a></dd>
+                                                                        <dd><a href="javascript:;">担保方式：不限</a></dd>
+                                                                        <dd><a href="javascript:;">还款方式：不限</a></dd>
+                                                                        <dd><a href="javascript:;">意向产品：-</a></dd>
+                                                                        <dd><a href="javascript:;">需求进度：<em
+                                                                                    class="color-yellow">待选择金融产品</em></a>
+                                                                        </dd>
+                                                                        <dd><a id="select-prod" style="color: #1E9FFF;text-align: center;">选择金融产品</a>
+                                                                        </dd>
+                                                                    </dl>
+                                                                </li> <span class="layui-nav-bar"></span>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-inline"> <label
+                                                            class="layui-form-label">融资顾问：</label>
+                                                        <div class="layui-input-inline"> 江季垚4001016871 </div>
+                                                    </div>
+                                                </div> <i class="layui-icon layui-colla-icon"></i>
+                                            </div>
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="15%">
+                                                    <col width="15%">
+                                                    <col width="20%">
+                                                    <col width="10%">
+                                                    <col>
+                                                    <col width="10%">
+                                                    <col width="8%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>订单编号</th>
+                                                        <th>金融产品名称</th>
+                                                        <th>对接机构</th>
+                                                        <th>客户经理</th>
+                                                        <th>订单进度</th>
+                                                        <th>订单耗时</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <!-- <tbody>
+                                                    <tr>
+                                                        <td colspan="7" style="text-align: center;">暂无订单数据</td>
+                                                    </tr>
+                                                </tbody> -->
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-row" style="text-align: center;margin: 3% 0 0 0;">
+                                    <div class="ac pagination" id="pagination">
+                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                            <a href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                                data-page="0">上一页</a><span class="layui-laypage-curr"><em
+                                                    class="layui-laypage-em"></em><em>1</em></span><a
+                                                href="javascript:;" class="layui-laypage-next layui-disabled"
+                                                data-page="2">下一页</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="publicState" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </div>
-
-
-<!-- 表格操作列 -->
-<script type="text/html" id="user-table-bar">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-xs" lay-event="reset">重置密码</a>
-    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-</script>
-
-<!-- 表格状态列 -->
-<script type="text/html" id="user-tpl-state">
-    <input type="checkbox" lay-filter="user-tpl-state" value="{{d.id}}" lay-skin="switch" lay-text="正常|锁定"
-           {{d.enabled==true?'checked':''}}/>
-</script>
 
 <script>
     layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
@@ -51,171 +470,42 @@
         var layer = layui.layer;
         var util = layui.util;
         var admin = layui.admin;
-        //上传
-        var upload = layui.upload;
 
-        // 渲染表格
-        table.render({
-            elem: '#user-table',
-            url: config.base_server + 'api-user/users',
-            method: 'GET',
-            headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
-            page: true,
-            cols: [[
-                {type: 'numbers'},
-                {field: 'id', sort: true, title: '用户编号'},
-                {field: 'username', sort: true, title: '账号'},
-                {field: 'nickname', sort: true, title: '用户名'},
-                {field: 'mobile', sort: true, title: '手机号'},
-                {sort: true, title: '性别',templet:function (d) {
-                        return d.sex==0?"男":"女"
-                    }},
-                {
-                    sort: true, templet: function (d) {
-                        return util.toDateString(d.createTime);
-                    }, title: '创建时间'
-                },
-                {field: 'enabled', sort: true, templet: '#user-tpl-state', title: '状态'},
-                {fixed: 'right', align: 'center', toolbar: '#user-table-bar', title: '操作', width: 175}
-            ]]
-        });
-
-        // 添加按钮点击事件
-        $('#user-btn-add').click(function () {
-            showEditModel();
-        });
-
-        // 工具条点击事件
-        table.on('tool(user-table)', function (obj) {
-            var data = obj.data;
-            var layEvent = obj.event;
-
-            if (layEvent === 'edit') { // 修改
-                showEditModel(data);
-            } else if (layEvent === 'reset') { // 重置密码
-                layer.confirm('确定重置此用户的密码吗？', function (i) {
-                    layer.close(i);
-                    layer.load(2);
-                    admin.req('api-user/users/'+obj.data.id+'/password', {}, function (data) {
-                        layer.closeAll('loading');
-                        if (data.code == 0) {
-                            layer.msg(data.msg, {icon: 1, time: 500});
-                        } else {
-                            layer.msg(data.msg, {icon: 2, time: 500});
-                        }
-                    }, 'PUT');
-                });
-            } else if (layEvent === 'del') { // 删除
-                layer.confirm('确定删除此用户吗？', function (i) {
-                    layer.close(i);
-                    layer.load(2);
-                    admin.req('api-user/users/'+obj.data.id, {}, function (data) {
-                        layer.closeAll('loading');
-                        if (data.code == 0) {
-                            layer.msg(data.msg, {icon: 1, time: 500});
-                            table.reload('user-table', {});
-                        } else {
-                            layer.msg(data.msg, {icon: 2, time: 500});
-                        }
-                    }, 'delete');
-                });
+        // $('.fin-need-list').removeClass('overflow-y')
+        // $('.layui-nav-item').on('mouse', function() {
+        //     $($(this).find('span')[0]).addClass('layui-nav-mored')
+        //     $($(this).find('dl')[0]).addClass('layui-show')
+        // })
+        var cur_span = null;
+        var cur_dl = null;
+        $('.layui-nav-item').on({
+            click: function() {
+                cur_span = $(this).find('span')[0]
+                cur_dl = $(this).find('dl')[0]
+                $(cur_span).addClass('layui-nav-mored')
+                $(cur_dl).addClass('layui-show')
             }
-        });
+        })
+        // $('ul.layui-nav').on({
+        //     mouseover: function(){
+        //         cur_span = $(this).find('span')[0]
+        //         cur_dl = $(this).find('dl')[0]
+        //         $(cur_span).addClass('layui-nav-mored')
+        //         $(cur_dl).addClass('layui-show')
+        //     } ,
+        //     mouseout: function(){
+        //         $(cur_span).removeClass('layui-nav-mored')
+        //         $(cur_dl).removeClass('layui-show')
+        //     } 
+        // });
 
-        //显示表单弹窗
-        var showEditModel = function (data) {
-            //修改sex值
-            if (data){
-                data.sex = data.sex+'';
+        $('#select-prod').on({
+            click: function() {
+                localStorage.setItem('toSele', true)
+                location.href="#!fin-need-apply"
+                // $('#fin-need-apply').unbind('click')
+                // location.reload()
             }
-            admin.putTempData('t_user', data);
-            var title = data ? '修改用户' : '添加用户';
-            admin.popupCenter({
-                title: title,
-                path: 'pages/system/user_form.html',
-                finish: function () {
-                    table.reload('user-table', {});
-                }
-            });
-        };
-
-        // 搜索按钮点击事件
-        $('#user-btn-search').click(function () {
-            var key = $('#user-search-key').val();
-            var value = $('#user-search-value').val();
-            table.reload('user-table', {where: {searchKey: key, searchValue: value}});
-        });
-
-        // 导出
-        $('#user-btn-export').click(function () {
-            var url = config.base_server + 'api-user/users/export';
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', url, true);
-            xhr.responseType = "blob";
-            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
-            xhr.setRequestHeader("Authorization", "Bearer " + config.getToken().access_token);
-            xhr.onload = function() {
-                if (this.status == 200) {
-                    var fileName = "user.xlsx";
-                    var blob = this.response;
-                    var a = document.createElement('a');
-                    a.innerHTML = fileName;
-                    // 指定生成的文件名
-                    a.download = fileName;
-                    a.href = URL.createObjectURL(blob);
-                    document.body.appendChild(a);
-                    var evt = document.createEvent("MouseEvents");
-                    evt.initEvent("click", false, false);
-                    a.dispatchEvent(evt);
-                    document.body.removeChild(a);
-                }
-            }
-            xhr.send();
-        });
-
-        // 修改user状态
-        form.on('switch(user-tpl-state)', function (obj) {
-            layer.load(2);
-            admin.req('api-user/users/updateEnabled', {
-                id: obj.elem.value,
-                enabled: obj.elem.checked ? true : false
-            }, function (data) {
-                layer.closeAll('loading');
-                if (data.code == 0) {
-                    layer.msg(data.msg, {icon: 1, time: 500});
-                    //table.reload('table-user', {});
-                } else {
-                    layer.msg(data.msg, {icon: 2, time: 500});
-                    $(obj.elem).prop('checked', !obj.elem.checked);
-                    form.render('checkbox');
-                }
-            }, 'GET');
-        });
-
-        //上传
-        var importUrl = config.base_server + 'api-user/users/import';
-        upload.render({
-            elem: '#user-btn-import'
-            ,url: importUrl
-            ,accept: 'file' //普通文件
-            ,multiple: false
-            ,headers: {"Authorization" : "Bearer " + config.getToken().access_token}
-            ,done: function(data){
-                if (data.code == 0) {
-                    layer.msg(data.msg, {icon: 1, time: 500});
-                    table.reload('user-table', {});
-                } else {
-                    layer.msg(data.msg, {icon: 2, time: 500});
-                }
-            }
-        });
-
-        //判断权限，没有权限则隐藏按钮
-        /*let resList = ['user-btn-add','user-btn-export','user-btn-import'];
-        for(let i = 0; i < resList.length; i++){
-            if (!admin.hasPerm(resList[i])) {
-                $('#'+resList[i]).hide();
-            }
-        }*/
+        })
     });
 </script>
