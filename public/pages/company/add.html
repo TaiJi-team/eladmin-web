@@ -2,6 +2,7 @@
     .layui-layer-content {
         overflow: scroll !important;
     }
+
 </style>
 <div class="layui-fluid">
     <div class="layui-form layui-row layui-col-space15" id="CertificateInfoView" lay-filter="component-form-group">
@@ -28,6 +29,14 @@
                                         <div class="icon-box back"></div>
                                         <p class="icon-text" id="business_licence_TEXT">请上传营业执照</p>
                                     </div>
+                                    <div class="layui-upload-drag" id="png" style="width:250px; height:300px;">
+                                        <i class="layui-icon"></i>
+                                        <p>点击上传，或将文件拖拽到此处</p>
+                                        <div class="layui-hide" id="uploadDemoView">
+                                          <hr>
+                                          <img src="" alt="上传成功后渲染" style="max-width: 196px">
+                                        </div>
+                                      </div>
                                 </div><input class="layui-upload-file" type="file" accept="undefined" name="file">
                                 <div class="had-up-box" style="display:none;"> <img src="" class="had-img" alt="">
                                     <div class="hover-tip-box"> <input type="hidden" id="hdbusiness_licence"
@@ -47,7 +56,7 @@
                                 </div>
                             </div>
                             <p class="check-big up-example" data-url="/res/images/qy-tydm.jpg"><i
-                                    class="layui-icon layui-icon-search"></i>查看示例</p>
+                                    class="layui-icon layui-icon-search"></i>查看示例</p> -->
                         </div>
                         <div class="layui-col-md8">
                             <div class="layui-form-item" style="display:none;">
@@ -254,7 +263,7 @@
                 <div class="layui-card-body">
                     <div class="layui-row layui-col-space15">
                         <div class="layui-col-md4">
-                            <div class="up-img-box up-img-small-box card_urla_file" title="身份证头像页">
+                            <!-- <div class="up-img-box up-img-small-box card_urla_file" title="身份证头像页">
                                 <div class="no-up-box" id="card_urla_fileBtn" style="display:inline-block;">
                                     <div class="card-front-box">
                                         <div class="icon-box back"></div>
@@ -312,6 +321,13 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div> -->
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="test2">多图片上传</button> 
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                  预览图：
+                                  <div class="layui-upload-list" id="demo2"></div>
+                               </blockquote>
                             </div>
                         </div>
                         <div class="layui-col-md8">
@@ -384,7 +400,7 @@
                 <div class="layui-card-body">
                     <div class="layui-row layui-col-space15">
                         <div class="layui-col-md4 layui-col-lep">
-                            <div class="up-img-box up-img-small-box lep_urla_file" title="身份证头像页">
+                            <!-- <div class="up-img-box up-img-small-box lep_urla_file" title="身份证头像页">
                                 <div class="no-up-box" id="lep_urla_fileBtn" style="display:inline-block;">
                                     <div class="card-front-box">
                                         <div class="icon-box back"></div>
@@ -440,6 +456,13 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div> -->
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="test3">多图片上传</button> 
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                  预览图：
+                                  <div class="layui-upload-list" id="demo3"></div>
+                               </blockquote>
                             </div>
                         </div>
                         <div class="layui-col-md8">
@@ -519,7 +542,7 @@
                 <div class="layui-card-body">
                     <div class="layui-row layui-col-space15">
                         <div class="layui-col-md4">
-                            <div class="up-img-box up-img-small-box certificate" title="授权委托书">
+                            <!-- <div class="up-img-box up-img-small-box certificate" title="授权委托书">
                                 <div class="no-up-box" id="certificateBtn" style="display:inline-block;">
                                     <div class="card-front-box">
                                         <div class="icon-box back"></div>
@@ -552,7 +575,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+                            <button type="button" class="layui-btn" id="test4"><i class="layui-icon"></i>上传文件</button>
                         </div>
                         <div class="layui-col-md8">
                             <div class="layui-form-item">
@@ -1025,14 +1049,64 @@
 </div>
 
 <script>
-    layui.use(['layer', 'admin', 'form', 'formSelects'], function () {
+   
+    layui.use(['layer', 'admin', 'form', 'formSelects', 'upload'], function () {
         var layer = layui.layer;
         var admin = layui.admin;
         var form = layui.form;
         var formSelects = layui.formSelects;
+        var upload = layui.upload;
 
         // form.render('radio');
-
-
+         //拖拽上传
+        upload.render({
+            elem: '#png'
+            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+            ,done: function(res){
+            layer.msg('上传成功');
+            layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+            console.log(res)
+            }
+        });
+        //多图片上传经办人
+        upload.render({
+            elem: '#test2'
+            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+            ,multiple: true
+            ,before: function(obj){
+            //预读本地文件示例，不支持ie8
+            obj.preview(function(index, file, result){
+                $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'"width="'+ 50 +'"height="'+ 50 +'" class="layui-upload-img">')
+                });
+            }
+            ,done: function(res){
+            //上传完毕
+            }
+        });
+        //多图片上传法人
+        upload.render({
+            elem: '#test3'
+            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+            ,multiple: true
+            ,before: function(obj){
+            //预读本地文件示例，不支持ie8
+            obj.preview(function(index, file, result){
+                $('#demo3').append('<img src="'+ result +'" alt="'+ file.name +'"width="'+ 50 +'"height="'+ 50 +'" class="layui-upload-img">')
+                });
+            }
+            ,done: function(res){
+            //上传完毕
+            }
+        });
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#test4'
+            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+            ,accept: 'file' //普通文件
+            ,done: function(res){
+            layer.msg('上传成功');
+            console.log(res);
+            }
+        });
     });
 </script>
