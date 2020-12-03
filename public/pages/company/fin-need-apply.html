@@ -53,7 +53,7 @@
 
 .release-cont .form-information {
     padding: 10px 20px;
-    margin: 30px 0 23px;
+    margin: 13px 0 23px;
     border-radius: 5px;
     background: #eeeeee;
 }
@@ -215,20 +215,20 @@ li {
     width: 1200px;
     margin: 0 auto;
 }
-.detail-cont {
+/* .detail-cont {
     padding: 20px 30px;
-}
+} */
 .detail-cont .page-right {
     width: 350px;
     padding: 20px;
 }
-.clearfix:after {
+/* .clearfix:after {
     content: "";
     display: block;
     visibility: hidden;
     clear: both;
     height: 0;
-}
+} */
 div {
     display: block;
 }
@@ -346,20 +346,30 @@ xm-select > .xm-body {
     animation-duration: 0.3s;
     animation-fill-mode: both;
 }
-<style>
 .xm-icon-duox:before {
     content: "\e613";
+}
+.layui-tab-item .layui-show {
+    overflow-y: hidden;
+}
+
+.select-prod {
+    display: none;
+}
+
+.need-apply {
+    display: none;
 }
 </style>
 
 <div class="layui-card">
-    <!-- <div class="layui-card-header">
+    <div class="layui-card-header">
         <h2 class="header-title">融资需求管理</h2>
         <span class="layui-breadcrumb pull-right">
           <a href="#!console">工作台</a>
           <a><cite>融资需求管理</cite></a>
         </span>
-    </div> -->
+    </div>
     
     <div class="layui-fluid">
         <!-- content -->
@@ -385,7 +395,7 @@ xm-select > .xm-body {
                 </ul>
             </div>
     
-            <div class="fl bg-white page-left">
+            <div class="need-apply fl bg-white page-left">
                 <div class="ac page-head"><span>发布融资需求</span></div>
                 <div class="clearfix page-cont take-release">
                     <div class="layui-form" lay-filter="component-form-group">
@@ -400,7 +410,7 @@ xm-select > .xm-body {
                                 <input type="text" name="comid_sele" class="editable-select" id="editable-select_sele" autocomplete="off" placeholder="请选择或输入企业名称" lay-verify="required|companyname">  -->
                                 <select id="businessAmount" name="businessAmount" lay-verify="required">
                                     <option value="" selected="selected">--请选择融资公司--</option>
-                                    <option value="1">公司1</option>
+                                    <option value="1" selected="selected">公司1</option>
                                     <option value="2">公司2</option>
                                     <option value="3">公司3</option>
                                     <option value="4">公司4</option>
@@ -410,7 +420,7 @@ xm-select > .xm-body {
                                         <input type="text" placeholder="--请选择上年度开票营业收入--" value="" readonly="" class="layui-input layui-unselect">
                                         <i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit">
                                             <dd lay-value="" class="layui-select-tips">--请选择上年度开票营业收入--</dd>
-                                            <dd lay-value="1" class="">0-100万（含）</dd>
+                                            <dd lay-value="1" class="" selected="selected">0-100万（含）</dd>
                                             <dd lay-value="2" class="">100-500万（含）</dd>
                                             <dd lay-value="3" class="">500-1000万（含）</dd>
                                             <dd lay-value="4" class="">1000万以上</dd></dl></div>
@@ -421,7 +431,7 @@ xm-select > .xm-body {
                                 <label class="layui-form-label">
                                     <span class="form-required">*</span>企业所在省：</label>
                                 <div class="clearfix layui-input-block">
-                                    <select name="province" class="province-selector" lay-filter="province-1" lay-verify="required"><option value="100000">请选择省</option><option value="110000">北京</option><option value="120000">天津</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择省" value="请选择省" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="100000" class="layui-this">请选择省</dd><dd lay-value="110000" class="">北京</dd><dd lay-value="120000" class="">天津</dd><dd lay-value="130000" class="">河北省</dd><dd lay-value="140000" class="">山西省</dd><dd lay-value="150000" class="">内蒙古自治区</dd><dd lay-value="210000" class="">辽宁省</dd><dd lay-value="220000" class="">吉林省</dd><dd lay-value="230000" class="">黑龙江省</dd><dd lay-value="310000" class="">上海</dd><dd lay-value="320000" class="">江苏省</dd><dd lay-value="330000" class="">浙江省</dd><dd lay-value="340000" class="">安徽省</dd><dd lay-value="350000" class="">福建省</dd><dd lay-value="360000" class="">江西省</dd><dd lay-value="370000" class="">山东省</dd><dd lay-value="410000" class="">河南省</dd><dd lay-value="420000" class="">湖北省</dd><dd lay-value="430000" class="">湖南省</dd><dd lay-value="440000" class="">广东省</dd><dd lay-value="450000" class="">广西壮族自治区</dd><dd lay-value="460000" class="">海南省</dd><dd lay-value="500000" class="">重庆</dd><dd lay-value="510000" class="">四川省</dd><dd lay-value="520000" class="">贵州省</dd><dd lay-value="530000" class="">云南省</dd><dd lay-value="540000" class="">西藏自治区</dd><dd lay-value="610000" class="">陕西省</dd><dd lay-value="620000" class="">甘肃省</dd><dd lay-value="630000" class="">青海省</dd><dd lay-value="640000" class="">宁夏回族自治区</dd><dd lay-value="650000" class="">新疆维吾尔自治区</dd></dl></div>
+                                    <select name="province" class="province-selector" lay-filter="province-1" lay-verify="required"><option value="100000">请选择省</option><option value="110000" selected="selected">北京</option><option value="120000">天津</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择省" value="请选择省" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="100000" class="layui-this">请选择省</dd><dd lay-value="110000" class="">北京</dd><dd lay-value="120000" class="">天津</dd><dd lay-value="130000" class="">河北省</dd><dd lay-value="140000" class="">山西省</dd><dd lay-value="150000" class="">内蒙古自治区</dd><dd lay-value="210000" class="">辽宁省</dd><dd lay-value="220000" class="">吉林省</dd><dd lay-value="230000" class="">黑龙江省</dd><dd lay-value="310000" class="">上海</dd><dd lay-value="320000" class="">江苏省</dd><dd lay-value="330000" class="">浙江省</dd><dd lay-value="340000" class="">安徽省</dd><dd lay-value="350000" class="">福建省</dd><dd lay-value="360000" class="">江西省</dd><dd lay-value="370000" class="">山东省</dd><dd lay-value="410000" class="">河南省</dd><dd lay-value="420000" class="">湖北省</dd><dd lay-value="430000" class="">湖南省</dd><dd lay-value="440000" class="">广东省</dd><dd lay-value="450000" class="">广西壮族自治区</dd><dd lay-value="460000" class="">海南省</dd><dd lay-value="500000" class="">重庆</dd><dd lay-value="510000" class="">四川省</dd><dd lay-value="520000" class="">贵州省</dd><dd lay-value="530000" class="">云南省</dd><dd lay-value="540000" class="">西藏自治区</dd><dd lay-value="610000" class="">陕西省</dd><dd lay-value="620000" class="">甘肃省</dd><dd lay-value="630000" class="">青海省</dd><dd lay-value="640000" class="">宁夏回族自治区</dd><dd lay-value="650000" class="">新疆维吾尔自治区</dd></dl></div>
                                 </div>
                             </div>
                             <div class="fl layui-form-item">
@@ -429,14 +439,14 @@ xm-select > .xm-body {
                                     <span class="form-required">*</span>企业所在市：
                                 </label>
                                 <div class="clearfix layui-input-block">
-                                    <select name="city" class="city-selector" lay-filter="city-1" lay-verify="required"><option value="140100">太原市</option><option value="140200">大同市</option><option value="140300">阳泉市</option><option value="140400">长治市</option><option value="140500">晋城市</option><option value="140600">朔州市</option><option value="140700">晋中市</option><option value="140800">运城市</option><option value="140900">忻州市</option><option value="141000">临汾市</option><option value="141100">吕梁市</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="太原市" value="太原市" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="140100" class="layui-this">太原市</dd><dd lay-value="140200" class="">大同市</dd><dd lay-value="140300" class="">阳泉市</dd><dd lay-value="140400" class="">长治市</dd><dd lay-value="140500" class="">晋城市</dd><dd lay-value="140600" class="">朔州市</dd><dd lay-value="140700" class="">晋中市</dd><dd lay-value="140800" class="">运城市</dd><dd lay-value="140900" class="">忻州市</dd><dd lay-value="141000" class="">临汾市</dd><dd lay-value="141100" class="">吕梁市</dd></dl></div>
+                                    <select name="city" class="city-selector" lay-filter="city-1" lay-verify="required"><option value="140100" selected="selected">北京市</option><option value="140200">大同市</option><option value="140300">阳泉市</option><option value="140400">长治市</option><option value="140500">晋城市</option><option value="140600">朔州市</option><option value="140700">晋中市</option><option value="140800">运城市</option><option value="140900">忻州市</option><option value="141000">临汾市</option><option value="141100">吕梁市</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="太原市" value="太原市" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="140100" class="layui-this">太原市</dd><dd lay-value="140200" class="">大同市</dd><dd lay-value="140300" class="">阳泉市</dd><dd lay-value="140400" class="">长治市</dd><dd lay-value="140500" class="">晋城市</dd><dd lay-value="140600" class="">朔州市</dd><dd lay-value="140700" class="">晋中市</dd><dd lay-value="140800" class="">运城市</dd><dd lay-value="140900" class="">忻州市</dd><dd lay-value="141000" class="">临汾市</dd><dd lay-value="141100" class="">吕梁市</dd></dl></div>
                                 </div>
                             </div>
                             <div class="fl layui-form-item">
                                 <label class="layui-form-label">
                                     <span class="form-required">*</span>企业所在区：</label>
                                 <div class="clearfix layui-input-block">
-                                    <select name="area" class="county-selector" lay-filter="county-1" lay-verify="required"><option value="">请选择区/县</option><option value="100101">请选择区/县</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择区/县" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择区/县</dd><dd lay-value="100101" class="">请选择区/县</dd></dl></div>
+                                    <select name="area" class="county-selector" lay-filter="county-1" lay-verify="required"><option value="">请选择区/县</option><option value="100101" selected="selected">朝阳区</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择区/县" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择区/县</dd><dd lay-value="100101" class="">请选择区/县</dd></dl></div>
                                 </div>
     
                             </div>
@@ -446,7 +456,7 @@ xm-select > .xm-body {
                                 <span class="form-required">*</span>期望年化利率：</label>
                             <div class="clearfix layui-input-block">
                                 <span class="fr input-unit">%</span>
-                                <input type="text" name="rate" value="" lay-verify="required|money" autocomplete="off" placeholder="请输入年利率" class="layui-input" maxlength="18">
+                                <input type="text" name="rate" value="5" lay-verify="required|money" autocomplete="off" placeholder="请输入年利率" class="layui-input" maxlength="18">
                             </div>
                         </div>
     
@@ -455,7 +465,7 @@ xm-select > .xm-body {
                                 <span class="form-required">*</span>期望融资金额：</label>
                             <div class="clearfix layui-input-block">
                                 <span class="fr input-unit">万元（人民币）</span>
-                                <input type="text" name="amount" value="" lay-verify="required|money" placeholder="请输入融资金额" class="layui-input" maxlength="18" autocomplete="off">
+                                <input type="text" name="amount" value="100" lay-verify="required|money" placeholder="请输入融资金额" class="layui-input" maxlength="18" autocomplete="off">
                             </div>
                         </div>
                         <div class="fl layui-form-item">
@@ -463,28 +473,28 @@ xm-select > .xm-body {
                                 <span class="form-required">*</span>贷款期限：</label>
                             <div class="clearfix layui-input-block">
                                 <span class="fr input-unit">月</span>
-                                <input type="text" name="maturity" value="" lay-verify="required|numberInt" autocomplete="off" placeholder="请输入融资期限" class="layui-input" maxlength="3">
+                                <input type="text" name="maturity" value="18" lay-verify="required|numberInt" autocomplete="off" placeholder="请输入融资期限" class="layui-input" maxlength="3">
                             </div>
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>开户行：</label>
                             <div class="clearfix layui-input-block">
-                                <input type="text" id="openBank" name="openBank" value="" lay-verify="required" placeholder="请输入开户行" class="layui-input" autocomplete="off">
+                                <input type="text" id="openBank" name="openBank" value="北京银行" lay-verify="required" placeholder="请输入开户行" class="layui-input" autocomplete="off">
                             </div>
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>开票营业收入：</label>
                             <div class="clearfix layui-input-block">
-                                <select id="businessAmount" name="businessAmount" lay-verify="required"><option value="" selected="selected">--请选择上年度开票营业收入--</option><option value="1">0-100万（含）</option><option value="2">100-500万（含）</option><option value="3">500-1000万（含）</option><option value="4">1000万以上</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择上年度开票营业收入--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择上年度开票营业收入--</dd><dd lay-value="1" class="">0-100万（含）</dd><dd lay-value="2" class="">100-500万（含）</dd><dd lay-value="3" class="">500-1000万（含）</dd><dd lay-value="4" class="">1000万以上</dd></dl></div>
+                                <select id="businessAmount" name="businessAmount" lay-verify="required"><option value="" selected="selected">--请选择上年度开票营业收入--</option><option value="1" selected="selected">0-100万（含）</option><option value="2">100-500万（含）</option><option value="3">500-1000万（含）</option><option value="4">1000万以上</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择上年度开票营业收入--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择上年度开票营业收入--</dd><dd lay-value="1" class="">0-100万（含）</dd><dd lay-value="2" class="">100-500万（含）</dd><dd lay-value="3" class="">500-1000万（含）</dd><dd lay-value="4" class="">1000万以上</dd></dl></div>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>纳税金额：</label>
                             <div class="clearfix layui-input-block">
-                                <select id="payAmount" name="payAmount" lay-verify="required"><option value="" selected="selected">--请选择上年度纳税金额--</option><option value="1">0-2万（含）</option><option value="2">2-5万（含）</option><option value="3">5-10万（含）</option><option value="4">10万以上</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择上年度纳税金额--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择上年度纳税金额--</dd><dd lay-value="1" class="">0-2万（含）</dd><dd lay-value="2" class="">2-5万（含）</dd><dd lay-value="3" class="">5-10万（含）</dd><dd lay-value="4" class="">10万以上</dd></dl></div>
+                                <select id="payAmount" name="payAmount" lay-verify="required"><option value="" selected="selected">--请选择上年度纳税金额--</option><option value="1" selected="selected">0-2万（含）</option><option value="2">2-5万（含）</option><option value="3">5-10万（含）</option><option value="4">10万以上</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择上年度纳税金额--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择上年度纳税金额--</dd><dd lay-value="1" class="">0-2万（含）</dd><dd lay-value="2" class="">2-5万（含）</dd><dd lay-value="3" class="">5-10万（含）</dd><dd lay-value="4" class="">10万以上</dd></dl></div>
                             </div>
                         </div>
     
@@ -492,23 +502,23 @@ xm-select > .xm-body {
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>企业是否盈利：</label>
                             <div class="clearfix layui-input-block">
-                                <select id="isProfit" name="isProfit" lay-verify="required"><option value="" selected="selected">--请选择是否盈利--</option><option value="0">亏损</option><option value="1">盈利</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择是否盈利--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择是否盈利--</dd><dd lay-value="0" class="">亏损</dd><dd lay-value="1" class="">盈利</dd></dl></div>
+                                <select id="isProfit" name="isProfit" lay-verify="required"><option value="" selected="selected">--请选择是否盈利--</option><option value="0">亏损</option><option value="1" selected="selected">盈利</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择是否盈利--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择是否盈利--</dd><dd lay-value="0" class="">亏损</dd><dd lay-value="1" class="">盈利</dd></dl></div>
                             </div>
                         </div>
-                        <div class="fl layui-form-item">
+                        <!-- <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>是否有抵押物：</label>
                             <div class="clearfix layui-input-block">
                                 <select id="isCollateral" name="isCollateral" lay-verify="required">
                                 <option value="" selected="selected">--请选择是否有抵押物--</option><option value="0">无</option><option value="1">有</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择是否有抵押物--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择是否有抵押物--</dd><dd lay-value="0" class="">无</dd><dd lay-value="1" class="">有</dd></dl></div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>纳税等级：</label>
                             <div class="clearfix layui-input-block">
                                 <select id="payGrade" name="payGrade" lay-verify="required">
-                                <option value="" selected="selected">--请选择纳税等级--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="m">M</option><option value="gtgsh">个体工商户</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择纳税等级--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择纳税等级--</dd><dd lay-value="A" class="">A</dd><dd lay-value="B" class="">B</dd><dd lay-value="C" class="">C</dd><dd lay-value="D" class="">D</dd><dd lay-value="m" class="">M</dd><dd lay-value="gtgsh" class="">个体工商户</dd></dl></div>
+                                <option value="" selected="selected">--请选择纳税等级--</option><option value="A" selected="selected">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="m">M</option><option value="gtgsh">个体工商户</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择纳税等级--" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择纳税等级--</dd><dd lay-value="A" class="">A</dd><dd lay-value="B" class="">B</dd><dd lay-value="C" class="">C</dd><dd lay-value="D" class="">D</dd><dd lay-value="m" class="">M</dd><dd lay-value="gtgsh" class="">个体工商户</dd></dl></div>
                             </div>
                         </div>
                         <!-- <div class="fl layui-form-item">
@@ -528,10 +538,100 @@ xm-select > .xm-body {
                             </p>
                         </div>
                         <div class="fl ac item-full">
-                            <input type="hidden" name="action" value="financing_post">
-                            <button class="layui-btn btn g-bg g-shadow take-choose" lay-submit="" lay-filter="addForm">发布融资需求</button>
+                            <!-- <input type="hidden" name="action" value="financing_post"> -->
+                            <button id="fin-need-apply" class="layui-btn btn g-bg g-shadow take-choose">发布融资需求</button>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="select-prod fl bg-white page-left">
+                <div class="clearfix page-head">
+                    <ul class="fr grant-ul">
+                        <li class="ac fl">
+                            <p class="item-cont"></p>
+                            <p class="item-name">乔禾教育</p>
+                        </li>
+                    </ul> <span>融资需求发布成功，请选择融资产品</span>
+                </div>
+                <div class="clearfix financial-advisor">
+                    <div class="btn fr service-card">
+                        <div class="fl card-info">
+                            <p>Hi,我是您的专属融资顾问，有问题可随时与我联系！</p>
+                        </div>
+                        <div class="fl card-img">
+                            <div class="line-middle user-box"> <a
+                                    href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"
+                                    target="_blank" class="chat-btn" data-type="chat"
+                                    data-guid="851d94d2108543dc8160ce29ee8f4578" data-name="江季垚"
+                                    data-headimgurl="/celoan/sysfile/2019/05/10/2019051008114476718.jpg"> <img
+                                        src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/sysfile/2019/05/10/2019051008114476718.jpg"
+                                        alt=""> </a> </div>
+                        </div>
+                        <div class="line-middle service-contact">
+                            <div class="line-middle">
+                                <p class="contact-name">江季垚</p> <a href="tel:4001016871" title="tel:4001016871"> <img
+                                        src="/res/images/p-ico.png" class="contact-p" alt=""></a> <a
+                                    href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"
+                                    target="_blank" class="chat-btn" data-type="chat"
+                                    data-guid="851d94d2108543dc8160ce29ee8f4578" data-name="江季垚"
+                                    data-headimgurl="/celoan/sysfile/2019/05/10/2019051008114476718.jpg"> <img
+                                        src="/res/images/msg-ico.png" class="contact-msg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-cont" id="chooseProduct">
+                    <div class="bank-product">
+                        <dl class="overflow choose-box">
+                            <dt> <span class="box-t">推荐金融产品</span> <span class="box-st">系统为您智能匹配到<span
+                                        class="t-num">1</span>个金融产品，请您选择意向产品或选择让融资顾问为您推荐</span> </dt>
+                            <dd>
+                                <ul class="clearfix choose-ul">
+                                    <li>
+                                        <div class="item-check-btn">
+                                            <div style="display: none;"> <input type="checkbox" name="product"
+                                                    title="线上快审快贷" value="326" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>线上快审快贷</span><i class="layui-icon layui-icon-ok"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="fl ac item-img"> <img
+                                                src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png"
+                                                alt=""> </div>
+                                        <div class="cont-main">
+                                            <h2 class="cont-t">线上快审快贷</h2>
+                                            <p class="cont-from"> <span class="from-name">宁波银行股份有限公司</span>已成功放款0家 成功率0%
+                                            </p>
+                                            <p class="cont-info"> <span class="info-label">额度范围：1-800万</span> <span
+                                                    class="info-label">年利率：5-7%</span> <span
+                                                    class="info-label">贷款期限：1-120个月</span> </p>
+                                        </div>
+                                        <div class="item-btn-tool"> <button type="button" class="fl item-detail-btn"
+                                                data-id="326"> 详情 </button> </div>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="bank-product-other">
+                        <div class="item-nocheck-btn">
+                            <div class="clearfix" style="display: none;"> <input type="checkbox" name="noproduct" value="1"
+                                    lay-skin="primary" lay-filter="noproduct" title="以上产品都不合适，让融资顾问为我推荐">
+                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                    <span>以上产品都不合适，让融资顾问为我推荐</span><i class="layui-icon layui-icon-ok"></i></div>
+                            </div>
+                        </div> <span>以上产品均不合适，让融资顾问为我推荐</span> <a href="/#/requIndex/financialProducts" target="_blank"
+                            class="more-product">查看更多金融产品&gt;&gt;</a>
+                    </div>
+                    <div class="ac choose-btn" style="float: left;margin: 3% 3% 0 0;"> <input type="hidden" name="hdnid" value="36425"> <input type="hidden"
+                            name="hdproductCount" value="1"> <input type="hidden" name="action"
+                            value="financingPublish2_post"> <button class="layui-btn btn g-bg g-shadow take-choose"
+                            lay-submit="" lay-filter="addForm3">立即提交</button> </div>
+                    <div class="ac choose-btn"style="float: left;margin: 3% 3% 0 0;" > <input type="hidden" name="hdnid" value="36425"> <input type="hidden"
+                        name="hdproductCount" value="1"> <input type="hidden" name="action"
+                        value="financingPublish2_post"> <button id="sele-prod-cancel" class="layui-btn btn g-bg g-shadow take-choose"
+                        lay-submit="" lay-filter="addForm3">取消</button> </div>
                 </div>
             </div>
         </div>
@@ -539,21 +639,6 @@ xm-select > .xm-body {
     </div>
 
 </div>
-
-
-<!-- 表格操作列 -->
-<script type="text/html" id="user-table-bar">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-xs" lay-event="reset">重置密码</a>
-    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-</script>
-
-<!-- 表格状态列 -->
-<script type="text/html" id="user-tpl-state">
-    <input type="checkbox" lay-filter="user-tpl-state" value="{{d.id}}" lay-skin="switch" lay-text="正常|锁定"
-           {{d.enabled==true?'checked':''}}/>
-</script>
-
 <script>
     layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
         var form = layui.form;
@@ -564,8 +649,23 @@ xm-select > .xm-body {
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
-
-        
-        
+        let toSele = JSON.parse(localStorage.getItem('toSele'))
+        if(!toSele) {
+            $('.need-apply').show()
+            $('.select-prod').hide()
+        } else {
+            $('.need-apply').hide()
+            $('.select-prod').show()
+        }
+        $('#fin-need-apply').on('click', function() {
+            localStorage.setItem('toSele', true)
+            $('#sele-prod-cancel').unbind('click')
+            location.reload()
+        })
+        $('#sele-prod-cancel').on('click', function() {
+            localStorage.setItem('toSele', false)
+            $('#fin-need-apply').unbind('click')
+            location.reload()
+        })
     });
 </script>

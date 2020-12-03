@@ -50,7 +50,7 @@
           text-align: center;
         }
         .layui-col-xs3 img {
-          width: 80%;
+          width: 40%;
         }
         .layui-col-xs3 p {
           margin: 5% 0 0 0;
@@ -59,20 +59,20 @@
 </head>
 <body>
     <div class="layui-btn-container" style="margin: 2% 0 0 18%; display: none;">
-        <button class="layui-btn" type="button" style="float: left;" auth-type="1">企业入驻</button>
+        <button class="cons-btn layui-btn" type="button" style="float: left;" auth-type="1">企业入驻</button>
         <ul class="layui-nav layui-bg-green btnz" lay-filter="" style="font-size: 12px;border-radius: 0px;float: left;padding:0px 0px 0px 0px;margin: 0 1% 0 0%;">
             <li class="layui-nav-item" style="line-height: 34px;">
                 <a href="javascript:;" style="color:white;font-size: 14px;padding: 0px 30px 0px 20px;">金融机构入驻<span class="layui-nav-more" style="right: 10px;font-size: 12px;"></span></a>
                 <dl class="layui-nav-child" style="top: 28px;line-height: 31px;padding: 0px 0px 0px 0px;background-color: rgb(39, 172, 39);"> <!-- 二级菜单 -->
-                    <dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-0" style="margin-bottom: 1%;">金融机构</button></dd>
-                    <dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-1" style="margin-bottom: 1%;">信用机构</button></dd>
-                    <dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-2" style="margin-bottom: 1%;">投资机构</button></dd>
-                    <dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-3" style="margin-bottom: 1%;">保险公司</button></dd>
-                    <dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-4" style="margin-bottom: 1%;">担保机构</button></dd>
+                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-0" style="margin-bottom: 1%;">金融机构</button></dd>
+                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-1" style="margin-bottom: 1%;">信用机构</button></dd>
+                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-2" style="margin-bottom: 1%;">投资机构</button></dd>
+                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-3" style="margin-bottom: 1%;">保险公司</button></dd>
+                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-4" style="margin-bottom: 1%;">担保机构</button></dd>
                 </dl>
             </li>
         </ul>
-        <button class="layui-btn" type="button" style="float: left;" auth-type="3">运营公司入驻</button>
+        <button class="cons-btn layui-btn" type="button" style="float: left;" auth-type="3">运营公司入驻</button>
     </div>
 
     <div id="view"></div>
@@ -305,7 +305,7 @@
                 ]]
             });
         }
-        $('button.layui-btn').on('click', function(){
+        $('button.cons-btn').on('click', function(){
             let type = $(this).attr('auth-type');
             // layer.msg(type, {icon: 5, time: 1000});
             const config = {

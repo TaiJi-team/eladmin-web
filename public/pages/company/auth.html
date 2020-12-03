@@ -201,9 +201,18 @@
             admin.popupCenter({
                 type:2,
                 title: title,
-                area: ['1000px', '1000px'],
+                area: ['1000px', '680px'],
                 path: 'pages/company/add.html',
                 btn: ['提交', '取消'],
+                success: function() {
+                    $('.layui-layer').css({
+                        // 'z-index': '10000000',
+                        // 'width': '86%',
+                        // 'height': '90%',
+                        'top': '8%',
+                        'left': '18%'
+                    })
+                },
                 finish: function () {
                     // table.reload('user-table', {});
                 }
