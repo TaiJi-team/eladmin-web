@@ -366,10 +366,10 @@ export default {
 <style scoped>
 
 .banner {
-    height: 400px;
+    height: 330px;
 }
 
-.banner>>>.el-carousel__container {
+.banner.el-carousel__container {
     height: 400px;
 }
 

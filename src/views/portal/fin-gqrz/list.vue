@@ -18,27 +18,11 @@
             </div>
             <div class="head-title">
               <img :src="t_img" alt="">
-              <span class="line-middle t-name">所有机构</span>
+              <span class="line-middle t-name">信息筛选</span>
             </div>
           </div>
           <ul id="filterUl" class="bg-white filter-ul">
-
-            <li>
-              <span class="fl item-label">服务区域</span>
-              <div class="overflow item-cont item-on">
-                <div class="clearfix pos-rela item-city">
-                  <div class="overflow item-sub_city item-sub_level_1">
-                    <a class="fl item-l item-b item-l-on" data-type="CityType" data-id="0">不限</a>
-                    <a class="fl item-l" data-type="CityType" data-id="110100">北京市</a></div>
-                  <input type="hidden" name="CityType">
-                </div>
-              </div>
-              <span class="filter-switch">
-                <!-- TODO -->
-                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
-              </span>
-            </li>
-            <li class="filter_ds">
+            <!-- <li class="filter_ds">
               <span class="fl item-label">区县</span>
               <div class="overflow item-cont item-on" style="height: auto;">
                 <div class="clearfix pos-rela item-city">
@@ -48,15 +32,15 @@
                   <input type="hidden" name="AreaType">
                 </div>
               </div>
-            </li>
+            </li> -->
 
             <li>
               <span class="fl item-label">行业</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <!-- <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a><a class="fl item-l" data-type="OrgType" data-id="1">银行</a><a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a><a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a><a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a><a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a><a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a><a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a><a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a><a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a><a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a><a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div> -->
-                  <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">电商</a>
-                  <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="1" @click="activeB=1">社交</a>
+                  <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">不限</a>
+                  <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="1" @click="activeB=1">电商</a>
                   <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="2" @click="activeB=2">硬件</a>
                   <a :class="{'item-l-on':activeB==3}" class="fl item-l " data-type="OrgType" data-id="3" @click="activeB=3">文娱传媒</a>
                   <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="4" @click="activeB=4">工具</a>
@@ -76,43 +60,32 @@
                 <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
               </span>
             </li>
-            <!-- <li>
-              <span class="fl item-label">担保方式</span>
-              <div class="overflow item-cont item-on">
-                <div class="clearfix pos-rela item-city">
-                  <div id="GuaranteeModeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="GuaranteeModeType" data-id="0">不限</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="1">抵押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="2">质押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="3">信保基金</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="4">一般保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="5">信用</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="6">保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="7">连带责任保证</a></div>
-                  <input type="hidden" name="GuaranteeModeType">
-                </div>
-              </div>
-            </li>
             <li>
-              <span class="fl item-label">产品类型</span>
+              <span class="fl item-label">融资轮次</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="ProductType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="ProductType" data-id="0">不限</a><a class="fl item-l" data-type="ProductType" data-id="3">线上审批</a><a class="fl item-l" data-type="ProductType" data-id="2">线下审批</a><a class="fl item-l" data-type="ProductType" data-id="1">秒批秒贷</a><a class="fl item-l" data-type="ProductType" data-id="100">抗疫产品</a></div>
-                  <input type="hidden" name="ProductType">
+                  <!-- <div class="overflow item-sub_city item-sub_level_1"> -->
+                  <!-- <a class="fl item-l item-b item-l-on" data-type="CityType" data-id="0">不限</a>
+                    <a class="fl item-l" data-type="CityType" data-id="110100">北京市</a></div> -->
+                  <a :class="{'item-l-on':activeC==0}" class="fl item-l " data-type="CityType" data-id="0" @click="activeC=0">不限</a>
+                  <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="CityType" data-id="1" @click="activeC=1">种子轮</a>
+                  <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="CityType" data-id="2" @click="activeC=2">天使轮</a>
+                  <a :class="{'item-l-on':activeC==3}" class="fl item-l " data-type="CityType" data-id="3" @click="activeC=3">pre-A轮</a>
+                  <a :class="{'item-l-on':activeC==4}" class="fl item-l" data-type="CityType" data-id="4" @click="activeC=4">A轮</a>
+                  <a :class="{'item-l-on':activeC==5}" class="fl item-l" data-type="CityType" data-id="5" @click="activeC=5">B轮</a>
+                  <a :class="{'item-l-on':activeC==6}" class="fl item-l " data-type="CityType" data-id="6" @click="activeC=6">C轮</a>
+                  <a :class="{'item-l-on':activeC==7}" class="fl item-l" data-type="CityType" data-id="7" @click="activeC=7">D轮</a>
+                  <a :class="{'item-l-on':activeC==8}" class="fl item-l" data-type="CityType" data-id="8" @click="activeC=8">E轮</a>
+                  <a :class="{'item-l-on':activeC==9}" class="fl item-l " data-type="CityType" data-id="9" @click="activeC=9">F轮</a>
+                  <a :class="{'item-l-on':activeC==10}" class="fl item-l" data-type="CityType" data-id="10" @click="activeC=1">G轮</a>
+                  <a :class="{'item-l-on':activeC==11}" class="fl item-l" data-type="CityType" data-id="11" @click="activeC=10">PRE-IPO</a>
+                  <a :class="{'item-l-on':activeC==12}" class="fl item-l" data-type="CityType" data-id="12" @click="activeC=2">IPO</a>
+                  <a :class="{'item-l-on':activeC==13}" class="fl item-l" data-type="CityType" data-id="13" @click="activeC=2">上市企业</a><br>
+                  <input type="hidden" name="CityType">
                 </div>
               </div>
+              <span class="filter-switch" />
             </li>
-
-            <li>
-              <span class="fl item-label">贷款期限</span>
-              <div class="overflow item-cont item-on">
-                <div class="clearfix pos-rela item-city">
-                  <div id="LoanTimeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanTimeType" data-id="0">不限</a><a class="fl item-l" data-type="LoanTimeType" data-id="1">6个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="2">12个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="3">36个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="4">36个月以上</a></div>
-                  <input type="hidden" name="LoanTimeType">
-                </div>
-              </div>
-            </li>
-            <li>
-              <span class="fl item-label">贷款额度</span>
-              <div class="overflow item-cont item-on">
-                <div class="clearfix pos-rela item-city">
-                  <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div>
-                  <input type="hidden" name="LoanLimitType">
-                </div>
-              </div>
-            </li> -->
           </ul>
           <input id="hdSortType" type="hidden" name="SortType">
 
@@ -121,58 +94,41 @@
 
       <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
         <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
-        <!-- <div class="list-tool"> -->
-        <!-- <div id="listSort" class="fl tool-left">
-            <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
-            <div class="tool-item" data-id="1"> <span class="item-name">利率</span> </div>
-            <div class="tool-item" data-id="2"> <span class="item-name">申请次数</span> </div>
-          </div> -->
-        <!-- <div id="listType" class="fr tool-right">
-            <div class="tool-item" :class="{'on':isBlock==true}" data-type="block" @click="isBlock=true"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
-            <div class="tool-item" :class="{'on':isBlock==false}" data-type="line" @click="isBlock=false"> <span class="item-name"> <img :src="ico_type2" alt=""> </span> </div>
-          </div> -->
-        <!-- </div> -->
-        <!-- v-show="isBlock" -->
-        <!--  style="display: none;" -->
         <ul id="productListLine" class="product-list-line">
-          <router-link to="/fin-org/detail" tag="li"> <a>
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
+          <li>
+            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAZ68fAAAjOg2Yhz4764.png" alt=""> </div>
             <div class="fl item-title">
-              <span class="t">招商银行股份有限公司北京分行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-              <span class="t" style="visibility:hidden">招商银行股份有限公司北京分行</span>
+              <p class="st"> <span class="st-label">红杉资本(中国)</span> </p>
+              <p class="t">红杉资本始终致力于帮助创业者成就基业长青的伟大公司，为成员企业带来丰富的全球资源和宝贵的历史经验。47 年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
             </div>
-            <div class="fl item-info"> <span class="info-c">2个</span> <span class="info-n">发布产品数</span> </div>
-            <div class="fl item-info"> <span class="info-c">89分</span> <span class="info-n">综合评分</span> </div>
-            <!-- <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div> -->
-          </a> </router-link>
-          <li> <a href="/#/requIndex/financingProductDetail#?id=346&amp;guid=f93e1b10c3ab4b3086e1428118a535bf" target="_blank">
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">中国邮政储蓄股份有限公司北京分行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+          </li>
+          <li>
+            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAeQBjAAAPPbGM7O8531.png" alt=""> </div>
+            <div class="fl item-title">
+              <p class="st"> <span class="st-label">京西文旅</span> </p>
+              <p class="t">北京京西文旅科技投资基金管理有限公司（以下简称：文旅基金公司）于2016年8月8日成立，隶属北京市文化投资发展集团有限责任公司（以下简称：文投集团），由文投集团与门头沟区属企业北京京西鑫融投资管理有限公司（以下简称：京西鑫融公司）共同出资设立。公司注册资本金1000万元人民币，其中文投集团占股70%，京西鑫融公司 年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
             </div>
-            <div class="fl item-info"> <span class="info-c">5个</span> <span class="info-n">发布产品数</span> </div>
-            <div class="fl item-info"> <span class="info-c">59分</span> <span class="info-n">综合评分</span> </div>
-            <!-- <div class="fl item-info"> <span class="info-c">1-500万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
-          </a> </li>
-          <li> <a href="/#/requIndex/financingProductDetail#?id=335&amp;guid=06026fa341924905a302338d354d7466" target="_blank">
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">北京农商银行股份有限公司</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+          </li>
+          <li>
+            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAK_JZAAARbaldlK4733.png" alt=""> </div>
+            <div class="fl item-title">
+              <p class="st"> <span class="st-label">CBC宽带资本</span> </p>
+              <p class="t">宽带资本（CBC）由田溯宁成立于2006年，10余年来专注于TMT行业股权投资，目前管理多支美元及人民币基金。 宽带资本的投资项目涵盖从成长期到成熟期的各阶段，投资组合包括企业级服务、云计算、大数据、人工智能、5G等以技术和数据驱动的领域，旗下各基金累计投资一百多个项目，包括世纪互联、亚信科技、朗新科技、七牛云、同...
+                年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
             </div>
-            <div class="fl item-info"> <span class="info-c">2个</span> <span class="info-n">发布产品数</span> </div>
-            <div class="fl item-info"> <span class="info-c">65分</span> <span class="info-n">综合评分</span> </div>
-            <!-- <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
-          </a> </li>
-          <li> <a href="/#/requIndex/financingProductDetail#?id=326&amp;guid=d22aa5c073df419db31f60c07264c564" target="_blank">
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">宁波银行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">宁波市</span> </p>
+            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+          </li>
+          <li>
+            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAGBakAAAQTsH2_Lk761.png" alt=""> </div>
+            <div class="fl item-title">
+              <p class="st"> <span class="st-label">德同资本</span> </p>
+              <p class="t">德同资本是一家国内领先的私募股权投资机构，专注于消费升级、医疗健康、以及智能制造领域，着重搜寻有巨大市场机遇，优秀管理团队和清晰运营模式的高成长公司。德同资本目前管理资金超过100亿人民币，主要投资人包括多个省市政府引导基金和金融机构，并和多家行业龙头上市公司上海城投/威孚高科、益民集团、粤传媒、中文在线、...
+              </p>
             </div>
-            <div class="fl item-info"> <span class="info-c">4个</span> <span class="info-n">发布产品数</span> </div>
-            <div class="fl item-info"> <span class="info-c">78分</span> <span class="info-n">综合评分</span> </div>
-            <!-- <div class="fl item-info"> <span class="info-c">1-800万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
-          </a> </li>
+            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+          </li>
         </ul>
         <div id="pagination" class="ac pagination">
           <div id="layui-laypage-59" class="layui-box layui-laypage layui-laypage-default"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" /><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
@@ -215,7 +171,8 @@ export default {
         backgroundPositionX: 'right',
         backgroundPositionY: 'center'
       },
-      activeB: 0
+      activeB: 0,
+      activeC: 0
     }
   },
   mounted() {
@@ -577,6 +534,10 @@ button {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+.min-page {
+    width: 1200px;
+    margin: 0 auto;
+}
 .search-result .result-text {
     padding-left: 10px;
     margin-bottom: 10px;
@@ -823,27 +784,37 @@ li[data-v-f123e482] {
     overflow: hidden;
 }
 .product-list-line .item-title {
-    width: 260px;
+    width: 850px;
+    height: 50px;
+    line-height: 1.8;
 }
 .product-list-line .item-title .t {
     display: block;
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 100px;
+    font-size: 15px;
     color: #181818;
     overflow: hidden;
+    word-break:normal;
+     word-break: break-all;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 .product-list-line .item-title .st {
-    font-size: 14px;
-    color: #696969;
-    line-height: 1.6;
+    font-size: 16px;
+    color: #050505;
+    line-height: 1;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
     text-align: justify;
     margin-bottom: 5px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+
 }
 .product-list-line .item-info {
     width: 350px;
@@ -862,12 +833,16 @@ li[data-v-f123e482] {
     color: #f57825;
 }
 .product-list-line .item-btn {
-    width: 140px;
+    width: 120px;
     height: 40px;
-    margin: 25px 0 0 10px;
+    margin: 25px 0 0 50px;
+    margin-top: 25px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 50px;
     border-radius: 20px;
-    font-size: 20px;
-    background: #00bba4;
+    font-size: 18px;
+    background: #bb0000;
 }
 .layui-btn {
     display: inline-block;
