@@ -661,6 +661,8 @@
         <h2 class="header-title">融资需求详情</h2>
         <span class="layui-breadcrumb pull-right">
             <a href="#!console">工作台</a>
+            <cite></cite>
+            <a class="my-fin-need">我的融资需求</a>
             <a><cite>融资需求详情</cite></a>
         </span>
     </div>
@@ -1509,6 +1511,14 @@
             click: function() {
                 localStorage.setItem('toDetail', true)
                 $('#need-detail-cancel').unbind('click')
+                location.reload()
+            }
+        })
+        // 返回
+        $('.my-fin-need').on({
+            click: function() {
+                localStorage.setItem('toDetail', false)
+                $('#fin-need-apply').unbind('click')
                 location.reload()
             }
         })

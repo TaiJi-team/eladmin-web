@@ -118,7 +118,7 @@
           </div>
         </div>
         <!--  style="display: none;" -->
-        <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">   
+        <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">
           <router-link to="/fin-market/detail" tag="li">
             <div class="bg-white line-action-hover item-main"> <a>
               <div class="item-title">
