@@ -189,7 +189,6 @@
 </style>
 
 <div class="busi-lic com-container layui-fluid">
-        
     <div class="layui-form layui-row layui-col-space15" lay-filter="component-form-group">
         <div class="layui-col-md12">
             <div class="layui-card">
@@ -199,7 +198,7 @@
                 <div class="layui-card-body">
                     <div class="layui-row layui-col-space15">
                         <div class="layui-col-md4 layui-col-sm4 licence">
-                            <div class="up-img-box big-box">
+                            <!-- <div class="up-img-box big-box">
                                 <div class="no-up-box" id="noImgBtn" style="display: block; ">
                                     <div class="card-front-box">
                                         <div class="icon-box back"></div>
@@ -224,9 +223,21 @@
                                     </div>
                                     <p class="upload-state-text">图片上传识别中...</p>
                                 </div>
+                            </div> -->
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                <legend>拖拽上传</legend>
+                            </fieldset> 
+                            <div class="layui-upload-drag" id="busi-lic-drag">
+                                <i class="layui-icon"></i>
+                                <p>点击上传，或将文件拖拽到此处</p>
+                                <div class="layui-hide" id="uploadDemoView">
+                                    <hr>
+                                    <img src="" alt="上传成功后渲染" style="max-width: 196px">
+                                </div>
                             </div>
-                            <p class="check-big up-example" data-url="/res/images/qy-tydm.jpg"><i class="layui-icon layui-icon-search"></i>查看示例</p>
+                            <!-- <p class="check-big up-example" data-url="assets/images/qy-tydm.jpg"><i class="layui-icon layui-icon-search"></i>查看示例</p> -->
                         </div>
+
                         <div class="layui-col-md8 layui-col-sm8">
                             <div class="layui-form-item">
                                 <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传营业执照照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
@@ -319,7 +330,7 @@
                                 </div><input class="layui-upload-file" type="file" accept="undefined" name="file">
                                 <div class="had-up-box" style="display: none; ">
                                     <img src="https://www.celoan.cn/exportPic.aspx?fid=" class="had-img" alt="">
-                                    <div class="hover-tip-box">
+                                    <div class="hover-tip-boxbusi-lic-drag">
                                         <input type="hidden" id="hdcard_urla_file" name="hdcard_urla_file" lay-verify="card_urla_file" value="">
                                         <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
                                         
@@ -554,8 +565,21 @@
         var layer = layui.layer;
         var util = layui.util;
         var admin = layui.admin;
+        var upload = layui.upload;
 
         var t = localStorage.getItem('tarType')
         $('.' + t).removeClass('com-container')
+
+        //拖拽上传
+        upload.render({
+            elem: '#busi-lic-drag'
+            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+            ,done: function(res){
+                layer.msg('上传成功');
+                layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+                    console.log(res)
+            }
+        });
+
     });
 </script>
