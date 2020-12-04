@@ -1,0 +1,561 @@
+<style>
+    .layui-layer-content {
+        overflow: scroll !important;
+    }
+    .color-yellow {
+        color: #FF5722;
+    }
+    #financingOrderInfo {
+        background-color: #f2f2f2;
+    }
+
+    .em {
+        font-style: normal;
+    }
+
+    /*进度条横向样式*/
+    .pro-process {
+        width: 100%;
+        list-style: none;
+        overflow: hidden;
+    }
+
+    .pro-process li {
+        position: relative;
+        float: left;
+        width: 12%;
+        text-align: center;
+    }
+
+    .pro-process li:before {
+        content: '';
+        position: absolute;
+        z-index: 0;
+        right: 50%;
+        top: 12px;
+        width: 100%;
+        height: 2px;
+        background: #999;
+    }
+
+    .pro-process li:first-child:before {
+        width: 0;
+    }
+
+    .pro-process .li-ico {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 0 auto 10px;
+        border: 2px solid #999;
+        border-radius: 100%;
+        background: #fff;
+    }
+
+    .pro-process .li-text {
+        font-size: 14px;
+        width: 70px;
+        display: inline-block;
+    }
+
+    .pro-process .on + li:before,
+    .pro-process .on .li-ico {
+        border-color: #5fb878;
+        background: #5fb878;
+    }
+
+    .pro-process li:first-child:nth-last-child(2),
+    .pro-process li:first-child:nth-last-child(2) ~ li {
+        width: 50%;
+    }
+
+    .pro-process li:first-child:nth-last-child(3),
+    .pro-process li:first-child:nth-last-child(3) ~ li {
+        width: 33.3%;
+    }
+
+    .pro-process li:first-child:nth-last-child(4),
+    .pro-process li:first-child:nth-last-child(4) ~ li {
+        width: 25%;
+    }
+
+    .pro-process li:first-child:nth-last-child(5),
+    .pro-process li:first-child:nth-last-child(5) ~ li {
+        width: 20%;
+    }
+
+    .pro-process li:first-child:nth-last-child(6),
+    .pro-process li:first-child:nth-last-child(6) ~ li {
+        width: 16%;
+    }
+
+    .pro-process li:first-child:nth-last-child(7),
+    .pro-process li:first-child:nth-last-child(7) ~ li {
+        width: 14%;
+    }
+
+    .pro-process li:first-child:nth-last-child(8),
+    .pro-process li:first-child:nth-last-child(8) ~ li {
+        width: 12.5%;
+    }
+    col[Attributes Style] {
+        width: 100px;
+    }
+    col {
+        display: table-column;
+    }
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+
+    td[data-field=id], th[data-field=id] {
+        display: none;
+    }
+    .laytable-cell-3-0-0 {
+        width: 80px;
+    }
+    .layui-table-cell {
+        height: auto;
+        overflow-y: auto;
+    }
+    .laytable-cell-3-0-1 {
+        width: 269px;
+    }
+    .laytable-cell-3-0-2 {
+        width: 115px;
+    }
+    .laytable-cell-3-0-3 {
+        width: 115px;
+    }
+    .laytable-cell-3-0-4 {
+        width: 191px;
+    }
+    .layui-out-chat {
+        display: inline-block;
+        float: right;
+    }
+    .layui-card-header .layui-icon{line-height: initial; position: absolute; right: 15px; top: 50%; margin-top: -7px;}
+    .layui-out-chat span {
+        font-size: 13px;
+    }
+    .layui-card-header .layui-icon {
+        line-height: initial;
+    }
+    .layadmin-maillist-fluid .layadmin-contact-box {
+        padding: 0px;
+        background-color: #fff;
+        border: 0px solid #e7eaec;
+        overflow: hidden;
+    }
+    .layadmin-maillist-fluid .layadmin-contact-box p {
+        margin: 5px;
+        display: inline-block;
+    }
+    .layadmin-homepage-panel .text-center, .layadmin-maillist-fluid .layadmin-text-center {
+        text-align: center;
+    }
+    .layadmin-maillist-fluid .layadmin-text-center img {
+        max-width: 80%;
+        border-radius: 50%;
+        margin-top: 5px;
+        width: 80px;
+    }
+    .layadmin-maillist-fluid .layadmin-maillist-img {
+        margin-top: 5px;
+    }
+    .layadmin-maillist-fluid .layadmin-font-blod {
+        font-weight: 600;
+    }
+    .layadmin-maillist-fluid .layadmin-address {
+        line-height: 1.5;
+    }
+    .layadmin-maillist-fluid .layadmin-contact-box p {
+        margin: 5px;
+        display: inline-block;
+    }
+    .com-container {
+        display: none;
+    }
+</style>
+
+<div class="busi-lic com-container layui-fluid">
+        
+    <div class="layui-form layui-row layui-col-space15" lay-filter="component-form-group">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    营业执照
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md4 layui-col-sm4 licence">
+                            <div class="up-img-box big-box">
+                                <div class="no-up-box" id="noImgBtn" style="display: block; ">
+                                    <div class="card-front-box">
+                                        <div class="icon-box back"></div>
+                                        <p class="icon-text" id="business_licence_TEXT">请上传营业执照</p>
+                                    </div>
+                                </div><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                <div class="had-up-box" style="display: none; ">
+                                    <img src="https://www.celoan.cn/exportPic.aspx?fid=" class="had-img" alt="">
+                                    <div class="hover-tip-box">
+                                        <input type="hidden" id="hdbusiness_licence" name="hdbusiness_licence" lay-verify="licence" value="">
+                                        <img src="../res/images/s-ico.png" class="hover-big-img" id="hoverBigImg" alt="">
+                                        
+                                        <button type="button" class="layui-btn reload-btn" id="reloadBtn">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-upload-box uploading" style="display: none;" id="business_licence_UPLOADING">
+                                    <div class="process-box">
+                                        <div class="process" style="width: 90%;">
+                                            <span class="upload-animate"></span>
+                                        </div>
+                                    </div>
+                                    <p class="upload-state-text">图片上传识别中...</p>
+                                </div>
+                            </div>
+                            <p class="check-big up-example" data-url="/res/images/qy-tydm.jpg"><i class="layui-icon layui-icon-search"></i>查看示例</p>
+                        </div>
+                        <div class="layui-col-md8 layui-col-sm8">
+                            <div class="layui-form-item">
+                                <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传营业执照照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>名称：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="com_name" value="乔禾教育" lay-verify="company" autocomplete="off" placeholder="请与营业执照上名称一致" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>统一社会信用代码：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="com_code" value="" lay-verify="creditcode" autocomplete="off" placeholder="请输入统一社会信用代码(18位)" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>法定代表人：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="lep_name" value="" lay-verify="required" autocomplete="off" placeholder="请输入法定代表人姓名" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>住所：</label>
+                                <div class="layui-input-block">
+                                    <div id="cpArea"><div id="picker_1607009283137" data-action="picker_1607009283137"><div class="layui-input-inline" data-action="province"><select name="province" lay-filter="province"><option value="">请选择省</option><option value="110000" selected="">北京</option><option value="120000">天津</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择省" value="北京" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择省</dd><dd lay-value="110000" class="layui-this">北京</dd><dd lay-value="120000" class="">天津</dd><dd lay-value="130000" class="">河北省</dd><dd lay-value="140000" class="">山西省</dd><dd lay-value="150000" class="">内蒙古自治区</dd><dd lay-value="210000" class="">辽宁省</dd><dd lay-value="220000" class="">吉林省</dd><dd lay-value="230000" class="">黑龙江省</dd><dd lay-value="310000" class="">上海</dd><dd lay-value="320000" class="">江苏省</dd><dd lay-value="330000" class="">浙江省</dd><dd lay-value="340000" class="">安徽省</dd><dd lay-value="350000" class="">福建省</dd><dd lay-value="360000" class="">江西省</dd><dd lay-value="370000" class="">山东省</dd><dd lay-value="410000" class="">河南省</dd><dd lay-value="420000" class="">湖北省</dd><dd lay-value="430000" class="">湖南省</dd><dd lay-value="440000" class="">广东省</dd><dd lay-value="450000" class="">广西壮族自治区</dd><dd lay-value="460000" class="">海南省</dd><dd lay-value="500000" class="">重庆</dd><dd lay-value="510000" class="">四川省</dd><dd lay-value="520000" class="">贵州省</dd><dd lay-value="530000" class="">云南省</dd><dd lay-value="540000" class="">西藏自治区</dd><dd lay-value="610000" class="">陕西省</dd><dd lay-value="620000" class="">甘肃省</dd><dd lay-value="630000" class="">青海省</dd><dd lay-value="640000" class="">宁夏回族自治区</dd><dd lay-value="650000" class="">新疆维吾尔自治区</dd></dl></div></div><div class="layui-input-inline" data-action="city"><select name="city" lay-filter="city"><option value="">请选择市</option><option value="110100" selected="">北京市</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择市" value="北京市" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择市</dd><dd lay-value="110100" class="layui-this">北京市</dd></dl></div></div><div class="layui-input-inline" data-action="area"><select name="area" lay-filter="area"><option value="">请选择区/县</option><option value="110101" selected="">东城区</option><option value="110102">西城区</option><option value="110105">朝阳区</option><option value="110106">丰台区</option><option value="110107">石景山区</option><option value="110108">海淀区</option><option value="110109">门头沟区</option><option value="110111">房山区</option><option value="110112">通州区</option><option value="110113">顺义区</option><option value="110114">昌平区</option><option value="110115">大兴区</option><option value="110116">怀柔区</option><option value="110117">平谷区</option><option value="110118">密云区</option><option value="110119">延庆区</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择区/县" value="东城区" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择区/县</dd><dd lay-value="110101" class="layui-this">东城区</dd><dd lay-value="110102" class="">西城区</dd><dd lay-value="110105" class="">朝阳区</dd><dd lay-value="110106" class="">丰台区</dd><dd lay-value="110107" class="">石景山区</dd><dd lay-value="110108" class="">海淀区</dd><dd lay-value="110109" class="">门头沟区</dd><dd lay-value="110111" class="">房山区</dd><dd lay-value="110112" class="">通州区</dd><dd lay-value="110113" class="">顺义区</dd><dd lay-value="110114" class="">昌平区</dd><dd lay-value="110115" class="">大兴区</dd><dd lay-value="110116" class="">怀柔区</dd><dd lay-value="110117" class="">平谷区</dd><dd lay-value="110118" class="">密云区</dd><dd lay-value="110119" class="">延庆区</dd></dl></div></div></div></div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="address" value="" lay-verify="required" autocomplete="off" placeholder="请准确填写，具体到门牌号" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">经营范围：</label>
+                                <div class="layui-input-block">
+                                    <textarea placeholder="不能填写超出经营范围的类目，不得出现错别字" name="business_scope" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>营业期限(止)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="business_time_type" value="1" title="长期"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>长期</div></div>
+                                    <input type="radio" name="business_time_type" value="2" title="固定日期"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>固定日期</div></div>
+                                </div>
+                                <div class="layui-input-inline" style="width: 100px;">
+                                    <input type="text" class="layui-input" id="business_time" name="business_time" value="" placeholder="yyyy-MM-dd" lay-key="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <input type="hidden" name="hdoid" value="18281">
+                                <input type="hidden" name="hdpretrialType" value="1">
+                                <input type="hidden" name="action" value="financingPretrial_01_post">
+                                <button class="layui-btn" lay-submit="" lay-filter="addForm01">立即提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="oper-legal com-container layui-fluid">
+    <div class="layui-form layui-row layui-col-space15" lay-filter="component-form-group">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    经办人证件
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md4 layui-col-sm4">
+                            <div class="up-img-box up-img-small-box card_urla_file">
+                                <div class="no-up-box" id="card_urla_fileBtn" style="display: else{ }}inline-block; ">
+                                    <div class="card-front-box">
+                                        <div class="icon-box back"></div>
+                                        <p class="icon-text" id="card_urla_TEXT">身份证头像页</p>
+                                    </div>
+                                </div><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                <div class="had-up-box" style="display: none; ">
+                                    <img src="https://www.celoan.cn/exportPic.aspx?fid=" class="had-img" alt="">
+                                    <div class="hover-tip-box">
+                                        <input type="hidden" id="hdcard_urla_file" name="hdcard_urla_file" lay-verify="card_urla_file" value="">
+                                        <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                        
+                                        <button type="button" class="layui-btn reload-btn" id="card_urla_fileReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-upload-box uploading" style="display: none;" id="card_urla_UPLOADING">
+                                    <div class="process-box">
+                                        <div class="process" style="width: 90%;">
+                                            <span class="upload-animate"></span>
+                                        </div>
+                                    </div>
+                                    <p class="upload-state-text">上传识别中...</p>
+                                </div>
+                            </div>
+                            <div class="up-img-box up-img-small-box card_urlb_file" style="display: inline-block; ">
+                                <div class="no-up-box" id="card_urlb_fileBtn" style="display: inline-block; ">
+                                    <div class="card-front-box">
+                                        <div class="icon-box back"></div>
+                                        <p class="icon-text" id="card_urlb_TEXT">身份证国徽页</p>
+                                    </div>
+                                </div><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                <div class="had-up-box" style="display: none; ">
+                                    <img src="https://www.celoan.cn/exportPic.aspx?fid=" class="had-img" alt="">
+                                    <div class="hover-tip-box">
+                                        <input type="hidden" id="hdcard_urlb_file" name="hdcard_urlb_file" lay-verify="card_urlb_file" value="">
+                                        <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                        
+                                        <button type="button" class="layui-btn reload-btn" id="card_urlb_fileReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-upload-box uploading" style="display: none;" id="card_urlb_UPLOADING">
+                                    <div class="process-box">
+                                        <div class="process" style="width: 90%;">
+                                            <span class="upload-animate"></span>
+                                        </div>
+                                    </div>
+                                    <p class="upload-state-text">上传识别中...</p>
+                                </div>
+                            </div>
+                            <div class="up-img-box up-img-small-box expo-box">
+                                <div class="had-up-box">
+                                    <img src="/res/images/sf.png" class="had-img" alt="">
+                                    <div class="hover-tip-box">
+                                        <div class="exp-center up-example" data-url="/res/images/sf.png">
+                                            <img src="/res/images/s-ico.png" class="hover-small-img" alt="">
+                                            <p>查看示例</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md8 layui-col-sm8">
+                            <div class="layui-form-item">
+                                <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传身份证照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>选择证件类型：</label>
+                                <div class="layui-input-block">
+                                    <select id="cardtype" lay-verify="required" name="cardtype" lay-filter="cardtype">
+                                    <option value="" selected="selected">--请选择证件类型--</option><option value="1">中华人民共和国居民身份证</option><option value="2">护照</option><option value="3">港澳居民来往大陆通行证</option><option value="4">台湾居民来往大陆通行证</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择证件类型--" value="中华人民共和国居民身份证" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择证件类型--</dd><dd lay-value="1" class="layui-this">中华人民共和国居民身份证</dd><dd lay-value="2" class="">护照</dd><dd lay-value="3" class="">港澳居民来往大陆通行证</dd><dd lay-value="4" class="">台湾居民来往大陆通行证</dd></dl></div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>姓名：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="cardname" name="cardname" value="" lay-verify="required" autocomplete="off" placeholder="请输入经办人姓名" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>证件号码：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="cardcode" name="cardcode" value="" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span style="color: red">*</span>有效期限(止)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="cardtimetype" value="1" title="长期" lay-filter="cardtimetype"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>长期</div></div>
+                                    <input type="radio" name="cardtimetype" value="2" title="固定日期" lay-filter="cardtimetype"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>固定日期</div></div>
+                                </div>
+                                <div class="layui-input-inline" style="width: 100px;">
+                                    <input type="text" class="layui-input" id="cardtime" name="cardtime" value="" placeholder="yyyy-MM-dd" lay-key="2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    法定代表人证件
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md4 layui-col-sm4 layui-col-lep">
+                            <div class="up-img-box up-img-small-box lep_urla_file">
+                                <div class="no-up-box" id="lep_urla_fileBtn" style="display: block; ">
+                                    <div class="card-front-box">
+                                        <div class="icon-box back"></div>
+                                        <p class="icon-text" id="lep_urla_TEXT">身份证头像页</p>
+                                    </div>
+                                </div><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                <div class="had-up-box" style="display: none; ">
+                                    <img src="https://www.celoan.cn/exportPic.aspx?fid=" class="had-img" alt="">
+                                    <div class="hover-tip-box">
+                                        <input type="hidden" id="hdlep_urla_file" name="hdlep_urla_file" lay-verify="lep_urla_file" value="">
+                                        <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                        
+                                        <button type="button" class="layui-btn reload-btn" id="lep_urla_fileReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-upload-box uploading" style="display: none;" id="lep_urla_UPLOADING">
+                                    <div class="process-box">
+                                        <div class="process" style="width: 90%;">
+                                            <span class="upload-animate"></span>
+                                        </div>
+                                    </div>
+                                    <p class="upload-state-text">上传识别中...</p>
+                                </div>
+                            </div>
+                            <div class="up-img-box up-img-small-box lep_urlb_file" style="display: inline-block; ">
+                                <div class="no-up-box" id="lep_urlb_fileBtn" style="display: block; ">
+                                    <div class="card-front-box">
+                                        <div class="icon-box back"></div>
+                                        <p class="icon-text" id="lep_urlb_TEXT">身份证国徽页</p>
+                                    </div>
+                                </div><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                <div class="had-up-box" style="display: none; ">
+                                    <img src="https://www.celoan.cn/exportPic.aspx?fid=" class="had-img" alt="">
+                                    <div class="hover-tip-box">
+                                        <input type="hidden" id="hdlep_urlb_file" name="hdlep_urlb_file" lay-verify="lep_urlb_file" value="">
+                                        <img src="/res/images/s-ico.png" class="hover-big-img hover-small-img" alt="">
+                                        
+                                        <button type="button" class="layui-btn reload-btn" id="lep_urlb_fileReload">重新上传</button><input class="layui-upload-file" type="file" accept="undefined" name="file">
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-upload-box uploading" style="display: none;" id="lep_urlb_UPLOADING">
+                                    <div class="process-box">
+                                        <div class="process" style="width: 90%;">
+                                            <span class="upload-animate"></span>
+                                        </div>
+                                    </div>
+                                    <p class="upload-state-text">上传识别中...</p>
+                                </div>
+                            </div>
+                            <div class="up-img-box up-img-small-box expo-box">
+                                <div class="had-up-box">
+                                    <img src="/res/images/sf.png" class="had-img" alt="">
+                                    <div class="hover-tip-box">
+                                        <div class="exp-center up-example" data-url="/res/images/sf.png">
+                                            <img src="/res/images/s-ico.png" class="hover-small-img" alt="">
+                                            <p>查看示例</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md8 layui-col-sm8">
+                            <div class="layui-form-item layui-col-lep">
+                                <div class="layui-form-mid layui-word-aux"><span style="color: red">（请先上传身份证照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    <input type="checkbox" name="isLep" title="经办人同法定代表人" value="1" lay-skin="primary" lay-filter="isLep"><div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>经办人同法定代表人</span><i class="layui-icon layui-icon-ok"></i></div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-col-lep">
+                                <label class="layui-form-label"><span style="color: red">*</span>选择证件类型：</label>
+                                <div class="layui-input-block">
+                                    <select id="lep_cardtype" lay-verify="required" name="lep_cardtype" lay-filter="lep_cardtype">
+                                    <option value="" selected="selected">--请选择证件类型--</option><option value="1">中华人民共和国居民身份证</option><option value="2">护照</option><option value="3">港澳居民来往大陆通行证</option><option value="4">台湾居民来往大陆通行证</option></select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="--请选择证件类型--" value="中华人民共和国居民身份证" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">--请选择证件类型--</dd><dd lay-value="1" class="layui-this">中华人民共和国居民身份证</dd><dd lay-value="2" class="">护照</dd><dd lay-value="3" class="">港澳居民来往大陆通行证</dd><dd lay-value="4" class="">台湾居民来往大陆通行证</dd></dl></div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-col-lep">
+                                <label class="layui-form-label"><span style="color: red">*</span>姓名：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="lep_name" id="lep_name" value="" lay-verify="required" autocomplete="off" placeholder="请输入法定代表人姓名" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-col-lep">
+                                <label class="layui-form-label"><span style="color: red">*</span>证件号码：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="lep_code" id="lep_code" value="" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-col-lep">
+                                <label class="layui-form-label"><span style="color: red">*</span>有效期限(止)：</label>
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="lep_cardtimetype" value="1" title="长期" lay-filter="lep_cardtimetype"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>长期</div></div>
+                                    <input type="radio" name="lep_cardtimetype" value="2" title="固定日期" lay-filter="lep_cardtimetype"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>固定日期</div></div>
+                                </div>
+                                <div class="layui-input-inline" style="width: 100px;">
+                                    <input type="text" class="layui-input" id="lep_cardtime" name="lep_cardtime" value="" placeholder="yyyy-MM-dd" lay-key="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <input type="hidden" name="hdoid" value="18281">
+                                <input type="hidden" name="hdpretrialType" value="2">
+                                <input type="hidden" name="action" value="financingPretrial_02_post">
+                                <button class="layui-btn" lay-submit="" lay-filter="addForm02">立即提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+
+        var t = localStorage.getItem('tarType')
+        $('.' + t).removeClass('com-container')
+    });
+</script>
