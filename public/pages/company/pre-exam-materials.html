@@ -186,6 +186,42 @@
     .com-container {
         display: none;
     }
+    .layui-card-header{
+        position: relative;
+    }
+    .layui-form-label {
+            width: 150px;
+            padding: 9px 0px;
+    }
+    .layui-input-block {
+            margin-left: 160px;
+    }
+    input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+i {
+    font-style: italic;
+}
 </style>
 
 <div class="busi-lic com-container layui-fluid">
@@ -557,6 +593,115 @@
     
 </div>
 
+<div class="comr-manage com-container layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            企业经营情况
+        </div>
+        <div class="layui-card-body">
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span style="color: red">*</span>上一年销售收入(万元)：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="qyjyqk01" value="" lay-verify="number" placeholder="请输入上一年销售收入">
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span style="color: red">*</span>上一年净利润(万元)：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="qyjyqk02" value="" lay-verify="number" placeholder="请输入上一年净利润">
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span style="color: red">*</span>合作银行机构数(个)：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="qyjyqk03" value="" lay-verify="number" placeholder="请输入合作银行机构数">
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span style="color: red">*</span>合作非银行机构数(个)：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="qyjyqk04" value="" lay-verify="number" placeholder="请输入合作非银行机构数">
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="hidden" name="hdoid" value="18281">
+                    <input type="hidden" name="hdpretrialType" value="4">
+                    <input type="hidden" name="action" value="financingPretrial_other_post">
+                    <button class="layui-btn" lay-submit="" lay-filter="addForm">立即提交</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="comr-tallage com-container layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            企业纳税信息
+        </div>
+        <div class="layui-card-body">
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span style="color: red">*</span>月均增值税应纳税额(万元)：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="qynsxx03" value="" lay-verify="number" placeholder="请输入月均增值税应纳税额">
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span style="color: red">*</span>月均企业所得税应纳税额(万元)：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="qynsxx02" value="" lay-verify="number" placeholder="请输入月均企业所得税应纳税额">
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span style="color: red">*</span>纳税评级：</label>
+                <div class="layui-input-block">
+                    <!-- <select class="form-control" name="qynsxx01" lay-verify="required">
+                        <option value="">请选择企业纳税评级</option>
+                        
+                        <option value="1">A</option>
+                        
+                        <option value="2">B</option>
+                        
+                        <option value="3">M</option>
+                        
+                        <option value="4">C</option>
+                        
+                        <option value="5">D</option>
+                        
+                    </select> -->
+                    <div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择企业纳税评级" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择企业纳税评级</dd><dd lay-value="1" class="">A</dd><dd lay-value="2" class="">B</dd><dd lay-value="3" class="">M</dd><dd lay-value="4" class="">C</dd><dd lay-value="5" class="">D</dd></dl></div>
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="hidden" name="hdoid" value="18281">
+                    <input type="hidden" name="hdpretrialType" value="8">
+                    <input type="hidden" name="action" value="financingPretrial_other_post">
+                    <button class="layui-btn" lay-submit="" lay-filter="addForm">立即提交</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
 <script>
     layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
         var form = layui.form;

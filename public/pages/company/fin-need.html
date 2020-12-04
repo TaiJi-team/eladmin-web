@@ -880,7 +880,7 @@
                                                                 <td data-field="4" data-key="3-0-4" align="center"
                                                                     data-off="true" class="layui-table-col-special">
                                                                     <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
+                                                                        <a class="comr-manage-upload layui-btn layui-btn-xs"
                                                                             lay-event="upload">上传</a> </div>
                                                                 </td>
                                                             </tr>
@@ -908,11 +908,11 @@
                                                                 <td data-field="4" data-key="3-0-4" align="center"
                                                                     data-off="true" class="layui-table-col-special">
                                                                     <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
+                                                                        <a class="comr-tallage-upload layui-btn layui-btn-xs"
                                                                             lay-event="upload">上传</a> </div>
                                                                 </td>
                                                             </tr>
-                                                            <tr data-index="4">
+                                                            <!-- <tr data-index="4">
                                                                 <td data-field="id" data-key="3-0-0" align="center"
                                                                     class="">
                                                                     <div class="layui-table-cell laytable-cell-3-0-0">
@@ -1163,7 +1163,7 @@
                                                                         <a class="layui-btn layui-btn-xs"
                                                                             lay-event="upload">上传</a> </div>
                                                                 </td>
-                                                            </tr>
+                                                            </tr> -->
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -1539,11 +1539,25 @@
         // 经办人法人代表证件
         $('.oper-legal-upload').on({
             click: function() {
+                console.log("aaa");
                 localStorage.setItem('tarType', 'oper-legal')
                 showLicUpload()
             }
         })
-        
+        //企业经营情况
+        $('.comr-manage-upload').on({
+            click: function() {
+                localStorage.setItem('tarType', 'comr-manage')
+                showLicUpload()
+            }
+        })
+        //纳税情况
+        $('.comr-tallage-upload').on({
+            click: function() {
+                localStorage.setItem('tarType', 'comr-tallage')
+                showLicUpload()
+            }
+        })
         var showLicUpload = function () {
             var title = '上传材料';
             admin.popupCenter({
