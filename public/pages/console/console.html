@@ -75,11 +75,15 @@
         <button class="cons-btn layui-btn" type="button" style="float: left;" auth-type="3">运营公司入驻</button>
     </div>
 
-    <div id="view"></div>
+    <div id="console-view"></div>
     <script id="conTpl" type="text/html">
-        {{#  if(!d.isAuthed){ }}
+        <!-- {{#  if(!d.isAuthed){ }} -->
         <!-- 企业工作台 -->
-        {{#  if(d.compType === 1){ }}
+        <!-- {{#  if(d.compType === 1){ }} -->
+        <!-- 表格操作列 -->
+        <!-- <script type="text/html" id="comp-table-bar">
+          <a class="layui-btn layui-btn-primary layui-btn-xs">查看合同</a>
+        </script> -->
         <div class="comp-console">
             <h3>企业工作台</h3>
         </div>
@@ -236,7 +240,7 @@
                   </div>
             </div>
         </div>
-        {{#  } }} 
+        <!-- {{#  } }}  -->
         
         <!-- 金融机构工作台 -->
         {{#  if(d.compType === 2){ }}
@@ -251,7 +255,7 @@
             <h3>运营机构工作台</h3>
         </div>
         {{#  } }} 
-        {{#  } }} 
+        <!-- {{#  } }}  -->
     </script>
 
 <script type="text/javascript">
@@ -261,7 +265,7 @@
         let laytpl = layui.laytpl;
         let $ = layui.$;
         let conTpl = document.getElementById('conTpl').innerHTML;
-        let $view = $("#view");
+        let $view = $("#console-view");
         let table = layui.table;
         let util = layui.util;
         let statData;
@@ -286,18 +290,19 @@
                 method: 'GET',
                 page: true,
                 cols: [[
-                    {field: 'id', title: '序号', width: "8%"},
-                    {field: 'compName', title: '企业名称', width: "15%"},
-                    {field: 'uniCreCode', title: '统一社会信用代码', width: "20.5%"},
+                    // {field: 'id', title: '序号', width: "8%"},
+                    {field: 'compName', title: '企业名称', width: "13.3%"},
+                    {field: 'uniCreCode', title: '统一社会信用代码', width: "18%"},
                     {field: 'legalRep', title: '法人代表', width: "12%"},
-                    {field: 'operater', title: '操作人', width: "10%"},
+                    {field: 'operater', title: '签约人', width: "10%"},
                     {field: 'createTime', sort: true, templet: function (d) {
                             return util.toDateString(d.createTime);
-                        }, title: '创建时间', width: "22%"
+                        }, title: '签约时间', width: "22%"
                     },
-                    {field: 'status', sort: true, templet: function (d) {
+                    {field: 'status', templet: function (d) {
                             return d.status == 0 ? '审核中' : '入驻成功'
-                        }, title: '状态', width: "13%"}
+                        }, title: '状态', width: "13%"},
+                    {field: 'opert', align: 'center', title: '操作', width: "12%"}
                 ]]
             });
         }

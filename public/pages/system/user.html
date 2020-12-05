@@ -64,11 +64,11 @@
             cols: [[
                 {type: 'numbers'},
                 {field: 'id', sort: true, title: '用户编号'},
-                {field: 'username', sort: true, title: '账号'},
-                {field: 'nickname', sort: true, title: '用户名'},
+                {field: 'userName', sort: true, title: '账号'},
+                {field: 'nickName', sort: true, title: '用户名'},
                 {field: 'mobile', sort: true, title: '手机号'},
                 {sort: true, title: '性别',templet:function (d) {
-                        return d.sex==0?"男":"女"
+                        return d.gender==0?"男":"女"
                     }},
                 {
                     sort: true, templet: function (d) {
