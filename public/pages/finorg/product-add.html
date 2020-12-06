@@ -141,7 +141,6 @@
     text-align: center;
 }
 .clearfix {
-    /* 涓轰簡鐓ч【ie6娴忚鍣�*/
     zoom: 1;
 }
 .take-release .layui-form .layui-form-item {
@@ -355,9 +354,9 @@ xm-select > .xm-body {
     display: none;
 }
 
-.need-apply {
+/* .need-apply {
     display: none;
-}
+} */
 /* grant */
 .grant-ul {
     padding: 0 0 5px;
@@ -660,10 +659,10 @@ a:active {
 
 <div class="layui-card">
     <div class="layui-card-header">
-        <h2 class="header-title">融资需求管理</h2>
+        <h2 class="header-title">金融产品</h2>
         <span class="layui-breadcrumb pull-right">
           <a href="#!console">工作台</a>
-          <a><cite>融资需求管理</cite></a>
+          <a><cite>金融产品</cite></a>
         </span>
     </div>
     
@@ -841,96 +840,6 @@ a:active {
                 </div>
             </div>
 
-
-            <div class="select-prod fl bg-white page-left">
-                <div class="clearfix page-head">
-                    <ul class="fr grant-ul">
-                        <li class="ac fl">
-                            <p class="item-cont"></p>
-                            <p class="item-name">乔禾教育</p>
-                        </li>
-                    </ul> <span>融资需求发布成功，请选择融资产品</span>
-                </div>
-                <div class="clearfix financial-advisor">
-                    <div class="btn fr service-card">
-                        <div class="fl card-info">
-                            <p>Hi,我是您的专属融资顾问，有问题可随时与我联系！</p>
-                        </div>
-                        <div class="fl card-img">
-                            <div class="line-middle user-box"> <a
-                                    href="http://localhost:8013/index-sys.html#!fin-need-apply"
-                                    target="_blank" class="chat-btn" data-type="chat"
-                                    data-guid="851d94d2108543dc8160ce29ee8f4578" data-name="江季垚"
-                                    data-headimgurl="/assets/images/auth001.jpg"> <img
-                                        src="/assets/images/auth001.jpg"
-                                        alt=""> </a> </div>
-                        </div>
-                        <div class="line-middle service-contact">
-                            <div class="line-middle">
-                                <p class="contact-name">江季垚</p> <a href="tel:4001016871" title="tel:4001016871"> <img
-                                        src="/assets/images/p-ico.png" class="contact-p" alt=""></a> <a
-                                    href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"
-                                    target="_blank" class="chat-btn" data-type="chat"
-                                    data-guid="851d94d2108543dc8160ce29ee8f4578" data-name="江季垚"
-                                    data-headimgurl="/celoan/sysfile/2019/05/10/2019051008114476718.jpg"> <img
-                                        src="/assets/images/msg-ico.png" class="contact-msg" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-cont" id="chooseProduct">
-                    <div class="bank-product">
-                        <dl class="overflow choose-box">
-                            <dt> <span class="box-t">推荐金融产品</span> <span class="box-st">系统为您智能匹配到<span
-                                        class="t-num">1</span>个金融产品，请您选择意向产品或选择让融资顾问为您推荐</span> </dt>
-                            <dd>
-                                <ul class="clearfix choose-ul">
-                                    <li>
-                                        <div class="item-check-btn">
-                                            <div style="display: none;"> <input type="checkbox" name="product"
-                                                    title="线上快审快贷" value="326" lay-skin="primary">
-                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                                    <span>线上快审快贷</span><i class="layui-icon layui-icon-ok"></i></div>
-                                            </div>
-                                        </div>
-                                        <div class="fl ac item-img"> <img
-                                                src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png"
-                                                alt=""> </div>
-                                        <div class="cont-main">
-                                            <h2 class="cont-t">线上快审快贷</h2>
-                                            <p class="cont-from"> <span class="from-name">宁波银行股份有限公司</span>已成功放款0家 成功率0%
-                                            </p>
-                                            <p class="cont-info"> <span class="info-label">额度范围：1-800万</span> <span
-                                                    class="info-label">年利率：5-7%</span> <span
-                                                    class="info-label">贷款期限：1-120个月</span> </p>
-                                        </div>
-                                        <div class="item-btn-tool"> <button type="button" class="fl item-detail-btn"
-                                                data-id="326"> 详情 </button> </div>
-                                    </li>
-                                </ul>
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="bank-product-other">
-                        <div class="item-nocheck-btn">
-                            <div class="clearfix" style="display: none;"> <input type="checkbox" name="noproduct" value="1"
-                                    lay-skin="primary" lay-filter="noproduct" title="以上产品都不合适，让融资顾问为我推荐">
-                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                    <span>以上产品都不合适，让融资顾问为我推荐</span><i class="layui-icon layui-icon-ok"></i></div>
-                            </div>
-                        </div> <span>以上产品均不合适，让融资顾问为我推荐</span> <a href="/#/requIndex/financialProducts" target="_blank"
-                            class="more-product">查看更多金融产品&gt;&gt;</a>
-                    </div>
-                    <div class="ac choose-btn" style="float: left;margin: 3% 3% 0 0;"> <input type="hidden" name="hdnid" value="36425"> <input type="hidden"
-                            name="hdproductCount" value="1"> <input type="hidden" name="action"
-                            value="financingPublish2_post"> <button id="sele-prod-commit" class="layui-btn btn g-bg g-shadow take-choose"
-                            lay-submit="" lay-filter="addForm3">立即提交</button> </div>
-                    <div class="ac choose-btn"style="float: left;margin: 3% 3% 0 0;" > <input type="hidden" name="hdnid" value="36425"> <input type="hidden"
-                        name="hdproductCount" value="1"> <input type="hidden" name="action"
-                        value="financingPublish2_post"> <button id="sele-prod-cancel" class="layui-btn btn g-bg g-shadow take-choose"
-                        lay-submit="" lay-filter="addForm3">取消</button> </div>
-                </div>
-            </div>
         </div>
         <!-- content end -->
     </div>
@@ -946,28 +855,38 @@ a:active {
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
-        let toSele = JSON.parse(localStorage.getItem('toSele'))
-        if(!toSele) {
-            $('.need-apply').show()
-            $('.select-prod').hide()
-        } else {
-            $('.need-apply').hide()
-            $('.select-prod').show()
-        }
-        $('#fin-need-apply1').on('click', function() {
-            localStorage.setItem('toSele', true)
-            $('#sele-prod-cancel').unbind('click')
-            location.reload()
-        })
-        $('#sele-prod-commit').on('click', function() {
-            localStorage.setItem('toSele', false)
-            $('#fin-need-apply1').unbind('click')
-            location.reload()
-        })
-        $('#sele-prod-cancel').on('click', function() {
-            localStorage.setItem('toSele', false)
-            $('#fin-need-apply1').unbind('click')
-            location.reload()
-        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // let toSele = JSON.parse(localStorage.getItem('toSele'))
+        // if(!toSele) {
+        //     $('.need-apply').show()
+        //     $('.select-prod').hide()
+        // } else {
+        //     $('.need-apply').hide()
+        //     $('.select-prod').show()
+        // }
+        // $('#fin-need-apply1').on('click', function() {
+        //     localStorage.setItem('toSele', true)
+        //     $('#sele-prod-cancel').unbind('click')
+        //     location.reload()
+        // })
+        // $('#sele-prod-cance').on('click', function() {
+        //     localStorage.setItem('toSele', false)
+        //     $('#fin-need-apply1').unbind('click')
+        //     location.reload()
+        // })
     });
 </script>

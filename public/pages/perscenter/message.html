@@ -1,0 +1,683 @@
+<style>
+    /* .layadmin-caller {
+        background: #fff;
+        padding: 30px
+    }
+
+    .layadmin-caller em {
+        font-style: normal
+    }
+
+    .layadmin-caller .caller-fl {
+        float: left
+    }
+
+    .layadmin-caller .caller-fr {
+        float: right
+    }
+
+    .layadmin-caller .caller-seach {
+        position: relative;
+        padding-bottom: 40px
+    }
+
+        .layadmin-caller .caller-seach .caller-icon {
+            font-size: 18px;
+            position: absolute;
+            top: 9px
+        }
+
+    .layadmin-caller .caller-seach-icon {
+        left: 6px
+    }
+
+    .layadmin-caller .caller-dump-icon {
+        right: 6px;
+        cursor: pointer
+    }
+
+    .layadmin-caller .caller-pl32 {
+        padding: 0 32px
+    }
+
+    .layadmin-caller .caller-tab {
+        margin: 0
+    }
+
+    .layadmin-caller .caller-contar {
+        padding-bottom: 20px
+    }
+
+    .layadmin-caller .caller-contar .caller-item {
+        padding: 25px 0;
+        overflow: hidden;
+        border-bottom: 1px solid #e0e0e0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main {
+        margin-left: 20px
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main p {
+        line-height: 100%;
+        padding: 8px 0
+    }
+
+        .layadmin-caller .caller-contar .caller-item .caller-main p:first-child {
+            padding-top: 0
+        }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main em {
+        margin-left: 5px
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i {
+        padding-right: 5px;
+        margin: 0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds {
+        padding-bottom: 12px
+    }
+
+    .layadmin-caller .caller-contar .caller-iconset i {
+        margin: 0 5px
+    }
+
+    .layadmin-caller .caller-contar .caller-iconset i:first-child {
+        margin-left: 0
+    }
+
+    .layadmin-caller .caller-contar button {
+        margin-top: 22px
+    }
+
+    .layadmin-caller .caller-contar .caller-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%
+    }
+    .right-title {
+        visibility: visible;
+        float: right;
+        margin-right: 1%;
+        width: 13%;
+    }
+    .right-title a:hover {
+        color: #5FB878!important;
+    }
+
+    .layui-fluid{padding: 15px;}
+    .layadmin-header{display: none; height: 50px; line-height: 50px; margin-bottom: 0; border-radius: 0;}
+    .layadmin-header .layui-breadcrumb{padding: 0 15px;}
+    .layui-card-header{position: relative;}
+    .layui-card-header .layui-icon{line-height: initial; position: absolute; right: 15px; top: 50%; margin-top: -7px;}
+    .layadmin-iframe{position: absolute; width: 100%; height: 100%; left: 0; top: 0; right: 0; bottom: 0;} */
+
+    #tip_top {
+        width: 760px;
+        margin: 0 auto;
+        padding: 5px 0;
+        text-align: center;
+        background-color: #A6D4F2;
+        border: solid 1px #95C6E6;
+        z-index: 99999;
+    }
+
+    .tab-msg {
+        overflow-y: visible;
+    }
+</style>
+
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">消息中心</h2>
+        <span class="layui-breadcrumb pull-right">
+            <a href="#!console">工作台</a>
+            <a><cite>消息中心</cite></a>
+        </span>
+    </div>
+    <!-- <div class="layui-card-body">
+        <div class="layui-form toolbar">
+            搜索：
+            <select id="user-search-key">
+                <option value="">-请选择-</option>
+                <option value="user_id">ID</option>
+                <option value="username">账号</option>
+                <option value="nick_name">用户名</option>
+                <option value="mobile">手机号</option>
+            </select>&emsp;
+            <input id="user-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
+            <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            <button id="user-btn-add" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
+            <button id="user-btn-export" class="layui-btn icon-btn"><i class="layui-icon">&#xe601;</i>导出</button>
+            <button type="button" class="layui-btn" id="user-btn-import">
+                <i class="layui-icon">&#xe67c;</i>导入
+            </button>
+        </div>
+
+        <table class="layui-table" id="user-table" lay-filter="user-table"></table>
+    </div> -->
+    <div class="layui-fluid" id="LAY-app-message" style="height: 600px;">
+        <div class="layui-card">
+            <div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">全部消息</li>
+                    <li class="">未读<span class="layui-badge" style="">5</span></li>
+                    <li class="">已读</li>
+                </ul>
+                <div class="layui-tab-content">
+
+                    <div class="tab-msg layui-tab-item layui-show">
+                        <div class="LAY-app-message-btns" style="margin-bottom: 10px;">
+                            <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all"
+                                data-events="del">删除</button>
+                            <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all"
+                                data-events="ready">标记已读</button>
+                            <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all"
+                                data-events="readyAll">全部已读</button>
+                        </div>
+
+                        <table class="layui-hide" id="table-operate" lay-filter="table-operate"></table>
+                        <div class="layui-form layui-border-box layui-table-view" lay-filter="LAY-table-9"
+                            style=" height:506px;">
+                            <div class="layui-table-box">
+                                <div class="layui-table-header">
+                                    <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="0" data-key="9-0-0" data-unresize="true"
+                                                    class=" layui-table-col-special">
+                                                    <div
+                                                        class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                        <input type="checkbox" name="layTableCheckbox"
+                                                            lay-skin="primary" lay-filter="layTableAllChoose">
+                                                        <div class="layui-unselect layui-form-checkbox"
+                                                            lay-skin="primary"><i class="layui-icon layui-icon-ok"></i>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                <th data-field="title" data-key="9-0-1" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-1" align="center">
+                                                        <span>标题</span></div>
+                                                </th>
+                                                <th data-field="description" data-key="9-0-2" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-2" align="center">
+                                                        <span>内容</span></div>
+                                                </th>
+                                                <th data-field="toTime" data-key="9-0-3" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-3" align="center">
+                                                        <span>时间</span></div>
+                                                </th>
+                                                <th class="layui-table-patch">
+                                                    <div class="layui-table-cell" style="width: 0px;"></div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="layui-table-body layui-table-main">
+                                    <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                                        <tbody>
+                                            <tr data-index="0" class="">
+                                                <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                    <div
+                                                        class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                        <input type="checkbox" name="layTableCheckbox"
+                                                            lay-skin="primary">
+                                                        <div class="layui-unselect layui-form-checkbox"
+                                                            lay-skin="primary"><i class="layui-icon layui-icon-ok"></i>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td data-field="title" data-key="9-0-1" align="center"
+                                                    data-content="平台结束需求" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-1"><a
+                                                            lay-href="messageDetail/id=205113">平台结束需求</a></div>
+                                                </td>
+                                                <td data-field="description" data-key="9-0-2" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-2">
+                                                        尊敬的用户，您的一笔融资需求已被平台结束了</div>
+                                                </td>
+                                                <td data-field="toTime" data-key="9-0-3" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-3">2020-10-29
+                                                        09:58:42</div>
+                                                </td>
+                                            </tr>
+                                            <tr data-index="1" class="">
+                                                <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                    <div
+                                                        class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                        <input type="checkbox" name="layTableCheckbox"
+                                                            lay-skin="primary">
+                                                        <div class="layui-unselect layui-form-checkbox"
+                                                            lay-skin="primary"><i class="layui-icon layui-icon-ok"></i>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td data-field="title" data-key="9-0-1" align="center"
+                                                    data-content="平台结束需求" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-1"><a
+                                                            lay-href="messageDetail/id=205109">平台结束需求</a></div>
+                                                </td>
+                                                <td data-field="description" data-key="9-0-2" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-2">
+                                                        尊敬的用户，您的一笔融资需求已被平台结束了</div>
+                                                </td>
+                                                <td data-field="toTime" data-key="9-0-3" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-3">2020-10-29
+                                                        09:58:31</div>
+                                                </td>
+                                            </tr>
+                                            <tr data-index="2" class="">
+                                                <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                    <div
+                                                        class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                        <input type="checkbox" name="layTableCheckbox"
+                                                            lay-skin="primary">
+                                                        <div class="layui-unselect layui-form-checkbox"
+                                                            lay-skin="primary"><i class="layui-icon layui-icon-ok"></i>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td data-field="title" data-key="9-0-1" align="center"
+                                                    data-content="平台终止订单" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-1"><a
+                                                            lay-href="messageDetail/id=205105">平台终止订单</a></div>
+                                                </td>
+                                                <td data-field="description" data-key="9-0-2" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-2">
+                                                        【乔禾教育】融资需求不匹配，订单终止！</div>
+                                                </td>
+                                                <td data-field="toTime" data-key="9-0-3" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-3">2020-10-29
+                                                        09:58:20</div>
+                                                </td>
+                                            </tr>
+                                            <tr data-index="3" class="">
+                                                <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                    <div
+                                                        class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                        <input type="checkbox" name="layTableCheckbox"
+                                                            lay-skin="primary">
+                                                        <div class="layui-unselect layui-form-checkbox"
+                                                            lay-skin="primary"><i class="layui-icon layui-icon-ok"></i>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td data-field="title" data-key="9-0-1" align="center"
+                                                    data-content="平台结束需求" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-1"><a
+                                                            lay-href="messageDetail/id=117231">平台结束需求</a></div>
+                                                </td>
+                                                <td data-field="description" data-key="9-0-2" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-2">
+                                                        尊敬的用户，您的一笔融资需求已被平台结束了</div>
+                                                </td>
+                                                <td data-field="toTime" data-key="9-0-3" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-3">2020-08-31
+                                                        16:23:36</div>
+                                                </td>
+                                            </tr>
+                                            <tr data-index="4" class="">
+                                                <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                    <div
+                                                        class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                        <input type="checkbox" name="layTableCheckbox"
+                                                            lay-skin="primary">
+                                                        <div class="layui-unselect layui-form-checkbox"
+                                                            lay-skin="primary"><i class="layui-icon layui-icon-ok"></i>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td data-field="title" data-key="9-0-1" align="center"
+                                                    data-content="平台终止订单" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-1"><a
+                                                            lay-href="messageDetail/id=117225">平台终止订单</a></div>
+                                                </td>
+                                                <td data-field="description" data-key="9-0-2" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-2">
+                                                        【乔禾教育】融资需求不匹配，订单终止！</div>
+                                                </td>
+                                                <td data-field="toTime" data-key="9-0-3" align="center" class="">
+                                                    <div class="layui-table-cell laytable-cell-9-0-3">2020-08-31
+                                                        16:23:23</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="layui-table-fixed layui-table-fixed-l">
+                                    <div class="layui-table-header">
+                                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="0" data-key="9-0-0" data-unresize="true"
+                                                        class=" layui-table-col-special">
+                                                        <div
+                                                            class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                            <input type="checkbox" name="layTableCheckbox"
+                                                                lay-skin="primary" lay-filter="layTableAllChoose">
+                                                            <div class="layui-unselect layui-form-checkbox"
+                                                                lay-skin="primary"><i
+                                                                    class="layui-icon layui-icon-ok"></i></div>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="layui-table-body" style="height: auto;">
+                                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                                            <tbody>
+                                                <tr data-index="0" class="">
+                                                    <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                        <div
+                                                            class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                            <input type="checkbox" name="layTableCheckbox"
+                                                                lay-skin="primary">
+                                                            <div class="layui-unselect layui-form-checkbox"
+                                                                lay-skin="primary"><i
+                                                                    class="layui-icon layui-icon-ok"></i></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr data-index="1" class="">
+                                                    <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                        <div
+                                                            class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                            <input type="checkbox" name="layTableCheckbox"
+                                                                lay-skin="primary">
+                                                            <div class="layui-unselect layui-form-checkbox"
+                                                                lay-skin="primary"><i
+                                                                    class="layui-icon layui-icon-ok"></i></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr data-index="2" class="">
+                                                    <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                        <div
+                                                            class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                            <input type="checkbox" name="layTableCheckbox"
+                                                                lay-skin="primary">
+                                                            <div class="layui-unselect layui-form-checkbox"
+                                                                lay-skin="primary"><i
+                                                                    class="layui-icon layui-icon-ok"></i></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr data-index="3" class="">
+                                                    <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                        <div
+                                                            class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                            <input type="checkbox" name="layTableCheckbox"
+                                                                lay-skin="primary">
+                                                            <div class="layui-unselect layui-form-checkbox"
+                                                                lay-skin="primary"><i
+                                                                    class="layui-icon layui-icon-ok"></i></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr data-index="4" class="">
+                                                    <td data-field="0" data-key="9-0-0" class="layui-table-col-special">
+                                                        <div
+                                                            class="layui-table-cell laytable-cell-9-0-0 laytable-cell-checkbox">
+                                                            <input type="checkbox" name="layTableCheckbox"
+                                                                lay-skin="primary">
+                                                            <div class="layui-unselect layui-form-checkbox"
+                                                                lay-skin="primary"><i
+                                                                    class="layui-icon layui-icon-ok"></i></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-table-page">
+                                <div id="layui-table-page9">
+                                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7"><a
+                                            href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                            data-page="0"><i class="layui-icon"></i></a><span
+                                            class="layui-laypage-curr"><em
+                                                class="layui-laypage-em"></em><em>1</em></span><a href="javascript:;"
+                                            class="layui-laypage-next layui-disabled" data-page="2"><i
+                                                class="layui-icon"></i></a><span class="layui-laypage-skip">到第<input
+                                                type="text" min="1" value="1" class="layui-input">页<button type="button"
+                                                class="layui-laypage-btn">确定</button></span><span
+                                            class="layui-laypage-count">共 5 条</span><span
+                                            class="layui-laypage-limits"><select lay-ignore="">
+                                                <option value="10" selected="">10 条/页</option>
+                                                <option value="20">20 条/页</option>
+                                                <option value="30">30 条/页</option>
+                                                <option value="40">40 条/页</option>
+                                                <option value="50">50 条/页</option>
+                                                <option value="60">60 条/页</option>
+                                                <option value="70">70 条/页</option>
+                                                <option value="80">80 条/页</option>
+                                                <option value="90">90 条/页</option>
+                                            </select></span></div>
+                                </div>
+                            </div>
+                            <style>
+                                .laytable-cell-9-0-0 {
+                                    width: 48px;
+                                }
+
+                                .laytable-cell-9-0-1 {
+                                    width: 20%px;
+                                }
+
+                                .laytable-cell-9-0-2 {
+                                    width: 50%px;
+                                }
+
+                                .laytable-cell-9-0-3 {
+                                    width: 20%px;
+                                }
+                            </style>
+                        </div>
+                        <script type="text/html" id="barDemo">
+                            <a class="layui-btn layui-btn-xs layui-btn-primary" lay-href="messageDetail/id={{d.id}}">查看</a>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- 表格操作列 -->
+<script type="text/html" id="user-table-bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-xs" lay-event="reset">重置密码</a>
+    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<!-- 表格状态列 -->
+<script type="text/html" id="user-tpl-state">
+    <input type="checkbox" lay-filter="user-tpl-state" value="{{d.id}}" lay-skin="switch" lay-text="正常|锁定"
+           {{d.enabled==true?'checked':''}}/>
+</script>
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        //上传
+        var upload = layui.upload;
+
+        // 渲染表格
+        table.render({
+            elem: '#user-table',
+            url: config.base_server + 'api-user/users',
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
+            page: true,
+            cols: [[
+                { type: 'numbers' },
+                { field: 'id', sort: true, title: '用户编号' },
+                { field: 'userName', sort: true, title: '账号' },
+                { field: 'nickName', sort: true, title: '用户名' },
+                { field: 'mobile', sort: true, title: '手机号' },
+                {
+                    sort: true, title: '性别', templet: function (d) {
+                        return d.gender == 0 ? "男" : "女"
+                    }
+                },
+                {
+                    sort: true, templet: function (d) {
+                        return util.toDateString(d.createTime);
+                    }, title: '创建时间'
+                },
+                { field: 'enabled', sort: true, templet: '#user-tpl-state', title: '状态' },
+                { fixed: 'right', align: 'center', toolbar: '#user-table-bar', title: '操作', width: 175 }
+            ]]
+        });
+
+        // 添加按钮点击事件
+        $('#user-btn-add').click(function () {
+            showEditModel();
+        });
+
+        // 工具条点击事件
+        table.on('tool(user-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'edit') { // 修改
+                showEditModel(data);
+            } else if (layEvent === 'reset') { // 重置密码
+                layer.confirm('确定重置此用户的密码吗？', function (i) {
+                    layer.close(i);
+                    layer.load(2);
+                    admin.req('api-user/users/' + obj.data.id + '/password', {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, { icon: 1, time: 500 });
+                        } else {
+                            layer.msg(data.msg, { icon: 2, time: 500 });
+                        }
+                    }, 'PUT');
+                });
+            } else if (layEvent === 'del') { // 删除
+                layer.confirm('确定删除此用户吗？', function (i) {
+                    layer.close(i);
+                    layer.load(2);
+                    admin.req('api-user/users/' + obj.data.id, {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, { icon: 1, time: 500 });
+                            table.reload('user-table', {});
+                        } else {
+                            layer.msg(data.msg, { icon: 2, time: 500 });
+                        }
+                    }, 'delete');
+                });
+            }
+        });
+
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            //修改sex值
+            if (data) {
+                data.sex = data.sex + '';
+            }
+            admin.putTempData('t_user', data);
+            var title = data ? '修改用户' : '添加用户';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/system/user_form.html',
+                finish: function () {
+                    table.reload('user-table', {});
+                }
+            });
+        };
+
+        // 搜索按钮点击事件
+        $('#user-btn-search').click(function () {
+            var key = $('#user-search-key').val();
+            var value = $('#user-search-value').val();
+            table.reload('user-table', { where: { searchKey: key, searchValue: value } });
+        });
+
+        // 导出
+        $('#user-btn-export').click(function () {
+            var url = config.base_server + 'api-user/users/export';
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.responseType = "blob";
+            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+            xhr.setRequestHeader("Authorization", "Bearer " + config.getToken().access_token);
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    var fileName = "user.xlsx";
+                    var blob = this.response;
+                    var a = document.createElement('a');
+                    a.innerHTML = fileName;
+                    // 指定生成的文件名
+                    a.download = fileName;
+                    a.href = URL.createObjectURL(blob);
+                    document.body.appendChild(a);
+                    var evt = document.createEvent("MouseEvents");
+                    evt.initEvent("click", false, false);
+                    a.dispatchEvent(evt);
+                    document.body.removeChild(a);
+                }
+            }
+            xhr.send();
+        });
+
+        // 修改user状态
+        form.on('switch(user-tpl-state)', function (obj) {
+            layer.load(2);
+            admin.req('api-user/users/updateEnabled', {
+                id: obj.elem.value,
+                enabled: obj.elem.checked ? true : false
+            }, function (data) {
+                layer.closeAll('loading');
+                if (data.code == 0) {
+                    layer.msg(data.msg, { icon: 1, time: 500 });
+                    //table.reload('table-user', {});
+                } else {
+                    layer.msg(data.msg, { icon: 2, time: 500 });
+                    $(obj.elem).prop('checked', !obj.elem.checked);
+                    form.render('checkbox');
+                }
+            }, 'GET');
+        });
+
+        //上传
+        var importUrl = config.base_server + 'api-user/users/import';
+        upload.render({
+            elem: '#user-btn-import'
+            , url: importUrl
+            , accept: 'file' //普通文件
+            , multiple: false
+            , headers: { "Authorization": "Bearer " + config.getToken().access_token }
+            , done: function (data) {
+                if (data.code == 0) {
+                    layer.msg(data.msg, { icon: 1, time: 500 });
+                    table.reload('user-table', {});
+                } else {
+                    layer.msg(data.msg, { icon: 2, time: 500 });
+                }
+            }
+        });
+
+        //判断权限，没有权限则隐藏按钮
+        /*let resList = ['user-btn-add','user-btn-export','user-btn-import'];
+        for(let i = 0; i < resList.length; i++){
+            if (!admin.hasPerm(resList[i])) {
+                $('#'+resList[i]).hide();
+            }
+        }*/
+    });
+</script>

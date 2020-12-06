@@ -38,6 +38,12 @@ layui.define(function (exports) {
                 remove: true
             });
         },
+        removeUserInfo: function () {
+            layui.data(config.tableName, {
+                key: 'login_user',
+                remove: true
+            });
+        },
         // 缓存token
         putToken: function (token) {
             layui.data(config.tableName, {

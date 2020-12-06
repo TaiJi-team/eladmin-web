@@ -114,7 +114,7 @@ export default {
     }
   },
   mounted: function() {
-    if (getToken() !== null) {
+    if (getToken()) {
       this.isLogin = true
       this.userInfo = getUserInfo()
     }

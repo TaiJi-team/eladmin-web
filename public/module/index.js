@@ -221,7 +221,8 @@ layui.define(['config', 'admin', 'layer', 'laytpl', 'element', 'form'], function
                     if (token) {
                         let accessToken = token.access_token;
                         config.removeToken();
-
+                        config.removeUserInfo();
+                        localStorage.clear();
                         if (accessToken) {
                             isExistsToken = true;
                             admin.req('api-uaa/oauth/check_token?token='+accessToken, {}, function (data) {

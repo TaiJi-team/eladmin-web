@@ -2,422 +2,706 @@
 <html>
 
 <head>
-    <title>工作台</title>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <style>
-        .layui-card-header {
-            text-align:left;
-        }
-        .layuiadmin-badge {
-            float:right;
-            margin-top:12px;
-        }
-        .big-font {
-            text-align:left;
-            font-size: 250%;
-            height: 30px;
-        }
-        .my-tab-item {
-            vertical-align: middle;
-            text-align: center;
-            line-height: 40px;
-            margin-right: 20px;
-            padding: 0 15px 12px 15px;
-            cursor: pointer;
-        }
-        .my-tab-item-select {
-            border: none;
-            border-radius: 0;
-            border-bottom: 2px solid #5FB878;
-        }
-        .my-tab-content {
-            height: 300px;
-        }
-        .comp-sign {
-            z-index: 1000;
-        }
+  <title>工作台</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <style>
+    .layui-card-header {
+      text-align: left;
+    }
 
-        .layui-table-cell{
-            line-height: 35px;
-            margin: 3% 0 0 0;
-        }
-        .layui-col-xs3 {
-          width: 33%;
-        }
-        .layui-col-xs3 div {
-          text-align: center;
-        }
-        .layui-col-xs3 img {
-          width: 40%;
-        }
-        .layui-col-xs3 p {
-          margin: 5% 0 0 0;
-        }
-    </style>
+    .layuiadmin-badge {
+      float: right;
+      margin-top: 12px;
+    }
+
+    .big-font {
+      text-align: left;
+      font-size: 250%;
+      height: 30px;
+    }
+
+    .my-tab-item {
+      vertical-align: middle;
+      text-align: center;
+      line-height: 40px;
+      margin-right: 20px;
+      padding: 0 15px 12px 15px;
+      cursor: pointer;
+    }
+
+    .my-tab-item-select {
+      border: none;
+      border-radius: 0;
+      border-bottom: 2px solid #5FB878;
+    }
+
+    .my-tab-content {
+      height: 300px;
+    }
+
+    .comp-sign {
+      z-index: 1000;
+    }
+
+    .layui-table-cell {
+      line-height: 35px;
+      margin: 3% 0 0 0;
+    }
+
+    .layui-col-xs3 {
+      width: 33%;
+    }
+
+    .layui-col-xs3 div {
+      text-align: center;
+    }
+
+    .layui-col-xs3 img {
+      width: 40%;
+    }
+
+    .layui-col-xs3 p {
+      margin: 5% 0 0 0;
+    }
+
+    layadmin-backlog .layadmin-backlog-body {
+      display: block;
+      padding: 10px 15px;
+      background-color: #f8f8f8;
+      color: #999;
+      border-radius: 2px;
+      transition: all .3s;
+      -webkit-transition: all .3s;
+    }
+
+    *[lay-href], *[lay-tips], *[layadmin-event] {
+        cursor: pointer;
+    }
+
+    .layadmin-backlog-body h3 {
+        padding-bottom: 10px;
+        font-size: 12px;
+    }
+
+    .layadmin-backlog-body p cite {
+      font-style: normal;
+      font-size: 30px;
+      font-weight: 300;
+      color: #009688;
+    }
+    .data-board li {
+      width: 25%;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="layui-btn-container" style="margin: 2% 0 0 18%; display: none;">
-        <button class="cons-btn layui-btn" type="button" style="float: left;" auth-type="1">企业入驻</button>
-        <ul class="layui-nav layui-bg-green btnz" lay-filter="" style="font-size: 12px;border-radius: 0px;float: left;padding:0px 0px 0px 0px;margin: 0 1% 0 0%;">
-            <li class="layui-nav-item" style="line-height: 34px;">
-                <a href="javascript:;" style="color:white;font-size: 14px;padding: 0px 30px 0px 20px;">金融机构入驻<span class="layui-nav-more" style="right: 10px;font-size: 12px;"></span></a>
-                <dl class="layui-nav-child" style="top: 28px;line-height: 31px;padding: 0px 0px 0px 0px;background-color: rgb(39, 172, 39);"> <!-- 二级菜单 -->
-                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-0" style="margin-bottom: 1%;">金融机构</button></dd>
-                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-1" style="margin-bottom: 1%;">信用机构</button></dd>
-                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-2" style="margin-bottom: 1%;">投资机构</button></dd>
-                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-3" style="margin-bottom: 1%;">保险公司</button></dd>
-                    <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-4" style="margin-bottom: 1%;">担保机构</button></dd>
-                </dl>
-            </li>
-        </ul>
-        <button class="cons-btn layui-btn" type="button" style="float: left;" auth-type="3">运营公司入驻</button>
-    </div>
+  <div class="layui-btn-container" style="margin: 2% 0 0 18%; display: none;">
+    <!-- <button class="cons-btn layui-btn" type="button" style="float: left;" auth-type="1">企业入驻</button> -->
+    <ul class="layui-nav layui-bg-green btnz" lay-filter=""
+      style="font-size: 12px;border-radius: 0px;float: left;padding:0px 0px 0px 0px;margin: 0 1% 0 0%;">
+      <li class="layui-nav-item" style="line-height: 34px;">
+        <a href="javascript:;" style="color:white;font-size: 14px;padding: 0px 30px 0px 20px;">企业入驻<span
+            class="layui-nav-more" style="right: 10px;font-size: 12px;"></span></a>
+        <dl class="layui-nav-child"
+          style="top: 28px;line-height: 31px;padding: 0px 0px 0px 0px;background-color: rgb(39, 172, 39);">
+          <!-- 二级菜单 -->
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="1-0"
+              style="margin-bottom: 1%;">个体户</button></dd>
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="1-1"
+              style="margin-bottom: 1%;">企业</button></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-bg-green btnz" lay-filter=""
+      style="font-size: 12px;border-radius: 0px;float: left;padding:0px 0px 0px 0px;margin: 0 1% 0 0%;">
+      <li class="layui-nav-item" style="line-height: 34px;">
+        <a href="javascript:;" style="color:white;font-size: 14px;padding: 0px 30px 0px 20px;">金融机构入驻<span
+            class="layui-nav-more" style="right: 10px;font-size: 12px;"></span></a>
+        <dl class="layui-nav-child"
+          style="top: 28px;line-height: 31px;padding: 0px 0px 0px 0px;background-color: rgb(39, 172, 39);">
+          <!-- 二级菜单 -->
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-0"
+              style="margin-bottom: 1%;">金融机构</button></dd>
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-1"
+              style="margin-bottom: 1%;">信用机构</button></dd>
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-2"
+              style="margin-bottom: 1%;">投资机构</button></dd>
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-3"
+              style="margin-bottom: 1%;">保险公司</button></dd>
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-4"
+              style="margin-bottom: 1%;">担保机构</button></dd>
+        </dl>
+      </li>
+    </ul>
+    <button class="cons-btn layui-btn" type="button" style="float: left;" auth-type="3">运营公司入驻</button>
+  </div>
 
-    <div id="console-view"></div>
-    <script id="conTpl" type="text/html">
-        <!-- {{#  if(!d.isAuthed){ }} -->
-        <!-- 企业工作台 -->
-        <!-- {{#  if(d.compType === 1){ }} -->
-        <!-- 表格操作列 -->
-        <!-- <script type="text/html" id="comp-table-bar">
-          <a class="layui-btn layui-btn-primary layui-btn-xs">查看合同</a>
-        </script> -->
-        <div class="comp-console">
-            <h3>企业工作台</h3>
-        </div>
-        <div class="layui-fluid">
-            <div class="layui-row layui-col-space15">
-                <div class="layui-col-md8">
-                    <div class="layui-row layui-col-space15">
-                        <div class="layui-col-md6">
-                            <div class="layui-card">
-                              <div class="layui-card-header">产品推荐</div>
-                              <div class="layui-card-body">
-                                
-                                <div class="layui-carousel layadmin-carousel layadmin-shortcut" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;">
-                                  <div carousel-item="">
-                                    <ul class="layui-row layui-col-space10 layui-this">
-                                      <li class="layui-col-xs3">
-                                        <a href="home/homepage1.html">
-                                          <div>
-                                            <img src="assets/images/product.png"/>
-                                            <p>产品一</p>
-                                          </div>
-                                        </a>
-                                      </li>
-                                      <li class="layui-col-xs3">
-                                        <a href="home/homepage1.html">
-                                          <div>
-                                            <img src="assets/images/product.png"/>
-                                            <p>产品二</p>
-                                          </div>
-                                        </a>
-                                      </li>
-                                      <li class="layui-col-xs3">
-                                        <a href="home/homepage1.html">
-                                          <div>
-                                            <img src="assets/images/product.png"/>
-                                            <p>产品三</p>
-                                          </div>
-                                        </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-        
-                          <div class="layui-col-md6">
-                            <div class="layui-card">
-                              <div class="layui-card-header">我的消息</div>
-                              <div class="layui-card-body">
-                
-                                <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;">
-                                  <div carousel-item="">
-                                    <ul class="layui-row layui-col-space10 layui-this">
-                                      <li class="layui-col-xs6">
-                                        <a href="app/content/comment.html" class="layadmin-backlog-body">
-                                          <h3>未查看</h3>
-                                          <p><cite>20</cite></p>
-                                        </a>
-                                      </li>
-                                      <li class="layui-col-xs6">
-                                        <a href="app/forum/list.html" class="layadmin-backlog-body">
-                                          <h3>已查看</h3>
-                                          <p><cite>12</cite></p>
-                                        </a>
-                                      </li>
-                                      <!-- <li class="layui-col-xs6">
-                                        <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
-                                          <h3>待审商品</h3>
-                                          <p><cite>99</cite></p>
-                                        </a>
-                                      </li>
-                                      <li class="layui-col-xs6">
-                                        <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
-                                          <h3>待发货</h3>
-                                          <p><cite>20</cite></p>
-                                        </a>
-                                      </li> -->
-                                    </ul>
-                                    
-                                  </div>
-                                <div class="layui-carousel-ind">
-                                    <!-- <ul><li class="layui-this"></li><li></li></ul> -->
-                                </div>
-                                    <!-- <button class="layui-icon layui-carousel-arrow" lay-type="sub"></button><button class="layui-icon layui-carousel-arrow" lay-type="add"></button> -->
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-        
-                          <div class="layui-col-md12">
-                            <div class="layui-card">
-                              <div class="layui-tab layui-tab-brief layadmin-latestData">
-                                <ul class="layui-tab-title" style="width: 83%;margin: 0 0 0 1%;">
-                                  <li class="layui-this" style="margin: 0 0 0 -7%;">入驻记录</li>
-                                </ul>
-                                <div class="layui-tab-content">
-                                    <table class="layui-table" id="auth-table"></table>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="layui-col-md4">
-                    <div class="layui-card">
-                      <div class="layui-card-header">企业信息</div>
-                      <div class="layui-card-body layui-text">
-                        <table class="layui-table">
-                          <colgroup>
-                            <col width="100">
-                            <col>
-                          </colgroup>
-                          <tbody>
-                            <tr>
-                              <td>经营范围</td>
-                              <td>
-                                <a href="http://fly.layui.com/docs/3/" target="_blank" style="padding-left: 10px;">教育</a>
-                                <a href="http://fly.layui.com/docs/3/" target="_blank" style="padding-left: 10px;">培训</a> 
-                                <a href="javascript:;" layadmin-event="update" style="padding-left: 5px;">新媒体</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>地址</td>
-                              <td>北京市朝阳区</td>
-                            </tr>
-                            <tr>
-                              <td>运营方式</td>
-                              <td>线上 / 线下</td>
-                            </tr>
-                            <tr>
-                              <td>资料下载</td>
-                              <td style="padding-bottom: 0;">
-                                <div class="layui-btn-container">
-                                  <a href="http://www.layui.com/admin/" target="_blank" class="layui-btn layui-btn-danger">获取授权</a>
-                                  <a href="http://fly.layui.com/download/layuiAdmin/" target="_blank" class="layui-btn">立即下载</a>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <div class="layui-card">
-                      <div class="layui-card-header">
-                        企业简介
-                        <i class="layui-icon layui-icon-, width: "10%", width: "10%"ips" lay-tips="要支持的噢" lay-offset="5"></i>
-                      </div>
-                      <div class="layui-card-body layui-text layadmin-text">
-                        <p>上海文晋文化传播有限公司是中国著名的个性化教育培训企业之一，集团创始人自1999年从事个性化教育以来，积累了丰富的个性化一对一教育成功运营经验。优胜一对一个性化辅导是上海文晋文化传播有限公司的核心产品项目，课程涵盖6-18岁，一年级至高三年级的全科文化课辅导。优胜教育集团一直致力于以一流的专业师资团队、先进的教学理念、完善的教学模式，坚持以人为本的素质教育思想，更好的服务社会，是目前国内大型个性化辅导行业的支柱型企业之一。</p>
-                      </div>
-                    </div>
+  <div id="console-view"></div>
+  <script id="conTpl" type="text/html">
+  {{#  if(!d.isAuthed){ }}
+  <!-- 企业工作台 -->
+  {{#  if(d.compType === 'ADMIN' || d.compType === 'comp_user'){ }}
+  <!-- <div class="comp-console layui-card-header">
+    <h2 class="header-title">企业工作台</h2>
+  </div> -->
+  <div class="layui-fluid" style="padding: 0;">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md8">
+        <div class="layui-row layui-col-space15">
+          <div class="layui-col-md12">
+            <div class="layui-card">
+              <div class="layui-card-header">数据概览</div>
+              <div class="layui-card-body">
+                <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim=""
+                  style="margin: 1% 0 3% 0;">
+                  <div template="" lay-url="./api/get_ajax.aspx?action=get_financingData">
+                    <ul class="data-board layui-row layui-col-space10">
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>融资需求（笔）</h3>
+                          <p><cite>12</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>正在对接（笔）</h3>
+                          <p><cite>4</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>成功放款（笔）</h3>
+                          <p><cite>3</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="comInfo" class="layadmin-backlog-body">
+                          <h3>注册企业</h3>
+                          <p><cite>1</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>需求金额（万元）</h3>
+                          <p><cite>120</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>意向金额（万元）</h3>
+                          <p><cite>200</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>放款金额（万元）</h3>
+                          <p><cite>100</cite></p>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <!-- {{#  } }}  -->
-        
-        <!-- 金融机构工作台 -->
-        {{#  if(d.compType === 2){ }}
-        <div class="fin-org-console">
-            <h3>金融机构工作台</h3>
-        </div>
-        {{#  } }} 
-        
-        <!-- 运营机构工作台 -->
-        {{#  if(d.compType === 3){ }}
-        <div class="oper-org-console">
-            <h3>运营机构工作台</h3>
-        </div>
-        {{#  } }} 
-        <!-- {{#  } }}  -->
-    </script>
+          </div>
 
-<script type="text/javascript">
+          <div class="layui-col-md12">
+            <div class="layui-card">
+              <div class="layui-tab layui-tab-brief layadmin-latestData">
+                <ul class="layui-tab-title" style="width: 83%;margin: 0 0 0 1%;">
+                  <li class="layui-this" style="margin: 0 0 0 -7%;">入驻记录</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <table class="layui-table" id="auth-table"></table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-col-md4">
+        <div class="layui-card">
+          <div class="layui-card-header">产品推荐</div>
+          <div class="layui-card-body">
+            <div class="layui-carousel layadmin-carousel layadmin-shortcut" lay-anim="" lay-indicator="inside"
+              lay-arrow="none" style="height: 186px;">
+              <div carousel-item="">
+                <ul class="layui-row layui-col-space10 layui-this">
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品一</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品二</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品三</p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-card">
+          <div class="layui-card-header">热门资金政策</div>
+          <div class="layui-card-body">
+              <ul id="zczj_hot"><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2026" target="_blank" style="padding-left: 5px;">北京市社会保险基金管理中心关于阶段性减免三项社会保险费和办理缓缴有关事项的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2025" target="_blank" style="padding-left: 5px;">北京市人力资源社会保障局 北京市财政局 北京市税务局关于做好北京市阶段性减免企业社会保险费工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2024" target="_blank" style="padding-left: 5px;">中关村科技园区管理委员会关于申报2020年中关村国家自主创新示范区科技型小微企业研发费用支持资金的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2023" target="_blank" style="padding-left: 5px;">北京市发展和改革委员会关于做好疫情防控重点保障物资生产企业名单管理工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2022" target="_blank" style="padding-left: 5px;">北京市财政局关于加强新冠肺炎疫情防控 财税政策落实和财政资金监管工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2021" target="_blank" style="padding-left: 5px;">北京市密云区城市管理委员会关于贯彻落实应对新型冠状病毒感染的肺炎疫情影响促进中小微企业持续健康发展停征占道费的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2020" target="_blank" style="padding-left: 5px;">北京市延庆区人力资源和社会保障局关于支持疫情防控企业用工给予一次性吸纳就业补贴有关问题的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2019" target="_blank" style="padding-left: 5px;">北京市通州区经济和信息化局关于印发《通州区减轻防疫用品生产企业负担专项资金实施细则》的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2017" target="_blank" style="padding-left: 5px;">北京市住房和城乡建设委员会关于进一步做好疫情防控期间住房租赁服务管理的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2016" target="_blank" style="padding-left: 5px;">北京市住房城乡建设委员会关于新冠肺炎疫情防控期间延长建筑工程施工许可证有效期的通告        </a></li></ul>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  {{#  } }} 
+
+  <!-- 金融机构工作台 -->
+  {{#  if(d.compType === 'fin_org_user'){ }}
+  <!-- <div class="fin-org-console">
+    <h3>金融机构工作台</h3>
+  </div> -->
+  <div class="layui-fluid" style="padding: 0;">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md8">
+        <div class="layui-row layui-col-space15">
+          <div class="layui-col-md12">
+            <div class="layui-card">
+              <div class="layui-card-header">数据概览</div>
+              <div class="layui-card-body">
+                <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim=""
+                  style="margin: 1% 0 3% 0;">
+                  <div template="" lay-url="./api/get_ajax.aspx?action=get_financingData">
+                    <ul class="data-board layui-row layui-col-space10">
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>融资需求（笔）</h3>
+                          <p><cite>12</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>正在对接（笔）</h3>
+                          <p><cite>4</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>成功放款（笔）</h3>
+                          <p><cite>3</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="comInfo" class="layadmin-backlog-body">
+                          <h3>注册企业</h3>
+                          <p><cite>1</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>需求金额（万元）</h3>
+                          <p><cite>120</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>意向金额（万元）</h3>
+                          <p><cite>200</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>放款金额（万元）</h3>
+                          <p><cite>100</cite></p>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="layui-col-md12">
+            <div class="layui-card">
+              <div class="layui-tab layui-tab-brief layadmin-latestData">
+                <ul class="layui-tab-title" style="width: 83%;margin: 0 0 0 1%;">
+                  <li class="layui-this" style="margin: 0 0 0 -7%;">入驻记录</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <table class="layui-table" id="auth-table"></table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-col-md4">
+        <div class="layui-card">
+          <div class="layui-card-header">产品推荐</div>
+          <div class="layui-card-body">
+            <div class="layui-carousel layadmin-carousel layadmin-shortcut" lay-anim="" lay-indicator="inside"
+              lay-arrow="none" style="height: 186px;">
+              <div carousel-item="">
+                <ul class="layui-row layui-col-space10 layui-this">
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品一</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品二</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品三</p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-card">
+          <div class="layui-card-header">热门资金政策</div>
+          <div class="layui-card-body">
+              <ul id="zczj_hot"><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2026" target="_blank" style="padding-left: 5px;">北京市社会保险基金管理中心关于阶段性减免三项社会保险费和办理缓缴有关事项的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2025" target="_blank" style="padding-left: 5px;">北京市人力资源社会保障局 北京市财政局 北京市税务局关于做好北京市阶段性减免企业社会保险费工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2024" target="_blank" style="padding-left: 5px;">中关村科技园区管理委员会关于申报2020年中关村国家自主创新示范区科技型小微企业研发费用支持资金的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2023" target="_blank" style="padding-left: 5px;">北京市发展和改革委员会关于做好疫情防控重点保障物资生产企业名单管理工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2022" target="_blank" style="padding-left: 5px;">北京市财政局关于加强新冠肺炎疫情防控 财税政策落实和财政资金监管工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2021" target="_blank" style="padding-left: 5px;">北京市密云区城市管理委员会关于贯彻落实应对新型冠状病毒感染的肺炎疫情影响促进中小微企业持续健康发展停征占道费的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2020" target="_blank" style="padding-left: 5px;">北京市延庆区人力资源和社会保障局关于支持疫情防控企业用工给予一次性吸纳就业补贴有关问题的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2019" target="_blank" style="padding-left: 5px;">北京市通州区经济和信息化局关于印发《通州区减轻防疫用品生产企业负担专项资金实施细则》的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2017" target="_blank" style="padding-left: 5px;">北京市住房和城乡建设委员会关于进一步做好疫情防控期间住房租赁服务管理的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2016" target="_blank" style="padding-left: 5px;">北京市住房城乡建设委员会关于新冠肺炎疫情防控期间延长建筑工程施工许可证有效期的通告        </a></li></ul>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  {{#  } }}
+
+  <!-- 运营机构工作台 -->
+  {{#  if(d.compType === 'oper_org_user'){ }}
+  <!-- <div class="oper-org-console">
+    <h3>运营机构工作台</h3>
+  </div> -->
+  <div class="layui-fluid" style="padding: 0;">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md8">
+        <div class="layui-row layui-col-space15">
+          <div class="layui-col-md12">
+            <div class="layui-card">
+              <div class="layui-card-header">数据概览</div>
+              <div class="layui-card-body">
+                <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim=""
+                  style="margin: 1% 0 3% 0;">
+                  <div template="" lay-url="./api/get_ajax.aspx?action=get_financingData">
+                    <ul class="data-board layui-row layui-col-space10">
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>融资需求（笔）</h3>
+                          <p><cite>12</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>正在对接（笔）</h3>
+                          <p><cite>4</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>成功放款（笔）</h3>
+                          <p><cite>3</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="comInfo" class="layadmin-backlog-body">
+                          <h3>注册企业</h3>
+                          <p><cite>1</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>需求金额（万元）</h3>
+                          <p><cite>120</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>意向金额（万元）</h3>
+                          <p><cite>200</cite></p>
+                        </a>
+                      </li>
+                      <li class="layui-col-xs3">
+                        <a lay-href="financingList" class="layadmin-backlog-body">
+                          <h3>放款金额（万元）</h3>
+                          <p><cite>100</cite></p>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="layui-col-md12">
+            <div class="layui-card">
+              <div class="layui-tab layui-tab-brief layadmin-latestData">
+                <ul class="layui-tab-title" style="width: 83%;margin: 0 0 0 1%;">
+                  <li class="layui-this" style="margin: 0 0 0 -7%;">入驻记录</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <table class="layui-table" id="auth-table"></table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-col-md4">
+        <div class="layui-card">
+          <div class="layui-card-header">产品推荐</div>
+          <div class="layui-card-body">
+            <div class="layui-carousel layadmin-carousel layadmin-shortcut" lay-anim="" lay-indicator="inside"
+              lay-arrow="none" style="height: 186px;">
+              <div carousel-item="">
+                <ul class="layui-row layui-col-space10 layui-this">
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品一</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品二</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="layui-col-xs3">
+                    <a href="home/homepage1.html">
+                      <div>
+                        <img src="assets/images/product.png" />
+                        <p>产品三</p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-card">
+          <div class="layui-card-header">热门资金政策</div>
+          <div class="layui-card-body">
+              <ul id="zczj_hot"><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2026" target="_blank" style="padding-left: 5px;">北京市社会保险基金管理中心关于阶段性减免三项社会保险费和办理缓缴有关事项的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2025" target="_blank" style="padding-left: 5px;">北京市人力资源社会保障局 北京市财政局 北京市税务局关于做好北京市阶段性减免企业社会保险费工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2024" target="_blank" style="padding-left: 5px;">中关村科技园区管理委员会关于申报2020年中关村国家自主创新示范区科技型小微企业研发费用支持资金的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2023" target="_blank" style="padding-left: 5px;">北京市发展和改革委员会关于做好疫情防控重点保障物资生产企业名单管理工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2022" target="_blank" style="padding-left: 5px;">北京市财政局关于加强新冠肺炎疫情防控 财税政策落实和财政资金监管工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2021" target="_blank" style="padding-left: 5px;">北京市密云区城市管理委员会关于贯彻落实应对新型冠状病毒感染的肺炎疫情影响促进中小微企业持续健康发展停征占道费的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2020" target="_blank" style="padding-left: 5px;">北京市延庆区人力资源和社会保障局关于支持疫情防控企业用工给予一次性吸纳就业补贴有关问题的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2019" target="_blank" style="padding-left: 5px;">北京市通州区经济和信息化局关于印发《通州区减轻防疫用品生产企业负担专项资金实施细则》的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2017" target="_blank" style="padding-left: 5px;">北京市住房和城乡建设委员会关于进一步做好疫情防控期间住房租赁服务管理的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2016" target="_blank" style="padding-left: 5px;">北京市住房城乡建设委员会关于新冠肺炎疫情防控期间延长建筑工程施工许可证有效期的通告        </a></li></ul>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  {{#  } }}
+  {{#  } }} 
+  </script>
+
+  <script type="text/javascript">
     layui.use(['admin', 'echarts', 'laytpl', 'table', 'util'], function () {
-        let admin = layui.admin;
-        let echarts = layui.echarts;
-        let laytpl = layui.laytpl;
-        let $ = layui.$;
-        let conTpl = document.getElementById('conTpl').innerHTML;
-        let $view = $("#console-view");
-        let table = layui.table;
-        let util = layui.util;
-        let statData;
+      let admin = layui.admin;
+      let echarts = layui.echarts;
+      let laytpl = layui.laytpl;
+      let $ = layui.$;
+      let conTpl = document.getElementById('conTpl').innerHTML;
+      let $view = $("#console-view");
+      let table = layui.table;
+      let util = layui.util;
+      let statData;
 
-        const data = {
-            isAuthed: false,
-            compType: 1
+      function getUserRole() {
+        const user = JSON.parse(localStorage.easyweb).login_user
+        if (user) {
+          return JSON.parse(user).roles[0].code
         }
+        return {}
+      }
+      var role = getUserRole();
+      const data = {
+        // isAuthed: false,
+        compType: role
+      }
 
-        if (data.isAuthed) {
-            $('.layui-btn-container').show()
+      if (role == 'general') {
+        $('.layui-btn-container').show()
+      }
+      laytpl(conTpl).render(data, function (html) {
+        $view.html(html)
+        renderTable()
+      })
+      function renderTable() {
+        // 渲染表格
+        table.render({
+          elem: '#auth-table',
+          url: '/assets/data/comp-auth.json',
+          method: 'GET',
+          page: true,
+          cols: [[
+            // {field: 'id', title: '序号', width: "8%"},
+            { field: 'compName', title: '企业名称', width: "13.3%" },
+            { field: 'uniCreCode', title: '统一社会信用代码', width: "18%" },
+            { field: 'legalRep', title: '法人代表', width: "12%" },
+            { field: 'operater', title: '签约人', width: "10%" },
+            {
+              field: 'createTime', sort: true, templet: function (d) {
+                return util.toDateString(d.createTime);
+              }, title: '签约时间', width: "22%"
+            },
+            {
+              field: 'status', templet: function (d) {
+                return d.status == 0 ? '审核中' : '入驻成功'
+              }, title: '状态', width: "13%"
+            },
+            { field: 'opert', align: 'center', title: '操作', width: "12%" }
+          ]]
+        });
+      }
+      $('button.cons-btn').on('click', function () {
+        let type = $(this).attr('auth-type');
+        // layer.msg(type, {icon: 5, time: 1000});
+        const config = {
+          type: type
+        };
+        if (type === '1') {
+          // 企业签约
+          config.ele = 'comp-sign'
+          config.title = '企业签约'
+          config.pageUrl = '/pages/sign/comp-sign.html'
+          toSign(config)
+          return;
         }
-        laytpl(conTpl).render(data, function(html) {
-            $view.html(html)
-            renderTable()
-        })
-        function renderTable() {
-            // 渲染表格
-            table.render({
-                elem: '#auth-table',
-                url: '/assets/data/comp-auth.json',
-                method: 'GET',
-                page: true,
-                cols: [[
-                    // {field: 'id', title: '序号', width: "8%"},
-                    {field: 'compName', title: '企业名称', width: "13.3%"},
-                    {field: 'uniCreCode', title: '统一社会信用代码', width: "18%"},
-                    {field: 'legalRep', title: '法人代表', width: "12%"},
-                    {field: 'operater', title: '签约人', width: "10%"},
-                    {field: 'createTime', sort: true, templet: function (d) {
-                            return util.toDateString(d.createTime);
-                        }, title: '签约时间', width: "22%"
-                    },
-                    {field: 'status', templet: function (d) {
-                            return d.status == 0 ? '审核中' : '入驻成功'
-                        }, title: '状态', width: "13%"},
-                    {field: 'opert', align: 'center', title: '操作', width: "12%"}
-                ]]
-            });
+        if (type === '3') {
+          // 金融机构签约
+          config.ele = 'fin-org-sign'
+          config.title = '运营机构签约'
+          config.pageUrl = '/pages/sign/oper-org-sign.html'
+          toSign(config)
+          return;
         }
-        $('button.cons-btn').on('click', function(){
-            let type = $(this).attr('auth-type');
-            // layer.msg(type, {icon: 5, time: 1000});
-            const config = {
-                type: type
-            };
-            if(type === '1'){
-                // 企业签约
-                config.ele = 'comp-sign'
-                config.title = '企业签约'
-                config.pageUrl = '/pages/sign/comp-sign.html'
-                toSign(config)
-                return;
-            }
-            if(type === '3'){
-                // 金融机构签约
-                config.ele = 'fin-org-sign'
-                config.title = '运营机构签约'
-                config.pageUrl = '/pages/sign/oper-org-sign.html'
-                toSign(config)
-                return;
-            }
-            config.ele = 'oper-org-sign'
-            config.title = '金融机构签约'
-            config.pageUrl = '/pages/sign/fin-org-sign.html'
-            toSign(config)
-        })
+        config.ele = 'oper-org-sign'
+        config.title = '金融机构签约'
+        config.pageUrl = '/pages/sign/fin-org-sign.html'
+        toSign(config)
+      })
     });
 
     function toSign(cfg) {
-        layer.open({
-            type: 2,
-            // area: '70%',
-            // shadeClose: false,
-            area: ['600px', '680px'],
-            shade: 0,
-            content: cfg.pageUrl,
-            zIndex: layer.zIndex,
-            success: function() {
-                $('.layui-layer').css({
-                    'z-index': '10000000',
-                    'width': '86%',
-                    'height': '90%',
-                    'top': '8%',
-                    'left': '13%'
-                })
-                $('.layui-layer-page .layui-layer-content').css({
-                    'overflow': 'hidden'
-                })
-                $('.layui-layer-btn').css({
-                    'text-align': 'center',
-                    'display': 'none'
-                })
-                $($('iframe')[0].contentWindow).scroll(function() {
-                    const sHeight = document.getElementsByTagName('iframe')[0].contentDocument.body.scrollHeight;
-                    const sTop = frames[0].document.documentElement.scrollTop;
-                    // layer.msg('sHeight: ' + sHeight + ', sTop: ' + sTop, {icon: 5, time: 2000})
-                    if(sTop / sHeight > 0.8) {
-                        $('.layui-layer-btn').css({
-                            'display': 'block'
-                        })
-                    } else{
-                        $('.layui-layer-btn').css({
-                            'display': 'none'
-                        })
-                    }
-
-                });
-            },
-            // cancel: function(){
-            //     // $('.' + cfg.ele).css({"display": "none"})
-            // },
-            btn: ['我同意', '关闭'],
-            yes: function(){
-                layer.closeAll();
-                localStorage.setItem('auth-redirect', 'console')
-                location.href = '#!comp-auth'
-            },
-            btn2: function(){
-                layer.closeAll();
+      layer.open({
+        type: 2,
+        // area: '70%',
+        // shadeClose: false,
+        area: ['600px', '680px'],
+        shade: 0,
+        content: cfg.pageUrl,
+        zIndex: layer.zIndex,
+        success: function () {
+          $('.layui-layer').css({
+            'z-index': '10000000',
+            'width': '86%',
+            'height': '90%',
+            'top': '8%',
+            'left': '13%'
+          })
+          $('.layui-layer-page .layui-layer-content').css({
+            'overflow': 'hidden'
+          })
+          $('.layui-layer-btn').css({
+            'text-align': 'center',
+            'display': 'none'
+          })
+          $($('iframe')[0].contentWindow).scroll(function () {
+            const sHeight = document.getElementsByTagName('iframe')[0].contentDocument.body.scrollHeight;
+            const sTop = frames[0].document.documentElement.scrollTop;
+            // layer.msg('sHeight: ' + sHeight + ', sTop: ' + sTop, {icon: 5, time: 2000})
+            if (sTop / sHeight > 0.8) {
+              $('.layui-layer-btn').css({
+                'display': 'block'
+              })
+            } else {
+              $('.layui-layer-btn').css({
+                'display': 'none'
+              })
             }
-        });
-        
+
+          });
+        },
+        // cancel: function(){
+        //     // $('.' + cfg.ele).css({"display": "none"})
+        // },
+        btn: ['我同意', '关闭'],
+        yes: function () {
+          layer.closeAll();
+          localStorage.setItem('auth-redirect', 'console')
+          location.href = '#!comp-auth'
+        },
+        btn2: function () {
+          layer.closeAll();
+        }
+      });
+
     }
 
     function toSignByDom(cfg) {
-        layer.open({
-            type: 1,
-            title: cfg.title,
-            area: '70%',
-            // shadeClose: false,
-            shade: 0,
-            content: $('.' + cfg.ele),
-            zIndex: layer.zIndex,
-            success: function() {
-                $('.layui-layer').css({
-                    'z-index': '10000000',
-                    'width': '75%',
-                    'top': '25%',
-                    'left': '20%'
-                })
-                $('.layui-layer-page .layui-layer-content').css({
-                    'overflow': 'visible'
-                })
-            },
-            cancel: function(){
-                $('.' + cfg.ele).css({"display": "none"})
-            },
-        });
-        
+      layer.open({
+        type: 1,
+        title: cfg.title,
+        area: '70%',
+        // shadeClose: false,
+        shade: 0,
+        content: $('.' + cfg.ele),
+        zIndex: layer.zIndex,
+        success: function () {
+          $('.layui-layer').css({
+            'z-index': '10000000',
+            'width': '75%',
+            'top': '25%',
+            'left': '20%'
+          })
+          $('.layui-layer-page .layui-layer-content').css({
+            'overflow': 'visible'
+          })
+        },
+        cancel: function () {
+          $('.' + cfg.ele).css({ "display": "none" })
+        },
+      });
+
     }
-</script>
+  </script>
 </body>
 
 </html>
