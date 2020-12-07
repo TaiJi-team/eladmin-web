@@ -1,0 +1,18 @@
+{
+    "code": 0,
+    "count": 1,
+    "data": [
+        {
+            "productName": "小微企业贷款",
+            "blogOrg": "招商银行股份有限公司北京分行",
+            "loanLimit": "5-1000万",
+            "loanDeadl": "12-60月",
+            "rateRange": "5.22-5.7%",
+            "repayWay": "等额本金,等额本息",
+            "applyArea": "北京市",
+            "applyTimes": "10次",
+            "createTime": "2020-12-02 12:20:50",
+            "status": 0
+        }
+    ]
+}
