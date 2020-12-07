@@ -131,10 +131,19 @@
             var title = data ? '修改融资结果反馈' : '添加融资结果反馈';
             admin.popupCenter({
                 title: title,
-                area: ['700px', '700px'],
+                area: ['700px', '710px'],
                 path: 'pages/finorg/feedback-add.html',
                 finish: function () {
                     table.reload('feedback-table', {});
+                },
+                success: function() {
+                    $('.layui-layer').css({
+                        'top': '6%',
+                        'left': '25%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
                 }
             });
         };

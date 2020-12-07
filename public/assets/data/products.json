@@ -9,10 +9,34 @@
             "loanDeadl": "12-60月",
             "rateRange": "5.22-5.7%",
             "repayWay": "等额本金,等额本息",
+            "status": 0,
             "applyArea": "北京市",
             "applyTimes": "10次",
-            "createTime": "2020-12-02 12:20:50",
-            "status": 0
+            "pubTime": "2020-12-02 12:20:50"
+        },
+        {
+            "productName": "微捷贷",
+            "blogOrg": "中国农业银行",
+            "loanLimit": "10-1000万",
+            "loanDeadl": "6-60月",
+            "rateRange": "5.22-6.8%",
+            "repayWay": "等额本金,等额本息",
+            "status": 1,
+            "applyArea": "北京市",
+            "applyTimes": "120次",
+            "pubTime": "2020-10-23 14:38:21"
+        },
+        {
+            "productName": "文菁贷",
+            "blogOrg": "北京银行",
+            "loanLimit": "5-1000万",
+            "loanDeadl": "12-24月",
+            "rateRange": "5.22-6.0%",
+            "repayWay": "等额本金,等额本息",
+            "status": 3,
+            "applyArea": "北京市",
+            "applyTimes": "30次",
+            "pubTime": "2020-09-16 09:40:33"
         }
     ]
 }

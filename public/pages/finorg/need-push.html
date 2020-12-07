@@ -88,19 +88,6 @@
 
             if (layEvent === 'edit') { // 修改
                 showEditModel(data);
-            } else if (layEvent === 'reset') { // 重置密码
-                layer.confirm('确定重置此用户的密码吗？', function (i) {
-                    layer.close(i);
-                    layer.load(2);
-                    admin.req('api-user/users/'+obj.data.id+'/password', {}, function (data) {
-                        layer.closeAll('loading');
-                        if (data.code == 0) {
-                            layer.msg(data.msg, {icon: 1, time: 500});
-                        } else {
-                            layer.msg(data.msg, {icon: 2, time: 500});
-                        }
-                    }, 'PUT');
-                });
             } else if (layEvent === 'del') { // 删除
                 layer.confirm('确定删除此用户吗？', function (i) {
                     layer.close(i);
@@ -169,49 +156,5 @@
             xhr.send();
         });
 
-        // 修改user状态
-        form.on('switch(user-tpl-state)', function (obj) {
-            layer.load(2);
-            admin.req('api-user/users/updateEnabled', {
-                id: obj.elem.value,
-                enabled: obj.elem.checked ? true : false
-            }, function (data) {
-                layer.closeAll('loading');
-                if (data.code == 0) {
-                    layer.msg(data.msg, {icon: 1, time: 500});
-                    //table.reload('table-user', {});
-                } else {
-                    layer.msg(data.msg, {icon: 2, time: 500});
-                    $(obj.elem).prop('checked', !obj.elem.checked);
-                    form.render('checkbox');
-                }
-            }, 'GET');
-        });
-
-        //上传
-        var importUrl = config.base_server + 'api-user/users/import';
-        upload.render({
-            elem: '#user-btn-import'
-            ,url: importUrl
-            ,accept: 'file' //普通文件
-            ,multiple: false
-            ,headers: {"Authorization" : "Bearer " + config.getToken().access_token}
-            ,done: function(data){
-                if (data.code == 0) {
-                    layer.msg(data.msg, {icon: 1, time: 500});
-                    table.reload('user-table', {});
-                } else {
-                    layer.msg(data.msg, {icon: 2, time: 500});
-                }
-            }
-        });
-
-        //判断权限，没有权限则隐藏按钮
-        /*let resList = ['user-btn-add','user-btn-export','user-btn-import'];
-        for(let i = 0; i < resList.length; i++){
-            if (!admin.hasPerm(resList[i])) {
-                $('#'+resList[i]).hide();
-            }
-        }*/
     });
 </script>

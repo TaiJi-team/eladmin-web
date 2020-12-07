@@ -668,8 +668,8 @@ a:active {
     
     <div class="layui-fluid">
         <!-- content -->
-        <div class="min-page mar-bottom clearfix detail-cont release-cont">
-            <div class="fr bg-white box-sizing page-right">
+        <div class="mar-bottom clearfix detail-cont release-cont">
+            <!-- <div class="fr bg-white box-sizing page-right">
                 <div class="ac page-head"><span>融资平台的优势</span></div>
                 <ul class="release-side-list">
                     <li class="ac">
@@ -688,178 +688,36 @@ a:active {
                         </p>
                     </li>
                 </ul>
-            </div>
+            </div> -->
     
             <div class="need-apply fl bg-white page-left">
-                <div class="ac page-head"><span>金融产品信息</span></div>
+                <div class="ac page-head"><span>选择产品经理和业务员</span></div>
                 <div class="clearfix page-cont take-release">
                     <div class="layui-form" lay-filter="component-form-group">
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>产品名称：</label>
                             <div class="clearfix layui-input-block">
-                                <input type="text" name="rate" value="" autocomplete="on" placeholder="请输入产品名称" class="layui-input" maxlength="20">
+                                <input type="text" name="prodName" value="小微企业贷款" readonly autocomplete="on" placeholder="" class="layui-input" maxlength="20">
                             </div>
+                        </div>
+                        <div class="fl layui-form-item item-full">
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
-                                <span class="form-required">*</span>贷款额度：</label>
+                                <span class="form-required">*</span>选择产品经理：</label>
                             <div class="clearfix layui-input-block">
-                                <select id="loanLimit" name="loanLimit" lay-verify="required">
-                                    <option value="" selected="selected">--请选择贷款额度--</option>
-                                    <option value="1">0-10万（含）</option>
-                                    <option value="2">10-100万（含）</option>
-                                    <option value="3">5-10万（含）</option>
-                                    <option value="4">10万以上</option>
-                                </select>
-                                <div class="layui-unselect layui-form-select">
-                                    <div class="layui-select-title"><input type="text" placeholder="--请选择贷款额度--"
-                                            value="" class="layui-input layui-unselect"><i
-                                            class="layui-edge"></i></div>
-                                    <dl class="layui-anim layui-anim-upbit">
-                                        <dd lay-value="" class="layui-select-tips">--请选择贷款额度--</dd>
-                                        <dd lay-value="1" class="">0-10万（含）</dd>
-                                        <dd lay-value="2" class="">10-100万（含）</dd>
-                                        <dd lay-value="3" class="">5-10万（含）</dd>
-                                        <dd lay-value="4" class="">10万以上</dd>
-                                    </dl>
-                                </div>
+                                <input type="text" name="prodName" value="" autocomplete="on" placeholder="" class="layui-input" maxlength="20">
                             </div>
+                        </div>
+                        <div class="fl layui-form-item item-full">
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
-                                <span class="form-required">*</span>利率范围：</label>
+                                <span class="form-required">*</span>选择业务员：</label>
                             <div class="clearfix layui-input-block">
-                                <span class="fr input-unit">%</span>
-                                <input type="text" name="rate" value="5" lay-verify="required|money" autocomplete="off" placeholder="请输入年利率" class="layui-input" maxlength="18">
+                                <input type="text" name="prodName" value="" autocomplete="on" placeholder="" class="layui-input" maxlength="20">
                             </div>
-                        </div>
-                        <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>贷款期限：</label>
-                            <div class="layui-input-block" id="companyId">
-                                <div class="layui-unselect layui-form-select">
-                                    <div class="layui-select-title">
-                                        <input type="text" placeholder="--请选择贷款期限--" value="" class="layui-input layui-unselect">
-                                        <i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit">
-                                            <dd lay-value="" class="">--请选择贷款期限--</dd>
-                                            <dd lay-value="1" class="layui-select-tips" selected="selected">0-6月（含）</dd>
-                                            <dd lay-value="2" class="">6-12月（含）</dd>
-                                            <dd lay-value="3" class="">12-24月（含）</dd>
-                                            <dd lay-value="4" class="">24-36月（含）</dd>
-                                            <dd lay-value="5" class="">36月以上</dd></dl></div>
-                            </div>
-                        </div>
-
-                        <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>还款方式：</label>
-                            <div class="layui-input-block" id="companyId">
-                                <div class="layui-unselect layui-form-select">
-                                    <div class="layui-select-title">
-                                        <input type="text" placeholder="--请选择贷款额度--" value="" class="layui-input layui-unselect">
-                                        <i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit">
-                                            <dd lay-value="" class="">--请选择贷款额度--</dd>
-                                            <dd lay-value="1" class="layui-select-tips" selected="selected">等额本金</dd>
-                                            <dd lay-value="2" class="">等额本息</dd>
-                                        <dd lay-value="3" class="">先息后本</dd>
-                                        <dd lay-value="4" class="">随借随还</dd></dl></div>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>试用地区：</label>
-                            <div class="layui-input-block" id="companyId">
-                                <div class="layui-unselect layui-form-select">
-                                    <div class="layui-select-title">
-                                        <input type="text" placeholder="--请选择试用地区--" value="" class="layui-input layui-unselect">
-                                        <i class="layui-edge"></i>
-                                    </div>
-                                    <div class="layui-input-inline">
-                                        <select name="quiz1">
-                                        <option value="">请选择省</option>
-                                        <option value="浙江" selected="">浙江省</option>
-                                        <option value="你的工号">江西省</option>
-                                        <option value="你最喜欢的老师">福建省</option>
-                                        </select>
-                                    </div>
-                                    <div class="layui-input-inline">
-                                        <select name="quiz2">
-                                        <option value="">请选择市</option>
-                                        <option value="杭州">杭州</option>
-                                        <option value="宁波" disabled="">宁波</option>
-                                        <option value="温州">温州</option>
-                                        <option value="温州">台州</option>
-                                        <option value="温州">绍兴</option>
-                                        </select>
-                                    </div>
-                                    <div class="layui-input-inline">
-                                        <select name="quiz3">
-                                        <option value="">请选择县/区</option>
-                                        <option value="西湖区">西湖区</option>
-                                        <option value="余杭区">余杭区</option>
-                                        <option value="拱墅区">临安市</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item item-full">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>产品特色：</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item item-full">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>产品介绍</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item item-full">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>试用客户：</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item item-full">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>准入条件：</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item item-full">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>提交材料：</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item item-full">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>案例：</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item item-full">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>特此申明：</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="fl form-information item-full" style="width: 95%;">
-                            <p class="information-text">
-                                1.您的需求提交后，为保证服务质量，我们会推荐多家中小企业供您选择。               
-                            </p>
-                            <p class="information-text">
-                                2.融资信用平台会保护您的个人信息，仅有被派单的企业能看到您的联系方式，请您放心提供。               
-                            </p>
                         </div>
                         <div class="fl ac item-full">
                             <button id="product-commit" lay-filter="product-form-submit" class="layui-btn" lay-submit ew-event="closeDialog">提交</button>
