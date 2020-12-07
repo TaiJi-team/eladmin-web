@@ -93,6 +93,10 @@ export const constantRouterMap = [
   {
     path: '/fin-gqrz/detail',
     component: resolve => (require(['@/views/portal/fin-gqrz/detail.vue'], resolve))
+  },
+  {
+    path: '/credit-org',
+    component: resolve => (require(['@/views/portal/credit-org/list.vue'], resolve))
   }
   // {
   //   path: '/user',

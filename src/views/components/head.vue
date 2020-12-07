@@ -3,30 +3,34 @@
     <div class="min-width top">
       <div class="min-page clearfix" style="position: relative; z-index: 4;">
         <div style="float: right">
-          <img src="https://www.celoan.cn/res/images/ico/ico-2.png" alt="">
+          <!-- <img src="https://www.celoan.cn/res/images/ico/ico-2.png" alt=""> -->
           <ul class="line-middle">
-            <li class="fl">
-              <!-- <router-link class="color-hover changeCity" to='/login' tag="a">登录</router-link> -->
-              <a v-show="!isLogin" href="/login.html" class="color-hover changeCity">登录</a>
+            <li class="fl" style="display:block">
+              <a href="" class="color-hover">登录</a>
               <span v-show="isLogin" class="color-hover changeCity" v-html="userInfo.userName" />
             </li>
-            <li class="fl">
+            <li class="fl" style="display:block">
               <!-- <router-link class="fl" to="/register" tag="a">注册</router-link> -->
-              <a v-show="!isLogin" href="/regist.html" class="color-hover changeCity">注册</a>
-              <a v-show="isLogin" href="/index-sys.html" class="color-hover changeCity">工作台</a>
+              <a href="" class="color-hover changeCity">注册</a>
+              <!-- <a  href="javascript" class="color-hover changeCity">工作台</a> -->
             </li>
-            <li class="fl">
-              <a href="javascript:;" class="color-hover loginW changeCity">我要融资</a>
+            <li class="fl" style="display:block">
+              <!-- <router-link class="fl" to="/register" tag="a">注册</router-link> -->
+              <!-- <a  href="javascript" class="color-hover changeCity">注册</a> -->
+              <a href="" class="color-hover changeCity">工作台</a>
             </li>
-            <li class="fl">
-              <a href="javascript:;" class="color-hover hover-handle">手机融资
+            <li class="fl" style="display:block">
+              <a href=":;" class="color-hover loginW changeCity">我要融资</a>
+            </li>
+            <li class="fl" style="display:block">
+              <a href=":;" class="color-hover hover-handle">手机融资
               </a>
             </li>
             <li class="fl" style="display:block">
-              <a href="javascript:;" class="color-hover">帮助中心</a>
+              <a href=":;" class="color-hover">帮助中心</a>
             </li>
             <li class="fl" style="display:block">
-              <a href="javascript:;" class="color-hover">关于我们</a>
+              <a href=":;" class="color-hover">关于我们</a>
             </li>
           </ul>
         </div>
@@ -40,7 +44,7 @@
       <div class="min-page">
         <div>
           <img
-            src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/images/2020/07/29/2020072905543521447.jpg"
+            :src="fwlogo"
             alt="全国中小企业融资综合信用服务示范平台"
           >
           <div class="header-search" style="float: right">
@@ -79,7 +83,7 @@
           <el-menu-item :class="{'is-active':activeIndex}" index="/index">首页</el-menu-item>
           <el-menu-item :class="{'is-active':activeMarket}" index="/fin-market">金融超市</el-menu-item>
           <el-menu-item :class="{'is-active':activeOrg}" index="/fin-org">金融机构</el-menu-item>
-          <el-menu-item index="4">信用机构</el-menu-item>
+          <el-menu-item :class="{'is-active':activeCreditOrg}" index="/credit-org">信用机构</el-menu-item>
           <el-menu-item :class="{'is-active':activeGqrz}" index="/fin-gqrz">股权融资</el-menu-item>
           <el-menu-item index="5">融资动态</el-menu-item>
           <el-submenu index="6">
@@ -98,6 +102,7 @@
 
 <script>
 import { getToken, getUserInfo } from '@/utils/auth'
+import fwlogo from '@/assets/images/portal/fwlogo.png'
 
 export default {
   name: 'Myhead',
@@ -110,7 +115,9 @@ export default {
       activeIndex: this.$route.path === '/home',
       activeMarket: this.$route.path.search('/fin-market') !== -1,
       activeOrg: this.$route.path.search('/fin-org') !== -1,
-      activeGqrz: this.$route.path.search('/fin-gqrz') !== -1
+      activeGqrz: this.$route.path.search('/fin-gqrz') !== -1,
+      activeCreditOrg: this.$route.path.search('/credit-org') !== -1,
+      fwlogo: fwlogo
     }
   },
   mounted: function() {
@@ -138,9 +145,9 @@ export default {
 }
 
 .el-menu-item.is-active {
-    border-left:#33A2EF solid 6px !important;
-    background-color: #E2EFF9 !important;
-    color: #38B2FF !important;
+    border-left:#ff8008 solid 6px !important;
+    background-color: #fcfcfc !important;
+    color: #ff8008 !important;
 }
 
 /* .el-menu-item.is-active {

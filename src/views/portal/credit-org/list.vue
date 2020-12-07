@@ -8,148 +8,112 @@
           <el-image style="width: 100%; height: 100%" :src="org_banner" fit="fill" />
         </el-carousel-item>
       </el-carousel>
-
-      <div class="bg-white mar-top min-page layui-form">
-        <div class="content-filter-box">
-          <div class="clearfix box-head">
-            <div class="fr head-search">
-              <input type="text" name="s_key" placeholder="请输入关键字，支持模糊搜索" lay-verify="" class="fl layui-input search-ipt">
-              <button class="fl g-bg search-btn" lay-submit="" lay-filter="formFilter">搜 索</button>
-            </div>
-            <div class="head-title">
-              <img :src="t_img" alt="">
-              <span class="line-middle t-name">信息筛选</span>
-            </div>
-          </div>
-          <ul id="filterUl" class="bg-white filter-ul">
-            <!-- <li class="filter_ds">
-              <span class="fl item-label">区县</span>
-              <div class="overflow item-cont item-on" style="height: auto;">
-                <div class="clearfix pos-rela item-city">
-                  <div class="overflow item-sub_level_2">
-                    <a class="fl item-l item-b item-l-on" data-type="AreaType" data-id="0">不限</a>
-                  </div>
-                  <input type="hidden" name="AreaType">
-                </div>
-              </div>
-            </li> -->
-
-            <li>
-              <span class="fl item-label">行业</span>
-              <div class="overflow item-cont item-on">
-                <div class="clearfix pos-rela item-city">
-                  <!-- <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a><a class="fl item-l" data-type="OrgType" data-id="1">银行</a><a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a><a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a><a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a><a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a><a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a><a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a><a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a><a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a><a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a><a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div> -->
-                  <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">不限</a>
-                  <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="1" @click="activeB=1">电商</a>
-                  <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="2" @click="activeB=2">硬件</a>
-                  <a :class="{'item-l-on':activeB==3}" class="fl item-l " data-type="OrgType" data-id="3" @click="activeB=3">文娱传媒</a>
-                  <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="4" @click="activeB=4">工具</a>
-                  <a :class="{'item-l-on':activeB==5}" class="fl item-l" data-type="OrgType" data-id="5" @click="activeB=5">消费生活</a>
-                  <a :class="{'item-l-on':activeB==6}" class="fl item-l " data-type="OrgType" data-id="6" @click="activeB=6">金融</a>
-                  <a :class="{'item-l-on':activeB==7}" class="fl item-l" data-type="OrgType" data-id="7" @click="activeB=7">医疗健康</a>
-                  <a :class="{'item-l-on':activeB==8}" class="fl item-l" data-type="OrgType" data-id="8" @click="activeB=8">企业服务</a>
-                  <a :class="{'item-l-on':activeB==9}" class="fl item-l " data-type="OrgType" data-id="9" @click="activeB=9">旅游</a>
-                  <a :class="{'item-l-on':activeB==10}" class="fl item-l" data-type="OrgType" data-id="10" @click="activeB=1">房产家居</a>
-                  <a :class="{'item-l-on':activeB==11}" class="fl item-l" data-type="OrgType" data-id="11" @click="activeB=10">教育</a>
-                  <a :class="{'item-l-on':activeB==12}" class="fl item-l" data-type="OrgType" data-id="12" @click="activeB=2">汽车</a>
-                  <a :class="{'item-l-on':activeB==13}" class="fl item-l" data-type="OrgType" data-id="13" @click="activeB=2">张三</a><br>
-                  <input type="hidden" name="OrgType">
-                </div>
-              </div>
-              <span class="filter-switch">
-                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
-              </span>
-            </li>
-            <li>
-              <span class="fl item-label">融资轮次</span>
-              <div class="overflow item-cont item-on">
-                <div class="clearfix pos-rela item-city">
-                  <!-- <div class="overflow item-sub_city item-sub_level_1"> -->
-                  <!-- <a class="fl item-l item-b item-l-on" data-type="CityType" data-id="0">不限</a>
-                    <a class="fl item-l" data-type="CityType" data-id="110100">北京市</a></div> -->
-                  <a :class="{'item-l-on':activeC==0}" class="fl item-l " data-type="CityType" data-id="0" @click="activeC=0">不限</a>
-                  <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="CityType" data-id="1" @click="activeC=1">种子轮</a>
-                  <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="CityType" data-id="2" @click="activeC=2">天使轮</a>
-                  <a :class="{'item-l-on':activeC==3}" class="fl item-l " data-type="CityType" data-id="3" @click="activeC=3">pre-A轮</a>
-                  <a :class="{'item-l-on':activeC==4}" class="fl item-l" data-type="CityType" data-id="4" @click="activeC=4">A轮</a>
-                  <a :class="{'item-l-on':activeC==5}" class="fl item-l" data-type="CityType" data-id="5" @click="activeC=5">B轮</a>
-                  <a :class="{'item-l-on':activeC==6}" class="fl item-l " data-type="CityType" data-id="6" @click="activeC=6">C轮</a>
-                  <a :class="{'item-l-on':activeC==7}" class="fl item-l" data-type="CityType" data-id="7" @click="activeC=7">D轮</a>
-                  <a :class="{'item-l-on':activeC==8}" class="fl item-l" data-type="CityType" data-id="8" @click="activeC=8">E轮</a>
-                  <a :class="{'item-l-on':activeC==9}" class="fl item-l " data-type="CityType" data-id="9" @click="activeC=9">F轮</a>
-                  <a :class="{'item-l-on':activeC==10}" class="fl item-l" data-type="CityType" data-id="10" @click="activeC=1">G轮</a>
-                  <a :class="{'item-l-on':activeC==11}" class="fl item-l" data-type="CityType" data-id="11" @click="activeC=10">PRE-IPO</a>
-                  <a :class="{'item-l-on':activeC==12}" class="fl item-l" data-type="CityType" data-id="12" @click="activeC=2">IPO</a>
-                  <a :class="{'item-l-on':activeC==13}" class="fl item-l" data-type="CityType" data-id="13" @click="activeC=2">上市企业</a><br>
-                  <input type="hidden" name="CityType">
-                </div>
-              </div>
-              <span class="filter-switch" />
-            </li>
-          </ul>
-          <input id="hdSortType" type="hidden" name="SortType">
-
-        </div>
-      </div>
-
+      <center>
+        <div class="wrapper">
+          <div class="left" />
+          <div class="center"><span class="institution-title__color">核心信用服务提供商</span></div>
+          <div class="right" />
+        </div></center>
       <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
-        <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
-        <ul id="productListLine" class="product-list-line">
-          <li>
-            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAZ68fAAAjOg2Yhz4764.png" alt=""> </div>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">红杉资本(中国)</span> </p>
-              <p class="t">红杉资本始终致力于帮助创业者成就基业长青的伟大公司，为成员企业带来丰富的全球资源和宝贵的历史经验。47 年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
+        <ul class="clearfix institution-index__list">
+          <li class="fl bg-white"> <a href="http://www.xmcit.com/" target="_blank">
+            <div class="li-img">
+              <img src="/assets/images/credit-org/credit_one.png" alt="">
+            </div> <div class="li-cont">
+              <div class="clearfix li-t">
+                <div class="fl li-t__img"> <img src="/assets/images/credit-org/credit_two.png" alt="">
+                </div>
+                <span class="li-t__name" title="厦门信用信息技术有限公司">厦门信用信息技术有限公司</span>
+              </div>
+              <p class="li-info"> 厦门信用信息技术有限公司（以下简称为“公司”）成立于2018年7月，是厦门金圆集团、建信金融科技、厦门信息集团共同发起设立的国家信用大数据创新中心首家金融应用公司。公司以社会信用大数据为基础，以信用产品服务作为关键抓手，以解决企业和社会痛点、难点为导向，全面深化政、银、企、社多方合作，全力推 动信用大数据在普惠金融、智慧城市、高效政务及便捷民生服务等领域的应用与发展。 </p>
             </div>
-            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+          </a>
           </li>
-          <li>
-            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAeQBjAAAPPbGM7O8531.png" alt=""> </div>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">京西文旅</span> </p>
-              <p class="t">北京京西文旅科技投资基金管理有限公司（以下简称：文旅基金公司）于2016年8月8日成立，隶属北京市文化投资发展集团有限责任公司（以下简称：文投集团），由文投集团与门头沟区属企业北京京西鑫融投资管理有限公司（以下简称：京西鑫融公司）共同出资设立。公司注册资本金1000万元人民币，其中文投集团占股70%，京西鑫融公司 年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
+          <li class="fl bg-white"> <a href="http://www.xmcit.com/" target="_blank">
+            <div class="li-img">
+              <img src="/assets/images/credit-org/credit_one.png" alt="">
+            </div> <div class="li-cont">
+              <div class="clearfix li-t">
+                <div class="fl li-t__img"> <img src="/assets/images/credit-org/credit_two.png" alt="">
+                </div>
+                <span class="li-t__name" title="厦门信用信息技术有限公司">厦门信用信息技术有限公司</span>
+              </div>
+              <p class="li-info"> 厦门信用信息技术有限公司（以下简称为“公司”）成立于2018年7月，是厦门金圆集团、建信金融科技、厦门信息集团共同发起设立的国家信用大数据创新中心首家金融应用公司。公司以社会信用大数据为基础，以信用产品服务作为关键抓手，以解决企业和社会痛点、难点为导向，全面深化政、银、企、社多方合作，全力推 动信用大数据在普惠金融、智慧城市、高效政务及便捷民生服务等领域的应用与发展。 </p>
             </div>
-            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+          </a>
           </li>
-          <li>
-            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAK_JZAAARbaldlK4733.png" alt=""> </div>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">CBC宽带资本</span> </p>
-              <p class="t">宽带资本（CBC）由田溯宁成立于2006年，10余年来专注于TMT行业股权投资，目前管理多支美元及人民币基金。 宽带资本的投资项目涵盖从成长期到成熟期的各阶段，投资组合包括企业级服务、云计算、大数据、人工智能、5G等以技术和数据驱动的领域，旗下各基金累计投资一百多个项目，包括世纪互联、亚信科技、朗新科技、七牛云、同...
-                年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
+          <li class="fl bg-white"> <a href="http://www.xmcit.com/" target="_blank">
+            <div class="li-img">
+              <img src="/assets/images/credit-org/credit_one.png" alt="">
+            </div> <div class="li-cont">
+              <div class="clearfix li-t">
+                <div class="fl li-t__img"> <img src="/assets/images/credit-org/credit_two.png" alt="">
+                </div>
+                <span class="li-t__name" title="厦门信用信息技术有限公司">厦门信用信息技术有限公司</span>
+              </div>
+              <p class="li-info"> 厦门信用信息技术有限公司（以下简称为“公司”）成立于2018年7月，是厦门金圆集团、建信金融科技、厦门信息集团共同发起设立的国家信用大数据创新中心首家金融应用公司。公司以社会信用大数据为基础，以信用产品服务作为关键抓手，以解决企业和社会痛点、难点为导向，全面深化政、银、企、社多方合作，全力推 动信用大数据在普惠金融、智慧城市、高效政务及便捷民生服务等领域的应用与发展。</p>
             </div>
-            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+          </a>
           </li>
-          <li>
-            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAGBakAAAQTsH2_Lk761.png" alt=""> </div>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">德同资本</span> </p>
-              <p class="t">德同资本是一家国内领先的私募股权投资机构，专注于消费升级、医疗健康、以及智能制造领域，着重搜寻有巨大市场机遇，优秀管理团队和清晰运营模式的高成长公司。德同资本目前管理资金超过100亿人民币，主要投资人包括多个省市政府引导基金和金融机构，并和多家行业龙头上市公司上海城投/威孚高科、益民集团、粤传媒、中文在线、...
-              </p>
+        </ul>
+        <ul class="clearfix institution-index__list">
+          <li class="fl bg-white"> <a href="http://www.xmcit.com/" target="_blank">
+            <div class="li-img">
+              <img src="/assets/images/credit-org/credit_one.png" alt="">
+            </div> <div class="li-cont">
+              <div class="clearfix li-t">
+                <div class="fl li-t__img"> <img src="/assets/images/credit-org/credit_two.png" alt="">
+                </div>
+                <span class="li-t__name" title="厦门信用信息技术有限公司">厦门信用信息技术有限公司</span>
+              </div>
+              <p class="li-info"> 厦门信用信息技术有限公司（以下简称为“公司”）成立于2018年7月，是厦门金圆集团、建信金融科技、厦门信息集团共同发起设立的国家信用大数据创新中心首家金融应用公司。公司以社会信用大数据为基础，以信用产品服务作为关键抓手，以解决企业和社会痛点、难点为导向，全面深化政、银、企、社多方合作，全力推 动信用大数据在普惠金融、智慧城市、高效政务及便捷民生服务等领域的应用与发展。 </p>
             </div>
-            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+          </a>
+          </li>
+          <li class="fl bg-white"> <a href="http://www.xmcit.com/" target="_blank">
+            <div class="li-img">
+              <img src="/assets/images/credit-org/credit_one.png" alt="">
+            </div> <div class="li-cont">
+              <div class="clearfix li-t">
+                <div class="fl li-t__img"> <img src="/assets/images/credit-org/credit_two.png" alt="">
+                </div>
+                <span class="li-t__name" title="厦门信用信息技术有限公司">厦门信用信息技术有限公司</span>
+              </div>
+              <p class="li-info"> 厦门信用信息技术有限公司（以下简称为“公司”）成立于2018年7月，是厦门金圆集团、建信金融科技、厦门信息集团共同发起设立的国家信用大数据创新中心首家金融应用公司。公司以社会信用大数据为基础，以信用产品服务作为关键抓手，以解决企业和社会痛点、难点为导向，全面深化政、银、企、社多方合作，全力推 动信用大数据在普惠金融、智慧城市、高效政务及便捷民生服务等领域的应用与发展。 </p>
+            </div>
+          </a>
+          </li>
+          <li class="fl bg-white"> <a href="http://www.xmcit.com/" target="_blank">
+            <div class="li-img">
+              <img src="/assets/images/credit-org/credit_one.png" alt="">
+            </div> <div class="li-cont">
+              <div class="clearfix li-t">
+                <div class="fl li-t__img"> <img src="/assets/images/credit-org/credit_two.png" alt="">
+                </div>
+                <span class="li-t__name" title="厦门信用信息技术有限公司">厦门信用信息技术有限公司</span>
+              </div>
+              <p class="li-info"> 厦门信用信息技术有限公司（以下简称为“公司”）成立于2018年7月，是厦门金圆集团、建信金融科技、厦门信息集团共同发起设立的国家信用大数据创新中心首家金融应用公司。公司以社会信用大数据为基础，以信用产品服务作为关键抓手，以解决企业和社会痛点、难点为导向，全面深化政、银、企、社多方合作，全力推 动信用大数据在普惠金融、智慧城市、高效政务及便捷民生服务等领域的应用与发展。 </p>
+            </div>
+          </a>
           </li>
         </ul>
         <div id="pagination" class="ac pagination">
           <div id="layui-laypage-59" class="layui-box layui-laypage layui-laypage-default"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" /><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
         </div>
       </div>
-
     </div>
     <lzfooter />
   </div>
 </template>
-
 <script>
 // import beijingJson from '@/assets/beijing.json'
 import lzhead from '@/views/components/head'
 import lzfooter from '@/views/components/footer'
-import org_banner from '@/assets/images/portal/org_gqrz.png'
+import org_banner from '@/assets/images/portal/xyjg.jpg'
 import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
 import ico_type1 from '@/assets/images/portal/ico-type1.png'
 import ico_type2 from '@/assets/images/portal/ico-type2.png'
-
 export default {
   name: 'FinOrgList',
   components: {
@@ -171,12 +135,13 @@ export default {
         backgroundPositionX: 'right',
         backgroundPositionY: 'center'
       },
+      activeA: 0,
       activeB: 0,
-      activeC: 0
+      activeC: 0,
+      activeD: 0
     }
   },
   mounted() {
-
   },
   methods: {
     showDetail(id) {
@@ -188,161 +153,166 @@ export default {
   }
 }
 </script>
-
 <style scoped>
+.wrapper {
+    text-align: center;
+width: 1330px;
+height: auto;
+/* background: #f0f; */
+overflow: auto; /* 解决你说的背景问题 */
+}
+.left,.center,.right {
+width: 280px;
+float: left;
+}
+.left{
+float: left;
+margin-left: 150px;;
+height: 2px;
+margin-top: 15px;
+width: 360px;;
+background: -webkit-linear-gradient(left,rgba(255, 255, 255, 0),#5DDDD3);
+background: linear-gradient(to right, rgba(255, 255, 255, 0),#5DDDD3);
+text-align: center;
+}
+.right{
+float: right;
+height: 2px;
+width: 400px;
+margin-right: 140px;
+margin-top: 15px;
+background: -webkit-linear-gradient(left,#5DDDD3,rgba(255,255,255,0));
+background: linear-gradient(to right,#5DDDD3,rgba(255,255,255,0));
+text-align: center;
+}
+.institution-title__color{
+ font-size: 30px;
+    font-weight: bold;
+    color: #3bb9a3;
+    text-align: center;
+}
 .banner {
     height: 320px;
 }
-
 .banner.el-carousel__container {
     height: 400px;
 }
-
 .bg-white {
     background: #fff;
 }
-
 .mar-top {
     margin-top: 50px;
 }
-
 .min-page {
     width: 1200px;
     margin: 0 auto;
 }
-
 .content-filter-box {
     border: 1px solid #cdcdcd;
 }
-
 .grid-content {
     border-radius: 4px;
     min-height: 36px;
 }
-
 .row-bg {
     padding: 10px 0;
     background-color: #f9fafc;
 }
-
 .content-filter-box .box-head {
     height: 55px;
     line-height: 55px;
     background: #f1f1f1;
 }
-
 .clearfix {
     zoom: 1;
 }
-
 .fr {
     float: right;
     margin-right: -0.5%;
 }
-
 *,
 *:before,
 *:after {
     -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
-
 div {
     display: block;
 }
-
 .content-filter-box .box-head[data-v-f123e482] {
     height: 55px;
     line-height: 55px;
     background: #f1f1f1;
 }
-
 .content-filter-box .filter-ul {
     padding: 10px 13px;
 }
-
 .bg-white {
     background: #fff;
 }
-
 /* ol,
 ul,
 li {
     list-style: none;
 } */
-
 .content-filter-box .filter-ul li:first-child {
     border-top: 0;
 }
-
 .content-filter-box .filter-ul li {
     position: relative;
-    padding: 50px 50px;
+    padding: 20px 12px;
     border-top: 1px dashed #bbb;
     overflow: hidden;
 }
-
 ol,
 ul,
 li {
     list-style: none;
 }
-
 .content-filter-box .filter-ul .item-label {
     margin-right: 12px;
     font-size: 15px;
     font-weight: bold;
     color: #2a2a2a;
 }
-
 .content-filter-box .filter-ul .item-on,
 .content-filter-box .filter-ul .item-on .item-sub_city {
     height: 22px;
     overflow: hidden;
 }
-
 .content-filter-box .filter-ul .item-cont {
     padding-right: 60px;
 }
-
 .overflow {
     overflow: hidden;
 }
-
 .line-action-hover,
 .pos-rela {
     position: relative;
 }
-
 .clearfix {
     zoom: 1;
 }
-
 .content-filter-box .filter-ul .item-on,
 .content-filter-box .filter-ul .item-on .item-sub_city {
     height: 22px;
     overflow: hidden;
 }
-
 .content-filter-box .filter-ul .item-sub_city {
     /* max-height: 128px; */
     overflow-y: hidden;
     overflow-x: hidden;
 }
-
 .overflow {
     overflow: hidden;
 }
-
 .content-filter-box .filter-ul .item-l-on {
     color: #fff;
     background: #12c8b2;
 }
-
 .content-filter-box .filter-ul .item-b {
     color: #000;
 }
-
 .content-filter-box .filter-ul .item-l {
     height: 22px;
     margin: 0 10px 10px 0;
@@ -352,34 +322,28 @@ li {
     line-height: 22px;
     white-space: nowrap;
 }
-
 .fl {
     float: left;
 }
-
 a,
 a:hover,
 a:active {
     text-decoration: none;
     cursor: pointer;
 }
-
 a {
     color: #555;
 }
-
 a {
     color: #333;
     text-decoration: none;
 }
-
 .content-filter-box .filter-ul .filter-switch {
     position: absolute;
     top: 20px;
     right: 10px;
     cursor: pointer;
 }
-
 .content-filter-box .filter-ul .item-l {
     height: 22px;
     margin: 0 10px 10px 0;
@@ -389,27 +353,22 @@ a {
     line-height: 22px;
     white-space: nowrap;
 }
-
 .fl {
     float: left;
 }
-
 a,
 a:hover,
 a:active {
     text-decoration: none;
     cursor: pointer;
 }
-
 a {
     color: #555;
 }
-
 a {
     color: #333;
     text-decoration: none;
 }
-
 .content-filter-box .filter-switch .switch-arr {
     display: inline-block;
     width: 13px;
@@ -421,38 +380,31 @@ a {
     right: 10px;
     cursor: pointer;
 }
-
 .content-filter-box .box-head .head-search {
     margin: 11px 13px 11px 0;
 }
-
 .fr {
     float: right;
 }
-
 .content-filter-box .box-head .search-ipt {
     width: 457px;
     height: 32px;
 }
-
 input[type="text"] {
     width: 100%;
     height: 100%;
     padding: 0 10px;
     border: 0;
 }
-
 .fl {
     float: left;
 }
-
 .layui-input,
 .layui-textarea {
     display: block;
     width: 100%;
     padding-left: 10px;
 }
-
 .layui-input,
 .layui-select,
 .layui-textarea {
@@ -464,7 +416,6 @@ input[type="text"] {
     background-color: #fff;
     border-radius: 2px;
 }
-
 .layui-badge-rim,
 .layui-colla-content,
 .layui-colla-item,
@@ -484,7 +435,6 @@ input[type="text"] {
 .layui-textarea {
     border-color: #e6e6e6;
 }
-
 .layui-btn,
 .layui-input,
 .layui-select,
@@ -496,11 +446,9 @@ input[type="text"] {
     -webkit-transition: all .3s;
     box-sizing: border-box;
 }
-
 input {
     -webkit-appearance: none;
 }
-
 body,
 input,
 textarea,
@@ -508,7 +456,6 @@ select,
 button {
     font: 14px Arial, "Microsoft YaHei", 黑体, 宋体, sans-serif;
 }
-
 .content-filter-box .box-head .search-btn {
     width: 69px;
     height: 32px;
@@ -518,12 +465,10 @@ button {
     background-color: #12c8b2;
     cursor: pointer;
 }
-
 .g-bg,
 .bg-hover:hover {
     background: #00bba4;
 }
-
 .fl {
     float: left;
 }
@@ -533,10 +478,6 @@ button {
 .mar-top-bottom {
     margin-top: 50px;
     margin-bottom: 50px;
-}
-.min-page {
-    width: 1200px;
-    margin: 0 auto;
 }
 .search-result .result-text {
     padding-left: 10px;
@@ -750,6 +691,7 @@ li[data-v-f123e482] {
     width: 80px;
     height: 80px;
     margin-right: 40px;
+    margin-top: -13px;
     border: 1px solid #d9d6d6;
     text-align: center;
     line-height: 80px;
@@ -784,46 +726,35 @@ li[data-v-f123e482] {
     overflow: hidden;
 }
 .product-list-line .item-title {
-    width: 850px;
-    height: 50px;
-    line-height: 1.8;
+    width: 320px;
 }
 .product-list-line .item-title .t {
     display: block;
-    margin-bottom: 100px;
-    font-size: 15px;
+    margin-top: 20px;
+    font-size: 18px;
     color: #181818;
     overflow: hidden;
-    word-break:normal;
-     word-break: break-all;
     text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+    white-space: nowrap;
 }
 .product-list-line .item-title .st {
-    font-size: 16px;
-    color: #050505;
-    line-height: 1;
+    font-size: 14px;
+    color: #696969;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
     text-align: justify;
     margin-bottom: 5px;
-    font-weight: bold;
-    text-overflow: ellipsis;
-
 }
 .product-list-line .item-info {
-    width: 350px;
-    padding-top: 15px;
+    width: 650px;
+    /* padding-top: 15px; */
     text-overflow: ellipsis;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     overflow: hidden;
     font-size: 16px;
-    text-align: center;
     color: #2a2a2a;
 }
 .product-list-line .item-info .info-c {
@@ -833,16 +764,12 @@ li[data-v-f123e482] {
     color: #f57825;
 }
 .product-list-line .item-btn {
-    width: 120px;
+    width: 140px;
     height: 40px;
-    margin: 25px 0 0 50px;
-    margin-top: 25px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 50px;
+    margin: 25px 0 0 10px;
     border-radius: 20px;
-    font-size: 18px;
-    background: #bb0000;
+    font-size: 20px;
+    background: #00bba4;
 }
 .layui-btn {
     display: inline-block;
@@ -1278,5 +1205,68 @@ ul {
     color: #ff7e00;
     line-height: 28px;
     overflow: hidden;
+}
+.institution-index__list .li-t {
+    position: relative;
+    margin-top: -16px;
+    height: 60px;
+    line-height: 96px;
+    overflow: hidden;
+}
+.institution-index__list .li-cont {
+    padding: 0 0 0 10px;
+}
+.institution-index__list .li-t__name{
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.institution-index__list .li-info {
+    margin-top: 20px;
+    padding: 0 25px;
+    line-height: 2;
+    color: #3c3c3c;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+.institution-index__list li {
+    width: 377px;
+    height: 414px;
+    margin: 0 23px 23px 0;
+}
+.institution-index__list .li-t__img img{
+        max-width: 100%;
+    max-height: 100%;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+.institution-index__list .li-t__img {
+    width: 58px;
+    height: 58px;
+    border: 1px solid #c8c8c8;
+    text-align: center;
+    line-height: 58px;
+    overflow: hidden;
+    background: #fff;
+}
+ a{
+    text-decoration: none  !important;
+}
+.institution-index__list .li-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 </style>
