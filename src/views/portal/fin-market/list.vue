@@ -819,9 +819,6 @@ img {
 element.style {
     display: none;
 }
-ol, ul, li {
-    list-style: none;
-}
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
     margin: 0;
     padding: 0;
@@ -854,7 +851,7 @@ a, a:hover, a:active {
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .product-list-line .item-img {
     width: 96px;
@@ -1123,9 +1120,9 @@ address, caption, cite, code, dfn, em, strong, th, var {
     font-style: normal;
     font-weight: normal;
 }
-em {
+/* em {
     font-style: italic;
-}
+} */
 .product-list {
     margin-right: -30px;
 }
@@ -1186,7 +1183,7 @@ user agent stylesheet
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .product-list .item-title {
     height: 100px;

@@ -14,32 +14,32 @@
     <div class="min-width statistical">
       <div class="min-page">
         <ul class="data-list">
-          <li class="fl box-sizing"><p class="data-c"><span class="data-num">227</span> <span>笔</span></p>
+          <li class="fl box-sizing" style="display:block"><p class="data-c"><span class="data-num">227</span> <span>笔</span></p>
             <p class="data-t"><img src="https://www.celoan.cn/res/images/ico/ico-8.png" alt=""> <span
               class="line-middle"
             >正在对接</span></p>
           </li>
-          <li class="fl box-sizing"><p class="data-c"><span class="data-num">3.42</span> <span>亿+</span></p>
+          <li class="fl box-sizing" style="display:block"><p class="data-c"><span class="data-num">3.42</span> <span>亿+</span></p>
             <p class="data-t"><img src="https://www.celoan.cn/res/images/ico/ico-9.png" alt=""> <span
               class="line-middle"
             >意向金额</span></p>
           </li>
-          <li class="fl box-sizing"><p class="data-c"><span class="data-num">48</span> <span>笔</span></p>
+          <li class="fl box-sizing" style="display:block"><p class="data-c"><span class="data-num">48</span> <span>笔</span></p>
             <p class="data-t"><img src="https://www.celoan.cn/res/images/ico/ico-10.png" alt=""> <span
               class="line-middle"
             >近一年融资笔数</span>
             </p></li>
-          <li class="fl box-sizing"><p class="data-c"><span class="data-num">0.72</span> <span>亿+</span></p>
+          <li class="fl box-sizing" style="display:block"><p class="data-c"><span class="data-num">0.72</span> <span>亿+</span></p>
             <p class="data-t"><img src="https://www.celoan.cn/res/images/ico/ico-11.png" alt=""> <span
               class="line-middle"
             >近一年融资金额</span>
             </p></li>
-          <li class="fl box-sizing"><p class="data-c"><span class="data-num">48</span> <span>笔</span></p>
+          <li class="fl box-sizing" style="display:block"><p class="data-c"><span class="data-num">48</span> <span>笔</span></p>
             <p class="data-t"><img src="https://www.celoan.cn/res/images/ico/ico-12.png" alt=""> <span
               class="line-middle"
             >累计授信</span></p>
           </li>
-          <li class="fl box-sizing"><p class="data-c"><span class="data-num">0.72</span> <span>亿+</span></p>
+          <li class="fl box-sizing" style="display:block"><p class="data-c"><span class="data-num">0.72</span> <span>亿+</span></p>
             <p class="data-t"><img src="https://www.celoan.cn/res/images/ico/ico-13.png" alt=""> <span
               class="line-middle"
             >授信金额</span></p>
@@ -874,7 +874,7 @@ a, a:hover, a:active {
   position: absolute;
   width: 100px;
   height: 146px;
-  padding: 0 35px;
+  /* padding: 0 35px; */
   line-height: 126px;
   cursor: default;
   display: table;
@@ -970,5 +970,13 @@ a, a:hover, a:active {
     margin-left: 200px;
     margin-top: 10px;
     font-size: 19px;
+}
+.made-finece-slider .slider-item {
+    width: 231px;
+    height: 390px;
+    padding: 0 25px;
+    margin: 10px 9px;
+    border-radius: 15px;
+    background: #fff;
 }
 </style>
