@@ -1127,8 +1127,8 @@ address, caption, cite, code, dfn, em, strong, th, var {
     margin-right: -30px;
 }
 .product-list>li {
-    width: 380px;
-    margin: 0 30px 47px 0;
+    width: 386px;
+    margin: 0 99px 47px 0;
     padding-bottom: 36px;
     /* background: url(images/p-14.png) no-repeat center bottom; */
 }
