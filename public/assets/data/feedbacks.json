@@ -1,0 +1,19 @@
+{
+    "code": 0,
+    "count": 1,
+    "data": [
+        {
+            "orderCode": "0000001",
+            "compName": "那都通",
+            "productName": "小微企业贷款",
+            "blogOrg": "招商银行股份有限公司北京分行",
+            "loanLimit": "1",
+            "loanDeadl": "12",
+            "rateRange": "1",
+            "repayWay": "等额本金",
+            "status": 1,
+            "serManager": "张三",
+            "createTime": "2020-1-11"
+        }
+    ]
+}

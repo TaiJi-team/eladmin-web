@@ -1,0 +1,117 @@
+
+    <form id="user-form" lay-filter="user-form" class="layui-form model-form">
+        <input name="id" type="hidden"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">融资订单编码</label>
+            <div class="layui-input-block">
+                <input name="orderCode" placeholder="请输入融资订单编码" type="text" class="layui-input" maxlength="20"
+                       lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-block">
+                <input name="compName" placeholder="请输入企业名称" type="text" class="layui-input" maxlength="20"
+                       lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">金融产品名称</label>
+            <div class="layui-input-block">
+                <input name="productName" placeholder="请输入金融产品名称" type="text" class="layui-input" lay-verify="required|mobile"
+                       required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属机构</label>
+            <div class="layui-input-block">
+                <input name="blogOrg" placeholder="请输入所属机构" type="text" class="layui-input" lay-verify="required|mobile"
+                       required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">审批额度</label>
+            <div class="layui-input-block">
+                <input name="loanLimit" placeholder="请输入审批额度" type="text" class="layui-input" lay-verify="required|mobile"
+                       required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">贷款期限</label>
+            <div class="layui-input-block">
+                <input name="loanDeadl" placeholder="请输入贷款期限" type="text" class="layui-input" lay-verify="required|mobile"
+                       required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">贷款利率</label>
+            <div class="layui-input-block">
+                <input name="rateRange" placeholder="请输入贷款利率" type="text" class="layui-input" lay-verify="required|mobile"
+                       required/>
+            </div>
+        </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">还款方式</label>
+            <div class="layui-input-block">
+              <input type="checkbox" name="like1[write]" lay-skin="primary" title="等额本金">
+              <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                  <span>等额本金</span>
+                  <i class="layui-icon layui-icon-ok"></i>
+              </div>
+              <input type="checkbox" name="like1[read]" lay-skin="primary" title="等额本息">
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                  <span>等额本息</span>
+                  <i class="layui-icon layui-icon-ok"></i>
+              </div>
+              <input type="checkbox" name="like1[game]" lay-skin="primary" title="先息后本">
+              <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                <span>先息后本</span>
+                <i class="layui-icon layui-icon-ok"></i>
+              </div>
+              <input type="checkbox" name="like1[repay]" lay-skin="primary" title="随借随还">
+              <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                <span>随借随还</span>
+                <i class="layui-icon layui-icon-ok"></i>
+              </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-block">
+              <input type="radio" name="status" value="通过" title="通过" checked="">
+              <div class="layui-unselect layui-form-radio">
+                  <i class="layui-anim layui-icon"></i>
+                  <div>通过</div>
+            </div>
+              <input type="radio" name="status" value="未通过"" title="未通过">
+              <div class="layui-unselect layui-form-radio layui-form-radioed">
+                  <i class="layui-anim layui-icon layui-anim-scaleSpring"></i>
+              <div>未通过</div>
+                </div>
+              <input type="radio" name="status" value="已放款"" title="已放款">
+              <div class="layui-unselect layui-form-radio">
+                <i class="layui-anim layui-icon"></i>
+                <div>已放款</div>
+              </div>
+            </div>
+          </div>
+        <!-- <div class="layui-form-item">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-block">
+                <input type="radio" name="status" value="0" title="通过" />
+                <input type="radio" name="status" value="1" title="不通过"/>
+                <input type="radio" name="status" value="2" title="已放款"/>
+            </div>
+        </div> -->
+        <div class="layui-form-item">
+            <label class="layui-form-label">业务经理</label>
+            <div class="layui-input-block">
+                <input name="serManager" placeholder="请输入业务经理" type="text" class="layui-input" lay-verify="required|mobile"
+                       required/>
+            </div>
+        </div>
+        <div class="layui-form-item model-form-footer">
+            <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
+            <button class="layui-btn" lay-filter="user-form-submit" lay-submit>保存</button>
+        </div>
+    </form>
