@@ -79,7 +79,7 @@
           <el-menu-item :class="{'is-active':activeIndex}" index="/index">首页</el-menu-item>
           <el-menu-item :class="{'is-active':activeMarket}" index="/fin-market">金融超市</el-menu-item>
           <el-menu-item :class="{'is-active':activeOrg}" index="/fin-org">金融机构</el-menu-item>
-          <el-menu-item index="4">信用机构</el-menu-item>
+          <el-menu-item :class="{'is-active':activeCreditOrg}" index="/credit-org">信用机构</el-menu-item>
           <el-menu-item :class="{'is-active':activeGqrz}" index="/fin-gqrz">股权融资</el-menu-item>
           <el-menu-item index="5">融资动态</el-menu-item>
           <el-submenu index="6">
@@ -110,7 +110,8 @@ export default {
       activeIndex: this.$route.path === '/home',
       activeMarket: this.$route.path.search('/fin-market') !== -1,
       activeOrg: this.$route.path.search('/fin-org') !== -1,
-      activeGqrz: this.$route.path.search('/fin-gqrz') !== -1
+      activeGqrz: this.$route.path.search('/fin-gqrz') !== -1,
+      activeCreditOrg: this.$route.path.search('/credit-org') !== -1
     }
   },
   mounted: function() {
@@ -138,9 +139,9 @@ export default {
 }
 
 .el-menu-item.is-active {
-    border-left:#33A2EF solid 6px !important;
-    background-color: #E2EFF9 !important;
-    color: #38B2FF !important;
+    border-left:#ff8008 solid 6px !important;
+    background-color: #ecf2f7 !important;
+    color: #ff8008 !important;
 }
 
 /* .el-menu-item.is-active {
