@@ -3,63 +3,92 @@
     <lzhead />
     <div class="div_body">
       <!-- banner-->
-      <el-carousel class="banner" :autoplay="false">
-        <el-carousel-item v-for="item in 4" :key="item">
-          <el-image style="width: 100%; height: 100%" :src="org_banner" fit="fill" />
-        </el-carousel-item>
-      </el-carousel>
-
-      <div class="bg-white mar-top min-page layui-form" />
-
-      <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
-        <ul id="productListLine" class="product-list-line">
-          <div class="special-news-search clearfix">
-            <div class="search-box layui-form">
-              <button type="button" class="fr search-btn" lay-submit="" lay-filter="policyFormFilter">搜 索</button>
-              <div class="search-ipt">
-                <input type="text" name="s_policy_key" placeholder="请输入发布机构或政策名称">
-              </div>
-            </div>
-          </div>
-          <li>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">北京市社会保险基金管理中心关于阶段性减免三项社会保险费和办理缓缴有关事项的通知</span> </p>
-              <p class="xx"> <span class="st-label">2020-04-23 15:53:27</span> <span class="st-label">  来源 ：北京市社会保险基金管理中心</span> </p>
-              <p class="t">为贯彻落实《关于阶段性减免企业社会保险费的通知》(人社部发〔2020〕11号)等文件精神，按照《关于印发关于做好北京市阶段性减免企业社会保险费工作的通知》(京人社养字〔2020〕29号)，现就阶段性减免企业基本养老保险、失业保险、工伤保险(以下简称三项社会保险)和办理缓缴等有关事项通知如下： 年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
-            </div>
-            <div><router-link to="/fin-zxdt/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
-          </li>
-          <li>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">北京市人力资源社会保障局北京市税务局关于做好阶段性减免企业社会保险费工作的通知</span> </p>
-              <p class="xx"> <span class="st-label">2020-02-19 15:53:27</span> <span class="st-label">  来源 ：北京市人力资源社会保障局</span> </p>
-              <p class="t">为贯彻落实《关于阶段性减免企业社会保险费的通知》(人社部发〔2020〕11号)等有关文件精神，经市政府同意，现就阶段性减免企业基本养老保险、失业保险、工伤保险(以下简称三项社会保险)单位缴费部分有关问题通知如下：%，京西鑫融公司 年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
-            </div>
-            <div><router-link to="/fin-zxdt/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
-          </li>
-          <li>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">中关村科技园区关于申报2020年中关村国家自主创新示范区科技型小微企业研发费用支持资金的通知</span> </p>
-              <p class="xx"> <span class="st-label">2020-09-20 15:53:27</span> <span class="st-label">  来源 中关村科技园区管理委员会</span> </p>
-              <p class="t">为进一步贯彻落实《关于应对新型冠状病毒感染的肺炎疫情影响促进中小微企业持续健康发展的若干措施》（京政办发〔2020〕7号）文件要求，依据《〈中关村国家自主创新示范区提升创新能力 优化创新环境支持资金管理办法〉实施细则（试行）》（中科园发〔2019〕21号），现组织开展2020年科技型小微企业研发费用支持资金申报工作，有关事项通知如下：</p>
-            </div>
-            <div><router-link to="/fin-zxdt/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
-          </li>
-          <li>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">北京市密云区城市管理委员会关于应对新型冠状病毒感染的肺炎疫情影响促进中小微企业持续健康的通知</span> </p>
-              <p class="xx"> <span class="st-label">2020-05-13 15:53:27</span> <span class="st-label">  来源 北京市密云区城市管理委员会</span> </p>
-              <p class="t">为深入贯彻落实党中央、国务院关于新型冠状病毒感染的肺炎疫情防控工作部署，切实减轻疫情对中小微企业生产经营影响，帮助企业共渡难关和稳定发展，依据北京市人民政府办公厅《关于应对新型冠状病毒感染的肺炎疫情影响促进中小微企业持续健康发展的若干措施》（京政办发〔2020〕7号），就停征占道费事宜通知如下：/威孚高科、益民集团、粤传媒、中文在线、...
-              </p>
-            </div>
-            <div><router-link to="/fin-zxdt/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
-          </li>
-        </ul>
-        <div id="pagination" class="ac pagination">
-          <div id="layui-laypage-59" class="layui-box layui-laypage layui-laypage-default"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" /><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
+      -->
+      <!-- <div class="banner" id="bannerDetail" style="background :width: 100%; : 50%" :src="orgdetail_banner01"> <h1 class="bannerDetail__title">招商银行股份有限公司北京分行</h1> </div> -->
+      <div class="min-width g-bg"> <div class="min-page ac office-hours" style="display: none;" /> </div>
+      <div class="bg-white default-mar-top small-mar-bottom min-page clearfix box-sizing finance-head">
+        <div class="overflow"> <h2 class="head-name">北京市社会保险基金管理中心关于阶段性减免三项社会保险费和办理缓缴有关事项的通知<span class="release-time">发布时间：2019-09-12</span></h2></div>
+        <div class="news-detail-cont">
+          <p>各区社会保险基金(事业)管理中心、北京经济技术开发区社会保险保障中心、各社会保险代办机构、各参保单位：</p>
+          <p><br></p>
+          <p>为贯彻落实《关于阶段性减免企业社会保险费的通知》(人社部发〔2020〕11号)等文件精神，按照《关于印发关于做好北京市阶段性减免企业社会保险费工作的通知》(京人社养字〔2020〕29号)，现就阶段性减免企业基本养老保险、失业保险、工伤保险(以下简称三项社会保险)和办理缓缴等有关事项通知如下：</p>
+          <p><br></p><p>一、阶段性减免三项社会保险费的适用对象和时限</p><p><br></p><p>2020年2月至4月，减半征收大型企业、民办非企业单位、社会团体三项社会保险单位缴费部分。即养老保险单位缴费比例由16%调整为8%；失业保险单位缴费比例由0.8%调整为0.4%；工伤保险单位缴费按照现行费率的50%计算。</p>
+          <p><br>
+          </p><p>2020年2月至6月，免征中小微企业(包括以单位形式参保按照企业缴费比例的个体工商户)和其他特殊类型单位三项社会保险单位缴费部分。</p><p><br></p><p>符合上述减半征收或免征社会保险费的参保单位，无需提交申请，可自3月9日起通过北京市社会保险网上服务平台查询适用减免政策情况。</p><p><br></p><p>二、关于参保单位划型</p>
+          <p><br></p>
+          <p>根据《关于印发中小企业划型标准规定的通知》(工信部联企业〔2011〕300号)和《关于印发&lt;统计上大中小微型企业划分办法(2017)&gt;的通知》(国统字〔2017〕213号)等规定，无需企业提交划型申请，直接以统计和税务数据为依据进行企业划型。</p>
+          <p><br></p>
+          <p>企业可自3月9日起通过北京市社会保险网上服务平台查询划型结果，对划型结果有异议的，应在3月底前向所属区社保经办机构提出变更申请，同时提交2019年本单位从业人数、营业收入、资产总额、2019年12月实际从业人数等材料，按规定进行复核确认。原则上，企业类型一旦划定，政策执行期间不做变动。</p>
+          <p><br></p>
+          <p>三、关于缓缴处理</p>
+          <p><br></p>
+          <p>(一)申请缓缴条件</p><p><br></p><p>受疫情影响生产经营出现严重困难的参保单位(含参加企业基本养老保险的事业单位)，符合以下条件的，可按有关规定对应缴三项社会保险费申请缓缴。</p><p><br></p><p>1.参保单位确认并承诺受疫情影响生产经营出现严重困难，最近一月营业(财务)收入与2019年4季度月均营业(财务)收入相比下降50%以上(企业单位数据按照上报税务部门口径，其他类型单位数据按照会计报表口径)。</p>
+          <p><br></p>
+          <p>2.参保单位未被列入社会保险严重失信人名单或失信联合惩戒。</p>
+          <p><br></p>
+          <p>3.参保单位承诺并确保于缓缴期满前及时缴费。</p>
+          <p><br></p>
+          <p>4.参保单位依法履行按月代扣代缴职工个人缴费的义务;与职工协商一致，可以同时缓缴代扣代缴个人缴费部分的，缓缴期间的企业基本养老保险个人账户应缴费额不计息。</p>
+          <p><br></p>
+          <p>(二)缓缴期限</p><p><br></p><p>参保单位每月应缴的三项社保费缓缴期限原则上不超过6个月，缓缴执行期截至2020年12月20日。缓缴期间免收滞纳金。</p>
+          <p><br></p>
+          <p>我市社会保险费实行“当月申报、次月收缴”的模式。参保单位2月份社会保险费，应当于3月底前缴纳，3月申请缓缴后，应于8月底前缴纳，以此类推(参见下表)。根据缓缴执行期要求，6月至11月的应缴社保费，参保单位最迟应于2020年12月20日前缴清。</p>
+          <p><br></p>
+          <p style="text-align: center;"><img title="5a8ac01d4e7976bb13eb91c7e64662e.png" alt="5a8ac01d4e7976bb13eb91c7e64662e.png" src="https://www.celoan.cn/ueditor/net/upload/image/20200423/6372325412377186366082837.png" data-bd-imgshare-binded="1"></p>
+          <p style="text-align: center;"><strong>北京市缓缴2020年三项社会保险费期限表</strong></p>
+          <p />
+          <p>(三)缓缴申请流程</p>
+          <p><br></p>
+          <p>1.符合申请缓缴条件的参保单位，可在规定时间内登录北京市人力资源和社会保障局网站、“北京人社”APP和微信公众号提交缓缴申请。</p>
+          <p><br></p>
+          <p>2.参保单位在提交缓缴申请时，要如实填报最近一月营业(财务)收入与2019年4季度月均营业(财务)收入数据。参保单位应恪守诚信，如经查实使用虚假数据材料骗取缓缴资格，将取消缓缴资格，并按《社会保险法》等有关法规严肃处理。</p><p><br></p><p>3.阅读并同意《阶段性缓缴三项社会保险费协议》，承诺依据该协议约定执行，即完成提交缓缴申请。</p>
+          <p><br></p>
+          <p>(四)缓缴申请安排</p>
+          <p><br></p>
+          <p>首次受理缓缴申请安排在2020年3月9日至14日；4月至11月期间每月1日至5日安排受理缓缴申请。审核结果于当月受理期结束后5日内以短信形式告知。审核通过的参保单位，当月生效，且只需申请一次，无须每月申请，原缴费期限在申请当月及以后的每月应缴费款，均可在《北京市缓缴2020年三项社会保险费期限表》相应月份“最迟缴纳时间”前缴纳。</p>
+          <p><br></p>
+          <p>申请缓缴时，不得申请当月之前的应缴社会保险费。</p><p><br></p><p>(五)已享受(申请)延长缴纳社会保险费的处理</p>
+          <p><br></p>
+          <p>未缴纳2020年1月社会保险费的参保单位(包括未按时缴费、自动扣款后退费的单位)，1月社会保险费可延长至7月底前缴纳。</p>
+          <p><br></p>
+          <p>此前，已申请将2月社会保险费延长至3月底缴纳的参保单位，2月社会保险费可延长至8月底前缴纳。</p>
+          <p><br></p>
+          <p>以上参保单位，其2月社会保险费不予自动扣缴，但如需继续缓缴3月及以后月份社会保险费，须按规定条件、流程和时限申请缓缴，经审核通过后，按规定缓缴。</p>
+          <p><br></p>
+          <p>旅游、住宿、餐饮、会展、商贸流通、交通运输、教育培训、文艺演出、影视剧院、冰雪体育等十类行业企业，已申请延长缴纳社会保险费至7月底的，根据自身情况，须按本通知规定条件、流程和时限重新申请缓缴，不再需要行业主管部门确认。</p>
+          <p><br></p>
+          <p>(六)结束缓缴和补缴</p>
+          <p><br></p>
+          <p>1.参保单位在缓缴期间，可根据自身情况，提前缴纳已申请缓缴的社保费，最迟应在规定的期限内缴清应缴的社保费。逾期不缴的，从缓缴期满之日起，按规定加收滞纳金，参保单位及相关经办人员列入社会保险严重失信人名单，同时实施失信联合惩戒。</p>
+          <p><br></p>
+          <p>2.使用银行缴费途径缴纳社保费的参保单位，可通过登录北京市社会保险网上服务平台，申报缴纳缓缴的社保费，选择“月报补缴”模块，通过系统查询应缴社保费的明细，确认无误后提交。参保单位可通过银行当天的批量扣款、银行网银、银行柜台缴纳缓缴的社保费。缴费数据当天有效;当天缴费不成功，次日需重新提交缓缴缴费数据并完成缴费。</p>
+          <p><br></p>
+          <p>3.使用银行缴费途径但暂无法通过网上申报提交缴费确认信息的参保单位，以及使用社保缴费途径缴纳社保费的参保单位，可通过传真、邮件等途径向所属区经办机构提交缴费申请；参保单位可根据疫情防控安排，与所属区社保经办机构联系协商确定缴费方式，但禁止现金缴费。</p>
+          <p><br></p>
+          <p>四、减免和缓缴期间的社保业务办理</p>
+          <p><br></p>
+          <p>(一)在减免和缓缴社保费期间，参保单位应正常办理各项社保业务，应根据规定继续按月申报本单位参保人数增减变化情况。</p>
+          <p><br></p>
+          <p>(二)缓缴期间，如遇有领取基本养老金、办理跨省转移接续、申领失业金、死亡清算等涉及账户清算业务的职工，参保单位需要单独为职工办理缴费手续。</p>
+          <p><br></p>
+          <p>(三)未在规定时间内提出缓缴申请的参保单位，每月按照正常的业务流程征收三项社保费：</p>
+          <p><br></p>
+          <p>使用银行缴费途径缴纳社保费的参保单位，可通过银行每天的批量扣款、银行网银、银行柜台方式完成三项社会保险费的缴费工作。上述三种缴费方式中，银行每天的批量扣款截止时间为每月倒数第二个自然日，银行网银、银行柜面每天具体开放时间、截止时间依据银行规定执行。</p>
+          <p><br></p>
+          <p>使用社保缴费途径缴纳社保费的参保单位，首先使用委托收款方式进行三项社会保险费的批量收款；批量收款不成功的，参保单位可根据疫情防控安排，与所属区社保经办机构联系协商确定缴费方式，但禁止现金缴费。</p>
+          <p><br></p>
+          <p>五、其他参保单位(个人)有关要求</p>
+          <p><br></p>
+          <p>按照国家政策，减免三项社会保险单位缴费部分的单位或人员不包括本市参保的机关事业单位、以个人身份参保的个体工商户和灵活就业人员。</p>
+          <p><br></p>
+          <p>上述三类单位(人员)其应缴社保费将按照正常的业务流程进行扣缴。其中，因春节假期调整和疫情影响，未成功扣缴1月社保费的灵活就业人员(包含享受社会保险补贴的灵活就业人员)，无须申请，均可以延长至3月底缴费。2019年12月至2020年2月期间出现因缴费不成功导致缴费中断的人员，可以补缴，不视为断缴。</p>
+          <p><br></p>
+          <p>本通知从下发之日起执行。</p><p><br></p><p style="text-align: right;">北京市社会保险基金管理中心</p>
+          <p style="text-align: right;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p style="text-align: right;">2020年3月8日</p>
+          <p />
         </div>
       </div>
-
     </div>
     <lzfooter />
   </div>
@@ -69,7 +98,7 @@
 // import beijingJson from '@/assets/beijing.json'
 import lzhead from '@/views/components/head'
 import lzfooter from '@/views/components/footer'
-import org_banner from '@/assets/images/portal/news_banner_01.jpg'
+import orgdetail_banner01 from '@/assets/images/portal/orgdetail_banner01.jpg'
 import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
 import ico_type1 from '@/assets/images/portal/ico-type1.png'
@@ -85,7 +114,7 @@ export default {
     return {
       tableData: [],
       wantSelected: 1,
-      org_banner: org_banner,
+      orgdetail_banner01: orgdetail_banner01,
       t_img: t_img,
       ico_type2: ico_type2,
       ico_type1: ico_type1,
@@ -97,30 +126,26 @@ export default {
         backgroundPositionY: 'center'
       },
       activeB: 0,
-      activeC: 0
+      activeC: 0,
+      activeD: 0,
+      activeF: 0
     }
   },
   mounted() {
 
   },
   methods: {
-    showDetail(id) {
-      this.$router.push({
-        path: '/fin-zxdt/detail'
-        // params: { data: 'query' }
-      })
-    }
   }
 }
 </script>
 
 <style scoped>
 .banner {
-    height: 320px;
+   height : 320px;
 }
 
 .banner.el-carousel__container {
-    height: 400px;
+    height: 320px;
 }
 
 .bg-white {
@@ -133,6 +158,7 @@ export default {
 
 .min-page {
     width: 1200px;
+    :2400px;
     margin: 0 auto;
 }
 
@@ -142,7 +168,7 @@ export default {
 
 .grid-content {
     border-radius: 4px;
-    min-height: 36px;
+    min-: 36px;
 }
 
 .row-bg {
@@ -151,8 +177,8 @@ export default {
 }
 
 .content-filter-box .box-head {
-    height: 55px;
-    line-height: 55px;
+    : 55px;
+    line-: 55px;
     background: #f1f1f1;
 }
 
@@ -177,8 +203,8 @@ div {
 }
 
 .content-filter-box .box-head[data-v-f123e482] {
-    height: 55px;
-    line-height: 55px;
+    : 55px;
+    line-: 55px;
     background: #f1f1f1;
 }
 
@@ -190,11 +216,11 @@ div {
     background: #fff;
 }
 
-/* ol,
+ol,
 ul,
 li {
     list-style: none;
-} */
+}
 
 .content-filter-box .filter-ul li:first-child {
     border-top: 0;
@@ -202,7 +228,7 @@ li {
 
 .content-filter-box .filter-ul li {
     position: relative;
-    padding: 50px 50px;
+    padding: 20px 12px;
     border-top: 1px dashed #bbb;
     overflow: hidden;
 }
@@ -222,7 +248,7 @@ li {
 
 .content-filter-box .filter-ul .item-on,
 .content-filter-box .filter-ul .item-on .item-sub_city {
-    height: 22px;
+    : 22px;
     overflow: hidden;
 }
 
@@ -245,12 +271,12 @@ li {
 
 .content-filter-box .filter-ul .item-on,
 .content-filter-box .filter-ul .item-on .item-sub_city {
-    height: 22px;
+    : 22px;
     overflow: hidden;
 }
 
 .content-filter-box .filter-ul .item-sub_city {
-    /* max-height: 128px; */
+    /* max-: 128px; */
     overflow-y: hidden;
     overflow-x: hidden;
 }
@@ -269,12 +295,12 @@ li {
 }
 
 .content-filter-box .filter-ul .item-l {
-    height: 22px;
+    : 22px;
     margin: 0 10px 10px 0;
     padding: 0 10px;
     color: #666;
     cursor: pointer;
-    line-height: 22px;
+    line-: 22px;
     white-space: nowrap;
 }
 
@@ -306,12 +332,12 @@ a {
 }
 
 .content-filter-box .filter-ul .item-l {
-    height: 22px;
+    : 22px;
     margin: 0 10px 10px 0;
     padding: 0 10px;
     color: #666;
     cursor: pointer;
-    line-height: 22px;
+    line-: 22px;
     white-space: nowrap;
 }
 
@@ -338,7 +364,7 @@ a {
 .content-filter-box .filter-switch .switch-arr {
     display: inline-block;
     width: 13px;
-    height: 7px;
+    : 7px;
     margin-left: 5px;
     /* background: url(images/arr-down.png) no-repeat right center; */
     position: absolute;
@@ -357,12 +383,12 @@ a {
 
 .content-filter-box .box-head .search-ipt {
     width: 457px;
-    height: 32px;
+    : 32px;
 }
 
 input[type="text"] {
     width: 100%;
-    height: 100%;
+    : 100%;
     padding: 0 10px;
     border: 0;
 }
@@ -381,9 +407,9 @@ input[type="text"] {
 .layui-input,
 .layui-select,
 .layui-textarea {
-    height: 38px;
-    line-height: 1.3;
-    line-height: 38px\9;
+    : 38px;
+    line-: 1.3;
+    line-: 38px\9;
     border-width: 1px;
     border-style: solid;
     background-color: #fff;
@@ -436,7 +462,7 @@ button {
 
 .content-filter-box .box-head .search-btn {
     width: 69px;
-    height: 32px;
+    : 32px;
     border: 0;
     color: #fff;
     font-size: 16px;
@@ -459,15 +485,11 @@ button {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.min-page {
-    width: 1200px;
-    margin: 0 auto;
-}
 .search-result .result-text {
     padding-left: 10px;
     margin-bottom: 10px;
     color: #5c5c5c;
-    line-height: 28px;
+    line-: 28px;
 }
 .search-result .result-num {
     color: #f38a3e;
@@ -476,13 +498,13 @@ button {
     padding-left: 10px;
     margin-bottom: 10px;
     color: #5c5c5c;
-    line-height: 28px;
+    line-: 28px;
 }
 .list-tool {
-    height: 48px;
+    : 48px;
     margin-bottom: 25px;
     border: 1px solid #cdcdcd;
-    line-height: 48px;
+    line-: 48px;
     background: #f1f1f1;
 }
 .fl {
@@ -500,7 +522,7 @@ button {
     top: -1px;
     left: -1px;
     width: 100%;
-    height: 100%;
+    : 100%;
     border-top: 2px solid #12c8b2;
     border-left: 1px solid #cdcdcd;
     border-right: 1px solid #cdcdcd;
@@ -593,15 +615,6 @@ ul {
     margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
-/* .product-list-line li {
-    position: relative;
-    height: 98px;
-    padding: 28px 25px 22px;
-    margin-left: -3.5%;
-    margin-bottom: 25px;
-    background: #fff;
-    overflow: hidden;
-} */
 li {
     display: list-item;
     text-align: -webkit-match-parent;
@@ -616,15 +629,15 @@ a, a:hover, a:active {
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .product-list-line .item-img {
     width: 96px;
-    height: 96px;
+    : 96px;
     margin-right: 40px;
     border: 1px solid #d9d6d6;
     text-align: center;
-    line-height: 96px;
+    line-: 96px;
     overflow: hidden;
 }
 a:-webkit-any-link {
@@ -636,7 +649,7 @@ li {
 }
 .product-list-line .item-img>img {
     max-width: 100%;
-    max-height: 100%;
+    max-: 100%;
 }
 img {
     border: none;
@@ -654,11 +667,11 @@ img {
 }
 .product-list-line .item-img[data-v-f123e482] {
     width: 96px;
-    height: 96px;
+    : 96px;
     margin-right: 40px;
     border: 1px solid #d9d6d6;
     text-align: center;
-    line-height: 96px;
+    line-: 96px;
     overflow: hidden;
 }
 .fl[data-v-f123e482] {
@@ -673,80 +686,50 @@ li[data-v-f123e482] {
 }
 .product-list-line .item-img {
     width: 80px;
-    height: 80px;
+    : 80px;
     margin-right: 40px;
     border: 1px solid #d9d6d6;
     text-align: center;
-    line-height: 80px;
+    line-: 80px;
     overflow: hidden;
 }
-/* .product-list-line li {
-    position: relative;
-    height: 148px;
-    padding: 28px 25px 22px;
-    margin-bottom: 25px;
-    background: #fff;
-    overflow: hidden;
-} */
-/* .product-list-line li {
-    position: relative;
-    height: 98px;
-    padding: 28px 25px 22px;
-    margin-bottom: 25px;
-    background: #fff;
-    overflow: hidden;
-} */
 .product-list-line li {
     position: relative;
-    height: 150px;
-    padding: 28px 15px;
-    padding-top: 28px;
-    padding-right: 15px;
-    padding-bottom: 28px;
-    padding-left: 15px;
-    margin-bottom: 15px;
+    : 123px;
+    padding: 26px 13px;
+    padding-top: 26px;
+    padding-right: 13px;
+    padding-bottom: 26px;
+    padding-left: 13px;
+    margin-bottom: 13px;
     background: #fff;
     overflow: hidden;
 }
 .product-list-line .item-title {
-    width: 850px;
-    height: 50px;
-    line-height: 1.8;
+    width: 230px;
 }
 .product-list-line .item-title .t {
     display: block;
-    margin-bottom: 100px;
-    font-size: 15px;
-    color: #bbb5b5;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #181818;
     overflow: hidden;
-    word-break:normal;
-     word-break: break-all;
     text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-}
-.product-list-line .item-title .xx {
-    font-size: 15px;
-    color: #bbb5b5;
+    white-space: nowrap;
 }
 .product-list-line .item-title .st {
-    font-size: 18px;
-    color: #050505;
-    line-height: 1;
+    font-size: 14px;
+    color: #696969;
+    line-: 1.6;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
     text-align: justify;
     margin-bottom: 5px;
-    /* font-weight: bold; */
-    text-overflow: ellipsis;
-
 }
 .product-list-line .item-info {
-    width: 350px;
+    width: 210px;
     padding-top: 15px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -762,21 +745,17 @@ li[data-v-f123e482] {
     color: #f57825;
 }
 .product-list-line .item-btn {
-    width: 120px;
-    height: 40px;
-    margin: 25px 0 0 50px;
-    margin-top: 25px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 50px;
+    width: 140px;
+    : 40px;
+    margin: 25px 0 0 10px;
     border-radius: 20px;
-    font-size: 18px;
-    background: #009688;
+    font-size: 20px;
+    background: #00bba4;
 }
 .layui-btn {
     display: inline-block;
-    height: 38px;
-    line-height: 38px;
+    : 38px;
+    line-: 38px;
     padding: 0 18px;
     background-color: #009688;
     color: #fff;
@@ -865,8 +844,8 @@ button {
     *zoom: 1;
     vertical-align: middle;
     padding: 0 15px;
-    height: 28px;
-    line-height: 28px;
+    : 28px;
+    line-: 28px;
     margin: 0 -1px 5px 0;
     background-color: #fff;
     color: #333;
@@ -888,8 +867,8 @@ button {
     *zoom: 1;
     vertical-align: middle;
     padding: 0 15px;
-    height: 28px;
-    line-height: 28px;
+    : 28px;
+    line-: 28px;
     margin: 0 -1px 5px 0;
     background-color: #fff;
     color: #333;
@@ -901,7 +880,7 @@ button {
     top: -1px;
     padding: 1px;
     width: 100%;
-    height: 100%;
+    : 100%;
     background-color: #009688;
 }
 .layui-laypage .layui-laypage-curr em {
@@ -930,7 +909,7 @@ em {
     padding-bottom: 36px;
     /* background: url(images/p-14.png) no-repeat center bottom; */
 }
-/* .fl {
+.fl {
     float: left;
 }
 ol, ul, li {
@@ -942,7 +921,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 }
 li {
     list-style: none;
-} */
+}
 blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
     margin: 0;
     padding: 0;
@@ -981,15 +960,15 @@ user agent stylesheet
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .product-list .item-title {
-    height: 100px;
+    : 100px;
     overflow: hidden;
 }
 .product-list .item-img {
     width: 98px;
-    height: 98px;
+    : 98px;
     margin-right: 16px;
     border: 1px solid #d6d6d6;
 }
@@ -1004,7 +983,7 @@ a:-webkit-any-link {
 }
 .product-list .item-img img {
     max-width: 98px;
-    max-height: 98px;
+    max-: 98px;
 }
 .pos-center .middle-center {
     position: absolute;
@@ -1053,7 +1032,7 @@ img {
 }
 .line-middle {
     display: inline-block;
-    line-height: 1;
+    line-: 1;
     vertical-align: middle;
 }
 h2 {
@@ -1122,12 +1101,12 @@ h2 {
 .product-list .item-label {
     margin-bottom: 18px;
     margin-top: -10px;
-    height: 25px;
+    : 25px;
 }
 .product-list .item-btn {
     display: block;
     width: 147px;
-    height: 42px;
+    : 42px;
     border: 0;
     border-radius: 42px;
     margin: 0 auto;
@@ -1144,7 +1123,7 @@ h2 {
 }
 .product-list .item-info li {
     width: 50%;
-    line-height: 2;
+    line-: 2;
 }
 .product-list .item-info .info-label {
     color: #000;
@@ -1152,12 +1131,12 @@ h2 {
 product-list .item-info .info-cont {
     display: block;
     color: #ff7e00;
-    line-height: 28px;
+    line-: 28px;
     overflow: hidden;
 }
 /* .line-middle {
     display: inline-block;
-    line-height: 1;
+    line-: 1;
     vertical-align: middle;
 } */
 .text-ellipsis {
@@ -1205,46 +1184,135 @@ ul {
 .product-list .item-info .info-cont {
     display: block;
     color: #ff7e00;
-    line-height: 28px;
+    line-: 28px;
     overflow: hidden;
 }
-.special-news-search {
-    padding: 5px 10px;
-    background: #00bba4;
+.bannerDetail__title {
+    font-size: 42px;
+    color: #fff;
+}
+.finance-head {
+    padding: 25px 20px;
+    padding-top: 25px;
+    padding-right: 20px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+}
+.bannerDetail {
+    text-align: center;
+    line-: 276px;
+}
+.min-width {
+    min-width: 1200px;
+}
+.finance-head {
+    padding: 25px 20px;
+}
+.bg-white {
+    background: #fff;
+}
+.small-mar-bottom {
+    margin-bottom: 20px;
+}
+.default-mar-top {
+    margin-top: 30px;
+}
+.box-sizing {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .clearfix {
     zoom: 1;
 }
-.special-news-search .search-box {
-    height: 42px;
-    font-size: 16px;
-    overflow: hidden;
+.finance-head .head-img {
+    width: 163px;
+    : 163px;
+    margin-right: 25px;
+    border: 1px solid #cdcdcd;
 }
-.special-news-search .search-btn {
-    width: 93px;
-    height: 42px;
+.pos-center {
+    position: relative;
+}
+.fl {
+    float: left;
+}
+.finance-head .head-img img {
+    max-width: 100%;
+    max-: 100%;
+}
+.pos-center .middle-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+img {
+    border: none;
+}
+.finance-head .head-name {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #000000;
+}
+.finance-head .release-time {
+    margin-left: 25px;
+    color: #5d5d5d;
+    font-size: 14px;
+}
+.finance-head .head-info {
+    color: #5d5d5d;
+    line-: 1.8;
+}
+.finance-achieve li:first-child {
     border: 0;
-    margin-left: 10px;
-    font-size: 18px;
-    color: #2b2b2b;
-    background: #a7f0dc;
-    cursor: pointer;
 }
-.fr {
-    float: right;
+.finance-achieve li {
+    width: 33.3%;
+    : 108px;
+    border-left: 1px solid #e5e5e5;
+    line-: 108px;
 }
-.special-news-search .search-ipt {
-    height: 100%;
-    background: #fff;
-    overflow: hidden;
+.fl {
+    float: left;
 }
-.special-news-search .search-ipt>input {
+.box-sizing {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ol, ul, li {
+    list-style: none;
+}
+.finance-achieve li .item-cont {
     width: 100%;
-    height: 100%;
-    padding: 0 10px;
-    border: 0;
 }
-input {
-    -webkit-appearance: none;
+.finance-achieve li .item-num {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 25px;
+    color: #ff8003;
 }
+.finance-achieve li .unit {
+    font-weight: normal;
+    font-size: 16px;
+}
+.finance-achieve li .item-t {
+    font-size: 18px;
+    color: #686868;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
 </style>

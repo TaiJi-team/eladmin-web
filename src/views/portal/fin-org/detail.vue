@@ -793,7 +793,7 @@ a, a:hover, a:active {
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .product-list-line .item-img {
     width: 96px;
@@ -1124,7 +1124,7 @@ user agent stylesheet
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .product-list .item-title {
     height: 100px;

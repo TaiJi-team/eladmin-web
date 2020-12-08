@@ -101,6 +101,10 @@ export const constantRouterMap = [
   {
     path: '/fin-zxdt',
     component: resolve => (require(['@/views/portal/fin-zxdt/list.vue'], resolve))
+  },
+  {
+    path: '/fin-zxdt/detail',
+    component: resolve => (require(['@/views/portal/fin-zxdt/detail.vue'], resolve))
   }
   // {
   //   path: '/user',
