@@ -5,10 +5,13 @@
       <!-- banner-->
       <el-carousel class="banner" :autoplay="false">
         <el-carousel-item v-for="item in 4" :key="item">
-          <el-image style="width: 100%; height: 100%" :src="org_banner" fit="fill" />
+          <el-image style="width: 100%; height: 100%" :src="orgdetail_banner01" fit="fill" />
         </el-carousel-item>
       </el-carousel>
-
+      <!-- <div class="banner" id="bannerDetail" style="background :width: 100%; height: 50%" :src="orgdetail_banner01"> <h1 class="bannerDetail__title">招商银行股份有限公司北京分行</h1> </div> -->
+      <div class="min-width g-bg"> <div class="min-page ac office-hours" style="display: none;" /> </div>
+      <div class="bg-white default-mar-top small-mar-bottom min-page clearfix box-sizing finance-head"> <div class="fl pos-center head-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" class="middle-center" alt=""> </div> <div class="overflow"> <h2 class="head-name">中国邮政储蓄银行股份有限公司北京分行<span class="release-time">发布时间：2019-09-11</span></h2> <p class="head-info">中国邮政储蓄（以下简称“本行”）可追溯至1919年开办的邮政储金业务，至今已有百年历史。2007年3月，在改革原邮政储蓄管理体制基础上，中国邮政储蓄银行正式挂牌成立。2012年1月，整体改制为股份有限公司。2016年9月，在香港联交所挂牌上市。本行拥有近4万个营业网点，服务个人客户近6亿户，定位于服务“三农”、城乡居民和中小企业，致力于为中国经济转型中最具活力的客户群体提供服务，并加速向数据驱动、渠道协同、批零联动、运营高效的新零售银行转型。2019年，在英国《银行家》杂志全球银行1000强中，本行一级资本位列第22位。惠誉、穆迪分别给予本行与中国主权一致的A+、A1评级，标准普尔给予本行A评级，为国有大型商业银行最优水平。</p> </div> </div>
+      <div class="bg-white small-mar-bottom min-page finance-achieve"> <ul class="clearfix achieve-list"> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">0<span class="unit">次</span></p> <p class="item-t"> <img src="res/images/f-i-2.png" alt="">成功对接 </p> </div> </li> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">1<span class="unit">个</span></p> <p class="item-t"> <img src="res/images/f-i-3.png" alt="">金融产品数 </p> </div> </li> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">-<span class="unit">分</span></p> <p class="item-t"> <img src="res/images/f-i-4.png" alt="">综合评价 </p> </div> </li> </ul> </div>
       <div class="bg-white mar-top min-page layui-form">
         <div class="content-filter-box">
           <div class="clearfix box-head">
@@ -18,87 +21,82 @@
             </div>
             <div class="head-title">
               <img :src="t_img" alt="">
-              <span class="line-middle t-name">所有机构</span>
+              <span class="line-middle t-name">所有产品</span>
             </div>
           </div>
           <ul id="filterUl" class="bg-white filter-ul">
-
-            <li>
-              <span class="fl item-label">服务区域</span>
-              <div class="overflow item-cont item-on">
-                <div class="clearfix pos-rela item-city">
-                  <div class="overflow item-sub_city item-sub_level_1">
-                    <a :class="{'item-l-on':activeA==0}" class="fl item-l " data-type="CityType" data-id="0" @click="activeA=0">不限</a>
-                    <a :class="{'item-l-on':activeA==1}" class="fl item-l" data-type="CityType" data-id="110100" @click="activeA=1">北京市</a>
-                  </div>
-                  <input type="hidden" name="CityType">
-                </div>
-              </div>
-              <span class="filter-switch">
-                <!-- TODO -->
-                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
-              </span>
-            </li>
-            <li class="filter_ds">
-              <span class="fl item-label">区县</span>
-              <div class="overflow item-cont item-on" style="height: auto;">
-                <div class="clearfix pos-rela item-city">
-                  <div class="overflow item-sub_level_2">
-                    <a :class="{'item-l-on':activeD==0}" class="fl item-l " data-type="AreaType" data-id="0" @click="activeD=0">不限</a>
-                    <a :class="{'item-l-on':activeD==1}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=1">东城区</a>
-                    <a :class="{'item-l-on':activeD==2}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=2">西城区</a>
-                    <a :class="{'item-l-on':activeD==3}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=3">朝阳区</a>
-                    <a :class="{'item-l-on':activeD==4}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=4">丰台区</a>
-                    <a :class="{'item-l-on':activeD==5}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=5">石景山区</a>
-                    <a :class="{'item-l-on':activeD==6}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=6">海淀区</a>
-                    <a :class="{'item-l-on':activeD==7}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=7">门头沟区</a>
-                    <a :class="{'item-l-on':activeD==8}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=8">房山区</a>
-                    <a :class="{'item-l-on':activeD==9}" class="fl item-l" data-type="AreaType" data-id="110100" @click="activeD=9">顺义区</a>
-
-                  </div>
-                  <input type="hidden" name="AreaType">
-                </div>
-              </div>
-            </li>
-
             <li>
               <span class="fl item-label">贷款渠道</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="OrgType" class="overflow">
-                    <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">不限</a>
-                    <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=1">银行</a>
-                    <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=2">担保公司</a>
-                    <a :class="{'item-l-on':activeB==3}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=3">融资租赁公司</a>
-                    <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=4">消费金融公司</a>
-                    <a :class="{'item-l-on':activeB==5}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=5">风险投资机构</a>
-                    <a :class="{'item-l-on':activeB==6}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=6">资产管理公司</a>
-                    <a :class="{'item-l-on':activeB==7}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=7">保险公司</a>
-                    <a :class="{'item-l-on':activeB==8}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=8">信托公司</a>
-                    <a :class="{'item-l-on':activeB==9}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=9">保理公司</a>
-                    <a :class="{'item-l-on':activeB==10}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=10">供应链机构</a>
-                    <a :class="{'item-l-on':activeB==11}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeB=11">其他</a>
-                  </div>
+                  <!-- <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a><a class="fl item-l" data-type="OrgType" data-id="1">银行</a><a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a><a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a><a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a><a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a><a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a><a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a><a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a><a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a><a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a><a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div> -->
+                  <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">不限</a>
+                  <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="1" @click="activeB=1">银行</a>
+                  <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="2" @click="activeB=2">担保公司</a>
+                  <a :class="{'item-l-on':activeB==3}" class="fl item-l " data-type="OrgType" data-id="3" @click="activeB=3">融资租赁公司</a>
+                  <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="4" @click="activeB=4">消费金融公司</a>
+                  <a :class="{'item-l-on':activeB==5}" class="fl item-l" data-type="OrgType" data-id="5" @click="activeB=5">风险投资机构</a>
+                  <a :class="{'item-l-on':activeB==6}" class="fl item-l " data-type="OrgType" data-id="6" @click="activeB=6">资产管理公司</a>
+                  <a :class="{'item-l-on':activeB==7}" class="fl item-l" data-type="OrgType" data-id="7" @click="activeB=7">保险公司</a>
+                  <a :class="{'item-l-on':activeB==8}" class="fl item-l" data-type="OrgType" data-id="8" @click="activeB=8">保理公司</a>
+                  <a :class="{'item-l-on':activeB==9}" class="fl item-l " data-type="OrgType" data-id="9" @click="activeB=9">信托公司</a>
+                  <!-- <a :class="{'item-l-on':activeB==10}" class="fl item-l" data-type="OrgType" data-id="10" @click="activeB=1">供应链机构</a> -->
+                  <a :class="{'item-l-on':activeB==11}" class="fl item-l" data-type="OrgType" data-id="11" @click="activeB=10">其他</a>
                   <input type="hidden" name="OrgType">
                 </div>
               </div>
-              <span class="filter-switch" />
+              <span class="filter-switch">
+                <!-- <span class="switch-name">更多</span><i class="flip-label switch-arr" :style="more_icon"/> -->
+              </span>
             </li>
             <li>
-              <span class="fl item-label">排序方式</span>
+              <span class="fl item-label">担保方式</span>
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
-                  <div id="OrgType" class="overflow">
-
-                    <a :class="{'item-l-on':activeC==0}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeC=0">默认排序</a>
-                    <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeC=1">产品数由高到低</a>
-                    <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="OrgType" data-id="110100" @click="activeC=2">放款金额由高到低</a>
-
-                  </div>
-                  <input type="hidden" name="OrgType">
+                  <!-- <div id="GuaranteeModeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="GuaranteeModeType" data-id="0">不限</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="1">抵押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="2">质押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="3">信保基金</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="4">一般保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="5">信用</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="6">保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="7">连带责任保证</a></div> -->
+                  <a :class="{'item-l-on':activeC==0}" class="fl item-l " data-type="GuaranteeModeType" data-id="0" @click="activeC=0">不限</a>
+                  <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="GuaranteeModeType" data-id="1" @click="activeC=1">抵押</a>
+                  <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="GuaranteeModeType" data-id="2" @click="activeC=2">质押</a>
+                  <a :class="{'item-l-on':activeC==3}" class="fl item-l " data-type="GuaranteeModeType" data-id="3" @click="activeC=3">信保基金</a>
+                  <a :class="{'item-l-on':activeC==4}" class="fl item-l" data-type="GuaranteeModeType" data-id="4" @click="activeC=4">一般保证</a>
+                  <a :class="{'item-l-on':activeC==5}" class="fl item-l" data-type="GuaranteeModeType" data-id="5" @click="activeC=5">信用</a>
+                  <a :class="{'item-l-on':activeC==6}" class="fl item-l " data-type="GuaranteeModeType" data-id="6" @click="activeC=6">保证</a>
+                  <a :class="{'item-l-on':activeC==7}" class="fl item-l" data-type="GuaranteeModeType" data-id="7" @click="activeC=7">连带责任保证</a>
+                  <input type="hidden" name="GuaranteeModeType">
                 </div>
               </div>
-              <span class="filter-switch" />
+            </li>
+
+            <li>
+              <span class="fl item-label">贷款期限</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <!-- <div id="LoanTimeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanTimeType" data-id="0">不限</a><a class="fl item-l" data-type="LoanTimeType" data-id="1">6个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="2">12个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="3">36个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="4">36个月以上</a></div> -->
+                  <a :class="{'item-l-on':activeD==0}" class="fl item-l " data-type="LoanTimeType" data-id="0" @click="activeD=0">不限</a>
+                  <a :class="{'item-l-on':activeD==1}" class="fl item-l" data-type="LoanTimeType" data-id="1" @click="activeD=1">6个月及以下</a>
+                  <a :class="{'item-l-on':activeD==2}" class="fl item-l" data-type="LoanTimeType" data-id="2" @click="activeD=2">12个月及以下</a>
+                  <a :class="{'item-l-on':activeD==3}" class="fl item-l " data-type="LoanTimeType" data-id="3" @click="activeD=3">36个月及以下</a>
+                  <a :class="{'item-l-on':activeD==4}" class="fl item-l" data-type="LoanTimeType" data-id="4" @click="activeD=4">36个月以上</a>
+                  <input type="hidden" name="LoanTimeType">
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="fl item-label">贷款额度</span>
+              <div class="overflow item-cont item-on">
+                <div class="clearfix pos-rela item-city">
+                  <!-- <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div> -->
+                  <a :class="{'item-l-on':activeF==0}" class="fl item-l " data-type="LoanLimitType" data-id="0" @click="activeF=0">不限</a>
+                  <a :class="{'item-l-on':activeF==1}" class="fl item-l" data-type="LoanLimitType" data-id="1" @click="activeF=1">抵押</a>
+                  <a :class="{'item-l-on':activeF==2}" class="fl item-l" data-type="LoanLimitType" data-id="2" @click="activeF=2">质押</a>
+                  <a :class="{'item-l-on':activeF==3}" class="fl item-l " data-type="LoanLimitType" data-id="3" @click="activeF=3">信保基金</a>
+                  <a :class="{'item-l-on':activeF==4}" class="fl item-l" data-type="LoanLimitType" data-id="4" @click="activeF=4">一般保证</a>
+                  <a :class="{'item-l-on':activeF==5}" class="fl item-l" data-type="LoanLimitType" data-id="5" @click="activeF=5">信用</a>
+                  <a :class="{'item-l-on':activeF==6}" class="fl item-l " data-type="LoanLimitType" data-id="6" @click="activeF=6">保证</a>
+                  <a :class="{'item-l-on':activeF==7}" class="fl item-l" data-type="LoanLimitType" data-id="7" @click="activeF=7">连带责任保证</a>
+                  <input type="hidden" name="LoanLimitType">
+                </div>
+              </div>
             </li>
           </ul>
           <input id="hdSortType" type="hidden" name="SortType">
@@ -108,76 +106,164 @@
 
       <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
         <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
-        <!-- <div class="list-tool"> -->
-        <!-- <div id="listSort" class="fl tool-left">
+        <div class="list-tool">
+          <div id="listSort" class="fl tool-left">
             <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
             <div class="tool-item" data-id="1"> <span class="item-name">利率</span> </div>
             <div class="tool-item" data-id="2"> <span class="item-name">申请次数</span> </div>
-          </div> -->
-        <!-- <div id="listType" class="fr tool-right">
+          </div>
+          <div id="listType" class="fr tool-right">
             <div class="tool-item" :class="{'on':isBlock==true}" data-type="block" @click="isBlock=true"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
             <div class="tool-item" :class="{'on':isBlock==false}" data-type="line" @click="isBlock=false"> <span class="item-name"> <img :src="ico_type2" alt=""> </span> </div>
-          </div> -->
-        <!-- </div> -->
-        <!-- v-show="isBlock" -->
+          </div>
+        </div>
         <!--  style="display: none;" -->
-        <ul id="productListLine" class="product-list-line">
-          <router-link to="/fin-org/detail" tag="li"> <a>
+        <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">
+          <router-link to="/fin-market/detail" tag="li">
+            <div class="bg-white line-action-hover item-main"> <a>
+              <div class="item-title">
+                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" class="middle-center" alt=""> </div>
+                <div class="overflow title-cont">
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小企业知识产权质押贷</span> <br> <em class="org-name">中国邮政储蓄银行北京分行</em> </h2>
+                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                </div>
+              </div>
+              <ul class="item-info">
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-50万</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-60月</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5.22-5.7%</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
+              </ul>
+              <div class="item-label" />
+              <!-- <button class="g-bg g-shadow item-btn">查看详情</button> -->
+              <router-link class="g-bg g-shadow item-btn" to="/fin-market/detail" tag="button">查看详情</router-link>
+              <div class="line-top" />
+              <div class="line-bottom" />
+              <div class="line-left" />
+              <div class="line-right" />
+            </a> </div>
+          </router-link>
+          <!-- <li class="fl">
+            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=346" target="_blank">
+              <div class="item-title">
+                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" class="middle-center" alt=""> </div>
+                <div class="overflow title-cont">
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小企业知识产权质押...</span> <br> <em class="org-name">中国邮政储蓄银行北京分行</em> </h2>
+                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                </div>
+              </div>
+              <ul class="item-info">
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-500万</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-12月</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押,质押,一般保证,信用</span></li>
+              </ul>
+              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
+              <div class="line-top" />
+              <div class="line-bottom" />
+              <div class="line-left" />
+              <div class="line-right" />
+            </a> </div>
+          </li>
+          <li class="fl">
+            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=335" target="_blank">
+              <div class="item-title">
+                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> </div>
+                <div class="overflow title-cont">
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">首都职工创业小额贷...</span> <br> <em class="org-name">北京农商银行</em> </h2>
+                  <div class="item-adr text-ellipsis"><img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                </div>
+              </div>
+              <ul class="item-info">
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-50万</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-24月</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">一般保证</span></li>
+              </ul>
+              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
+              <div class="line-top" />
+              <div class="line-bottom" />
+              <div class="line-left" />
+              <div class="line-right" />
+            </a> </div>
+          </li>
+          <li class="fl">
+            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=326" target="_blank">
+              <div class="item-title">
+                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" class="middle-center" alt=""> </div>
+                <div class="overflow title-cont">
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">线上快审快贷</span> <br> <em class="org-name">宁波银行</em> </h2>
+                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+                </div>
+              </div>
+              <ul class="item-info">
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-800万</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-120月</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5-7%</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
+              </ul>
+              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
+              <div class="line-top" />
+              <div class="line-bottom" />
+              <div class="line-left" />
+              <div class="line-right" />
+            </a> </div>
+          </li>-->
+        </ul>
+        <ul v-show="!isBlock" id="productListLine" class="product-list-line">
+          <router-link to="/fin-market/detail" tag="li"> <a>
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
-            <div class="fl item-title">
-              <span class="t">招商银行股份有限公司北京分行</span>
+            <div class="fl item-title"> <span class="t">中国邮政银行北京分行</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-              <span class="t" style="visibility:hidden">招商银行股份有限公司北京分行</span>
             </div>
-            <div class="fl item-info"> <span class="info-c">1个</span> <span class="info-n">发布产品数</span> </div>
-            <div class="fl item-info"> <span class="info-c">89分</span> <span class="info-n">综合评分</span> </div>
-            <!-- <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div> -->
+            <div class="fl item-info"> <span class="info-c">5.22-5.7%</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">12-60月</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div>
+            <button type="button" class="fl layui-btn item-btn">立即申请</button>
+            <!-- <router-link class="fl layui-btn item-btn" to="/fin-market/detail" tag="button">立即申请</router-link> -->
           </a> </router-link>
-          <router-link to="/fin-org/yzyh" tag="li"><a>
+          <!-- <li> <a href="/#/requIndex/financingProductDetail#?id=346&amp;guid=f93e1b10c3ab4b3086e1428118a535bf" target="_blank">
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">中国邮政储蓄股份有限公司北京分行</span>
+            <div class="fl item-title"> <span class="t">小企业知识产权质押贷—中国邮政储蓄银行北京分行</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
             </div>
-            <div class="fl item-info"> <span class="info-c">1个</span> <span class="info-n">发布产品数</span> </div>
-            <div class="fl item-info"> <span class="info-c">59分</span> <span class="info-n">综合评分</span> </div>
-            <!-- <div class="fl item-info"> <span class="info-c">1-500万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
-          </a></router-link>
+            <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-12月</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-500万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
+          </a> </li>
           <li> <a href="/#/requIndex/financingProductDetail#?id=335&amp;guid=06026fa341924905a302338d354d7466" target="_blank">
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">北京农商银行股份有限公司</span>
+            <div class="fl item-title"> <span class="t">首都职工创业小额贷款—北京农商银行</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
             </div>
-            <div class="fl item-info"> <span class="info-c">2个</span> <span class="info-n">发布产品数</span> </div>
-            <div class="fl item-info"> <span class="info-c">65分</span> <span class="info-n">综合评分</span> </div>
-            <!-- <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
+            <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">12-24月</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
           </a> </li>
           <li> <a href="/#/requIndex/financingProductDetail#?id=326&amp;guid=d22aa5c073df419db31f60c07264c564" target="_blank">
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">宁波银行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">宁波市</span> </p>
+            <div class="fl item-title"> <span class="t">线上快审快贷—宁波银行</span>
+              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
             </div>
-            <div class="fl item-info"> <span class="info-c">4个</span> <span class="info-n">发布产品数</span> </div>
-            <div class="fl item-info"> <span class="info-c">78分</span> <span class="info-n">综合评分</span> </div>
-            <!-- <div class="fl item-info"> <span class="info-c">1-800万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button> -->
-          </a> </li>
+            <div class="fl item-info"> <span class="info-c">5-7%</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-120月</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">1-800万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
+          </a> </li> -->
         </ul>
         <div id="pagination" class="ac pagination">
           <div id="layui-laypage-59" class="layui-box layui-laypage layui-laypage-default"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" /><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
         </div>
       </div>
-
     </div>
     <lzfooter />
-
   </div>
-
 </template>
 
 <script>
 // import beijingJson from '@/assets/beijing.json'
 import lzhead from '@/views/components/head'
 import lzfooter from '@/views/components/footer'
-import org_banner from '@/assets/images/portal/org_banner01.jpg'
+import orgdetail_banner01 from '@/assets/images/portal/orgdetail_banner01.jpg'
 import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
 import ico_type1 from '@/assets/images/portal/ico-type1.png'
@@ -193,7 +279,7 @@ export default {
     return {
       tableData: [],
       wantSelected: 1,
-      org_banner: org_banner,
+      orgdetail_banner01: orgdetail_banner01,
       t_img: t_img,
       ico_type2: ico_type2,
       ico_type1: ico_type1,
@@ -204,34 +290,27 @@ export default {
         backgroundPositionX: 'right',
         backgroundPositionY: 'center'
       },
-      activeA: 0,
       activeB: 0,
       activeC: 0,
-      activeD: 0
+      activeD: 0,
+      activeF: 0
     }
   },
   mounted() {
 
   },
   methods: {
-    showDetail(id) {
-      this.$router.push({
-        path: '/fin-market/detail'
-        // params: { data: 'query' }
-      })
-    }
   }
 }
-
 </script>
 
 <style scoped>
 .banner {
-    height: 320px;
+    height: 200px;
 }
 
-.banner.el-carousel__container {
-    height: 400px;
+.banner>>>.el-carousel__container {
+    height: 200px;
 }
 
 .bg-white {
@@ -301,11 +380,11 @@ div {
     background: #fff;
 }
 
-/* ol,
+ol,
 ul,
 li {
     list-style: none;
-} */
+}
 
 .content-filter-box .filter-ul li:first-child {
     border-top: 0;
@@ -700,15 +779,6 @@ ul {
     margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
-/* .product-list-line li {
-    position: relative;
-    height: 98px;
-    padding: 28px 25px 22px;
-    margin-left: -3.5%;
-    margin-bottom: 25px;
-    background: #fff;
-    overflow: hidden;
-} */
 li {
     display: list-item;
     text-align: -webkit-match-parent;
@@ -723,7 +793,7 @@ a, a:hover, a:active {
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .product-list-line .item-img {
     width: 96px;
@@ -787,36 +857,20 @@ li[data-v-f123e482] {
     line-height: 80px;
     overflow: hidden;
 }
-/* .product-list-line li {
-    position: relative;
-    height: 148px;
-    padding: 28px 25px 22px;
-    margin-bottom: 25px;
-    background: #fff;
-    overflow: hidden;
-} */
-/* .product-list-line li {
-    position: relative;
-    height: 98px;
-    padding: 28px 25px 22px;
-    margin-bottom: 25px;
-    background: #fff;
-    overflow: hidden;
-} */
 .product-list-line li {
     position: relative;
-    height: 110px;
-    padding: 28px 15px;
-    padding-top: 28px;
-    padding-right: 15px;
-    padding-bottom: 28px;
-    padding-left: 15px;
-    margin-bottom: 15px;
+    height: 123px;
+    padding: 26px 13px;
+    padding-top: 26px;
+    padding-right: 13px;
+    padding-bottom: 26px;
+    padding-left: 13px;
+    margin-bottom: 13px;
     background: #fff;
     overflow: hidden;
 }
 .product-list-line .item-title {
-    width: 260px;
+    width: 230px;
 }
 .product-list-line .item-title .t {
     display: block;
@@ -839,7 +893,7 @@ li[data-v-f123e482] {
     margin-bottom: 5px;
 }
 .product-list-line .item-info {
-    width: 350px;
+    width: 210px;
     padding-top: 15px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1019,7 +1073,7 @@ em {
     padding-bottom: 36px;
     /* background: url(images/p-14.png) no-repeat center bottom; */
 }
-/* .fl {
+.fl {
     float: left;
 }
 ol, ul, li {
@@ -1031,7 +1085,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 }
 li {
     list-style: none;
-} */
+}
 blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
     margin: 0;
     padding: 0;
@@ -1070,7 +1124,7 @@ user agent stylesheet
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .product-list .item-title {
     height: 100px;
@@ -1297,4 +1351,132 @@ ul {
     line-height: 28px;
     overflow: hidden;
 }
+.bannerDetail__title {
+    font-size: 42px;
+    color: #fff;
+}
+.finance-head {
+    padding: 25px 20px;
+    padding-top: 25px;
+    padding-right: 20px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+}
+.bannerDetail {
+    text-align: center;
+    line-height: 276px;
+}
+.min-width {
+    min-width: 1200px;
+}
+.finance-head {
+    padding: 25px 20px;
+}
+.bg-white {
+    background: #fff;
+}
+.small-mar-bottom {
+    margin-bottom: 20px;
+}
+.default-mar-top {
+    margin-top: 30px;
+}
+.box-sizing {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.clearfix {
+    zoom: 1;
+}
+.finance-head .head-img {
+    width: 163px;
+    height: 163px;
+    margin-right: 25px;
+    border: 1px solid #cdcdcd;
+}
+.pos-center {
+    position: relative;
+}
+.fl {
+    float: left;
+}
+.finance-head .head-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.pos-center .middle-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+img {
+    border: none;
+}
+.finance-head .head-name {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #000000;
+}
+.finance-head .release-time {
+    margin-left: 25px;
+    color: #5d5d5d;
+    font-size: 14px;
+}
+.finance-head .head-info {
+    color: #5d5d5d;
+    line-height: 1.8;
+}
+.finance-achieve li:first-child {
+    border: 0;
+}
+.finance-achieve li {
+    width: 33.3%;
+    height: 108px;
+    border-left: 1px solid #e5e5e5;
+    line-height: 108px;
+}
+.fl {
+    float: left;
+}
+.box-sizing {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ol, ul, li {
+    list-style: none;
+}
+.finance-achieve li .item-cont {
+    width: 100%;
+}
+.finance-achieve li .item-num {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 25px;
+    color: #ff8003;
+}
+.finance-achieve li .unit {
+    font-weight: normal;
+    font-size: 16px;
+}
+.finance-achieve li .item-t {
+    font-size: 18px;
+    color: #686868;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
 </style>
