@@ -97,6 +97,10 @@ export const constantRouterMap = [
   {
     path: '/credit-org',
     component: resolve => (require(['@/views/portal/credit-org/list.vue'], resolve))
+  },
+  {
+    path: '/fin-zxdt',
+    component: resolve => (require(['@/views/portal/fin-zxdt/list.vue'], resolve))
   }
   // {
   //   path: '/user',
