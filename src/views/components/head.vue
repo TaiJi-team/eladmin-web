@@ -6,31 +6,27 @@
           <!-- <img src="https://www.celoan.cn/res/images/ico/ico-2.png" alt=""> -->
           <ul class="line-middle">
             <li class="fl" style="display:block">
-              <a href="" class="color-hover">登录</a>
+              <a v-show="!isLogin" href="/login.html" class="color-hover">登录</a>
               <span v-show="isLogin" class="color-hover changeCity" v-html="userInfo.userName" />
             </li>
             <li class="fl" style="display:block">
               <!-- <router-link class="fl" to="/register" tag="a">注册</router-link> -->
-              <a href="" class="color-hover changeCity">注册</a>
+              <a v-show="!isLogin" href="/regist.html" class="color-hover changeCity">注册</a>
               <!-- <a  href="javascript" class="color-hover changeCity">工作台</a> -->
+              <a v-show="isLogin" href="/index-sys.html" class="color-hover changeCity">工作台</a>
             </li>
             <li class="fl" style="display:block">
-              <!-- <router-link class="fl" to="/register" tag="a">注册</router-link> -->
-              <!-- <a  href="javascript" class="color-hover changeCity">注册</a> -->
-              <a href="" class="color-hover changeCity">工作台</a>
+              <a href="javascript:;" class="color-hover loginW changeCity">我要融资</a>
             </li>
             <li class="fl" style="display:block">
-              <a href=":;" class="color-hover loginW changeCity">我要融资</a>
-            </li>
-            <li class="fl" style="display:block">
-              <a href=":;" class="color-hover hover-handle">手机融资
+              <a href="javascript:;" class="color-hover hover-handle">手机融资
               </a>
             </li>
             <li class="fl" style="display:block">
-              <a href=":;" class="color-hover">帮助中心</a>
+              <a href="javascript:;" class="color-hover">帮助中心</a>
             </li>
             <li class="fl" style="display:block">
-              <a href=":;" class="color-hover">关于我们</a>
+              <a href="javascript:;" class="color-hover">关于我们</a>
             </li>
           </ul>
         </div>

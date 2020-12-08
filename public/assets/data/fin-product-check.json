@@ -1,0 +1,33 @@
+{
+    "code": 0,
+    "count": 3,
+    "data": [
+        {
+            "id": "2003466111",
+            "compName": "招商银行股份有限公司北京分行",
+            "compType": "2-0",
+            "credGrade": 2,
+            "applyType": 2,
+            "status": 0,
+            "applyTime": "2020-11-16 16:10:33"
+        },
+        {
+            "id": "2003466134",
+            "compName": "联合信用征信股份有限公司",
+            "compType": "2-1",
+            "credGrade": 2,
+            "applyType": 2,
+            "status": 0,
+            "applyTime": "2020-11-16 16:10:33"
+        },
+        {
+            "id": "2003466160",
+            "compName": "银担E保通",
+            "compType": "2-4",
+            "credGrade": 2,
+            "applyType": 2,
+            "status": 0,
+            "applyTime": "2020-11-16 16:10:33"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "code": 0,
+    "count": 1,
+    "data": [
+        {
+            "orderCode": "110020092217230948837",
+            "compName": "乔禾教育",
+            "credGrade": 1,
+            "loanLimit": "10-100万",
+            "loanDeadl": "12-60月",
+            "rateRange": "5.22-5.7%",
+            "repayWay": "等额本金,等额本息",
+            "pushTime": "2020-11-16 16:10:33"
+        },
+        {
+            "orderCode": "110120082719170452503",
+            "compName": "社区零售",
+            "credGrade": 2,
+            "loanLimit": "50-1000万",
+            "loanDeadl": "12-36月",
+            "rateRange": "4.6-7.1%",
+            "repayWay": "等额本金,等额本息",
+            "pushTime": "2020-08-09 08:48:09"
+        },
+        {
+            "orderCode": "110020102716410817815",
+            "compName": "西柚生鲜",
+            "credGrade": 3,
+            "loanLimit": "10-50万",
+            "loanDeadl": "12-48月",
+            "rateRange": "3.8-5.2%",
+            "repayWay": "等额本金,等额本息",
+            "pushTime": "2020-11-23 06:20:49"
+        }
+    ]
+}

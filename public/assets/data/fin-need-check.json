@@ -1,0 +1,33 @@
+{
+    "code": 0,
+    "count": 3,
+    "data": [
+        {
+            "id": "110020092217230948837",
+            "compName": "乔禾教育",
+            "compType": "1-1",
+            "credGrade": 2,
+            "applyType": 1,
+            "status": 0,
+            "applyTime": "2020-11-16 16:10:33"
+        },
+        {
+            "id": "110120082719170452503",
+            "compName": "社区零售",
+            "compType": "1-0",
+            "credGrade": 3,
+            "applyType": 1,
+            "status": 1,
+            "applyTime": "2020-11-16 16:10:33"
+        },
+        {
+            "id": "110020102716410817815",
+            "compName": "西柚生鲜",
+            "compType": "1-0",
+            "credGrade": 4,
+            "applyType": 1,
+            "status": 2,
+            "applyTime": "2020-11-16 16:10:33"
+        }
+    ]
+}

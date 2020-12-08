@@ -1,3 +1,11 @@
+<style>
+    /* .layui-tab-item .layui-show {
+        overflow: visible;
+    } */
+    .layui-card-body {
+        height: 400px;
+    }
+</style>
 <div class="layui-card">
     <div class="layui-card-header">
         <h2 class="header-title">审核管理</h2>
@@ -7,40 +15,50 @@
         </span>
     </div>
     <div class="layui-card-body">
-        <div class="layui-form toolbar">
-            搜索：
-            <select id="user-search-key">
-                <option value="">-请选择-</option>
-                <option value="user_id">ID</option>
-                <option value="username">账号</option>
-                <option value="nick_name">用户名</option>
-                <option value="mobile">手机号</option>
-            </select>&emsp;
-            <input id="user-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
-            <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-            <button id="user-btn-add" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
-            <button id="user-btn-export" class="layui-btn icon-btn"><i class="layui-icon">&#xe601;</i>导出</button>
-            <button type="button" class="layui-btn" id="user-btn-import">
-                <i class="layui-icon">&#xe67c;</i>导入
-            </button>
+        <div class="layui-tab layui-tab-card">
+            <ul class="check-title layui-tab-title">
+              <li class="layui-this" check-type="auth">入驻审核</li>
+              <li check-type="fin-need">融资需求审核</li>
+              <li check-type="fin-product">金融产品审核</li>
+            </ul>
+            <div class="check-tab-content layui-tab-content">
+              <div class="layui-tab-item layui-show" style="overflow: visible;">
+                <!-- <div class="layui-form toolbar">
+                    <input id="check-order-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
+                    <button id="check-order-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div> -->
+                <table class="layui-table" id="auth-check-table" lay-filter="check-order-table"></table>
+            </div>
+            <div class="layui-tab-item"  style="overflow: visible;">
+                <!-- <div class="layui-form toolbar">
+                    <input id="check-order-layui-tab-content-tab-contentearch-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
+                    <button id="check-order-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div> -->
+                <table class="layui-table" id="fin-need-check-table" lay-filter="check-order-table"></table>
+                <!-- <table class="layui-table" id="auth-check-table" lay-filter="check-order-table"></table> -->
+            </div>
+            <div class="layui-tab-item"  style="overflow: visible;">
+                <!-- <div class="layui-form toolbar">
+                    <input id="check-order-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
+                    <button id="check-order-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div> -->
+                <table class="layui-table" id="fin-product-check-table" lay-filter="check-order-table"></table>
+                <!-- <table class="layui-table" id="auth-check-table" lay-filter="check-order-table"></table> -->
+              </div>
+            </div>
+          </div>
+
+        <!-- <div class="layui-form toolbar">
+            <input id="check-order-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
+            <button id="check-order-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
         </div>
 
-        <table class="layui-table" id="user-table" lay-filter="user-table"></table>
+        <table class="layui-table" id="check-order-table" lay-filter="check-order-table"></table> -->
     </div>
 </div>
 
-
-<!-- 表格操作列 -->
-<script type="text/html" id="user-table-bar">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-xs" lay-event="reset">重置密码</a>
-    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-</script>
-
-<!-- 表格状态列 -->
-<script type="text/html" id="user-tpl-state">
-    <input type="checkbox" lay-filter="user-tpl-state" value="{{d.id}}" lay-skin="switch" lay-text="正常|锁定"
-           {{d.enabled==true?'checked':''}}/>
+<script type="text/html" id="check-table-bar">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">详情</a>
 </script>
 
 <script>
@@ -53,169 +71,109 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
-
-        // 渲染表格
-        table.render({
-            elem: '#user-table',
-            url: config.base_server + 'api-user/users',
-            method: 'GET',
-            headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
-            page: true,
-            cols: [[
-                {type: 'numbers'},
-                {field: 'id', sort: true, title: '用户编号'},
-                {field: 'userName', sort: true, title: '账号'},
-                {field: 'nickName', sort: true, title: '用户名'},
-                {field: 'mobile', sort: true, title: '手机号'},
-                {sort: true, title: '性别',templet:function (d) {
-                        return d.gender==0?"男":"女"
-                    }},
-                {
-                    sort: true, templet: function (d) {
-                        return util.toDateString(d.createTime);
-                    }, title: '创建时间'
-                },
-                {field: 'enabled', sort: true, templet: '#user-tpl-state', title: '状态'},
-                {fixed: 'right', align: 'center', toolbar: '#user-table-bar', title: '操作', width: 175}
-            ]]
-        });
-
-        // 添加按钮点击事件
-        $('#user-btn-add').click(function () {
-            showEditModel();
-        });
-
-        // 工具条点击事件
-        table.on('tool(user-table)', function (obj) {
-            var data = obj.data;
-            var layEvent = obj.event;
-
-            if (layEvent === 'edit') { // 修改
-                showEditModel(data);
-            } else if (layEvent === 'reset') { // 重置密码
-                layer.confirm('确定重置此用户的密码吗？', function (i) {
-                    layer.close(i);
-                    layer.load(2);
-                    admin.req('api-user/users/'+obj.data.id+'/password', {}, function (data) {
-                        layer.closeAll('loading');
-                        if (data.code == 0) {
-                            layer.msg(data.msg, {icon: 1, time: 500});
-                        } else {
-                            layer.msg(data.msg, {icon: 2, time: 500});
-                        }
-                    }, 'PUT');
-                });
-            } else if (layEvent === 'del') { // 删除
-                layer.confirm('确定删除此用户吗？', function (i) {
-                    layer.close(i);
-                    layer.load(2);
-                    admin.req('api-user/users/'+obj.data.id, {}, function (data) {
-                        layer.closeAll('loading');
-                        if (data.code == 0) {
-                            layer.msg(data.msg, {icon: 1, time: 500});
-                            table.reload('user-table', {});
-                        } else {
-                            layer.msg(data.msg, {icon: 2, time: 500});
-                        }
-                    }, 'delete');
-                });
-            }
-        });
-
-        //显示表单弹窗
-        var showEditModel = function (data) {
-            //修改sex值
-            if (data){
-                data.sex = data.sex+'';
-            }
-            admin.putTempData('t_user', data);
-            var title = data ? '修改用户' : '添加用户';
-            admin.popupCenter({
-                title: title,
-                path: 'pages/system/user_form.html',
-                finish: function () {
-                    table.reload('user-table', {});
-                }
+        
+        var type = function() {
+            return $($('.check-title .layui-this')[0]).attr('check-type');
+        }
+        var tableEle = function() {
+            return '#' + $($('.check-tab-content .layui-show table')[0]).attr('id');
+        }
+        var renderTable = function() {
+            var tab = tableEle(), tp = type();
+            console.log(tab)
+            console.log(tp)
+            table.render({
+                elem: tab,
+                url: '/assets/data/' + tp +'-check.json',
+                method: 'GET',
+                headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
+                page: true,
+                cols: [[
+                    {type: 'numbers'},
+                    {field: 'id', title: '编码', width: "7.85%"},
+                    {field: 'compName', title: '企业名称', width: "20%"},
+                    {field: 'compType', templet: function (d) {
+                            switch(d.compType) {
+                                case '1-0':
+                                    return '个体户'
+                                case '1-1':
+                                    return '企业'
+                                case '2-0':
+                                    return '金融机构'
+                                case '2-1':
+                                    return '信用机构'
+                                case '2-2':
+                                    return '投资机构'
+                                case '2-3':
+                                    return '保险公司'
+                                case '2-4':
+                                    return '担保机构'
+                                case '3':
+                                    return '运营机构'
+                            }
+                        },title: '企业类型', width: "12%"},
+                    {field: 'credGrade', templet: function (d) {
+                            switch(d.credGrade) {
+                                case 0:
+                                    return '极好'
+                                case 1:
+                                    return '良好'
+                                case 2:
+                                    return '较好'
+                                case 3:
+                                    return '一般'
+                                case 4:
+                                    return '小白'
+                            }
+                        },title: '企业信用评级', width: "10%"
+                    },
+                    {field: 'applyType', templet: function (d) {
+                            switch(d.applyType) {
+                                case 0:
+                                    return '入驻申请'
+                                case 1:
+                                    return '融资需求申请'
+                                case 2:
+                                    return '金融产品申请'
+                            }
+                        },title: '申请类型', width: "12%"
+                    },
+                    {field: 'status', templet: function (d) {
+                            switch(d.status) {
+                                case 0:
+                                    return '未审核'
+                                case 1:
+                                    return '审核通过'
+                                case 2:
+                                    return '不通过'
+                            }
+                        }, title: '审核状态', width: "8%"
+                    },
+                    {field: 'applyTime', sort: true, templet: function (d) {
+                            return util.toDateString(d.createTime);
+                        }, title: '申请时间', width: "15%"
+                    },
+                    {fixed: 'right', align: 'center', toolbar: '#check-table-bar', title: '操作', width: '12%'}
+                ]]
             });
-        };
+        }
+        
+        // 渲染表格
+        renderTable();
 
+        $('.check-title li').on({
+            click: function() {
+                setTimeout(function() {
+                    renderTable();
+                }, 20)
+            }
+        })
         // 搜索按钮点击事件
-        $('#user-btn-search').click(function () {
-            var key = $('#user-search-key').val();
-            var value = $('#user-search-value').val();
-            table.reload('user-table', {where: {searchKey: key, searchValue: value}});
+        $('#check-order-btn-search').click(function () {
+            var key = $('#check-order-search-key').val();
+            var value = $('#check-order-search-value').val();
+            table.reload('check-order-table', {where: {searchKey: key, searchValue: value}});
         });
-
-        // 导出
-        $('#user-btn-export').click(function () {
-            var url = config.base_server + 'api-user/users/export';
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', url, true);
-            xhr.responseType = "blob";
-            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
-            xhr.setRequestHeader("Authorization", "Bearer " + config.getToken().access_token);
-            xhr.onload = function() {
-                if (this.status == 200) {
-                    var fileName = "user.xlsx";
-                    var blob = this.response;
-                    var a = document.createElement('a');
-                    a.innerHTML = fileName;
-                    // 指定生成的文件名
-                    a.download = fileName;
-                    a.href = URL.createObjectURL(blob);
-                    document.body.appendChild(a);
-                    var evt = document.createEvent("MouseEvents");
-                    evt.initEvent("click", false, false);
-                    a.dispatchEvent(evt);
-                    document.body.removeChild(a);
-                }
-            }
-            xhr.send();
-        });
-
-        // 修改user状态
-        form.on('switch(user-tpl-state)', function (obj) {
-            layer.load(2);
-            admin.req('api-user/users/updateEnabled', {
-                id: obj.elem.value,
-                enabled: obj.elem.checked ? true : false
-            }, function (data) {
-                layer.closeAll('loading');
-                if (data.code == 0) {
-                    layer.msg(data.msg, {icon: 1, time: 500});
-                    //table.reload('table-user', {});
-                } else {
-                    layer.msg(data.msg, {icon: 2, time: 500});
-                    $(obj.elem).prop('checked', !obj.elem.checked);
-                    form.render('checkbox');
-                }
-            }, 'GET');
-        });
-
-        //上传
-        var importUrl = config.base_server + 'api-user/users/import';
-        upload.render({
-            elem: '#user-btn-import'
-            ,url: importUrl
-            ,accept: 'file' //普通文件
-            ,multiple: false
-            ,headers: {"Authorization" : "Bearer " + config.getToken().access_token}
-            ,done: function(data){
-                if (data.code == 0) {
-                    layer.msg(data.msg, {icon: 1, time: 500});
-                    table.reload('user-table', {});
-                } else {
-                    layer.msg(data.msg, {icon: 2, time: 500});
-                }
-            }
-        });
-
-        //判断权限，没有权限则隐藏按钮
-        /*let resList = ['user-btn-add','user-btn-export','user-btn-import'];
-        for(let i = 0; i < resList.length; i++){
-            if (!admin.hasPerm(resList[i])) {
-                $('#'+resList[i]).hide();
-            }
-        }*/
     });
+
 </script>

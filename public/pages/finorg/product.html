@@ -75,7 +75,7 @@
                 // {field: 'applyArea', title: '适用地区', width: "10%"},
                 {field: 'applyTimes', sort: true, title: '申请次数', width: "10%"},
                 // {field: 'pubTime', sort: true, templet: function (d) {
-                //         return util.toDateString(d.createTime);
+                //         return util.toDateString(d.pubTime);
                 //     }, title: '发布时间', width: "15%"
                 // },
                 {fixed: 'right', align: 'center', toolbar: '#product-table-bar', title: '操作', width: 175}
@@ -206,31 +206,30 @@
                 layer.msg('请求失败', {icon: 2, time: 2000});
             }
         });
+
         // 导出
         $('#product-btn-export').click(function () {
-            var path = '/assets/data/'
-            var url = path + '融资需求推送资料_2020-12-07.zip';
+            var url = config.base_server + 'api-user/users/export';
             var xhr = new XMLHttpRequest();
             xhr.open('POST', url, true);
             xhr.responseType = "blob";
             xhr.setRequestHeader("client_type", "DESKTOP_WEB");
             xhr.setRequestHeader("Authorization", "Bearer " + config.getToken().access_token);
-            xhr.onload = function(res) {
-                console.log(res)
-                // if (this.status == 200) {
-                //     var fileName = "user.xlsx";
-                //     var blob = this.response;
-                //     var a = document.createElement('a');
-                //     a.innerHTML = fileName;
-                //     // 指定生成的文件名
-                //     a.download = fileName;
-                //     a.href = URL.createObjectURL(blob);
-                //     document.body.appendChild(a);
-                //     var evt = document.createEvent("MouseEvents");
-                //     evt.initEvent("click", false, false);
-                //     a.dispatchEvent(evt);
-                //     document.body.removeChild(a);
-                // }
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    var fileName = "products.xlsx";
+                    var blob = this.response;
+                    var a = document.createElement('a');
+                    a.innerHTML = fileName;
+                    // 指定生成的文件名
+                    a.download = fileName;
+                    a.href = URL.createObjectURL(blob);
+                    document.body.appendChild(a);
+                    var evt = document.createEvent("MouseEvents");
+                    evt.initEvent("click", false, false);
+                    a.dispatchEvent(evt);
+                    document.body.removeChild(a);
+                }
             }
             xhr.send();
         });
