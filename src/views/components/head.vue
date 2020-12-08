@@ -81,7 +81,7 @@
           <el-menu-item :class="{'is-active':activeOrg}" index="/fin-org">金融机构</el-menu-item>
           <el-menu-item :class="{'is-active':activeCreditOrg}" index="/credit-org">信用机构</el-menu-item>
           <el-menu-item :class="{'is-active':activeGqrz}" index="/fin-gqrz">股权融资</el-menu-item>
-          <el-menu-item index="5">融资动态</el-menu-item>
+          <el-menu-item :class="{'is-active':activezxdt}" index="/fin-zxdt">融资动态</el-menu-item>
           <el-submenu index="6">
             <template slot="title">特色金融服务专区</template>
             <el-menu-item index="6-1">平台推荐名单</el-menu-item>
@@ -113,6 +113,7 @@ export default {
       activeOrg: this.$route.path.search('/fin-org') !== -1,
       activeGqrz: this.$route.path.search('/fin-gqrz') !== -1,
       activeCreditOrg: this.$route.path.search('/credit-org') !== -1,
+      activezxdt: this.$route.path.search('/fin-zxdt') !== -1,
       fwlogo: fwlogo
     }
   },

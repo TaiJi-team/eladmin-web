@@ -1,0 +1,16 @@
+{
+    "code": 0,
+    "count": 1,
+    "data": [
+        {
+            "id": "2",
+            "compName": "普斯资本",
+            "uniCreCode": "91110114MA01RFN29B",
+            "legalRep": "老王",
+            "operater": "李四",
+            "createTime": 1606892070664,
+            "status": 1,
+            "opert": "<a href='' style='cursor: pointer'>查看合同</a>"
+        }
+    ]
+}
