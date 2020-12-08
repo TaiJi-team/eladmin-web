@@ -91,6 +91,10 @@ export const constantRouterMap = [
     component: resolve => (require(['@/views/portal/fin-org/yzyh.vue'], resolve))
   },
   {
+    path: '/fin-org/nsyh',
+    component: resolve => (require(['@/views/portal/fin-org/nsyh.vue'], resolve))
+  },
+  {
     path: '/fin-gqrz',
     component: resolve => (require(['@/views/portal/fin-gqrz/list.vue'], resolve))
   },
