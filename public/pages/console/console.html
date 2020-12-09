@@ -99,7 +99,7 @@
 
 <body>
   <div class="layui-btn-container" style="margin: 2% 0 0 18%; display: none;">
-    <!-- <button class="cons-btn layui-btn" type="button" style="float: left;" auth-type="1">企业入驻</button> -->
+    <!-- <button class="cons-btn layui-btn" type="button" style="float: left;">企业入驻</button> -->
     <ul class="layui-nav layui-bg-green btnz" lay-filter=""
       style="font-size: 12px;border-radius: 0px;float: left;padding:0px 0px 0px 0px;margin: 0 1% 0 0%;">
       <li class="layui-nav-item" style="line-height: 34px;">
@@ -582,7 +582,8 @@
       let table = layui.table;
       let util = layui.util;
       let statData;
-
+      // 普通用户绑定角色，添加签约信息
+      
       function getUserRole() {
         const user = JSON.parse(localStorage.easyweb).login_user
         if (user) {
@@ -691,30 +692,50 @@
         const config = {
           type: type
         };
-        if (type === '1') {
+        if (type.search('1-') != -1) {
           // 企业签约
           config.ele = 'comp-sign'
           config.title = '企业签约'
           config.pageUrl = '/pages/sign/comp-sign.html'
-          toSign(config)
+          toSign(config, admin)
           return;
         }
+        UserCompOper
         if (type === '3') {
           // 金融机构签约
           config.ele = 'fin-org-sign'
           config.title = '运营机构签约'
           config.pageUrl = '/pages/sign/oper-org-sign.html'
-          toSign(config)
+          toSign(config, admin)
           return;
         }
         config.ele = 'oper-org-sign'
         config.title = '金融机构签约'
         config.pageUrl = '/pages/sign/fin-org-sign.html'
-        toSign(config)
+        toSign(config, admin)
       })
     });
 
-    function toSign(cfg) {
+    
+    function toSign(cfg, admin) {
+      var userInfo = JSON.parse(localStorage.easyweb).login_user;
+      var user = {
+        id: userInfo.id,
+        userName: userInfo.userName
+      }
+      user = JSON.stringify(user)
+      console.log(user)
+      var saveRoleAndSign = function saveRoleAndSign(cfg){
+        var param = {
+          // "roleState": cfg.type,
+          user: user
+        }
+        admin.req('api-user/roles/saveRoleAndSign', param, function (data) {
+               console.log(data)
+              // location.href = '#!comp-auth'
+            }, 'POST');
+      }
+
       layer.open({
         type: 2,
         // area: '70%',
@@ -761,7 +782,8 @@
         yes: function () {
           layer.closeAll();
           localStorage.setItem('auth-redirect', 'console')
-          location.href = '#!comp-auth'
+          // location.href = '#!comp-auth'
+          saveRoleAndSign(cfg);
         },
         btn2: function () {
           layer.closeAll();
