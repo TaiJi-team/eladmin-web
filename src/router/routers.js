@@ -79,6 +79,10 @@ export const constantRouterMap = [
     component: resolve => (require(['@/views/portal/fin-market/apply.vue'], resolve))
   },
   {
+    path: '/fin-market/nsyh',
+    component: resolve => (require(['@/views/portal/fin-market/nsyh.vue'], resolve))
+  },
+  {
     path: '/fin-org',
     component: resolve => (require(['@/views/portal/fin-org/list.vue'], resolve))
   },
