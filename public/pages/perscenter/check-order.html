@@ -1,9 +1,16 @@
 <style>
-    /* .layui-tab-item .layui-show {
-        overflow: visible;
-    } */
     .layui-card-body {
         height: 400px;
+    }
+    .check-btns {
+        margin: 5% 40% 0 0;
+    }
+    .check-btns button {
+        float: right;
+        margin: 0 3% 0 0;
+    }
+    .layui-form-item {
+        width: 80%;
     }
 </style>
 <div class="layui-card">
@@ -23,27 +30,14 @@
             </ul>
             <div class="check-tab-content layui-tab-content">
               <div class="layui-tab-item layui-show" style="overflow: visible;">
-                <!-- <div class="layui-form toolbar">
-                    <input id="check-order-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
-                    <button id="check-order-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-                </div> -->
                 <table class="layui-table" id="auth-check-table" lay-filter="check-order-table"></table>
+                
             </div>
             <div class="layui-tab-item"  style="overflow: visible;">
-                <!-- <div class="layui-form toolbar">
-                    <input id="check-order-layui-tab-content-tab-contentearch-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
-                    <button id="check-order-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-                </div> -->
                 <table class="layui-table" id="fin-need-check-table" lay-filter="check-order-table"></table>
-                <!-- <table class="layui-table" id="auth-check-table" lay-filter="check-order-table"></table> -->
             </div>
             <div class="layui-tab-item"  style="overflow: visible;">
-                <!-- <div class="layui-form toolbar">
-                    <input id="check-order-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
-                    <button id="check-order-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-                </div> -->
                 <table class="layui-table" id="fin-product-check-table" lay-filter="check-order-table"></table>
-                <!-- <table class="layui-table" id="auth-check-table" lay-filter="check-order-table"></table> -->
               </div>
             </div>
           </div>
@@ -51,15 +45,43 @@
         <!-- <div class="layui-form toolbar">
             <input id="check-order-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
             <button id="check-order-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-        </div>
-
-        <table class="layui-table" id="check-order-table" lay-filter="check-order-table"></table> -->
+        </div> -->
     </div>
 </div>
 
 <script type="text/html" id="check-table-bar">
-    <a class="layui-btn layui-btn-xs" lay-event="detail">详情</a>
+    <a class="row-btn layui-btn layui-btn-xs" lay-event="check"">审核</a>
+    <a class="row-btn layui-btn layui-btn-xs" lay-event="detail">详情</a>
 </script>
+
+<div class="check-form clearfix page-cont take-release" style="display: none;">
+    <div class="layui-form" lay-filter="component-form-group">
+        <div class="fl layui-form-item">
+            <label class="layui-form-label">
+                <span class="form-required">*</span>审核：</label>
+            <div class="layui-input-block" id="companyId">
+                <div class="layui-unselect layui-form-select">
+                    <div class="layui-select-title">
+                        <input type="text" placeholder="--请选择--" value="" class="layui-input layui-unselect">
+                        <i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit">
+                            <dd lay-value="1" class="layui-select-tips" selected="selected">通过</dd>
+                        <dd lay-value="0" class="">不通过</dd></dl></div>
+            </div>
+        </div>
+        <div class="fl layui-form-item">
+            <label class="layui-form-label">
+                <span class=""></span>未通过原因</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="check-btns fl ac item-full">
+            <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
+            <button id="check-commit" lay-filter="check-form-submit" class="layui-btn" lay-submit ew-event="closeDialog">提交</button>
+        </div>
+    </div>
+</div>
+
 
 <script>
     layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
@@ -80,8 +102,6 @@
         }
         var renderTable = function() {
             var tab = tableEle(), tp = type();
-            console.log(tab)
-            console.log(tp)
             table.render({
                 elem: tab,
                 url: '/assets/data/' + tp +'-check.json',
@@ -154,13 +174,68 @@
                         }, title: '申请时间', width: "15%"
                     },
                     {fixed: 'right', align: 'center', toolbar: '#check-table-bar', title: '操作', width: '12%'}
-                ]]
+                ]],
+                done: function(res, curr, count){
+                    // //如果是异步请求数据方式，res即为你接口返回的信息。
+                    // //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                    // console.log(res);
+                    
+                    // //得到当前页码
+                    // console.log(curr); 
+                    
+                    // //得到数据总量
+                    // console.log(count);
+                    tabOnEvt();
+                }
             });
         }
-        
+        // 工具条点击事件
+        var tabOnEvt = function() {
+            var tab = tableEle();
+            console.log('on evt' + tab)
+            $('.row-btn').on({
+                click: function(obj) {
+                    var layEvent = $(this).attr('lay-event');
+                    if (layEvent === 'detail') { // 修改
+                        // showEditModel(data);
+                    } else if (layEvent === 'check') {
+                        toCheck({
+                            title: '审核信息',
+                            ele: 'check-form'
+                        })
+                    }
+                }
+            })
+        }
         // 渲染表格
         renderTable();
+        //审核
+        function toCheck(cfg) {
+            layer.open({
+                type: 1,
+                title: cfg.title,
+                area: ['35%', '40%'],
+                // shadeClose: false,
+                shade: 0,
+                content: $('.' + cfg.ele),
+                zIndex: layer.zIndex,
+                success: function () {
+                $('.layui-layer').css({
+                    'z-index': '10000000',
+                    'top': '20%',
+                    'left': '33%'
+                })
+                $('.layui-layer-page .layui-layer-content').css({
+                    'overflow': 'visible'
+                })
+                },
+                cancel: function () {
+                    $('.' + cfg.ele).css({ "display": "none" })
+                },
+            });
 
+        }
+        
         $('.check-title li').on({
             click: function() {
                 setTimeout(function() {
