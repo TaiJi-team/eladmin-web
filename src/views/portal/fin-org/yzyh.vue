@@ -119,7 +119,7 @@
         </div>
         <!--  style="display: none;" -->
         <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">
-          <router-link to="/fin-market/detail" tag="li">
+          <router-link to="/fin-market/yzyh" tag="li">
             <div class="bg-white line-action-hover item-main"> <a>
               <div class="item-title">
                 <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" class="middle-center" alt=""> </div>
@@ -136,7 +136,7 @@
               </ul>
               <div class="item-label" />
               <!-- <button class="g-bg g-shadow item-btn">查看详情</button> -->
-              <router-link class="g-bg g-shadow item-btn" to="/fin-market/detail" tag="button">查看详情</router-link>
+              <router-link class="g-bg g-shadow item-btn" to="/fin-market/yzyh" tag="button">查看详情</router-link>
               <div class="line-top" />
               <div class="line-bottom" />
               <div class="line-left" />
@@ -211,8 +211,8 @@
           </li>-->
         </ul>
         <ul v-show="!isBlock" id="productListLine" class="product-list-line">
-          <router-link to="/fin-market/detail" tag="li"> <a>
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
+          <router-link to="/fin-market/yzyh" tag="li"> <a>
+            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
             <div class="fl item-title"> <span class="t">中国邮政银行北京分行</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
             </div>

@@ -10,7 +10,7 @@
               <div class="fr bg-white box-sizing page-right">
                 <ul class="information">
                   <li> <a lay-href="requIndex/financialInstitutionDetail#?id=324">
-                    <div class="fl item-img pos-center"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
+                    <div class="fl item-img pos-center"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/17/2019091711563863912.png" class="middle-center" alt=""> </div>
                     <div class="overflow item-cont">
                       <h2 class="item-title">北京农商银行</h2>
                     </div>
@@ -64,7 +64,7 @@
               </div>
               <div class="fl page-left">
                 <div class="bg-white small-mar-bottom clearfix detail-head">
-                  <div class="fl pos-center overflow head-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/20/2019092003394234724.png" class="middle-center" alt=""> </div>
+                  <div class="fl pos-center overflow head-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/17/2019091711563863912.png" class="middle-center" alt=""> </div>
                   <div class="overflow head-cont">
                     <div class="clearfix">
                       <div class="fr ar clearfix"> <span id="productCollect" class="head-collect " /> <input type="hidden" name="collect" value="0"> </div>
