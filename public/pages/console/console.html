@@ -123,15 +123,15 @@
         <dl class="layui-nav-child"
           style="top: 28px;line-height: 31px;padding: 0px 0px 0px 0px;background-color: rgb(39, 172, 39);">
           <!-- 二级菜单 -->
-          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-0"
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2"
               style="margin-bottom: 1%;">金融机构</button></dd>
-          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-1"
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2"
               style="margin-bottom: 1%;">信用机构</button></dd>
-          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-2"
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2"
               style="margin-bottom: 1%;">投资机构</button></dd>
-          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-3"
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2"
               style="margin-bottom: 1%;">保险公司</button></dd>
-          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2-4"
+          <dd><button class="cons-btn layui-btn layui-btn layui-btn-sm layui-btn-fluid" auth-type="2"
               style="margin-bottom: 1%;">担保机构</button></dd>
         </dl>
       </li>
@@ -582,8 +582,7 @@
       let table = layui.table;
       let util = layui.util;
       let statData;
-      // 普通用户绑定角色，添加签约信息
-      
+
       function getUserRole() {
         const user = JSON.parse(localStorage.easyweb).login_user
         if (user) {
@@ -701,7 +700,7 @@
           return;
         }
         UserCompOper
-        if (type === '3') {
+        if (type === '2') {
           // 金融机构签约
           config.ele = 'fin-org-sign'
           config.title = '运营机构签约'
@@ -718,19 +717,19 @@
 
     
     function toSign(cfg, admin) {
-      var userInfo = JSON.parse(localStorage.easyweb).login_user;
+      // 获取用户信息
+      var userInfo = JSON.parse(JSON.parse(localStorage.easyweb).login_user);
       var user = {
         id: userInfo.id,
         userName: userInfo.userName
       }
-      user = JSON.stringify(user)
-      console.log(user)
+    //  user = JSON.stringify(user)
       var saveRoleAndSign = function saveRoleAndSign(cfg){
-        var param = {
-          // "roleState": cfg.type,
-          user: user
-        }
-        admin.req('api-user/roles/saveRoleAndSign', param, function (data) {
+        var map = {};
+        map["sysUser"] = user;
+        map["roleState"] = cfg.type
+       var newMap =  JSON.stringify(map);
+        admin.req('api-user/roles/saveRoleAndSign', newMap, function (data) {
                console.log(data)
               // location.href = '#!comp-auth'
             }, 'POST');
