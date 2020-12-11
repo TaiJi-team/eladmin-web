@@ -1,0 +1,41 @@
+{
+    "all": {
+        "code": 0,
+        "count": 3,
+        "data": [
+            {
+                "id": "001",
+                "compName": "乔禾教育",
+                "compType": "1-1",
+                "credGrade": 2,
+                "applyType": 0,
+                "status": 0,
+                "applyTime": "2020-11-16 16:10:33"
+            },
+            {
+                "id": "002",
+                "compName": "联合信用征信股份有限公司",
+                "compType": "2-1",
+                "credGrade": 3,
+                "applyType": 0,
+                "status": 1,
+                "applyTime": "2020-11-16 16:10:33"
+            },
+            {
+                "id": "003",
+                "compName": "东城运营机构",
+                "compType": "3",
+                "credGrade": 4,
+                "applyType": 0,
+                "status": 2,
+                "applyTime": "2020-11-16 16:10:33"
+            }
+        ]
+    },
+    "read": {
+
+    },
+    "unread": {
+        
+    }
+}
