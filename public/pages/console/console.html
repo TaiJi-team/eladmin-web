@@ -141,7 +141,6 @@
 
   <div id="console-view"></div>
   <script id="conTpl" type="text/html">
-  {{#  if(!d.isAuthed){ }}
   <!-- 企业工作台 -->
   {{#  if(d.compType === 'ADMIN' || d.compType === 'comp_user'){ }}
   <!-- <div class="comp-console layui-card-header">
@@ -568,11 +567,10 @@
     </div>
   </div>
   {{#  } }}
-  {{#  } }} 
   </script>
 
   <script type="text/javascript">
-    layui.use(['admin', 'echarts', 'laytpl', 'table', 'util'], function () {
+    layui.use(['admin', 'echarts', 'laytpl', 'table', 'util', 'index'], function () {
       let admin = layui.admin;
       let echarts = layui.echarts;
       let laytpl = layui.laytpl;
@@ -581,6 +579,7 @@
       let $view = $("#console-view");
       let table = layui.table;
       let util = layui.util;
+      let index = layui.index;
       let statData;
 
       function getUserRole() {
@@ -592,99 +591,86 @@
       }
       var role = getUserRole();
       const data = {
-        // isAuthed: false,
         compType: role
       }
 
       if (role == 'general') {
         $('.layui-btn-container').show()
       }
+
       laytpl(conTpl).render(data, function (html) {
         $view.html(html)
         renderTable(data)
       })
-      function renderTable(data) {
-        if(data.compType === 'fin_org_user'){
-            // 金融机构渲染表格
-        table.render({
-          elem: '#auth-table',
-          url: '/assets/data/org-auth.json',
-          method: 'GET',
-          page: true,
-          cols: [[
-            // {field: 'id', title: '序号', width: "8%"},
-            { field: 'compName', title: '机构名称', width: "13.3%" },
-            { field: 'uniCreCode', title: '统一社会信用代码', width: "18%" },
-            { field: 'legalRep', title: '法人代表', width: "12%" },
-            { field: 'operater', title: '签约人', width: "10%" },
-            {
-              field: 'createTime', sort: true, templet: function (d) {
-                return util.toDateString(d.createTime);
-              }, title: '签约时间', width: "22%"
-            },
-            {
-              field: 'status', templet: function (d) {
-                return d.status == 0 ? '审核中' : '入驻成功'
-              }, title: '状态', width: "13%"
-            },
-            { field: 'opert', align: 'center', title: '操作', width: "12%" }
-          ]]
+      
+      var toAuthPage = function toAuthPage() {
+        index.getUser(function (user) {
+          // $('.layui-layout-admin .layui-header').vm(user);
+          index.initLeftNav();
+          index.initRouter();
+          index.bindEvent();
+          setTimeout(function() {
+            var role = user.roles[0].code, authPage, webSite;
+            if(role === 'fin_org_user'){
+              authPage = '#!fin-org-auth'
+              webSite = '金融机构端'
+            } else if(role === 'oper_org_user'){
+              authPage = '#!oper-org-auth'
+              webSite = '运营机构端'
+            } else {
+              webSite = '企业端'
+              authPage = '#!comp-auth'
+            }
+            console.log('jump to ' + authPage)
+            $('.show-site').text(webSite);
+            localStorage.setItem('url-redirect', 'auth-add')
+            location.href = authPage
+          }, 800)
         });
-        }else if(data.compType === 'ADMIN' || data.compType === 'comp_user'){
-          // 企业渲染表格
-        table.render({
-          elem: '#auth-table',
-          url: '/assets/data/comp-auth.json',
-          method: 'GET',
-          page: true,
-          cols: [[
-            // {field: 'id', title: '序号', width: "8%"},
-            { field: 'compName', title: '企业名称', width: "13.3%" },
-            { field: 'uniCreCode', title: '统一社会信用代码', width: "18%" },
-            { field: 'legalRep', title: '法人代表', width: "12%" },
-            { field: 'operater', title: '签约人', width: "10%" },
-            {
-              field: 'createTime', sort: true, templet: function (d) {
-                return util.toDateString(d.createTime);
-              }, title: '签约时间', width: "22%"
-            },
-            {
-              field: 'status', templet: function (d) {
-                return d.status == 0 ? '审核中' : '入驻成功'
-              }, title: '状态', width: "13%"
-            },
-            { field: 'opert', align: 'center', title: '操作', width: "12%" }
-          ]]
-        });
-        }else if(data.compType === 'oper_org_user'){
-            // 运营机构渲染表格
-        table.render({
-          elem: '#auth-table',
-          url: '/assets/data/oper-auth.json',
-          method: 'GET',
-          page: true,
-          cols: [[
-            // {field: 'id', title: '序号', width: "8%"},
-            { field: 'compName', title: '运营机构名称', width: "13.3%" },
-            { field: 'uniCreCode', title: '统一社会信用代码', width: "18%" },
-            { field: 'legalRep', title: '法人代表', width: "12%" },
-            { field: 'operater', title: '签约人', width: "10%" },
-            {
-              field: 'createTime', sort: true, templet: function (d) {
-                return util.toDateString(d.createTime);
-              }, title: '签约时间', width: "22%"
-            },
-            {
-              field: 'status', templet: function (d) {
-                return d.status == 0 ? '审核中' : '入驻成功'
-              }, title: '状态', width: "13%"
-            },
-            { field: 'opert', align: 'center', title: '操作', width: "12%" }
-          ]]
-        });
-        }
-        
       }
+
+      function renderTable(data) {
+        var json_file = ''
+        if(data.compType === 'fin_org_user'){
+          // 金融机构渲染表格
+          json_file = 'org-auth'
+          data.authPage = '#!fin-org-auth'
+        } else if(data.compType === 'oper_org_user'){
+          // 运营机构渲染表格
+          json_file = 'oper-auth'
+          data.authPage = '#!oper-org-auth'
+        } else {
+          // 企业渲染表格 ('ADMIN' or 'comp_user')
+          json_file = 'comp-auth'
+          data.authPage = '#!comp-auth'
+        }
+
+        table.render({
+            elem: '#auth-table',
+            url: '/assets/data/' + json_file + '.json',
+            method: 'GET',
+            page: true,
+            cols: [[
+              // {field: 'id', title: '序号', width: "8%"},
+              { field: 'compName', title: '机构名称', width: "13.3%" },
+              { field: 'uniCreCode', title: '统一社会信用代码', width: "18%" },
+              { field: 'legalRep', title: '法人代表', width: "12%" },
+              { field: 'operater', title: '签约人', width: "10%" },
+              {
+                field: 'createTime', sort: true, templet: function (d) {
+                  return util.toDateString(d.createTime);
+                }, title: '签约时间', width: "22%"
+              },
+              {
+                field: 'status', templet: function (d) {
+                  return d.status == 0 ? '审核中' : '入驻成功'
+                }, title: '状态', width: "13%"
+              },
+              { field: 'opert', align: 'center', title: '操作', width: "12%" }
+            ]]
+          });
+      }
+
       $('button.cons-btn').on('click', function () {
         let type = $(this).attr('auth-type');
         // layer.msg(type, {icon: 5, time: 1000});
@@ -699,7 +685,6 @@
           toSign(config, admin)
           return;
         }
-        UserCompOper
         if (type === '2') {
           // 金融机构签约
           config.ele = 'fin-org-sign'
@@ -713,83 +698,86 @@
         config.pageUrl = '/pages/sign/fin-org-sign.html'
         toSign(config, admin)
       })
-    });
 
-    
-    function toSign(cfg, admin) {
-      // 获取用户信息
-      var userInfo = JSON.parse(JSON.parse(localStorage.easyweb).login_user);
-      var user = {
-        id: userInfo.id,
-        userName: userInfo.userName
-      }
-    //  user = JSON.stringify(user)
-      var saveRoleAndSign = function saveRoleAndSign(cfg){
-        var map = {};
-        map["sysUser"] = user;
-        map["roleState"] = cfg.type
-       var newMap =  JSON.stringify(map);
-        admin.req('api-user/roles/saveRoleAndSign', newMap, function (data) {
-               console.log(data)
-              // location.href = '#!comp-auth'
-            }, 'POST');
-      }
-
-      layer.open({
-        type: 2,
-        // area: '70%',
-        // shadeClose: false,
-        area: ['600px', '680px'],
-        shade: 0,
-        content: cfg.pageUrl,
-        zIndex: layer.zIndex,
-        success: function () {
-          $('.layui-layer').css({
-            'z-index': '10000000',
-            'width': '86%',
-            'height': '90%',
-            'top': '8%',
-            'left': '13%'
-          })
-          $('.layui-layer-page .layui-layer-content').css({
-            'overflow': 'hidden'
-          })
-          $('.layui-layer-btn').css({
-            'text-align': 'center',
-            'display': 'none'
-          })
-          $($('iframe')[0].contentWindow).scroll(function () {
-            const sHeight = document.getElementsByTagName('iframe')[0].contentDocument.body.scrollHeight;
-            const sTop = frames[0].document.documentElement.scrollTop;
-            // layer.msg('sHeight: ' + sHeight + ', sTop: ' + sTop, {icon: 5, time: 2000})
-            if (sTop / sHeight > 0.8) {
-              $('.layui-layer-btn').css({
-                'display': 'block'
-              })
-            } else {
-              $('.layui-layer-btn').css({
-                'display': 'none'
-              })
-            }
-
-          });
-        },
-        // cancel: function(){
-        //     // $('.' + cfg.ele).css({"display": "none"})
-        // },
-        btn: ['我同意', '关闭'],
-        yes: function () {
-          layer.closeAll();
-          localStorage.setItem('auth-redirect', 'console')
-          // location.href = '#!comp-auth'
-          saveRoleAndSign(cfg);
-        },
-        btn2: function () {
-          layer.closeAll();
+      function toSign(cfg, admin) {
+        // 获取用户信息
+        var userInfo = JSON.parse(JSON.parse(localStorage.easyweb).login_user);
+        var user = {
+          id: userInfo.id,
+          userName: userInfo.userName
         }
-      });
 
-    }
+        var saveRoleAndSign = function saveRoleAndSign(cfg){
+          var map = {};
+          map["sysUser"] = user;
+          map["roleState"] = cfg.type
+          var newMap =  JSON.stringify(map);
+          admin.req('api-user/roles/saveRoleAndSign', newMap, function (data) {
+            if(data.code == 0) {
+              layer.msg('签约成功，跳转到入驻页面', {icon: 5, time: 2000}, function() {
+                toAuthPage();
+              });
+            } else{
+              layer.msg(data.msg, {icon: 5, time: 2000});
+            }
+          }, 'POST');
+        }
+
+        layer.open({
+          type: 2,
+          // area: '70%',
+          // shadeClose: false,
+          area: ['600px', '680px'],
+          shade: 0,
+          content: cfg.pageUrl,
+          zIndex: layer.zIndex,
+          success: function () {
+            $('.layui-layer').css({
+              'z-index': '10000000',
+              'width': '86%',
+              'height': '90%',
+              'top': '8%',
+              'left': '13%'
+            })
+            $('.layui-layer-page .layui-layer-content').css({
+              'overflow': 'hidden'
+            })
+            $('.layui-layer-btn').css({
+              'text-align': 'center',
+              'display': 'none'
+            })
+            $($('iframe')[0].contentWindow).scroll(function () {
+              const sHeight = document.getElementsByTagName('iframe')[0].contentDocument.body.scrollHeight;
+              const sTop = frames[0].document.documentElement.scrollTop;
+              // layer.msg('sHeight: ' + sHeight + ', sTop: ' + sTop, {icon: 5, time: 2000})
+              if (sTop / sHeight > 0.8) {
+                $('.layui-layer-btn').css({
+                  'display': 'block'
+                })
+              } else {
+                $('.layui-layer-btn').css({
+                  'display': 'none'
+                })
+              }
+
+            });
+          },
+          // cancel: function(){
+          //     // $('.' + cfg.ele).css({"display": "none"})
+          // },
+          btn: ['我同意', '关闭'],
+          yes: function () {
+            layer.closeAll();
+            saveRoleAndSign(cfg);
+          },
+          btn2: function () {
+            layer.closeAll();
+          }
+        });
+
+      }
+
+    });
 
     function toSignByDom(cfg) {
       layer.open({

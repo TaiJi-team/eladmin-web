@@ -132,14 +132,14 @@
             </div>
             <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">   
                 <div class="caller-item"> <img src="assets/images/edu-online.png" alt="" class="caller-img caller-fl" data-id="98966"> 
-                    <div class="caller-main caller-fl"> <p> </p><h2> <strong>乔禾教育</strong>  
-                        <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">未认证</em>
-                        <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>  
+                    <div class="caller-main caller-fl"> <p> </p><h2> <strong>微捷贷</strong>  
+                        <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">已认证</em>
+                        <!-- <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>   -->
                     </h2> <p></p> <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>北京市海淀区</p> 
                     <p class="caller-iconset"></p> </div> 
                     <a href="#!fin-need?compId=1" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看 </a>
                     <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;"> 
-                        <a href="#!fin-need?compId=1" class="layui-blue layui-text-site20" style="cursor: pointer;color: #29b2ac;">3笔</a><br> 融资需求 </div> 
+                        <a href="#!fin-need?compId=1" class="layui-blue layui-text-site20" style="cursor: pointer;color: #29b2ac;">12款</a><br> 金融产品 </div> 
                 </div>  
 
                 <div class="ac pagination" id="pagination">
@@ -183,7 +183,7 @@
 
         //显示表单弹窗
         var showEditModel = function (data) {
-            var title = data ? '修改企业' : '添加企业';
+            var title = data ? '修改金融机构' : '添加金融机构';
             admin.popupCenter({
                 type:2,
                 title: title,
@@ -205,9 +205,9 @@
             });
         };
 
-        if (!!localStorage.getItem('auth-redirect')) {
+        if (!!localStorage.getItem('url-redirect')) {
             showEditModel();
-            localStorage.removeItem('auth-redirect')
+            localStorage.removeItem('url-redirect')
             // return;
         }
 

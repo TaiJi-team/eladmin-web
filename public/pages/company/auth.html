@@ -187,16 +187,13 @@
             admin.popupCenter({
                 type:2,
                 title: title,
-                area: ['1200px', '680px'],
+                area: ['83%', '87%'],
                 path: 'pages/company/add.html',
                 btn: ['提交', '取消'],
                 success: function() {
                     $('.layui-layer').css({
-                        // 'z-index': '10000000',
-                        // 'width': '86%',
-                        // 'height': '90%',
                         'top': '8%',
-                        'left': '18%'
+                        'left': '12%'
                     })
                 },
                 finish: function () {
@@ -205,9 +202,9 @@
             });
         };
 
-        if (!!localStorage.getItem('auth-redirect')) {
+        if (!!localStorage.getItem('url-redirect')) {
             showEditModel();
-            localStorage.removeItem('auth-redirect')
+            localStorage.removeItem('url-redirect')
             // return;
         }
 
