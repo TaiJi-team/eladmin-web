@@ -87,6 +87,10 @@
             element.render('nav');
             index.initRouter();
             index.bindEvent();
+            var role = user.roles[0].code
+            if(role === 'ADMIN') {
+                $('.show-site').text('平台管理员')
+            }
         });
     });
 </script>

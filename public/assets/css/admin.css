@@ -78,7 +78,7 @@ html {
 
 .layui-layout-admin .layui-header .layui-logo img {
     height: 60%;
-    margin: 0% 1% 0 -6%;
+    margin: 5% 0 0 0;
     cursor: pointer;
 }
 .layui-layout-admin .layui-header .layui-logo span {
