@@ -50,23 +50,22 @@
 </div>
 
 <script type="text/html" id="check-table-bar">
-    <a class="row-btn layui-btn layui-btn-xs" lay-event="check"">审核</a>
-    <a class="row-btn layui-btn layui-btn-xs" lay-event="detail">详情</a>
+    <a class="row-btn layui-btn layui-btn-xs" lay-event="check">审核</a>
+    <!-- <a class="row-btn layui-btn layui-btn-xs" lay-event="detail">详情</a> -->
 </script>
 
 <div class="check-form clearfix page-cont take-release" style="display: none;">
     <div class="layui-form" lay-filter="component-form-group">
-        <div class="fl layui-form-item">
-            <label class="layui-form-label">
-                <span class="form-required">*</span>审核：</label>
-            <div class="layui-input-block" id="companyId">
-                <div class="layui-unselect layui-form-select">
-                    <div class="layui-select-title">
-                        <input type="text" placeholder="--请选择--" value="" class="layui-input layui-unselect">
-                        <i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit">
-                            <dd lay-value="1" class="layui-select-tips" selected="selected">通过</dd>
-                        <dd lay-value="0" class="">不通过</dd></dl></div>
+        <div class="fl layui-inline layui-form-item">
+            <label class="layui-form-label">审核：</label>
+            <div class="layui-input-inline">
+              <select name="modules" lay-verify="required" lay-search="">
+                <option value="">--请选择--</option>
+                <option value="1">通过</option>
+                <option value="2">不通过</option>
+              </select>
             </div>
+          </div>
         </div>
         <div class="fl layui-form-item">
             <label class="layui-form-label">
@@ -197,11 +196,11 @@
                 click: function(obj) {
                     var layEvent = $(this).attr('lay-event');
                     if (layEvent === 'detail') { // 修改
-                        // showEditModel(data);
+                        //showEditModel(data);
                     } else if (layEvent === 'check') {
                         toCheck({
                             title: '审核信息',
-                            ele: 'check-form'
+                            ele: 'check-form',
                         })
                     }
                 }
@@ -214,7 +213,7 @@
             layer.open({
                 type: 1,
                 title: cfg.title,
-                area: ['35%', '40%'],
+                area: ['500px', '300px'],
                 // shadeClose: false,
                 shade: 0,
                 content: $('.' + cfg.ele),

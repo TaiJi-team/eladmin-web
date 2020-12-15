@@ -15,7 +15,6 @@
         font-style: normal;
     }
 
-    /*进度条横向样式*/
     .pro-process {
         width: 100%;
         list-style: none;
@@ -67,71 +66,6 @@
         border-color: #5fb878;
         background: #5fb878;
     }
-
-    .pro-process li:first-child:nth-last-child(2),
-    .pro-process li:first-child:nth-last-child(2)~li {
-        width: 50%;
-    }
-
-    .pro-process li:first-child:nth-last-child(3),
-    .pro-process li:first-child:nth-last-child(3)~li {
-        width: 33.3%;
-    }
-
-    .pro-process li:first-child:nth-last-child(4),
-    .pro-process li:first-child:nth-last-child(4)~li {
-        width: 25%;
-    }
-
-    .pro-process li:first-child:nth-last-child(5),
-    .pro-process li:first-child:nth-last-child(5)~li {
-        width: 20%;
-    }
-
-    .pro-process li:first-child:nth-last-child(6),
-    .pro-process li:first-child:nth-last-child(6)~li {
-        width: 16%;
-    }
-
-    .pro-process li:first-child:nth-last-child(7),
-    .pro-process li:first-child:nth-last-child(7)~li {
-        width: 14%;
-    }
-
-    .pro-process li:first-child:nth-last-child(8),
-    .pro-process li:first-child:nth-last-child(8)~li {
-        width: 12.5%;
-    }
-
-    col[Attributes Style] {
-        width: 100px;
-    }
-
-    col {
-        display: table-column;
-    }
-
-    tbody {
-        display: table-row-group;
-        vertical-align: middle;
-        border-color: inherit;
-    }
-
-    tr {
-        display: table-row;
-        vertical-align: inherit;
-        border-color: inherit;
-    }
-
-    td[data-field=id],
-    th[data-field=id] {
-        display: none;
-    }
-
-    .laytable-cell-3-0-0 {
-        width: 80px;
-    }
-
     .layui-table-cell {
         height: auto;
         overflow-y: auto;
@@ -231,33 +165,9 @@
     .layui-input-block {
         margin-left: 160px;
     }
-
-    input {
-        -webkit-writing-mode: horizontal-tb !important;
-        text-rendering: auto;
-        color: -internal-light-dark(black, white);
-        letter-spacing: normal;
-        word-spacing: normal;
-        text-transform: none;
-        text-indent: 0px;
-        text-shadow: none;
-        display: inline-block;
-        text-align: start;
-        appearance: textfield;
-        background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-        -webkit-rtl-ordering: logical;
-        cursor: text;
-        margin: 0em;
-        font: 400 13.3333px Arial;
-        padding: 1px 2px;
-        border-width: 2px;
-        border-style: inset;
-        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-        border-image: initial;
-    }
-
-    i {
-        font-style: italic;
+    .layui-form-item .layui-input-inline {
+        width: auto;
+        margin-right: 0;
     }
 </style>
 
@@ -814,22 +724,16 @@
             </div>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">
+                <!-- <label class="layui-form-label">
                     <span style="color: red">*</span>纳税评级：</label>
                 <div class="layui-input-block">
                     <select class="form-control" name="qynsxx01" lay-verify="required">
-                        <option value="">请选择企业纳税评级</option>
-                        
+                        <option value="" class="layui-select-tips layui-this">请选择企业纳税评级</option>
                         <option value="1">A</option>
-                        
                         <option value="2">B</option>
-                        
                         <option value="3">M</option>
-                        
                         <option value="4">C</option>
-                        
                         <option value="5">D</option>
-                        
                     </select>
                     <div class="layui-unselect layui-form-select">
                         <div class="layui-select-title"><input type="text" placeholder="请选择企业纳税评级" value="" readonly=""
@@ -843,6 +747,12 @@
                             <dd lay-value="5" class="">D</dd>
                         </dl>
                     </div>
+                </div> -->
+                <label class="layui-form-label">
+                    <span style="color: red">*</span>纳税评级：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="qynsxx02" value="" lay-verify="number"
+                        placeholder="请输入企业纳税评级">
                 </div>
             </div>
 
@@ -870,6 +780,9 @@
         var admin = layui.admin;
         var upload = layui.upload;
         var layarea = layui.layarea;
+
+        form.render('radio');
+        form.render('checkbox');
 
         var t = localStorage.getItem('tarType')
         $('.' + t).removeClass('com-container')

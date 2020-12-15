@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="layui-col-md8">
+                        <div class="layui-col-md8 layui-form">
                             <div class="layui-form-item" style="display:none;">
                                 <div class="layui-form-mid layui-word-aux"><span
                                         style="color: red">（请先上传营业执照照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
@@ -78,8 +78,8 @@
                                 <div class="layui-input-block">
                                     <div id="cpArea">
                                         <div id="picker_1606898496889" data-action="picker_1606898496889">
-                                            <div class="layui-input-inline" data-action="province"><select
-                                                    name="province" lay-verify="required" lay-filter="province">
+                                            <div class="layui-input-inline" data-action="province">
+                                                <select name="province" lay-verify="required" lay-filter="province">
                                                     <option value="">请选择省</option>
                                                     <option value="110000" selected="">北京</option>
                                                     <option value="120000">天津</option>
@@ -114,7 +114,8 @@
                                                     <option value="650000">新疆维吾尔自治区</option>
                                                 </select>
                                                 <div class="layui-unselect layui-form-select">
-                                                    <div class="layui-select-title"><input type="text"
+                                                    <div class="layui-select-title">
+                                                            <input type="text"
                                                             placeholder="请选择省" value="北京" readonly=""
                                                             class="layui-input layui-unselect"><i
                                                             class="layui-edge"></i></div>
@@ -220,6 +221,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>详细地址：</label>
                                 <div class="layui-input-block"> <input type="text" name="address" value=""
@@ -230,13 +232,14 @@
                                 <div class="layui-input-block"> <textarea placeholder="不能填写超出经营范围的类目，不得出现错别字"
                                         name="business_scope" class="layui-textarea"></textarea> </div>
                             </div>
-                            <div class="layui-form-item"> <label class="layui-form-label"><span
+                            <div class="layui-form-item"> 
+                                <label class="layui-form-label"><span
                                         style="color: red">*</span>营业期限(止)：</label>
-                                <div class="layui-input-block">
-                                    <div class="layui-input-inline"> <input type="radio" name="business_time_type"
-                                            value="1" title="长期" lay-filter="business_time_type">
-                                        <div class="layui-unselect layui-form-radio"><i
-                                                class="layui-anim layui-icon"></i>
+                               <div class="layui-input-block">
+                                     <div class="layui-input-inline"> 
+                                        <input type="radio" name="business_time_type" value="1" title="长期" lay-filter="business_time_type">
+                                        <div class="layui-unselect layui-form-radio">
+                                            <i class="layui-anim layui-icon"></i>
                                             <div>长期</div>
                                         </div> <input type="radio" name="business_time_type" value="2" title="固定日期"
                                             checked="" lay-filter="business_time_type">
@@ -245,11 +248,15 @@
                                             <div>固定日期</div>
                                         </div>
                                     </div>
+                                    
                                     <div class="layui-input-inline"> <input type="text" class="layui-input"
                                             id="business_time" name="business_time" lay-verify="required" value=""
-                                            placeholder="yyyy-MM-dd" autocomplete="off" lay-key="4"> </div>
-                                </div>
+                                            placeholder="yyyy-MM-dd" autocomplete="off" lay-key="4"> 
+                                    </div>
+                                </div> 
+
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -269,7 +276,7 @@
                                </blockquote>
                             </div>
                         </div>
-                        <div class="layui-col-md8">
+                        <div class="layui-col-md8 layui-form">
                             <div class="layui-form-item" style="display:none;">
                                 <div class="layui-form-mid layui-word-aux"><span
                                         style="color: red">（请先上传证件照片，系统将自动识别填写证件信息，再核对识别结果）</span></div>
@@ -905,7 +912,8 @@
         var formSelects = layui.formSelects;
         var upload = layui.upload;
 
-        // form.render('radio');
+        form.render('radio');
+        form.render('select');
          //拖拽上传
         upload.render({
             elem: '#png'

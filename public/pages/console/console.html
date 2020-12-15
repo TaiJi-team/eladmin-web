@@ -94,6 +94,15 @@
     .data-board li {
       width: 25%;
     }
+    element.style {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 655px;
+    height: 332px;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
   </style>
 </head>
 
@@ -561,133 +570,123 @@
 
   <!-- 政府部门 -->
   {{#  if(d.compType === 'gov_user'){ }}
-  <div class="layui-fluid" style="padding: 0;">
-    <div class="layui-row layui-col-space15">
-      <div class="layui-col-md8">
         <div class="layui-row layui-col-space15">
-          <div class="layui-col-md12">
+          <div class="layui-col-sm6 layui-col-md3">
             <div class="layui-card">
-              <div class="layui-card-header">数据概览</div>
+              <div class="layui-card-header">
+                访问量
+                <span class="layui-badge layui-bg-blue layuiadmin-badge">周</span>
+              </div>
+              <div class="layui-card-body layuiadmin-card-list">
+                <p class="layuiadmin-big-font">9,999,666</p>
+                <p>
+                  总计访问量 
+                  <span class="layuiadmin-span-color">88万 <i class="layui-icon"></i></span>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+              <div class="layui-card-header">
+                下载
+                <span class="layui-badge layui-bg-cyan layuiadmin-badge">月</span>
+              </div>
+              <div class="layui-card-body layuiadmin-card-list">
+                <p class="layuiadmin-big-font">33,555</p>
+                <p>
+                  新下载
+                  <span class="layuiadmin-span-color">10% <i class="layui-icon"></i></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+              <div class="layui-card-header">
+                收入
+                <span class="layui-badge layui-bg-green layuiadmin-badge">年</span>
+              </div>
+              <div class="layui-card-body layuiadmin-card-list">
+      
+                <p class="layuiadmin-big-font">999,666</p>
+                <p>
+                  总收入 
+                  <span class="layuiadmin-span-color">*** <i class="layui-icon"></i></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+              <div class="layui-card-header">
+                活跃用户
+                <span class="layui-badge layui-bg-orange layuiadmin-badge">月</span>
+              </div>
+              <div class="layui-card-body layuiadmin-card-list">
+      
+                <p class="layuiadmin-big-font">66,666</p>
+                <p>
+                  最近一个月 
+                  <span class="layuiadmin-span-color">15% <i class="layui-icon"></i></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="layui-col-sm12">
+            <div class="layui-card">
+              <div class="layui-card-header">
+                访问量
+                <div class="layui-btn-group layuiadmin-btn-group">
+                  <button class="layui-btn layui-btn-primary layui-btn-xs">去年</button>
+                  <button class="layui-btn layui-btn-primary layui-btn-xs">今年</button>
+                </div>
+              </div>
               <div class="layui-card-body">
-                <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim=""
-                  style="margin: 1% 0 3% 0;">
-                  <div template="" lay-url="./api/get_ajax.aspx?action=get_financingData">
-                    <ul class="data-board layui-row layui-col-space10">
-                      <li class="layui-col-xs3">
-                        <a lay-href="financingList" class="layadmin-backlog-body">
-                          <h3>融资审核通过（笔）</h3>
-                          <p><cite>12</cite></p>
-                        </a>
-                      </li>
-                      <li class="layui-col-xs3">
-                        <a lay-href="financingList" class="layadmin-backlog-body">
-                          <h3>认证审核通过（笔）</h3>
-                          <p><cite>4</cite></p>
-                        </a>
-                      </li>
-                      <li class="layui-col-xs3">
-                        <a lay-href="financingList" class="layadmin-backlog-body">
-                          <h3>上架审核通过（笔）</h3>
-                          <p><cite>3</cite></p>
-                        </a>
-                      </li>
-                      <li class="layui-col-xs3">
-                        <a lay-href="comInfo" class="layadmin-backlog-body">
-                          <h3>注册运营公司</h3>
-                          <p><cite>1</cite></p>
-                        </a>
-                      </li>
-                      <li class="layui-col-xs3">
-                        <a lay-href="financingList" class="layadmin-backlog-body">
-                          <h3>融资审核未通过（笔）</h3>
-                          <p><cite>120</cite></p>
-                        </a>
-                      </li>
-                      <li class="layui-col-xs3">
-                        <a lay-href="financingList" class="layadmin-backlog-body">
-                          <h3>上架审核未通过（笔）</h3>
-                          <p><cite>200</cite></p>
-                        </a>
-                      </li>
-                      <li class="layui-col-xs3">
-                        <a lay-href="financingList" class="layadmin-backlog-body">
-                          <h3>认证审核未通过（笔）</h3>
-                          <p><cite>100</cite></p>
-                        </a>
-                      </li>
-                    </ul>
+                <div class="layui-row">
+                  <div class="layui-col-sm8">
+                      <!-- <div class="layui-carousel layadmin-carousel layadmin-dataview" id="LAY-index-pagetwo" data-anim="fade"  lay-anim="fade" style="width: 100%; height: 280px;">
+                         
+                      </div> -->
+                      <div class="layui-carousel layadmin-carousel layadmin-dataview" id="LAY-index-pagetwo1" data-anim="fade"  lay-anim="fade" style="width: 100%; height: 280px;"></div>
+                  </div>
+                  <div class="layui-col-sm4">
+                    <div class="layuiadmin-card-list">
+                      <p class="layuiadmin-normal-font">月访问数</p>
+                      <span>同上期增长</span>
+                      <div class="layui-progress layui-progress-big" lay-showpercent="yes">
+                        <div class="layui-progress-bar" lay-percent="30%" style="width: 30%;"><span class="layui-progress-text">70%</span></div>
+                      </div>
+                    </div>
+                    <div class="layuiadmin-card-list">
+                      <p class="layuiadmin-normal-font">月下载数</p>
+                      <span>同上期增长</span>
+                      <div class="layui-progress layui-progress-big" lay-showpercent="yes">
+                        <div class="layui-progress-bar" lay-percent="20%" style="width: 20%;"><span class="layui-progress-text">20%</span></div>
+                      </div>
+                    </div>
+                    <div class="layuiadmin-card-list">
+                      <p class="layuiadmin-normal-font">月收入</p>
+                      <span>同上期增长</span>
+                      <div class="layui-progress layui-progress-big" lay-showpercent="yes">
+                        <div class="layui-progress-bar" lay-percent="25%" style="width: 25%;"><span class="layui-progress-text">25%</span></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="layui-col-md12">
-            <div class="layui-card">
-              <div class="layui-tab layui-tab-brief layadmin-latestData">
-                <ul class="layui-tab-title" style="width: 83%;margin: 0 0 0 1%;">
-                  <li class="layui-this" style="margin: 0 0 0 -7%;">入驻记录</li>
-                </ul>
-                <div class="layui-tab-content">
-                  <table class="layui-table" id="auth-table"></table>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <div class="layui-col-md4">
-        <div class="layui-card">
-          <div class="layui-card-header">待审核</div>
-          <div class="layui-card-body">
-            <div class="layui-carousel layadmin-carousel layadmin-shortcut" lay-anim="" lay-indicator="inside"
-              lay-arrow="none" style="height: 186px;">
-              <div carousel-item="">
-                <ul class="layui-row layui-col-space10 layui-this">
-                  <li class="layui-col-xs3">
-                    <a href="home/homepage1.html">
-                      <div>
-                        <img src="assets/images/product.png" />
-                        <p>待审核产品</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="layui-col-xs3">
-                    <a href="home/homepage1.html">
-                      <div>
-                        <img src="assets/images/product.png" />
-                        <p>待审核入驻</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="layui-col-xs3">
-                    <a href="home/homepage1.html">
-                      <div>
-                        <img src="assets/images/product.png" />
-                        <p>待审核认证</p>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-card">
-          <div class="layui-card-header">运营机构政策</div>
-          <div class="layui-card-body">
-              <ul id="zczj_hot"><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2026" target="_blank" style="padding-left: 5px;">北京市社会保险基金管理中心关于阶段性减免三项社会保险费和办理缓缴有关事项的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2025" target="_blank" style="padding-left: 5px;">北京市人力资源社会保障局 北京市财政局 北京市税务局关于做好北京市阶段性减免企业社会保险费工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2024" target="_blank" style="padding-left: 5px;">中关村科技园区管理委员会关于申报2020年中关村国家自主创新示范区科技型小微企业研发费用支持资金的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2023" target="_blank" style="padding-left: 5px;">北京市发展和改革委员会关于做好疫情防控重点保障物资生产企业名单管理工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2022" target="_blank" style="padding-left: 5px;">北京市财政局关于加强新冠肺炎疫情防控 财税政策落实和财政资金监管工作的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2021" target="_blank" style="padding-left: 5px;">北京市密云区城市管理委员会关于贯彻落实应对新型冠状病毒感染的肺炎疫情影响促进中小微企业持续健康发展停征占道费的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2020" target="_blank" style="padding-left: 5px;">北京市延庆区人力资源和社会保障局关于支持疫情防控企业用工给予一次性吸纳就业补贴有关问题的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2019" target="_blank" style="padding-left: 5px;">北京市通州区经济和信息化局关于印发《通州区减轻防疫用品生产企业负担专项资金实施细则》的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2017" target="_blank" style="padding-left: 5px;">北京市住房和城乡建设委员会关于进一步做好疫情防控期间住房租赁服务管理的通知        </a></li><li style="margin-top: 8px;">   <span class="layui-badge-dot layui-bg-black"></span>        <a href="/#/news/newsDetail#?id=2016" target="_blank" style="padding-left: 5px;">北京市住房城乡建设委员会关于新冠肺炎疫情防控期间延长建筑工程施工许可证有效期的通告        </a></li></ul>
-          </div>
-      </div>
-      </div>
-    </div>
-  </div>
   {{#  } }}
   </script>
 
   <script type="text/javascript">
-    layui.use(['admin', 'echarts', 'laytpl', 'table', 'util', 'index'], function () {
+    layui.use(['admin', 'echarts', 'laytpl', 'table', 'util', 'index',"carousel"], function () {
       let admin = layui.admin;
       let echarts = layui.echarts;
       let laytpl = layui.laytpl;
@@ -699,6 +698,52 @@
       let index = layui.index;
       let statData;
 
+      var renChart = function renChart() {
+        var dom = document.getElementById('LAY-index-pagetwo1');
+        var chart = echarts.init(dom);
+        var option = {
+          tooltip: {
+                      trigger: "axis"
+                  },
+                  calculable: !0,
+                  legend: {
+                      data: ["访问量", "下载量", "平均访问量"]
+                  },
+                  xAxis: [{
+                      type: "category",
+                      data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+                  }],
+                  yAxis: [{
+                      type: "value",
+                      name: "访问量",
+                      axisLabel: {
+                          formatter: "{value} 万"
+                      }
+                  }, {
+                      type: "value",
+                      name: "下载量",
+                      axisLabel: {
+                          formatter: "{value} 万"
+                      }
+                  }],
+                  series: [{
+                      name: "访问量",
+                      type: "line",
+                      data: [900, 850, 950, 1e3, 1100, 1050, 1e3, 1150, 1250, 1370, 1250, 1100]
+                  }, {
+                      name: "下载量",
+                      type: "line",
+                      yAxisIndex: 1,
+                      data: [850, 850, 800, 950, 1e3, 950, 950, 1150, 1100, 1240, 1e3, 950]
+                  }, {
+                      name: "平均访问量",
+                      type: "line",
+                      data: [870, 850, 850, 950, 1050, 1e3, 980, 1150, 1e3, 1300, 1150, 1e3]
+                  }]
+                };
+        chart.setOption(option);
+      }
+      
       function getUserRole() {
         const user = JSON.parse(localStorage.easyweb).login_user
         if (user) {
@@ -718,6 +763,9 @@
 
       laytpl(conTpl).render(data, function (html) {
         $view.html(html)
+        if (data.compType === 'gov_user') {
+          renChart();
+        }
         renderTable(data)
       })
       
