@@ -128,6 +128,7 @@
             <div class="layui-form">
                 <div class="layui-inline">
                     <a class="layui-btn layui-btn-normal" lay-href="enterpriseCert">添加金融机构</a>
+                    <a class="layui-btn layui-btn-normal1" lay-href="enterpriseCert">添加产品经理</a>
                 </div>
             </div>
             <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">   
@@ -205,6 +206,34 @@
             });
         };
 
+        //显示产品经理表单弹窗
+        var showEditModel1 = function (data) {
+            // var title = data ? '修改企业' : '添加企业';
+            var title = '添加经理用户';
+            admin.popupCenter({
+                type:2,
+                title: title,
+                area: ['60%', '65%'],
+                path: 'pages/company/add-manager.html',
+                btn: ['提交', '取消'],
+                success: function() {
+                    $('.layui-layer').css({
+                        // 'z-index': '10000000',
+                        // 'width': '86%',
+                        // 'height': '90%',
+                        'top': '8%',
+                        'left': '18%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
+                },
+                finish: function () {
+                    // table.reload('user-table', {});
+                }
+            });
+        };
+
         if (!!localStorage.getItem('url-redirect')) {
             showEditModel();
             localStorage.removeItem('url-redirect')
@@ -215,6 +244,11 @@
         $('.layui-btn-normal').click(function () {
             showEditModel();
         });
+        // 添加产品经理点击事件
+        $('.layui-btn-normal1').click(function () {
+            showEditModel1();
+        });
+        
 
     });
 </script>

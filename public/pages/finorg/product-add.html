@@ -697,32 +697,23 @@ a:active {
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>产品名称：</label>
-                            <div class="clearfix layui-input-block">
-                                <input type="text" name="rate" value="" autocomplete="on" placeholder="请输入产品名称" class="layui-input" maxlength="20">
+                            <div class="layui-input-block clearfix">
+                                <input type="tel" name="rate"  placeholder="请输入产品名称" autocomplete="on" maxlength="20" class="layui-input">
                             </div>
                         </div>
                         <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>贷款额度：</label>
-                            <div class="clearfix layui-input-block">
-                                <select id="loanLimit" name="loanLimit" lay-verify="required">
-                                    <option value="" selected="selected">--请选择贷款额度--</option>
+                            <div class="layui-block">
+                                <label class="layui-form-label">
+                                    <span class="form-required">*</span>贷款额度：
+                                </label>
+                                <div class="clearfix layui-input-block">
+                                  <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="">--直接选择或搜索选择--</option>
                                     <option value="1">0-10万（含）</option>
                                     <option value="2">10-100万（含）</option>
                                     <option value="3">5-10万（含）</option>
                                     <option value="4">10万以上</option>
-                                </select>
-                                <div class="layui-unselect layui-form-select">
-                                    <div class="layui-select-title"><input type="text" placeholder="--请选择贷款额度--"
-                                            value="" class="layui-input layui-unselect"><i
-                                            class="layui-edge"></i></div>
-                                    <dl class="layui-anim layui-anim-upbit">
-                                        <dd lay-value="" class="layui-select-tips">--请选择贷款额度--</dd>
-                                        <dd lay-value="1" class="">0-10万（含）</dd>
-                                        <dd lay-value="2" class="">10-100万（含）</dd>
-                                        <dd lay-value="3" class="">5-10万（含）</dd>
-                                        <dd lay-value="4" class="">10万以上</dd>
-                                    </dl>
+                                  </select>
                                 </div>
                             </div>
                         </div>
@@ -735,41 +726,43 @@ a:active {
                             </div>
                         </div>
                         <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>贷款期限：</label>
-                            <div class="layui-input-block" id="companyId">
-                                <div class="layui-unselect layui-form-select">
-                                    <div class="layui-select-title">
-                                        <input type="text" placeholder="--请选择贷款期限--" value="" class="layui-input layui-unselect">
-                                        <i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit">
-                                            <dd lay-value="" class="">--请选择贷款期限--</dd>
-                                            <dd lay-value="1" class="layui-select-tips" selected="selected">0-6月（含）</dd>
-                                            <dd lay-value="2" class="">6-12月（含）</dd>
-                                            <dd lay-value="3" class="">12-24月（含）</dd>
-                                            <dd lay-value="4" class="">24-36月（含）</dd>
-                                            <dd lay-value="5" class="">36月以上</dd></dl></div>
+                            <div class="layui-block">
+                                <label class="layui-form-label">
+                                    <span class="form-required">*</span>贷款期限：
+                                </label>
+                                <div class="layui-input-block">
+                                  <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="">--请选择贷款期限--</option>
+                                    <option value="1">6-12月（含）</option>
+                                    <option value="2">12-24月（含）</option>
+                                    <option value="3">24-36月（含）</option>
+                                    <option value="4">36月以上</option>
+                                    <option value="5">laytpl</option>
+                                  </select>
+                                </div>
                             </div>
                         </div>
 
                         <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>还款方式：</label>
-                            <div class="layui-input-block" id="companyId">
-                                <div class="layui-unselect layui-form-select">
-                                    <div class="layui-select-title">
-                                        <input type="text" placeholder="--请选择贷款额度--" value="" class="layui-input layui-unselect">
-                                        <i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit">
-                                            <dd lay-value="" class="">--请选择贷款额度--</dd>
-                                            <dd lay-value="1" class="layui-select-tips" selected="selected">等额本金</dd>
-                                            <dd lay-value="2" class="">等额本息</dd>
-                                        <dd lay-value="3" class="">先息后本</dd>
-                                        <dd lay-value="4" class="">随借随还</dd></dl></div>
+                            <div class="layui-block">
+                                <label class="layui-form-label">
+                                    <span class="form-required">*</span>还款方式：
+                                </label>
+                                <div class="layui-input-block">
+                                  <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="">--请选择还款方式--</option>
+                                    <option value="1">等额本息</option>
+                                    <option value="2">先息后本</option>
+                                    <option value="3">随借随还</option>
+                                  </select>
+                                </div>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>试用地区：</label>
-                            <div class="layui-input-block" id="companyId">
+                           <!-- <label class="layui-form-label">
+                                <span class="form-required">*</span>试用地区：
+                            </label>
+                             <div class="layui-input-block" id="companyId">
                                 <div class="layui-unselect layui-form-select">
                                     <div class="layui-select-title">
                                         <input type="text" placeholder="--请选择试用地区--" value="" class="layui-input layui-unselect">
@@ -801,6 +794,21 @@ a:active {
                                         <option value="拱墅区">临安市</option>
                                         </select>
                                     </div>
+                                </div>
+                            </div> -->
+                            <div class="layui-block">
+                                <label class="layui-form-label">
+                                    <span class="form-required">*</span>试用地区：
+                                </label>
+                                <div class="layui-input-block">
+                                  <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="">--请选择试用地区--</option>
+                                    <option value="1">太原</option>
+                                    <option value="2">大同</option>
+                                    <option value="3">忻州</option>
+                                    <option value="4">吕梁</option>
+                                    <option value="5">长治</option>
+                                  </select>
                                 </div>
                             </div>
                         </div>
@@ -884,6 +892,7 @@ a:active {
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
+        form.render('select')
 
     });
 </script>

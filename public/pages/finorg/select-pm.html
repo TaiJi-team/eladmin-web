@@ -655,6 +655,12 @@ a:active {
     -webkit-box-shadow: 0 0 10px rgba(167, 167, 167, .73);
     box-shadow: 0 0 10px rgba(167, 167, 167, .73);
 }
+.butt {
+    width: "30px";
+    height: "10px";
+    left: "300px";
+    top: "500px";
+}
 </style>
 
 <div class="layui-card">
@@ -691,33 +697,42 @@ a:active {
             </div> -->
     
             <div class="need-apply fl bg-white page-left">
-                <div class="ac page-head"><span>选择产品经理和业务员</span></div>
+                <div class="ac page-head"><span>选择产品经理</span></div>
                 <div class="clearfix page-cont take-release">
                     <div class="layui-form" lay-filter="component-form-group">
                         <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>产品名称：</label>
-                            <div class="clearfix layui-input-block">
-                                <input type="text" name="prodName" value="小微企业贷款" readonly autocomplete="on" placeholder="" class="layui-input" maxlength="20">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">
+                                    <span class="form-required">*</span>金融产品：
+                                </label>
+                                <div class="layui-input-inline clearfix">
+                                  <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="">--请选择金融产品--</option>
+                                    <option value="1">小微企业贷款</option>
+                                    <option value="2">微捷贷</option>
+                                  </select>  
+                                </div>
                             </div>
                         </div>
                         <div class="fl layui-form-item item-full">
                         </div>
                         <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>选择产品经理：</label>
-                            <div class="clearfix layui-input-block">
-                                <input type="text" name="prodName" value="" autocomplete="on" placeholder="" class="layui-input" maxlength="20">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">
+                                    <span class="form-required">*</span>选择产品经理：
+                                </label>
+                                <div class="layui-input-inline clearfix">
+                                  <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="">--请选择产品经理--</option>
+                                    <option value="1">产品经理(北京)</option>
+                                    <option value="2">产品经理(上海)</option>
+                                    <option value="3">产品经理(广州)</option>
+                                    <option value="4">产品经理(深圳)</option>
+                                  </select>  
+                                </div>
                             </div>
                         </div>
                         <div class="fl layui-form-item item-full">
-                        </div>
-                        <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>选择业务员：</label>
-                            <div class="clearfix layui-input-block">
-                                <input type="text" name="prodName" value="" autocomplete="on" placeholder="" class="layui-input" maxlength="20">
-                            </div>
                         </div>
                         <div class="fl ac item-full">
                             <button id="product-commit" lay-filter="product-form-submit" class="layui-btn" lay-submit ew-event="closeDialog">提交</button>
@@ -742,6 +757,51 @@ a:active {
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
+        form.render('select')
+
+        // 工具条点击事件
+        var tabOnEvt = function() {
+            var tab = tableEle();
+            console.log('on evt' + tab)
+            $('.row-btn').on({
+                click: function(obj) {
+                    var layEvent = $(this).attr('lay-event');
+                    if (layEvent === 'check') {
+                        toCheck({
+                            title: '添加产品经理',
+                            ele: 'check-form',
+                        })
+                    }
+                }
+            })
+        }
+
+        //审核
+        function toCheck(cfg) {
+            layer.open({
+                type: 1,
+                title: cfg.title,
+                area: ['500px', '300px'],
+                // shadeClose: false,
+                shade: 0,
+                content: $('.' + cfg.ele),
+                zIndex: layer.zIndex,
+                success: function () {
+                $('.layui-layer').css({
+                    'z-index': '10000000',
+                    'top': '20%',
+                    'left': '33%'
+                })
+                $('.layui-layer-page .layui-layer-content').css({
+                    'overflow': 'visible'
+                })
+                },
+                cancel: function () {
+                    $('.' + cfg.ele).css({ "display": "none" })
+                },
+            });
+
+        }
 
     });
 </script>
