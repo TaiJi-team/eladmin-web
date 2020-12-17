@@ -156,7 +156,7 @@
       </div>
 
       <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
-        <p class="result-text">搜索到<span class="result-num">{{ count }}</span>个结果</p>
+        <p class="result-text">搜索到<span class="result-num">{{ total }}</span>个结果</p>
         <div class="list-tool">
           <div id="listSort" class="fl tool-left">
             <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
@@ -194,49 +194,33 @@
           </router-link>
         </ul>
         <ul v-show="!isBlock" id="productListLine" class="product-list-line">
-          <router-link to="/fin-market/detail" tag="li"><a>
+          <router-link v-for="( item, index ) in products" :key="index" to="/fin-market/detail" tag="li"><a>
             <!-- <router-link class="" to="/fin-market/detail" tag="a"></router-link> -->
             <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">小微企业贷款—招商银行北京分行</span>
+            <div class="fl item-title"> <span class="t">{{ item.name }}—{{ item.introduce }}</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
             </div>
-            <div class="fl item-info"> <span class="info-c">5.22-5.7%</span> <span class="info-n">参考利率范围</span> </div>
-            <div class="fl item-info"> <span class="info-c">12-60月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div>
+            <div class="fl item-info"> <span class="info-c">{{ item.loanRateRange }}</span> <span class="info-n">参考利率范围</span> </div>
+            <div class="fl item-info"> <span class="info-c">{{ item.loanPeriod }}</span> <span class="info-n">贷款期限</span> </div>
+            <div class="fl item-info"> <span class="info-c">{{ item.loanRange }}</span> <span class="info-n">贷款额度</span> </div>
             <button type="button" class="fl layui-btn item-btn">立即申请</button>
             <!-- <router-link class="fl layui-btn item-btn" to="/fin-market/detail" tag="button">立即申请</router-link> -->
           </a></router-link>
-          <router-link to="/fin-market/yzyh" tag="li"><a>
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">小企业知识产权质押贷—中国邮政储蓄银行北京分行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-            </div>
-            <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-12月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-500万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-          </a></router-link>
-          <router-link to="/fin-market/nsyh" tag="li"><a>
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">首都职工创业小额贷款—北京农商银行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-            </div>
-            <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
-            <div class="fl item-info"> <span class="info-c">12-24月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-          </a></router-link>
-          <router-link to="/fin-market/detail" tag="li"><a>
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">线上快审快贷—宁波银行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-            </div>
-            <div class="fl item-info"> <span class="info-c">5-7%</span> <span class="info-n">参考利率范围</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-120月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-800万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-          </a> </router-link>
         </ul>
-        <div id="pagination" class="ac pagination">
-          <div id="layui-laypage-59" class="layui-box layui-laypage layui-laypage-default"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" /><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
-        </div>
+        <template>
+          <div id="pagination">
+            <el-pagination
+              background
+              :current-page="currentPage"
+              :page-size="pageSize"
+              :page-sizes="[5,10,15,30,50]"
+              layout="total,sizes,prev, pager, next ,jumper"
+              :total="total"
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+            />
+          </div>
+        </template>
       </div>
 
     </div>
@@ -253,6 +237,7 @@ import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
 import ico_type1 from '@/assets/images/portal/ico-type1.png'
 import ico_type2 from '@/assets/images/portal/ico-type2.png'
+// import pagenation from "@/components/Pagenation/pagenation"
 
 export default {
   name: 'FinMarketList',
@@ -262,7 +247,13 @@ export default {
   },
   data() {
     return {
-      count: 0,
+      selectedData: [],
+      templateRadio: [],
+      get_list: {
+        page: 1,
+        limit: 15
+      },
+      total: 0,
       param: {
         'page': '1',
         'limit': '10',
@@ -290,6 +281,12 @@ export default {
       activeF: 0
     }
   },
+  watch: {
+    'param.guaMode': function(newVal, oldVal) {
+      this.findAll(this.param)
+      console.log(this.param)
+    }
+  },
   mounted() {
     this.findAll(this.param)
   },
@@ -307,9 +304,16 @@ export default {
         data: param
       }).then(res => {
         this.products = res.data.data
-        this.count = res.data.count
+        this.total = res.data.total
         console.log(res.data.data)
       })
+    },
+    handleSizeChange(size) {
+      this.get_list.page = 1
+      this.get_list.limit = size
+    },
+    handleCurrentChange(page) {
+      this.get_list.page = page
     }
   }
 }
