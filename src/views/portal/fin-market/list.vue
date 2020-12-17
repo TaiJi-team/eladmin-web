@@ -14,7 +14,7 @@
           <div class="clearfix box-head">
             <div class="fr head-search">
               <input type="text" name="s_key" placeholder="请输入关键字，支持模糊搜索" lay-verify="" class="fl layui-input search-ipt">
-              <button class="fl g-bg search-btn" lay-submit="" lay-filter="formFilter">搜 索</button>
+              <button class="fl g-bg search-btn" lay-submit="" lay-filter="formFilter" @click="findAll(param)">搜 索</button>
             </div>
             <div class="head-title">
               <img :src="t_img" alt="">
@@ -137,14 +137,14 @@
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <!-- <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div> -->
-                  <a :class="{'item-l-on':activeF==0}" class="fl item-l " data-type="LoanLimitType" data-id="0" @click="activeF=0">不限</a>
-                  <a :class="{'item-l-on':activeF==1}" class="fl item-l" data-type="LoanLimitType" data-id="1" @click="activeF=1">抵押</a>
-                  <a :class="{'item-l-on':activeF==2}" class="fl item-l" data-type="LoanLimitType" data-id="2" @click="activeF=2">质押</a>
-                  <a :class="{'item-l-on':activeF==3}" class="fl item-l " data-type="LoanLimitType" data-id="3" @click="activeF=3">信保基金</a>
-                  <a :class="{'item-l-on':activeF==4}" class="fl item-l" data-type="LoanLimitType" data-id="4" @click="activeF=4">一般保证</a>
-                  <a :class="{'item-l-on':activeF==5}" class="fl item-l" data-type="LoanLimitType" data-id="5" @click="activeF=5">信用</a>
-                  <a :class="{'item-l-on':activeF==6}" class="fl item-l " data-type="LoanLimitType" data-id="6" @click="activeF=6">保证</a>
-                  <a :class="{'item-l-on':activeF==7}" class="fl item-l" data-type="LoanLimitType" data-id="7" @click="activeF=7">连带责任保证</a>
+                  <a :class="{'item-l-on':activeF==0}" class="fl item-l " data-type="LoanLimitType" data-id="0" @click="activeF=0, param.guaMode=''">不限</a>
+                  <a :class="{'item-l-on':activeF==1}" class="fl item-l" data-type="LoanLimitType" data-id="1" @click="activeF=1, param.guaMode='抵押'">抵押</a>
+                  <a :class="{'item-l-on':activeF==2}" class="fl item-l" data-type="LoanLimitType" data-id="2" @click="activeF=2, param.guaMode='质押'">质押</a>
+                  <a :class="{'item-l-on':activeF==3}" class="fl item-l " data-type="LoanLimitType" data-id="3" @click="activeF=3, param.guaMode='信保基金'">信保基金</a>
+                  <a :class="{'item-l-on':activeF==4}" class="fl item-l" data-type="LoanLimitType" data-id="4" @click="activeF=4, param.guaMode='一般保证'">一般保证</a>
+                  <a :class="{'item-l-on':activeF==5}" class="fl item-l" data-type="LoanLimitType" data-id="5" @click="activeF=5, param.guaMode='信用'">信用</a>
+                  <a :class="{'item-l-on':activeF==6}" class="fl item-l " data-type="LoanLimitType" data-id="6" @click="activeF=6, param.guaMode='保证'">保证</a>
+                  <a :class="{'item-l-on':activeF==7}" class="fl item-l" data-type="LoanLimitType" data-id="7" @click="activeF=7, param.guaMode='连带责任保证'">连带责任保证</a>
                   <input type="hidden" name="LoanLimitType">
                 </div>
               </div>
@@ -156,7 +156,7 @@
       </div>
 
       <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
-        <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
+        <p class="result-text">搜索到<span class="result-num">{{ count }}</span>个结果</p>
         <div class="list-tool">
           <div id="listSort" class="fl tool-left">
             <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
@@ -174,7 +174,7 @@
               <div class="item-title">
                 <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
                 <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">{{ item.name }}</span> <br> <em class="org-name">{{ item.id }}</em> </h2>
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">{{ item.name }}</span> <br> <em class="org-name">{{ item.introduce }}</em> </h2>
                   <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
                 </div>
               </div>
@@ -262,6 +262,12 @@ export default {
   },
   data() {
     return {
+      count: 0,
+      param: {
+        'page': '1',
+        'limit': '10',
+        'guaMode': ''
+      },
       tableData: [],
       wantSelected: 1,
       market_banner: market_banner,
@@ -285,23 +291,24 @@ export default {
     }
   },
   mounted() {
-    this.$axios({
-      url: 'http://127.0.0.1:9900/api-finance/financeproduct/findAll',
-      method: 'post',
-      data: {
-        'page': '1',
-        'limit': '10'
-      }
-    }).then(res => {
-      this.products = res.data.data
-      console.log(res.data.data)
-    })
+    this.findAll(this.param)
   },
   methods: {
     showDetail(id) {
       this.$router.push({
         path: '/fin-market/detail'
         // params: { data: 'query' }
+      })
+    },
+    findAll(param) {
+      this.$axios({
+        url: 'http://127.0.0.1:9900/api-finance/financeproduct/findAll',
+        method: 'post',
+        data: param
+      }).then(res => {
+        this.products = res.data.data
+        this.count = res.data.count
+        console.log(res.data.data)
       })
     }
   }
