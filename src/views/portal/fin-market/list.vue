@@ -169,89 +169,23 @@
           </div>
         </div>
         <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">
-          <router-link class="fl" to="/fin-market/detail" tag="li">
+          <router-link v-for="( item, index ) in products" :key="index" class="fl" to="/fin-market/detail" tag="li">
             <div class="bg-white line-action-hover item-main"><a>
               <div class="item-title">
                 <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
                 <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小微企业贷款</span> <br> <em class="org-name">招商银行北京分行</em> </h2>
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">{{ item.name }}</span> <br> <em class="org-name">{{ item.id }}</em> </h2>
                   <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
                 </div>
               </div>
               <ul class="item-info">
-                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">5-1000万</span></li>
-                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-60月</span></li>
-                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5.22-5.7%</span></li>
-                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
+                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">{{ item.loanRange }}</span></li>
+                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">{{ item.loanPeriod }}</span></li>
+                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">{{ item.loanRateRange }}</span></li>
+                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">{{ item.guaMode }}</span></li>
               </ul>
               <div class="item-label" />
               <router-link class="g-bg g-shadow item-btn" to="/fin-market/detail" tag="button">查看详情</router-link>
-              <div class="line-top" />
-              <div class="line-bottom" />
-              <div class="line-left" />
-              <div class="line-right" />
-            </a> </div>
-          </router-link>
-          <router-link class="fl" to="/fin-market/yzyh" tag="li">
-            <div class="bg-white line-action-hover item-main"> <a>
-              <div class="item-title">
-                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" class="middle-center" alt=""> </div>
-                <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小企业知识产权质押...</span> <br> <em class="org-name">中国邮政储蓄银行北京分行</em> </h2>
-                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                </div>
-              </div>
-              <ul class="item-info">
-                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-500万</span></li>
-                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-12月</span></li>
-                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
-                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押,质押,一般保证,信用</span></li>
-              </ul>
-              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
-              <div class="line-top" />
-              <div class="line-bottom" />
-              <div class="line-left" />
-              <div class="line-right" />
-            </a> </div>
-          </router-link>
-          <router-link class="fl" to="/fin-market/nsyh" tag="li">
-            <div class="bg-white line-action-hover item-main"> <a>
-              <div class="item-title">
-                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> </div>
-                <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">首都职工创业小额贷...</span> <br> <em class="org-name">北京农商银行</em> </h2>
-                  <div class="item-adr text-ellipsis"><img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                </div>
-              </div>
-              <ul class="item-info">
-                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-50万</span></li>
-                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-24月</span></li>
-                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
-                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">一般保证</span></li>
-              </ul>
-              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
-              <div class="line-top" />
-              <div class="line-bottom" />
-              <div class="line-left" />
-              <div class="line-right" />
-            </a> </div>
-          </router-link>
-          <router-link class="fl" to="/fin-market/detail" tag="li">
-            <div class="bg-white line-action-hover item-main"> <a>
-              <div class="item-title">
-                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" class="middle-center" alt=""> </div>
-                <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">线上快审快贷</span> <br> <em class="org-name">宁波银行</em> </h2>
-                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                </div>
-              </div>
-              <ul class="item-info">
-                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-800万</span></li>
-                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-120月</span></li>
-                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5-7%</span></li>
-                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
-              </ul>
-              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
               <div class="line-top" />
               <div class="line-bottom" />
               <div class="line-left" />
@@ -335,6 +269,7 @@ export default {
       ico_type2: ico_type2,
       ico_type1: ico_type1,
       isBlock: true,
+      products: [],
       more_icon: {
         backgroundImage: 'url(' + more_img + ')',
         backgroundRepeat: 'no-repeat',
@@ -350,7 +285,17 @@ export default {
     }
   },
   mounted() {
-
+    this.$axios({
+      url: 'http://127.0.0.1:9900/api-finance/financeproduct/findAll',
+      method: 'post',
+      data: {
+        'page': '1',
+        'limit': '10'
+      }
+    }).then(res => {
+      this.products = res.data.data
+      console.log(res.data.data)
+    })
   },
   methods: {
     showDetail(id) {
