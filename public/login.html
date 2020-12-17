@@ -25,11 +25,19 @@
                                class="layui-input">
                     </div>
                 </div>
+                <div class="layui-form-item by-mobile" style="display: none;">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i></label>
+                    <div class="layui-input-block">
+                        <input name="verifyCode" type="text" lay-verify="required" placeholder="短信验证码"
+                               class="layui-input" style="width: 64%; float: left;" disabled="disabled" value="123456">
+                        <button type="button" id="sent-verify-code" class="layui-btn" style="width: 33%; float: left; margin-left: 3%; padding: 0;">获取验证码</button>
+                    </div>
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i></label>
                     <div class="layui-input-block">
                         <input name="password" type="password" lay-verify="required" placeholder="密码"
-                               class="layui-input">
+                               class="layui-input" value="admin">
                     </div>
                 </div>
                 <input name="deviceId" type="hidden"/>
@@ -54,7 +62,7 @@
                     <a href="/"><span>首页</span></a>
                     <a href="/regist.html" style="float: right;"><span>注册</span></a>
                     <a href="javascript:;"><span style="float: right;margin: 0 4% 0 0;">忘记密码</span></a>
-                    <a href="javascript:;"><span style="float: right; margin: 0 4% 0 0;">手机号方式</span></a>
+                    <!-- <a href="javascript:;"><span style="float: right; margin: 0 4% 0 0;">手机号方式</span></a> -->
                 </div>
             </form>
         </div>
@@ -73,12 +81,13 @@
 <script>
     layui.config({
         base: 'module/'
-    }).use(['config', 'form'], function () {
+    }).use(['config', 'form', 'common'], function () {
         //页面唯一标识
         let uuid = Math.uuid();
         let $ = layui.jquery;
         let form = layui.form;
         let config = layui.config;
+        let common = layui.common;
 
         if (config.getToken()) {
             location.replace('./index-sys.html');
@@ -86,6 +95,19 @@
         }
         $("input[name='deviceId']").val(uuid);
 
+        $('input[name=username]').on({
+            blur: function() {
+                var v = $(this).val()
+                if (/^[1][3,4,5,7,8,9][0-9]{9}$/.test($(this).val())) {
+                    $('.by-mobile').show()
+                } else {
+                    $('.by-mobile').hide()
+                }
+            }
+        })
+
+        // 发送短信验证码
+        common.sendMobValCode({mEle: 'username'})
         // 表单提交
         form.on('submit(login-submit)', function (obj) {
             layer.load(2);
@@ -100,7 +122,7 @@
                     xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa(config.clientId + ":" + config.clientSecret));
                 },
                 success: function (data) {
-                    //console.log(JSON.stringify(data));
+                    console.log(JSON.stringify(data));
                     if (data.code === 0) {
                         config.putToken(data.datas);
                         // Cookie.set(TokenKey: 'EL-ADMIN-TOEKN')
