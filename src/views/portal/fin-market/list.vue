@@ -208,18 +208,13 @@
           </a></router-link>
         </ul>
         <template>
-          <div id="pagination">
-            <el-pagination
-              background
-              :current-page="currentPage"
-              :page-size="pageSize"
-              :page-sizes="[5,10,15,30,50]"
-              layout="total,sizes,prev, pager, next ,jumper"
-              :total="total"
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-            />
-          </div>
+          <pagenation
+            :total="total"
+            :page-size="param.limit"
+            :current-page="param.page"
+            @handleSizeChangeSub="handleSizeChange"
+            @handleCurrentChangeSub="handleCurrentChange"
+          />
         </template>
       </div>
 
@@ -237,26 +232,23 @@ import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
 import ico_type1 from '@/assets/images/portal/ico-type1.png'
 import ico_type2 from '@/assets/images/portal/ico-type2.png'
-// import pagenation from "@/components/Pagenation/pagenation"
+import pagenation from '@/views/components/pagenation'
 
 export default {
   name: 'FinMarketList',
   components: {
     lzhead,
-    lzfooter
+    lzfooter,
+    pagenation
   },
   data() {
     return {
       selectedData: [],
       templateRadio: [],
-      get_list: {
-        page: 1,
-        limit: 15
-      },
       total: 0,
       param: {
-        'page': '1',
-        'limit': '10',
+        page: 1,
+        limit: 10,
         'guaMode': ''
       },
       tableData: [],
@@ -304,16 +296,18 @@ export default {
         data: param
       }).then(res => {
         this.products = res.data.data
-        this.total = res.data.total
+        this.total = res.data.count
         console.log(res.data.data)
       })
     },
     handleSizeChange(size) {
-      this.get_list.page = 1
-      this.get_list.limit = size
+      this.param.page = 1
+      this.param.limit = size
+      this.findAll(this.param)
     },
     handleCurrentChange(page) {
-      this.get_list.page = page
+      this.param.page = page
+      this.findAll(this.param)
     }
   }
 }
