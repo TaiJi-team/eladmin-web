@@ -91,14 +91,14 @@
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <!-- <div id="GuaranteeModeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="GuaranteeModeType" data-id="0">不限</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="1">抵押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="2">质押</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="3">信保基金</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="4">一般保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="5">信用</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="6">保证</a><a class="fl item-l" data-type="GuaranteeModeType" data-id="7">连带责任保证</a></div> -->
-                  <a :class="{'item-l-on':activeC==0}" class="fl item-l " data-type="GuaranteeModeType" data-id="0" @click="activeC=0">不限</a>
-                  <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="GuaranteeModeType" data-id="1" @click="activeC=1">抵押</a>
-                  <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="GuaranteeModeType" data-id="2" @click="activeC=2">质押</a>
-                  <a :class="{'item-l-on':activeC==3}" class="fl item-l " data-type="GuaranteeModeType" data-id="3" @click="activeC=3">信保基金</a>
-                  <a :class="{'item-l-on':activeC==4}" class="fl item-l" data-type="GuaranteeModeType" data-id="4" @click="activeC=4">一般保证</a>
-                  <a :class="{'item-l-on':activeC==5}" class="fl item-l" data-type="GuaranteeModeType" data-id="5" @click="activeC=5">信用</a>
-                  <a :class="{'item-l-on':activeC==6}" class="fl item-l " data-type="GuaranteeModeType" data-id="6" @click="activeC=6">保证</a>
-                  <a :class="{'item-l-on':activeC==7}" class="fl item-l" data-type="GuaranteeModeType" data-id="7" @click="activeC=7">连带责任保证</a>
+                  <a :class="{'item-l-on':activeC==0}" class="fl item-l " data-type="GuaranteeModeType" data-id="0" @click="activeC=0, param.guaMode=''">不限</a>
+                  <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="GuaranteeModeType" data-id="1" @click="activeC=1, param.guaMode='抵押'">抵押</a>
+                  <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="GuaranteeModeType" data-id="2" @click="activeC=2, param.guaMode='质押'">质押</a>
+                  <a :class="{'item-l-on':activeC==3}" class="fl item-l " data-type="GuaranteeModeType" data-id="3" @click="activeC=3, param.guaMode='信保基金'">信保基金</a>
+                  <a :class="{'item-l-on':activeC==4}" class="fl item-l" data-type="GuaranteeModeType" data-id="4" @click="activeC=4, param.guaMode='一般保证'">一般保证</a>
+                  <a :class="{'item-l-on':activeC==5}" class="fl item-l" data-type="GuaranteeModeType" data-id="5" @click="activeC=5, param.guaMode='信用'">信用</a>
+                  <a :class="{'item-l-on':activeC==6}" class="fl item-l " data-type="GuaranteeModeType" data-id="6" @click="activeC=6, param.guaMode='保证'">保证</a>
+                  <a :class="{'item-l-on':activeC==7}" class="fl item-l" data-type="GuaranteeModeType" data-id="7" @click="activeC=7, param.guaMode='连带责任保证'">连带责任保证</a>
                   <input type="hidden" name="GuaranteeModeType">
                 </div>
               </div>
@@ -108,11 +108,11 @@
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <!-- <div id="ProductType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="ProductType" data-id="0">不限</a><a class="fl item-l" data-type="ProductType" data-id="3">线上审批</a><a class="fl item-l" data-type="ProductType" data-id="2">线下审批</a><a class="fl item-l" data-type="ProductType" data-id="1">秒批秒贷</a><a class="fl item-l" data-type="ProductType" data-id="100">抗疫产品</a></div> -->
-                  <a :class="{'item-l-on':activeE==0}" class="fl item-l " data-type="ProductType" data-id="0" @click="activeE=0">不限</a>
-                  <a :class="{'item-l-on':activeE==1}" class="fl item-l" data-type="ProductType" data-id="1" @click="activeE=1">线上审批</a>
-                  <a :class="{'item-l-on':activeE==2}" class="fl item-l" data-type="ProductType" data-id="2" @click="activeE=2">线下审批</a>
-                  <a :class="{'item-l-on':activeE==3}" class="fl item-l " data-type="ProductType" data-id="3" @click="activeE=3">秒批秒贷</a>
-                  <a :class="{'item-l-on':activeE==4}" class="fl item-l" data-type="ProductType" data-id="4" @click="activeE=4">抗疫产品</a>
+                  <a :class="{'item-l-on':activeE==0}" class="fl item-l " data-type="ProductType" data-id="0" @click="activeE=0, param.type=''">不限</a>
+                  <a :class="{'item-l-on':activeE==1}" class="fl item-l" data-type="ProductType" data-id="1" @click="activeE=1, param.type='线上审批'">线上审批</a>
+                  <a :class="{'item-l-on':activeE==2}" class="fl item-l" data-type="ProductType" data-id="2" @click="activeE=2, param.type='线下审批'">线下审批</a>
+                  <a :class="{'item-l-on':activeE==3}" class="fl item-l " data-type="ProductType" data-id="3" @click="activeE=3, param.type='秒批秒贷'">秒批秒贷</a>
+                  <a :class="{'item-l-on':activeE==4}" class="fl item-l" data-type="ProductType" data-id="4" @click="activeE=4, param.type='抗疫产品'">抗疫产品</a>
                   <input type="hidden" name="ProductType">
                 </div>
               </div>
@@ -123,11 +123,11 @@
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <!-- <div id="LoanTimeType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanTimeType" data-id="0">不限</a><a class="fl item-l" data-type="LoanTimeType" data-id="1">6个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="2">12个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="3">36个月及以下</a><a class="fl item-l" data-type="LoanTimeType" data-id="4">36个月以上</a></div> -->
-                  <a :class="{'item-l-on':activeD==0}" class="fl item-l " data-type="LoanTimeType" data-id="0" @click="activeD=0">不限</a>
-                  <a :class="{'item-l-on':activeD==1}" class="fl item-l" data-type="LoanTimeType" data-id="1" @click="activeD=1">6个月及以下</a>
-                  <a :class="{'item-l-on':activeD==2}" class="fl item-l" data-type="LoanTimeType" data-id="2" @click="activeD=2">12个月及以下</a>
-                  <a :class="{'item-l-on':activeD==3}" class="fl item-l " data-type="LoanTimeType" data-id="3" @click="activeD=3">36个月及以下</a>
-                  <a :class="{'item-l-on':activeD==4}" class="fl item-l" data-type="LoanTimeType" data-id="4" @click="activeD=4">36个月以上</a>
+                  <a :class="{'item-l-on':activeD==0}" class="fl item-l " data-type="LoanTimeType" data-id="0" @click="activeD=0, param.loanPeriod=''">不限</a>
+                  <a :class="{'item-l-on':activeD==1}" class="fl item-l" data-type="LoanTimeType" data-id="1" @click="activeD=1, param.loanPeriod='6个月及以下'">6个月及以下</a>
+                  <a :class="{'item-l-on':activeD==2}" class="fl item-l" data-type="LoanTimeType" data-id="2" @click="activeD=2, param.loanPeriod='12个月及以下'">12个月及以下</a>
+                  <a :class="{'item-l-on':activeD==3}" class="fl item-l " data-type="LoanTimeType" data-id="3" @click="activeD=3, param.loanPeriod='36个月及以下'">36个月及以下</a>
+                  <a :class="{'item-l-on':activeD==4}" class="fl item-l" data-type="LoanTimeType" data-id="4" @click="activeD=4, param.loanPeriod='36个月以上'">36个月以上</a>
                   <input type="hidden" name="LoanTimeType">
                 </div>
               </div>
@@ -137,14 +137,13 @@
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <!-- <div id="LoanLimitType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="LoanLimitType" data-id="0">不限</a><a class="fl item-l" data-type="LoanLimitType" data-id="1">100万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="2">200万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="3">300万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="4">500万及以下</a><a class="fl item-l" data-type="LoanLimitType" data-id="5">500万以上</a></div> -->
-                  <a :class="{'item-l-on':activeF==0}" class="fl item-l " data-type="LoanLimitType" data-id="0" @click="activeF=0, param.guaMode=''">不限</a>
-                  <a :class="{'item-l-on':activeF==1}" class="fl item-l" data-type="LoanLimitType" data-id="1" @click="activeF=1, param.guaMode='抵押'">抵押</a>
-                  <a :class="{'item-l-on':activeF==2}" class="fl item-l" data-type="LoanLimitType" data-id="2" @click="activeF=2, param.guaMode='质押'">质押</a>
-                  <a :class="{'item-l-on':activeF==3}" class="fl item-l " data-type="LoanLimitType" data-id="3" @click="activeF=3, param.guaMode='信保基金'">信保基金</a>
-                  <a :class="{'item-l-on':activeF==4}" class="fl item-l" data-type="LoanLimitType" data-id="4" @click="activeF=4, param.guaMode='一般保证'">一般保证</a>
-                  <a :class="{'item-l-on':activeF==5}" class="fl item-l" data-type="LoanLimitType" data-id="5" @click="activeF=5, param.guaMode='信用'">信用</a>
-                  <a :class="{'item-l-on':activeF==6}" class="fl item-l " data-type="LoanLimitType" data-id="6" @click="activeF=6, param.guaMode='保证'">保证</a>
-                  <a :class="{'item-l-on':activeF==7}" class="fl item-l" data-type="LoanLimitType" data-id="7" @click="activeF=7, param.guaMode='连带责任保证'">连带责任保证</a>
+                  <a :class="{'item-l-on':activeF==0}" class="fl item-l " data-type="LoanLimitType" data-id="0" @click="activeF=0, param.loanRange=''">不限</a>
+                  <a :class="{'item-l-on':activeF==1}" class="fl item-l" data-type="LoanLimitType" data-id="1" @click="activeF=1, param.loanRange='100万及以下'">100万及以下</a>
+                  <a :class="{'item-l-on':activeF==2}" class="fl item-l" data-type="LoanLimitType" data-id="2" @click="activeF=2, param.loanRange='200万及以下'">200万及以下</a>
+                  <a :class="{'item-l-on':activeF==3}" class="fl item-l " data-type="LoanLimitType" data-id="3" @click="activeF=3, param.loanRange='300万及以下'">300万及以下</a>
+                  <a :class="{'item-l-on':activeF==4}" class="fl item-l" data-type="LoanLimitType" data-id="4" @click="activeF=4, param.loanRange='400万及以下'">400万及以下</a>
+                  <a :class="{'item-l-on':activeF==5}" class="fl item-l" data-type="LoanLimitType" data-id="5" @click="activeF=5, param.loanRange='500万及以下'">500万及以下</a>
+                  <a :class="{'item-l-on':activeF==6}" class="fl item-l " data-type="LoanLimitType" data-id="6" @click="activeF=6, param.loanRange='500万及以上'">500万及以上</a>
                   <input type="hidden" name="LoanLimitType">
                 </div>
               </div>
@@ -159,9 +158,9 @@
         <p class="result-text">搜索到<span class="result-num">{{ total }}</span>个结果</p>
         <div class="list-tool">
           <div id="listSort" class="fl tool-left">
-            <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
-            <div class="tool-item" data-id="1"> <span class="item-name">利率</span> </div>
-            <div class="tool-item" data-id="2"> <span class="item-name">申请次数</span> </div>
+            <div class="tool-item" :class="{'tool-item on':activeA==0}" data-id="0" @click="activeA=0"> <span class="item-name">默认排序</span> </div>
+            <div class="tool-item" :class="{'tool-item on':activeA==1}" data-id="1" @click="activeA=1"> <span class="item-name">利率</span> </div>
+            <div class="tool-item" :class="{'tool-item on':activeA==2}" data-id="2" @click="activeA=2"> <span class="item-name">申请次数</span> </div>
           </div>
           <div id="listType" class="fr tool-right">
             <div class="tool-item" :class="{'on':isBlock==true}" data-type="block" @click="isBlock=true"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
@@ -169,12 +168,12 @@
           </div>
         </div>
         <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">
-          <router-link v-for="( item, index ) in products" :key="index" class="fl" to="/fin-market/detail" tag="li">
+          <router-link v-for="( item, index ) in products" :key="index" class="fl" :to="{path:'/fin-market/detail/'+item.id}" tag="li">
             <div class="bg-white line-action-hover item-main"><a>
               <div class="item-title">
-                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
+                <div class="pos-center overflow fl item-img"> <img :src="item.imgSrc" class="middle-center" alt=""> </div>
                 <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">{{ item.name }}</span> <br> <em class="org-name">{{ item.introduce }}</em> </h2>
+                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">{{ item.name }}</span> <br> <em class="org-name">{{ item.compName }}</em> </h2>
                   <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
                 </div>
               </div>
@@ -185,7 +184,7 @@
                 <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">{{ item.guaMode }}</span></li>
               </ul>
               <div class="item-label" />
-              <router-link class="g-bg g-shadow item-btn" to="/fin-market/detail" tag="button">查看详情</router-link>
+              <router-link class="g-bg g-shadow item-btn" :to="{path:'/fin-market/detail/'+item.id}" tag="button">查看详情</router-link>
               <div class="line-top" />
               <div class="line-bottom" />
               <div class="line-left" />
@@ -194,10 +193,10 @@
           </router-link>
         </ul>
         <ul v-show="!isBlock" id="productListLine" class="product-list-line">
-          <router-link v-for="( item, index ) in products" :key="index" to="/fin-market/detail" tag="li"><a>
+          <router-link v-for="( item, index ) in products" :key="index" :to="{path:'/fin-market/detail/'+item.id}" tag="li"><a>
             <!-- <router-link class="" to="/fin-market/detail" tag="a"></router-link> -->
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">{{ item.name }}—{{ item.introduce }}</span>
+            <div class="fl item-img"> <img :src="item.imgSrc" alt=""> </div>
+            <div class="fl item-title"> <span class="t">{{ item.name }}—{{ item.compName }}</span>
               <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
             </div>
             <div class="fl item-info"> <span class="info-c">{{ item.loanRateRange }}</span> <span class="info-n">参考利率范围</span> </div>
@@ -249,7 +248,10 @@ export default {
       param: {
         page: 1,
         limit: 10,
-        'guaMode': ''
+        guaMode: '',
+        loanPeriod: '',
+        loanRange: '',
+        type: ''
       },
       tableData: [],
       wantSelected: 1,
@@ -274,9 +276,11 @@ export default {
     }
   },
   watch: {
-    'param.guaMode': function(newVal, oldVal) {
-      this.findAll(this.param)
-      console.log(this.param)
+    'param': {
+      handler(val, oldVal) {
+        this.findAll(this.param)
+      },
+      deep: true
     }
   },
   mounted() {
@@ -297,7 +301,7 @@ export default {
       }).then(res => {
         this.products = res.data.data
         this.total = res.data.count
-        console.log(res.data.data)
+        // console.log(res.data.data)
       })
     },
     handleSizeChange(size) {

@@ -10,9 +10,9 @@
               <div class="fr bg-white box-sizing page-right">
                 <ul class="information">
                   <li> <a lay-href="requIndex/financialInstitutionDetail#?id=324">
-                    <div class="fl item-img pos-center"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
+                    <div class="fl item-img pos-center"> <img :src="product.imgSrc" class="middle-center" alt=""> </div>
                     <div class="overflow item-cont">
-                      <h2 class="item-title">招商银行股份有限公司北京分行</h2>
+                      <h2 class="item-title">{{ product.compName }}</h2>
                     </div>
                   </a> </li>
                 </ul>
@@ -64,34 +64,34 @@
               </div>
               <div class="fl page-left">
                 <div class="bg-white small-mar-bottom clearfix detail-head">
-                  <div class="fl pos-center overflow head-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/18/2019091811341438658.png" class="middle-center" alt=""> </div>
+                  <div class="fl pos-center overflow head-img"> <img :src="product.imgSrc" class="middle-center" alt=""> </div>
                   <div class="overflow head-cont">
                     <div class="clearfix">
                       <div class="fr ar clearfix"> <span id="productCollect" class="head-collect " /> <input type="hidden" name="collect" value="0"> </div>
-                      <h2 class="text-ellipsis head-name">招商银行北京分行<span class="line-add">—</span><span class="sub-name">小微企业贷款</span></h2>
+                      <h2 class="text-ellipsis head-name">{{ product.compName }}<span class="line-add">—</span><span class="sub-name">{{ product.name }}</span></h2>
                     </div>
                     <div class="product-list cont-info">
                       <ul class="item-info">
-                        <li class="fl text-ellipsis"><span class="line-middle info-label">贷款额度：</span><span class="line-middle info-cont" title="5-1000万">5-1000万</span></li>
-                        <li class="fl box-sizing li-p text-ellipsis"><span class="line-middle info-label">贷款期限：</span><span class="line-middle info-cont">12-60月</span></li>
-                        <li class="fl ar text-ellipsis"><span class="line-middle info-label">申请次数：</span><span class="line-middle info-cont">12次</span></li>
-                        <li class="fl text-ellipsis"><span class="line-middle info-label">利率范围：</span><span class="line-middle info-cont">5.22-5.7%</span></li>
-                        <li class="fl box-sizing li-p text-ellipsis"><span class="line-middel info-label">担保方式：</span><span class="line-middle info-cont" title="抵押">抵押</span></li>
+                        <li class="fl text-ellipsis"><span class="line-middle info-label">贷款额度：</span><span class="line-middle info-cont" title="5-1000万">{{ product.loanRange }}</span></li>
+                        <li class="fl box-sizing li-p text-ellipsis"><span class="line-middle info-label">贷款期限：</span><span class="line-middle info-cont">{{ product.loanPeriod }}</span></li>
+                        <li class="fl ar text-ellipsis"><span class="line-middle info-label">申请次数：</span><span class="line-middle info-cont">{{ product.applyNum }}次</span></li>
+                        <li class="fl text-ellipsis"><span class="line-middle info-label">利率范围：</span><span class="line-middle info-cont">{{ product.loanRateRange }}</span></li>
+                        <li class="fl box-sizing li-p text-ellipsis"><span class="line-middel info-label">担保方式：</span><span class="line-middle info-cont" title="抵押">{{ product.guaMode }}</span></li>
                       </ul>
                     </div>
                     <div class="clearfix">
                       <ul class="head-info">
                         <li class="fl"> <span class="fl li-label">还款方式：</span>
-                          <div class="text-ellipsis"> <span class="li-data">等额本金,等额本息,先息后本,随借随还</span> </div>
+                          <div class="text-ellipsis"> <span class="li-data">{{ product.repayMode }}</span> </div>
                         </li>
                         <li class="fl"> <span class="fl li-label">所属机构：</span>
-                          <div class="text-ellipsis"> <span class="li-data">招商银行股份有限公司北京分行</span> </div>
+                          <div class="text-ellipsis"> <span class="li-data">{{ product.compName }}</span> </div>
                         </li> <!-- 修改 -->
                         <li class="fl"><span class="fl li-label">适用范围：</span>
                           <div style="overflow: hidden;">
                             <div class="li-data scp-app">
                               <div class="scp-app-list clearfix ovfl">
-                                <div>北京市</div>
+                                <div>{{ product.servArea }}</div>
                               </div>
                               <div class="scp-float-list">
                                 <div> <span>东城区</span> <span>西城区</span> <span>朝阳区</span> <span>丰台区</span> <span>石景山区</span> <span>海淀区</span> <span>门头沟区</span> <span>房山区</span> <span>通州区</span> <span>顺义区</span> <span>昌平区</span> <span>大兴区</span> <span>怀柔区</span> <span>平谷区</span> <span>密云区</span> <span>延庆区</span> </div>
@@ -110,44 +110,38 @@
                   <div class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">产品特色</span> </div>
                     <div class="page-main">
-                      <p class="detail-text">1、授信金额高：我行小微企业抵押贷款授信上限最高可达1000万元，最高不超过房产价值的70%，满足各类小微企业日常经营周转的资金需要。
-                        2、授信期限长：授信最长可达20年，赋予小微企业长期使用贷款的权利，持续支持小微企业发展。单笔贷款最长5年，减轻小微企业还款压力。
-                        3、还款方式灵活：我行小微贷款还款方式包括按月付息到期还本、等额还款、等额本金等，结合不同贷款期限后，可以给予小微企业主更多选择，帮助小微企业确定适合自身周转周期的还款方式，减轻还款压力。
-                        4、贷款零费用：在办理小微企业抵押贷款时，抵押登记费、评估费等费用均由我行承担，小微企业可享受贷款“零费用”的优惠，切实降低小微企业申贷门槛和融资成本。
-                        5、到期无需还本：免除小微企业到期还本烦恼，降低小企业因筹措资金还款产生的资金成本，切实减轻小微企业续贷负担。借款人只需提供基本的身份、婚姻证明材料和近期经营流水即可，免去提供大批续贷材料的繁杂手续，提升小微企业续贷的服务感受。</p>
+                      <p class="detail-text">{{ product.feature }}</p>
                     </div>
                   </div>
                   <div id="introduction" class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">产品介绍</span> </div>
                     <div class="page-main">
                       <p class="detail-text" />
-                      <p>招商银行“生意贷”是我行专为小微企业主和个体工商户设计的、用于企业经营周转的个人贷款，具有贷款金额高、授信期限长、还款方式灵活、贷款零费用，以及到期无还本续贷的特点，适用于各类需要资金进行经营周转的小微企业。</p>
+                      <p>{{ product.introduce }}</p>
                       <p />
                     </div>
                   </div>
                   <div class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">适用客户</span> </div>
                     <div class="page-main">
-                      <p class="detail-text">符合国家统计局发布的《统计上大中小微型企业划分办法（2017）》规定的中小微企业。</p>
+                      <p class="detail-text">{{ product.suitCustomer }}</p>
                     </div>
                   </div>
                   <div id="entry" class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">准入条件</span> </div>
-                    <div class="page-main"> 1、企业在京成立3个月以上且须正常经营，经营行业不涉及房地产开发、房地产经纪、小额贷款、担保公司、典当行、拍卖行等行业；
-                      2、借款人或配偶须为公司法定代表人、股东、董事、监事或总经理；
-                      3、借款人家庭需在京有自有产权房产（含住宅、别墅、经济适用房） </div>
+                    <div class="page-main">{{ product.enterCondition }}</div>
                   </div>
                   <div class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">提交材料</span> </div>
-                    <div class="page-main"> 1、企业营业执照，2、法人及经办人身份证，3、法定代表人（实际控制人）婚姻状况 </div>
+                    <div class="page-main">{{ product.subMaterial }}</div>
                   </div>
                   <div id="case" class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">案例</span> </div>
-                    <div class="page-main"> 无 </div>
+                    <div class="page-main">{{ product.proCase }}</div>
                   </div>
                   <div class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">特此声明</span> </div>
-                    <div class="page-main"> 无 </div>
+                    <div class="page-main">{{ product.specExplain }}</div>
                   </div>
                 </div>
               </div>
@@ -182,14 +176,27 @@ export default {
     return {
       tableData: [],
       wantSelected: 1,
-      market_banner: market_banner
+      market_banner: market_banner,
+      id: 0,
+      product: {}
     }
   },
   mounted() {
-
+    this.id = this.$route.params.id
+    this.selectById(this.id)
   },
   methods: {
-
+    selectById(id) {
+      this.$axios({
+        url: 'http://127.0.0.1:9900/api-finance/financeproduct/selectById/' + id,
+        method: 'get'
+      }).then(res => {
+        // this.products = res.data.data
+        // this.total = res.data.count
+        this.product = res.data.datas
+        console.log(res.data)
+      })
+    }
   }
 }
 </script>
@@ -1144,6 +1151,7 @@ html {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    display: block;
 }
 .detail-head {
     padding: 25px 20px 25px 20px;
@@ -1366,7 +1374,7 @@ li {
     display: inline;
 }
 .product-list .item-info .info-cont {
-    display: block;
+    display: inline;
     color: #ff7e00;
     line-height: 28px;
     overflow: hidden;

@@ -71,7 +71,7 @@ export const constantRouterMap = [
     component: resolve => (require(['@/views/portal/fin-market/list.vue'], resolve))
   },
   {
-    path: '/fin-market/detail',
+    path: '/fin-market/detail/:id',
     component: resolve => (require(['@/views/portal/fin-market/detail.vue'], resolve))
   },
   {
