@@ -69,7 +69,7 @@
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>统一社会信用代码：</label>
-                                <div class="layui-input-block"> <input type="text" name="com_code" value=""
+                                <div class="layui-input-block"> <input type="text" name="creditCode" value=""
                                         lay-verify="creditcode" autocomplete="off" placeholder="请输入统一社会信用代码(18位)"
                                         class="layui-input"> </div>
                             </div>
@@ -224,24 +224,24 @@
                             
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>详细地址：</label>
-                                <div class="layui-input-block"> <input type="text" name="address" value=""
+                                <div class="layui-input-block"> <input type="text" name="detailAddr" value=""
                                         lay-verify="required" autocomplete="off" placeholder="请准确填写，具体到门牌号"
                                         class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label">经营范围：</label>
                                 <div class="layui-input-block"> <textarea placeholder="不能填写超出经营范围的类目，不得出现错别字"
-                                        name="business_scope" class="layui-textarea"></textarea> </div>
+                                        name="busiScope" class="layui-textarea"></textarea> </div>
                             </div>
                             <div class="layui-form-item"> 
                                 <label class="layui-form-label"><span
                                         style="color: red">*</span>营业期限(止)：</label>
                                <div class="layui-input-block">
                                      <div class="layui-input-inline"> 
-                                        <input type="radio" name="business_time_type" value="1" title="长期" lay-filter="business_time_type">
+                                        <input type="radio" name="busiPeriod" value="1" title="长期" lay-filter="business_time_type">
                                         <div class="layui-unselect layui-form-radio">
                                             <i class="layui-anim layui-icon"></i>
                                             <div>长期</div>
-                                        </div> <input type="radio" name="business_time_type" value="2" title="固定日期"
+                                        </div> <input type="radio" name="busiPeriod" value="2" title="固定日期"
                                             checked="" lay-filter="business_time_type">
                                         <div class="layui-unselect layui-form-radio layui-form-radioed"><i
                                                 class="layui-anim layui-icon"></i>
@@ -305,20 +305,20 @@
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>姓名：</label>
-                                <div class="layui-input-block"> <input type="text" id="cardname" name="cardname"
+                                <div class="layui-input-block"> <input type="text" id="cardname" name="operName"
                                         value="" lay-verify="required" autocomplete="off" placeholder="请输入经办人姓名"
                                         class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>证件号码：</label>
-                                <div class="layui-input-block"> <input type="text" id="cardcode" name="cardcode"
+                                <div class="layui-input-block"> <input type="text" id="cardcode" name="operCode"
                                         value="" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码"
                                         class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>有效期限(止)：</label>
                                 <div class="layui-input-block">
-                                    <div class="layui-input-inline"> <input type="radio" name="cardtimetype" value="1"
+                                    <div class="layui-input-inline"> <input type="radio" name="operCardValidDateType" value="1"
                                             title="长期" lay-filter="cardtimetype">
                                         <div class="layui-unselect layui-form-radio"><i
                                                 class="layui-anim layui-icon"></i>
@@ -331,7 +331,7 @@
                                         </div>
                                     </div>
                                     <div class="layui-input-inline"> <input type="text" class="layui-input"
-                                            id="cardtime" name="cardtime" lay-verify="required" value=""
+                                            id="cardtime" name="operCardValidDate" lay-verify="required" value=""
                                             placeholder="yyyy-MM-dd" autocomplete="off" lay-key="6"> </div>
                                 </div>
                             </div>
@@ -369,7 +369,7 @@
                             <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span
                                         style="color: red">*</span>选择证件类型：</label>
                                 <div class="layui-input-block"> <select id="lep_cardtype" lay-verify="required"
-                                        name="lep_cardtype" lay-filter="lep_cardtype">
+                                        name="lepCardtype" lay-filter="lep_cardtype">
                                         <option value="1">中华人民共和国居民身份证</option>
                                         <option value="2">护照</option>
                                         <option value="3">港澳居民来往大陆通行证</option>
@@ -390,20 +390,20 @@
                             </div>
                             <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span
                                         style="color: red">*</span>姓名：</label>
-                                <div class="layui-input-block"> <input type="text" name="lep_name" id="lep_name"
+                                <div class="layui-input-block"> <input type="text" name="lepName" id="lep_name"
                                         value="" lay-verify="required" autocomplete="off" placeholder="请输入法定代表人姓名"
                                         class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span
                                         style="color: red">*</span>证件号码：</label>
-                                <div class="layui-input-block"> <input type="text" name="lep_code" id="lep_code"
+                                <div class="layui-input-block"> <input type="text" name="lepCode" id="lep_code"
                                         value="" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码"
                                         class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span
                                         style="color: red">*</span>有效期限(止)：</label>
                                 <div class="layui-input-block">
-                                    <div class="layui-input-inline"> <input type="radio" name="lep_cardtimetype"
+                                    <div class="layui-input-inline"> <input type="radio" name="lepCardValidDateType"
                                             value="1" title="长期" lay-filter="lep_cardtimetype">
                                         <div class="layui-unselect layui-form-radio"><i
                                                 class="layui-anim layui-icon"></i>
@@ -416,7 +416,7 @@
                                         </div>
                                     </div>
                                     <div class="layui-input-inline"> <input type="text" class="layui-input"
-                                            id="lep_cardtime" name="lep_cardtime" lay-verify="required" value=""
+                                            id="lep_cardtime" name="legCardValidDate" lay-verify="required" value=""
                                             placeholder="yyyy-MM-dd" autocomplete="off" lay-key="5"> </div>
                                 </div>
                             </div>
