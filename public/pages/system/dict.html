@@ -1,0 +1,175 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">字典管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">工作台</a>
+          <a><cite>字典管理</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+      <div class="layui-row layui-col-space15">
+        <div class="layui-col-md4">
+          <table class="layui-table" id="dicttype-table" lay-filter="dicttype-table"></table>
+        </div>
+        <div class="layui-col-md8">
+          <div class="layui-form toolbar">
+            <button id="dictdata-btn-add" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>添加信息</button>
+            <button id="dictdata-btn-update" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>修改信息</button>
+            <button id="dictdata-btn-setUse" class="layui-btn icon-btn"><i class="layui-icon">&#xe601;</i>设置可用</button>
+            <button id="dictdata-btn-setUnUse" class="layui-btn"><i class="layui-icon">&#xe67c;</i>设置不可用</button>
+          </div>
+
+          <table class="layui-table" id="dictdata-table" lay-filter="dictdata-table"></table>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+
+<!-- 表格操作列 -->
+<script type="text/html" id="dictdata-table-bar">
+    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="dicttype-table-bar">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+  <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+
+        // 渲染字典数据表格
+        var URL = config.base_server + 'api-finance/dictdata/list';
+        table.render({
+            elem: '#dictdata-table',
+            url: URL,
+            method: 'GET',
+            headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
+            page: true,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'typeId', title: '类别'},
+                {field: 'engName', title: '英文名称'},
+                {field: 'cnName', title: '中文名称'},
+                {field: 'remark', title: '备注'},
+                {field: 'code', title: '业务代码'},
+                {title: '状态',templet:function (d) {
+                    return d.status==0?"可用":"不可用"
+                  }},
+                {fixed: 'right', align: 'center', toolbar: '#dictdata-table-bar', title: '操作', width: 175},
+            ]],
+        });
+
+        // 渲染字典类型表格
+        table.render({
+          elem: '#dicttype-table',
+          url: config.base_server + 'api-finance/dicttype',
+          method: 'GET',
+          headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
+          page: true,
+          cols: [[
+            {field: 'engName', title: '字典类型名称',event: 'setURL'},
+            {field: 'cnName', title: '备注'},
+            {fixed: 'right', align: 'center', toolbar: '#dicttype-table-bar', title: '操作'}
+          ]]
+        });
+
+        //监听字典类型表格中的单元格事件
+        table.on('tool(dicttype-table)', function(obj){
+          var data = obj.data;
+          if(obj.event === 'setURL'){
+            URL = config.base_server + 'api-finance/dictdata/findUserById/' + data.id;
+            table.reload('dictdata-table',{
+              url: URL
+            });
+          }
+        });
+
+        // 添加按钮点击事件
+        $('#user-btn-add').click(function () {
+            showEditModel();
+        });
+
+        // 工具条点击事件
+        table.on('tool(dictdata-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'del') { // 删除
+                layer.confirm('确定删除此用户吗？', function (i) {
+                    layer.close(i);
+                    layer.load(2);
+                    admin.req('api-finance/dictdata/deleteDict/'+ data.id, {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, {icon: 1, time: 500});
+                            table.reload('user-table', {});
+                        } else {
+                            layer.msg(data.msg, {icon: 2, time: 500});
+                        }
+                    }, 'delete');
+                    table.reload('dictdata-table',{page:{
+                        curr:1
+                      }});
+                });
+            }
+        });
+
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            //修改sex值
+            if (data){
+                data.sex = data.sex+'';
+            }
+            admin.putTempData('t_user', data);
+            var title = data ? '修改用户' : '添加用户';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/system/dictdata_form.html',
+                finish: function () {
+                    table.reload('user-table', {});
+                }
+            });
+        };
+
+        // 设置可用按钮点击事件
+        $('#dictdata-btn-setUse').click(function () {
+            setStatus();
+        });
+
+        // 设置不可用按钮点击事件
+        $('#dictdata-btn-setUnUse').click(function () {
+            setStatus();
+        });
+
+        var setStatus = function () {
+            var checkStatus = table.checkStatus('dictdata-table');
+            var data = checkStatus.data;
+            console.log(data);
+            if(data.length < 1) {
+                layer.msg('请选择要编辑的数据', {icon: 2, time: 2000});
+            }else if(data.length > 1){
+                layer.msg('只能选择一条进行编辑', {icon: 2, time: 2000});
+            }else {
+                admin.req('api-finance/dictdata/updateDict/'+ data[0].id,{},function (data) {
+                  if(data.code == 0){
+                    layer.msg(data.msg, {icon: 1, time: 500});
+                  }else {
+                    layer.msg(data.msg, {icon: 2, time: 500});
+                  }
+                },'POST')
+                table.reload('dictdata-table',{page:{
+                    curr:1
+                  }});
+            }
+        };
+    });
+</script>
