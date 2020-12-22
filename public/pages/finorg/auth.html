@@ -271,24 +271,29 @@
                         });
                         delete formData.file//暂时不管文件
                         delete formData.hdbusiness_licence//暂时不管证书
-                        $.ajax({
-                            "contentType": 'application/json',
-                            "url": config.base_server + 'api-finance/financeorg/save',
-                            "data": JSON.stringify(formData),
-                            "type": "POST",
-                            "success": function () {
-                                layer.alert('添加成功', {
-                                    skin: 'layui-layer-molv',
-                                    closeBtn: 0
-                                })
-                            },
-                            "error": function (data) {
-                                layer.alert('添加失败', {
-                                    skin: 'layui-layer-molv',
-                                    closeBtn: 0
-                                })
-                            }
-                        });
+                        let param = JSON.stringify(formData);//序列化
+                        admin.req('api-finance/financeorg/save', param, function (data) {
+                            layer.closeAll('loading');
+                            layer.alert('添加成功', {
+                                        skin: 'layui-layer-molv',
+                                        closeBtn: 0
+                                    })
+                        }, 'post');
+                        // $.ajax({
+                        //     "contentType": 'application/json',
+                        //     "url": config.base_server + 'api-finance/financeorg/save',
+                        //     "data": JSON.stringify(formData),
+                        //     "type": "POST",
+                        //     "success": function () {
+
+                        //     },
+                        //     "error": function (data) {
+                        //         layer.alert('添加失败', {
+                        //             skin: 'layui-layer-molv',
+                        //             closeBtn: 0
+                        //         })
+                        //     }
+                        // });
                     })
                 },
             });
