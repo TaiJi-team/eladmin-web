@@ -224,6 +224,7 @@
 
         //显示表单弹窗
         var showEditModel = function (data) {
+            // TODO 临时测试
             finOrgAuth();
 
             var title = data ? '修改金融机构' : '添加金融机构';
@@ -256,24 +257,8 @@
                 },
                 yes: function (index, layero) {
                     form.on('submit(component-form-group)', function (data) {
-                        console.log(data);
                         console.log(data.field);
-                        //表单数据formData
-                        var formData = data.field;
-                        formData.name = formData.col_name;//金融机构名字
-                        formData.userOrgLegpers = JSON.stringify({
-                            name: formData.operName,
-                            cardNum: formData.operCode,
-                            cardValidDate: formData.operCardValidDate
-                        });
-                        formData.UserOrgOper = JSON.stringify({
-                            name: formData.lepName,
-                            cardNum: formData.lepCode,
-                            cardValidDate: formData.lepCardValidDate
-                        });
-                        delete formData.file//暂时不管文件
-                        delete formData.hdbusiness_licence//暂时不管证书
-                        
+                        finOrgAuth(data);
                     })
                 },
                 cancel: function () {
@@ -326,7 +311,27 @@
         });
 
         // 金融入驻信息保存
-        var finOrgAuth = function () {
+        var finOrgAuth = function (data) {
+            //表单数据formData
+            var formData = null;
+            if(!!data) {
+                formData = data.field;
+                formData.name = formData.col_name;//金融机构名字
+                formData.userOrgLegpers = JSON.stringify({
+                    name: formData.operName,
+                    cardNum: formData.operCode,
+                    cardValidDate: formData.operCardValidDate
+                });
+                formData.UserOrgOper = JSON.stringify({
+                    name: formData.lepName,
+                    cardNum: formData.lepCode,
+                    cardValidDate: formData.lepCardValidDate
+                });
+                delete formData.file//暂时不管文件
+                delete formData.hdbusiness_licence//暂时不管证书
+            }
+            
+            // 临时测试
             var param = {
                 financeOrg: {
                     name: "A金融机构",
