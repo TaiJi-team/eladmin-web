@@ -1,366 +1,373 @@
 <style>
-    .layadmin-caller {
-        background: #fff;
-        padding: 30px
-    }
+  .layadmin-caller {
+    background: #fff;
+    padding: 30px
+  }
 
-    .layadmin-caller em {
-        font-style: normal
-    }
+  .layadmin-caller em {
+    font-style: normal
+  }
 
-    .layadmin-caller .caller-fl {
-        float: left
-    }
+  .layadmin-caller .caller-fl {
+    float: left
+  }
 
-    .layadmin-caller .caller-fr {
-        float: right
-    }
+  .layadmin-caller .caller-fr {
+    float: right
+  }
 
-    .layadmin-caller .caller-seach {
-        position: relative;
-        padding-bottom: 40px
-    }
+  .layadmin-caller .caller-seach {
+    position: relative;
+    padding-bottom: 40px
+  }
 
-    .layadmin-caller .caller-seach .caller-icon {
-        font-size: 18px;
-        position: absolute;
-        top: 9px
-    }
+  .layadmin-caller .caller-seach .caller-icon {
+    font-size: 18px;
+    position: absolute;
+    top: 9px
+  }
 
-    .layadmin-caller .caller-seach-icon {
-        left: 6px
-    }
+  .layadmin-caller .caller-seach-icon {
+    left: 6px
+  }
 
-    .layadmin-caller .caller-dump-icon {
-        right: 6px;
-        cursor: pointer
-    }
+  .layadmin-caller .caller-dump-icon {
+    right: 6px;
+    cursor: pointer
+  }
 
-    .layadmin-caller .caller-pl32 {
-        padding: 0 32px
-    }
+  .layadmin-caller .caller-pl32 {
+    padding: 0 32px
+  }
 
-    .layadmin-caller .caller-tab {
-        margin: 0
-    }
+  .layadmin-caller .caller-tab {
+    margin: 0
+  }
 
-    .layadmin-caller .caller-contar {
-        padding-bottom: 20px
-    }
+  .layadmin-caller .caller-contar {
+    padding-bottom: 20px
+  }
 
-    .layadmin-caller .caller-contar .caller-item {
-        padding: 25px 0;
-        overflow: hidden;
-        border-bottom: 1px solid #e0e0e0
-    }
+  .layadmin-caller .caller-contar .caller-item {
+    padding: 25px 0;
+    overflow: hidden;
+    border-bottom: 1px solid #e0e0e0
+  }
 
-    .layadmin-caller .caller-contar .caller-item .caller-main {
-        margin-left: 20px
-    }
+  .layadmin-caller .caller-contar .caller-item .caller-main {
+    margin-left: 20px
+  }
 
-    .layadmin-caller .caller-contar .caller-item .caller-main p {
-        line-height: 100%;
-        padding: 8px 0
-    }
+  .layadmin-caller .caller-contar .caller-item .caller-main p {
+    line-height: 100%;
+    padding: 8px 0
+  }
 
-    .layadmin-caller .caller-contar .caller-item .caller-main p:first-child {
-        padding-top: 0
-    }
+  .layadmin-caller .caller-contar .caller-item .caller-main p:first-child {
+    padding-top: 0
+  }
 
-    .layadmin-caller .caller-contar .caller-item .caller-main em {
-        margin-left: 5px
-    }
+  .layadmin-caller .caller-contar .caller-item .caller-main em {
+    margin-left: 5px
+  }
 
-    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i {
-        padding-right: 5px;
-        margin: 0
-    }
+  .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i {
+    padding-right: 5px;
+    margin: 0
+  }
 
-    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds {
-        padding-bottom: 12px
-    }
+  .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds {
+    padding-bottom: 12px
+  }
 
-    .layadmin-caller .caller-contar .caller-iconset i {
-        margin: 0 5px
-    }
+  .layadmin-caller .caller-contar .caller-iconset i {
+    margin: 0 5px
+  }
 
-    .layadmin-caller .caller-contar .caller-iconset i:first-child {
-        margin-left: 0
-    }
+  .layadmin-caller .caller-contar .caller-iconset i:first-child {
+    margin-left: 0
+  }
 
-    .layadmin-caller .caller-contar button {
-        margin-top: 22px
-    }
+  .layadmin-caller .caller-contar button {
+    margin-top: 22px
+  }
 
-    .layadmin-caller .caller-contar .caller-img {
-        width: 40px;
-        height: 40px;
-        border-radius: 100%
-    }
+  .layadmin-caller .caller-contar .caller-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%
+  }
 
-    .right-title {
-        visibility: visible;
-        float: right;
-        margin-right: 1%;
-        width: 13%;
-    }
+  .right-title {
+    visibility: visible;
+    float: right;
+    margin-right: 1%;
+    width: 13%;
+  }
 
-    .right-title a:hover {
-        color: #5FB878 !important;
-    }
+  .right-title a:hover {
+    color: #5FB878 !important;
+  }
 
-    .layui-fluid {
-        padding: 15px;
-    }
+  .layui-fluid {
+    padding: 15px;
+  }
 
-    .layadmin-header {
-        display: none;
-        height: 50px;
-        line-height: 50px;
-        margin-bottom: 0;
-        border-radius: 0;
-    }
+  .layadmin-header {
+    display: none;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
 
-    .layadmin-header .layui-breadcrumb {
-        padding: 0 15px;
-    }
+  .layadmin-header .layui-breadcrumb {
+    padding: 0 15px;
+  }
 
-    .layui-card-header {
-        position: relative;
-    }
+  .layui-card-header {
+    position: relative;
+  }
 
-    .layui-card-header .layui-icon {
-        line-height: initial;
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        margin-top: -7px;
-    }
+  .layui-card-header .layui-icon {
+    line-height: initial;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -7px;
+  }
 
-    .layadmin-iframe {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-    }
+  .layadmin-iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
 </style>
 
 <div class="layui-card">
-    <div class="layui-card-header" id="auth-finorg">
-        <h2 class="header-title"></h2>
-        <span class="layui-breadcrumb pull-right">
+  <div class="layui-card-header" id="auth-finorg">
+    <h2 class="header-title"></h2>
+    <span class="layui-breadcrumb pull-right">
             <a href="#!console">工作台</a>
             <a><cite></cite></a>
         </span>
-    </div>
-    <div class="layui-fluid">
-        <div class="layadmin-caller">
-            <div class="layui-form">
-                <div class="layui-inline">
-                    <a class="layui-btn layui-btn-normal" lay-href="enterpriseCert">添加金融机构</a>
-                    <a class="layui-btn layui-btn-normal1" lay-href="enterpriseCert">添加产品经理</a>
-                </div>
-            </div>
-            <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">
-                <div class="caller-item"> <img src="assets/images/edu-online.png" alt="" class="caller-img caller-fl" data-id="98966">
-                    <div class="caller-main caller-fl">
-                        <p> </p>
-                        <h2> <strong>微捷贷</strong>
-                            <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">已认证</em>
-                            <!-- <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>   -->
-                        </h2>
-                        <p></p>
-                        <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>北京市海淀区</p>
-                        <p class="caller-iconset"></p>
-                    </div>
-                    <a href="#!fin-need?compId=1" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看
-                    </a>
-                    <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;">
-                        <a href="#!fin-product?prodId=1" class="layui-blue layui-text-site20" style="cursor: pointer;color: #29b2ac;">12款</a><br>                        金融产品
-                    </div>
-                </div>
+  </div>
+  <div class="layui-fluid">
+    <div class="layadmin-caller">
+      <div class="layui-form">
+        <div class="layui-inline">
+          <a class="layui-btn layui-btn-normal" lay-href="enterpriseCert">添加金融机构</a>
+          <a class="layui-btn layui-btn-normal1" lay-href="enterpriseCert">添加产品经理</a>
+        </div>
+      </div>
+      <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">
+        <div class="caller-item"> <img src="assets/images/edu-online.png" alt="" class="caller-img caller-fl" data-id="98966">
+          <div class="caller-main caller-fl">
+            <p> </p>
+            <h2> <strong>微捷贷</strong>
+              <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">已认证</em>
+              <!-- <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>   -->
+            </h2>
+            <p></p>
+            <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>北京市海淀区</p>
+            <p class="caller-iconset"></p>
+          </div>
+          <a href="#!fin-need?compId=1" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看
+          </a>
+          <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;">
+            <a href="#!fin-product?prodId=1" class="layui-blue layui-text-site20" style="cursor: pointer;color: #29b2ac;">12款</a><br>                        金融产品
+          </div>
+        </div>
 
-                <div class="ac pagination" id="pagination">
-                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-11">
-                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
-                        <span class="layui-laypage-curr">
+        <div class="ac pagination" id="pagination">
+          <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-11">
+            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+            <span class="layui-laypage-curr">
                             <em class="layui-laypage-em"></em><em>1</em>
                         </span>
-                        <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a>
-                    </div>
-                </div>
-            </div>
+            <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
 </div>
 
 <script>
 
-    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload', 'laytpl'], function () {
-        var form = layui.form;
-        var table = layui.table;
-        var config = layui.config;
-        var layer = layui.layer;
-        var util = layui.util;
-        var admin = layui.admin;
-        //上传
-        var upload = layui.upload;
-        var laytpl = layui.laytpl;
+  layui.use(['form', 'table', 'util', 'config', 'admin', 'upload', 'laytpl'], function () {
+    var form = layui.form;
+    var table = layui.table;
+    var config = layui.config;
+    var layer = layui.layer;
+    var util = layui.util;
+    var admin = layui.admin;
+    //上传
+    var upload = layui.upload;
+    var laytpl = layui.laytpl;
 
-        var kvMap = new Map();
-        kvMap.set('comp-auth', '企业认证');
-        kvMap.set('fin-org-auth', '金融机构认证');
-        kvMap.set('oper-org-auth', '运营机构认证');
-        var key = location.href.split('#!')[1];
-        let data = {
-            authName: kvMap.get(key)
+    var kvMap = new Map();
+    kvMap.set('comp-auth', '企业认证');
+    kvMap.set('fin-org-auth', '金融机构认证');
+    kvMap.set('oper-org-auth', '运营机构认证');
+    var key = location.href.split('#!')[1];
+    let data = {
+      authName: kvMap.get(key)
+    }
+    $('#auth-finorg').find('h2').text(kvMap.get(key));
+    $($('#auth-finorg').find('a')[1]).text(kvMap.get(key));
+
+    //显示表单弹窗
+    var showEditModel = function (data) {
+      // TODO 临时测试
+      finOrgAuth();
+
+      var title = data ? '修改金融机构' : '添加金融机构';
+      admin.popupCenter({
+        type: 2,
+        title: title,
+        area: ['1100px', '650px'],
+        path: 'pages/company/add.html',
+        btn: ['提交', '取消'],
+        success: function (layero, index) {
+          $('.layui-layer').css({
+            // 'z-index': '10000000',
+            // 'width': '86%',
+            // 'height': '90%',
+            'top': '8%',
+            'left': '18%'
+          });
+          $(':focus').blur();
+          // 添加form标识
+          layero.addClass('layui-form');
+          // 将保存按钮改变成提交按钮
+          layero.find('.layui-layer-btn0').attr({
+            'lay-filter': 'component-form-group',
+            'lay-submit': ''
+          });
+
+        },
+        finish: function () {
+          // table.reload('user-table', {});
+        },
+        yes: function (index, layero) {
+          form.on('submit(component-form-group)', function (data) {
+            console.log(data.field);
+            finOrgAuth(data);
+          })
+        },
+        cancel: function () {
+
+        },
+      });
+    };
+
+    //显示产品经理表单弹窗
+    var showEditModel1 = function (data) {
+      // var title = data ? '修改企业' : '添加企业';
+      var title = '添加经理用户';
+      admin.popupCenter({
+        type: 2,
+        title: title,
+        area: ['60%', '65%'],
+        path: 'pages/company/add-manager.html',
+        btn: ['提交', '取消'],
+        success: function () {
+          $('.layui-layer').css({
+            // 'z-index': '10000000',
+            // 'width': '86%',
+            // 'height': '90%',
+            'top': '8%',
+            'left': '18%'
+          })
+          $('.layui-layer-page .layui-layer-content').css({
+            'overflow': 'scroll'
+          })
+        },
+        finish: function () {
+          // table.reload('user-table', {});
         }
-        $('#auth-finorg').find('h2').text(kvMap.get(key));
-        $($('#auth-finorg').find('a')[1]).text(kvMap.get(key));
+      });
+    };
 
-        //显示表单弹窗
-        var showEditModel = function (data) {
-            // TODO 临时测试
-            finOrgAuth();
+    if (!!localStorage.getItem('url-redirect')) {
+      showEditModel();
+      localStorage.removeItem('url-redirect')
+      // return;
+    }
 
-            var title = data ? '修改金融机构' : '添加金融机构';
-            admin.popupCenter({
-                type: 2,
-                title: title,
-                area: ['1100px', '650px'],
-                path: 'pages/company/add.html',
-                btn: ['提交', '取消'],
-                success: function (layero, index) {
-                    $('.layui-layer').css({
-                        // 'z-index': '10000000',
-                        // 'width': '86%',
-                        // 'height': '90%',
-                        'top': '8%',
-                        'left': '18%'
-                    });
-                    $(':focus').blur();
-                    // 添加form标识
-                    layero.addClass('layui-form');
-                    // 将保存按钮改变成提交按钮
-                    layero.find('.layui-layer-btn0').attr({
-                        'lay-filter': 'component-form-group',
-                        'lay-submit': ''
-                    });
-
-                },
-                finish: function () {
-                    // table.reload('user-table', {});
-                },
-                yes: function (index, layero) {
-                    form.on('submit(component-form-group)', function (data) {
-                        console.log(data.field);
-                        finOrgAuth(data);
-                    })
-                },
-                cancel: function () {
-                    
-                },
-            });
-        };
-
-        //显示产品经理表单弹窗
-        var showEditModel1 = function (data) {
-            // var title = data ? '修改企业' : '添加企业';
-            var title = '添加经理用户';
-            admin.popupCenter({
-                type: 2,
-                title: title,
-                area: ['60%', '65%'],
-                path: 'pages/company/add-manager.html',
-                btn: ['提交', '取消'],
-                success: function () {
-                    $('.layui-layer').css({
-                        // 'z-index': '10000000',
-                        // 'width': '86%',
-                        // 'height': '90%',
-                        'top': '8%',
-                        'left': '18%'
-                    })
-                    $('.layui-layer-page .layui-layer-content').css({
-                        'overflow': 'scroll'
-                    })
-                },
-                finish: function () {
-                    // table.reload('user-table', {});
-                }
-            });
-        };
-
-        if (!!localStorage.getItem('url-redirect')) {
-            showEditModel();
-            localStorage.removeItem('url-redirect')
-            // return;
-        }
-
-        // 添加按钮点击事件
-        $('.layui-btn-normal').click(function () {
-            showEditModel();
-        });
-        // 添加产品经理点击事件
-        $('.layui-btn-normal1').click(function () {
-            showEditModel1();
-        });
-
-        // 金融入驻信息保存
-        var finOrgAuth = function (data) {
-            //表单数据formData
-            var formData = null;
-            if(!!data) {
-                formData = data.field;
-                formData.name = formData.col_name;//金融机构名字
-                formData.userOrgLegpers = JSON.stringify({
-                    name: formData.operName,
-                    cardNum: formData.operCode,
-                    cardValidDate: formData.operCardValidDate
-                });
-                formData.UserOrgOper = JSON.stringify({
-                    name: formData.lepName,
-                    cardNum: formData.lepCode,
-                    cardValidDate: formData.lepCardValidDate
-                });
-                delete formData.file//暂时不管文件
-                delete formData.hdbusiness_licence//暂时不管证书
-            }
-            
-            // 临时测试
-            var param = {
-                financeOrg: {
-                    name: "A金融机构",
-                    creditCode: "A001"
-                },
-                userOrgLegper: {
-                    name: "zhangsan",
-                    cardType: "1"
-                },
-                userOrgOper: {
-                    name: "lisi",
-                    cardType: "1"
-                },
-                financeOrgAttachment: {
-
-                }
-            }
-            console.log(param)
-            admin.req('api-finance/financeorg/save', JSON.stringify(param), function (data) {
-                if(data.code == 0) {
-                    layer.msg('签约成功，跳转到入驻页面', {icon: 5, time: 2000}, function() {
-                        toAuthPage();
-                    });
-                } else{
-                    layer.msg(data.msg, {icon: 5, time: 2000});
-                }
-            }, 'POST');
-        }
+    // 添加按钮点击事件
+    $('.layui-btn-normal').click(function () {
+      showEditModel();
+    });
+    // 添加产品经理点击事件
+    $('.layui-btn-normal1').click(function () {
+      showEditModel1();
     });
 
-    
+    // 金融入驻信息保存
+    var finOrgAuth = function (data) {
+      //表单数据formData
+      var formData = null;
+      if(!!data) {
+        formData = data.field;
+        // formData.name = formData.col_name;//金融机构名字
+        console.log(formData.com_code);
+        formData.financeOrg={
+          name: formData.com_name,
+          creditCode: formData.creditCode,
+          detailAddr: formData.detailAddr
+        }
+        formData.userOrgLegper = {
+          name: formData.operName,
+          cardNum: formData.operCode,
+          cardValidDate: formData.operCardValidDate
+        };
+        formData.userOrgOper = {
+          name: formData.lepName,
+          cardNum: formData.lepCode,
+          cardValidDate: formData.lepCardValidDate
+        };
+        console.log(formData);
+        delete formData.file//暂时不管文件
+        delete formData.hdbusiness_licence//暂时不管证书
+      }
+
+      // 临时测试
+      var param = {
+        financeOrg: {
+          name: "A金融机构",
+          creditCode: "A001"
+        },
+        userOrgLegper: {
+          name: "zhangsan",
+          cardType: "1"
+        },
+        userOrgOper: {
+          name: "lisi",
+          cardType: "1"
+        },
+        financeOrgAttachment: {
+
+        }
+      }
+      console.log(param)
+      admin.req('api-finance/financeorg/save', JSON.stringify(formData), function (data) {
+        if(data.code == 0) {
+          layer.msg('签约成功，跳转到入驻页面', {icon: 5, time: 2000}, function() {
+            toAuthPage();
+          });
+        } else{
+          layer.msg(data.msg, {icon: 5, time: 2000});
+        }
+      }, 'POST');
+    }
+  });
+
+
 </script>
