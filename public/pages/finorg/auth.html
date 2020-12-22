@@ -224,6 +224,8 @@
 
         //显示表单弹窗
         var showEditModel = function (data) {
+            finOrgAuth();
+
             var title = data ? '修改金融机构' : '添加金融机构';
             admin.popupCenter({
                 type: 2,
@@ -271,25 +273,11 @@
                         });
                         delete formData.file//暂时不管文件
                         delete formData.hdbusiness_licence//暂时不管证书
-                        $.ajax({
-                            "contentType": 'application/json',
-                            "url": config.base_server + 'api-finance/financeorg/save',
-                            "data": JSON.stringify(formData),
-                            "type": "POST",
-                            "success": function () {
-                                layer.alert('添加成功', {
-                                    skin: 'layui-layer-molv',
-                                    closeBtn: 0
-                                })
-                            },
-                            "error": function (data) {
-                                layer.alert('添加失败', {
-                                    skin: 'layui-layer-molv',
-                                    closeBtn: 0
-                                })
-                            }
-                        });
+                        
                     })
+                },
+                cancel: function () {
+                    
                 },
             });
         };
@@ -337,6 +325,37 @@
             showEditModel1();
         });
 
+        // 金融入驻信息保存
+        var finOrgAuth = function () {
+            var param = {
+                financeOrg: {
+                    name: "A金融机构",
+                    creditCode: "A001"
+                },
+                userOrgLegper: {
+                    name: "zhangsan",
+                    cardType: "1"
+                },
+                userOrgOper: {
+                    name: "lisi",
+                    cardType: "1"
+                },
+                financeOrgAttachment: {
 
+                }
+            }
+            console.log(param)
+            admin.req('api-finance/financeorg/save', JSON.stringify(param), function (data) {
+                if(data.code == 0) {
+                    layer.msg('签约成功，跳转到入驻页面', {icon: 5, time: 2000}, function() {
+                        toAuthPage();
+                    });
+                } else{
+                    layer.msg(data.msg, {icon: 5, time: 2000});
+                }
+            }, 'POST');
+        }
     });
+
+    
 </script>
