@@ -9,6 +9,13 @@
     <div class="layui-card-body">
       <div class="layui-row layui-col-space15">
         <div class="layui-col-md4">
+          <div class="layui-form toolbar">
+            <input id="dicttype-search-value" class="layui-input search-input" type="text" placeholder="输入字典类型"/>&emsp;
+            <button id="dicttype-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            <button id="dicttype-btn-add" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
+            </button>
+          </div>
+
           <table class="layui-table" id="dicttype-table" lay-filter="dicttype-table"></table>
         </div>
         <div class="layui-col-md8">
@@ -47,7 +54,8 @@
         var admin = layui.admin;
 
         // 渲染字典数据表格
-        var URL = config.base_server + 'api-finance/dictdata/list';
+        var URL = config.base_server + 'api-user/dictdata/list';
+        var dicttype = new Object;
         table.render({
             elem: '#dictdata-table',
             url: URL,
@@ -71,10 +79,10 @@
         // 渲染字典类型表格
         table.render({
           elem: '#dicttype-table',
-          url: config.base_server + 'api-finance/dicttype',
+          url: config.base_server + 'api-user/dicttype?page=1&limit=50',
           method: 'GET',
           headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
-          page: true,
+          page: false,
           cols: [[
             {field: 'engName', title: '字典类型名称',event: 'setURL'},
             {field: 'cnName', title: '备注'},
@@ -82,60 +90,126 @@
           ]]
         });
 
-        //监听字典类型表格中的单元格事件
-        table.on('tool(dicttype-table)', function(obj){
-          var data = obj.data;
-          if(obj.event === 'setURL'){
-            URL = config.base_server + 'api-finance/dictdata/findUserById/' + data.id;
-            table.reload('dictdata-table',{
-              url: URL
-            });
-          }
-        });
-
-        // 添加按钮点击事件
-        $('#user-btn-add').click(function () {
-            showEditModel();
-        });
-
-        // 工具条点击事件
+        // dictdata-table工具条点击事件
         table.on('tool(dictdata-table)', function (obj) {
             var data = obj.data;
             var layEvent = obj.event;
 
             if (layEvent === 'del') { // 删除
-                layer.confirm('确定删除此用户吗？', function (i) {
+                layer.confirm('确定删除此字典数据吗？', function (i) {
                     layer.close(i);
                     layer.load(2);
-                    admin.req('api-finance/dictdata/deleteDict/'+ data.id, {}, function (data) {
+                    admin.req('api-user/dictdata/deleteDict/'+ data.id, {}, function (data) {
                         layer.closeAll('loading');
                         if (data.code == 0) {
                             layer.msg(data.msg, {icon: 1, time: 500});
-                            table.reload('user-table', {});
                         } else {
                             layer.msg(data.msg, {icon: 2, time: 500});
                         }
                     }, 'delete');
-                    table.reload('dictdata-table',{page:{
-                        curr:1
-                      }});
+                    table.reload('dictdata-table',{
+                      page:{
+                        curr: 1
+                      }
+                    });
                 });
             }
         });
 
-        //显示表单弹窗
-        var showEditModel = function (data) {
-            //修改sex值
-            if (data){
-                data.sex = data.sex+'';
+        // dicttype-table工具条点击事件
+        table.on('tool(dicttype-table)', function (obj) {
+          var data = obj.data;
+          var layEvent = obj.event;
+
+          if (layEvent === 'del') { // 删除
+            layer.confirm('确定删除此字典类型吗？', function (i) {
+              layer.close(i);
+              layer.load(2);
+              admin.req('api-user/dicttype/delete/'+ data.id, {}, function (data) {
+                layer.closeAll('loading');
+                if (data.code == 0) {
+                  layer.msg(data.msg, {icon: 1, time: 500});
+                } else {
+                  layer.msg(data.msg, {icon: 2, time: 500});
+                }
+              }, 'delete');
+              table.reload('dicttype-table',{});
+            });
+          }else if(layEvent === 'edit'){
+            showEditDataTypeModel(data);
+          }else if(layEvent === 'setURL'){
+              URL = config.base_server + 'api-user/dictdata/list?typeId=' + data.id;
+              console.log(URL);
+              dicttype = {
+                id:data.id,
+                cnName: data.cnName
+              };
+              table.reload('dictdata-table',{
+                url: URL
+              });
+          }
+        });
+
+        // dicttype-table添加按钮点击事件
+        $('#dicttype-btn-add').click(function () {
+          showEditDataTypeModel();
+        });
+
+        //显示dictdata表单弹窗
+        var showEditDataTypeModel = function (data) {
+          admin.putTempData('t_dicttype', data);
+          console.log(data);
+          console.log('dicttype:' + dicttype);
+          var title = data ? '修改字典类型' : '添加字典类型';
+          admin.popupCenter({
+            title: title,
+            path: 'pages/system/dicttype_form.html',
+            finish: function () {
+              table.reload('dicttype-table', {});
             }
-            admin.putTempData('t_user', data);
-            var title = data ? '修改用户' : '添加用户';
+          });
+        };
+
+        // 搜索按钮点击事件
+        $('#dicttype-btn-search').click(function () {
+          var value = $('#dicttype-search-value').val();
+          table.reload('dicttype-table', {where: {engName: value}});
+        });
+
+
+        // dictdata-table添加按钮点击事件
+        $('#dictdata-btn-add').click(function () {
+          showEditModel(undefined,dicttype);
+        });
+
+        //dictdata-table修改按钮点击事件
+        $('#dictdata-btn-update').click(function () {
+            var checkStatus = table.checkStatus('dictdata-table');
+            var data = checkStatus.data;
+            console.log(data);
+            if(data.length < 1) {
+              layer.msg('请选择要编辑的数据', {icon: 2, time: 2000});
+            }else if(data.length > 1){
+              layer.msg('只能选择一条进行编辑', {icon: 2, time: 2000});
+            }else {
+                showEditModel(data,dicttype)
+            }
+        });
+
+        //显示dictdata表单弹窗
+        var showEditModel = function (data,dicttype) {
+            admin.putTempData('t_dictdata', data);
+            if(dicttype){
+               admin.putTempData('dicttype', dicttype);
+              console.log(dicttype);
+            }
+            console.log(data);
+            var title = data ? '修改字典' : '添加字典';
             admin.popupCenter({
                 title: title,
                 path: 'pages/system/dictdata_form.html',
                 finish: function () {
-                    table.reload('user-table', {});
+                    table.reload('dictdata-table', {});
                 }
             });
         };
@@ -159,16 +233,14 @@
             }else if(data.length > 1){
                 layer.msg('只能选择一条进行编辑', {icon: 2, time: 2000});
             }else {
-                admin.req('api-finance/dictdata/updateDict/'+ data[0].id,{},function (data) {
+                admin.req('api-user/dictdata/updateDict/'+ data[0].id,{},function (data) {
                   if(data.code == 0){
                     layer.msg(data.msg, {icon: 1, time: 500});
                   }else {
                     layer.msg(data.msg, {icon: 2, time: 500});
                   }
                 },'POST')
-                table.reload('dictdata-table',{page:{
-                    curr:1
-                  }});
+                table.reload('dictdata-table',{});
             }
         };
     });
