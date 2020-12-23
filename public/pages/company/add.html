@@ -221,7 +221,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>详细地址：</label>
                                 <div class="layui-input-block"> <input type="text" name="detailAddr" value=""
@@ -232,11 +232,11 @@
                                 <div class="layui-input-block"> <textarea placeholder="不能填写超出经营范围的类目，不得出现错别字"
                                         name="busiScope" class="layui-textarea"></textarea> </div>
                             </div>
-                            <div class="layui-form-item"> 
+                            <div class="layui-form-item">
                                 <label class="layui-form-label"><span
                                         style="color: red">*</span>营业期限(止)：</label>
                                <div class="layui-input-block">
-                                     <div class="layui-input-inline"> 
+                                     <div class="layui-input-inline">
                                         <input type="radio" name="busiPeriod" value="1" title="长期" lay-filter="business_time_type">
                                         <div class="layui-unselect layui-form-radio">
                                             <i class="layui-anim layui-icon"></i>
@@ -248,15 +248,15 @@
                                             <div>固定日期</div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="layui-input-inline"> <input type="text" class="layui-input"
                                             id="business_time" name="business_time" lay-verify="required" value=""
-                                            placeholder="yyyy-MM-dd" autocomplete="off" lay-key="4"> 
+                                            placeholder="yyyy-MM-dd" autocomplete="off" lay-key="4">
                                     </div>
-                                </div> 
+                                </div>
 
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -269,7 +269,7 @@
                     <div class="layui-row layui-col-space15">
                         <div class="layui-col-md4">
                             <div class="layui-upload">
-                                <button type="button" class="layui-btn" id="test2">多图片上传</button> 
+                                <button type="button" class="layui-btn" id="test2">多图片上传</button>
                                 <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                                   预览图：
                                   <div class="layui-upload-list" id="demo2"></div>
@@ -347,7 +347,7 @@
                     <div class="layui-row layui-col-space15">
                         <div class="layui-col-md4 layui-col-lep">
                             <div class="layui-upload">
-                                <button type="button" class="layui-btn" id="test3">多图片上传</button> 
+                                <button type="button" class="layui-btn" id="test3">多图片上传</button>
                                 <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                                   预览图：
                                   <div class="layui-upload-list" id="demo3"></div>
@@ -476,7 +476,7 @@
                 <div class="layui-card-body">
                     <div class="layui-row layui-col-space15">
                         <div class="layui-col-md4 licence">
-                            <div class="up-img-box big-box" title="营业执照">                                
+                            <div class="up-img-box big-box" title="营业执照">
                                 <div class="no-up-box" id="noImgBtn" style="display:{{# if((d.business_licence||'')!=''){ }}none;{{#}else{ }}inline-block;{{#} }}">
                                         <div class="card-front-box">
                                         <div class="icon-box back"></div>
@@ -484,7 +484,7 @@
                                     </div>
                                 </div>
                                 <div class="had-up-box" style="display:{{# if((d.business_licence||'')!=''){ }}inline-block;{{#}else{ }}none;{{#} }}">
-                                    <img src="{{d.business_licence_src||''}}" class="had-img" alt="">                                    
+                                    <img src="{{d.business_licence_src||''}}" class="had-img" alt="">
                                     <div class="hover-tip-box">
                                         <input type="hidden" id="hdbusiness_licence" name="hdbusiness_licence" lay-verify="licence" value="{{d.business_licence||''}}" />
                                         <img src="../res/images/s-ico.png" class="hover-big-img" id="hoverBigImg" alt="">
@@ -509,13 +509,13 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label"><span style="color: red">*</span>名称：</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="com_name" value="{{d.com_name||''}}" lay-verify="company|companyname" autocomplete="off" placeholder="请与营业执照上名称一致" class="layui-input" {{# if(d.id >0){ }}disabled{{# } }}>
+                                    <input type="text" name="com_name" value="{{d.com_name||''}}" lay-verify="required" autocomplete="off" placeholder="请与营业执照上名称一致" class="layui-input" {{# if(d.id >0){ }}disabled{{# } }}>
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label"><span style="color: red">*</span>统一社会信用代码：</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="com_code" value="{{d.com_code||''}}" lay-verify="creditcode" autocomplete="off" placeholder="请输入统一社会信用代码(18位)" class="layui-input">
+                                    <input type="text" name="com_code" value="{{d.com_code||''}}" lay-verify="required" autocomplete="off" placeholder="请输入统一社会信用代码(18位)" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -878,7 +878,7 @@
                         </div>
                     </div>
                 </div>
-                
+
         {{# if((d.stateEdit||0)!=1){ }}
                 <div class="layui-card-body">
                     <div class="layui-row layui-col-space15">
@@ -887,7 +887,7 @@
                                 <input type="hidden" name="hid" value="{{d.id||0}}" />
 
                                 <input type="hidden" name="action" value="enterpriseCert_post" />
-                                
+
                                 <button class="layui-btn" id="addForm" lay-submit="" lay-filter="addForm">立即提交</button>
                             </div>
                         </div>
@@ -897,14 +897,14 @@
             </div>
         </div>
         {{# if((d.certState||0)==0||(d.certState||0)==1){}}
-        
-            
+
+
         {{#}}}
     </script>
 </div>
 
 <script>
-   
+
     layui.use(['layer', 'admin', 'form', 'formSelects', 'upload'], function () {
         var layer = layui.layer;
         var admin = layui.admin;
