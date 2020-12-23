@@ -224,9 +224,6 @@
 
     //显示表单弹窗
     var showEditModel = function (data) {
-      // TODO 临时测试
-      finOrgAuth();
-
       var title = data ? '修改金融机构' : '添加金融机构';
       admin.popupCenter({
         type: 2,
@@ -338,32 +335,15 @@
         delete formData.hdbusiness_licence//暂时不管证书
       }
 
-      // 临时测试
-      var param = {
-        financeOrg: {
-          name: "A金融机构",
-          creditCode: "A001"
-        },
-        userOrgLegper: {
-          name: "zhangsan",
-          cardType: "1"
-        },
-        userOrgOper: {
-          name: "lisi",
-          cardType: "1"
-        },
-        financeOrgAttachment: {
-
-        }
-      }
-      console.log(param)
       admin.req('api-finance/financeorg/save', JSON.stringify(formData), function (data) {
         if(data.code == 0) {
-          layer.msg('签约成功，跳转到入驻页面', {icon: 5, time: 2000}, function() {
-            toAuthPage();
+          layer.msg('提交成功，待平台审核', {icon: 5, time: 2000}, function() {
+            layer.closeAll();
           });
         } else{
-          layer.msg(data.msg, {icon: 5, time: 2000});
+          layer.msg(data.msg, {icon: 5, time: 2000}, function() {
+            layer.closeAll();
+          });
         }
       }, 'POST');
     }
