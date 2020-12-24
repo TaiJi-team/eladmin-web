@@ -54,11 +54,10 @@
         var admin = layui.admin;
 
         // 渲染字典数据表格
-        var URL = config.base_server + 'api-user/dictdata/list';
         var dicttype = new Object;
         table.render({
             elem: '#dictdata-table',
-            url: URL,
+            url: config.base_server + 'api-user/dictdata/list',
             method: 'GET',
             headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
             page: true,
@@ -84,7 +83,7 @@
           headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
           page: false,
           cols: [[
-            {field: 'engName', title: '字典类型名称',event: 'setURL'},
+            {field: 'engName', title: '字典类型名称',event: 'setURL', style:'cursor: pointer;'},
             {field: 'cnName', title: '备注'},
             {fixed: 'right', align: 'center', toolbar: '#dicttype-table-bar', title: '操作'}
           ]]
@@ -138,14 +137,15 @@
           }else if(layEvent === 'edit'){
             showEditDataTypeModel(data);
           }else if(layEvent === 'setURL'){
-              URL = config.base_server + 'api-user/dictdata/list?typeId=' + data.id;
-              console.log(URL);
               dicttype = {
                 id:data.id,
                 cnName: data.cnName
               };
               table.reload('dictdata-table',{
-                url: URL
+                page:{
+                  curr: 1
+                },
+                where: {typeId: data.id}
               });
           }
         });
