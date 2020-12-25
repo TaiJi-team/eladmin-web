@@ -41,6 +41,7 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
+        var name1="";
 var financeProductTo;
         // 渲染表格
         table.render({
@@ -51,29 +52,25 @@ var financeProductTo;
             page: true,
             cols: [[
                 {type: 'checkbox'},
-                {field: 'productName', title: '产品名称', width: "10%"},
-                {field: 'blogOrg', title: '所属机构', width: "20%"},
-                {field: 'loanLimit', title: '贷款额度', width: "9%"},
-                {field: 'loanDeadl', title: '贷款期限', width: "8%"},
-                {field: 'rateRange', title: '利率范围', width: "8%"},
-                {field: 'repayWay', title: '还款方式', width: "13%"},
-                {field: 'status', templet: function (d) {
-                        switch(d.status) {
+                {field: 'name', title: '产品名称', width: "10%"},
+                {field: 'compId',title: '所属机构', width: "20%"},
+                {field: 'loanRange', title: '贷款额度', width: "9%"},
+                {field: 'loanPeriod', title: '贷款期限', width: "8%"},
+                {field: 'loanRateRange', title: '利率范围', width: "8%"},
+                {field: 'repayMode', title: '还款方式', width: "13%"},
+                {field: 'isPub', templet: function (d) {
+                        switch(d.isPub) {
                             case 0:
                                 return '审核中'
                             case 1:
                                 return '审核通过'
                             case 2:
                                 return '未通过'
-                            case 3:
-                                return '已发布'
-                            case 4:
-                                return '已撤销'
                         }
                     }, title: '状态', width: "8%"
                 },
                 // {field: 'applyArea', title: '适用地区', width: "10%"},
-                {field: 'applyTimes', sort: true, title: '申请次数', width: "10%"},
+                {field: 'applyNum', sort: true, title: '申请次数', width: "10%"},
                 // {field: 'pubTime', sort: true, templet: function (d) {
                 //         return util.toDateString(d.pubTime);
                 //     }, title: '发布时间', width: "15%"
