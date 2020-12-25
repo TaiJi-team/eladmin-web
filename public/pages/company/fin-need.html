@@ -317,8 +317,95 @@
                         </div>
                         <div class="fin-need-list layui-show">
                             <div class="layui-row layui-col-space15" id="page_template_body_id">
-                                <div class="layui-card">
-                                    <div class="layui-collapse" style="margin-top: 10px; border: 0px;">
+                                <div class="layui-card" id="text1">
+                                    <script id="demo" type="text/html">
+                                      {{# layui.each(d.data, function(index,item){ }}
+                                      <div class="layui-collapse" style="margin-top: 10px; border: 0px;">
+                                        <div class="layui-colla-item">
+                                        <div class="layui-colla-title">
+                                        <div class="layui-form-item">
+                                        <div class="layui-inline"> <label
+                                      class="layui-form-label">需求编号：</label>
+                                      <div class="layui-input-inline"> {{ item.id }} </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                        <div class="layui-input-inline"> {{item.compId}}<a
+                                      lay-href="enterpriseCert#?id=98966"><span
+                                      class="color-yellow">【待实名认证】</span></a> </div>
+                                      </div>
+                                      <div class="layui-inline"> <label
+                                      class="layui-form-label">需求金额：</label>
+                                      <div class="layui-input-inline"> {{item.loanMoney}}万元 </div>
+                                      </div>
+                                      <div class="layui-inline"> <label class="layui-form-label"
+                                      style="line-height: 30px;">贷款期限：</label>
+                                      <div class="layui-input-inline" style="line-height: 40px;"> {{ item.loanPeriod }}个月
+                                      <ul class="ul-change layui-nav">
+                                        <li class="layui-nav-item"> <a href="javascript:;"
+                                      style="color: #1E9FFF;">详情<span
+                                      class="layui-nav-more"></span></a>
+                                      <dl class="dl-show layui-nav-child">
+                                        <dd><a href="javascript:;">年利率：5%</a></dd>
+                                      <dd><a href="javascript:;">担保方式：不限</a></dd>
+                                      <dd><a href="javascript:;">还款方式：不限</a></dd>
+                                      <dd><a href="javascript:;">意向产品：-</a></dd>
+                                      <dd><a href="javascript:;">需求进度：<em
+                                      class="color-yellow">需求取消</em></a>
+                                      </dd>
+                                      <dd><a href="javascript:;"
+                                      class="layui-lasta">取消理由: 其他原因 </a></dd>
+                                      </dl>
+                                      </li> <span class="layui-nav-bar"></span>
+                                      </ul>
+                                      </div>
+                                      </div>
+                                      <div class="layui-inline"> <label
+                                      class="layui-form-label">融资顾问：</label>
+                                      <div class="layui-input-inline"> 江季垚4001016871 </div>
+                                        </div>
+                                        </div> <i class="layui-icon layui-colla-icon"></i>
+                                        </div>
+                                        <table class="layui-table">
+                                        <colgroup>
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="20%">
+                                        <col width="10%">
+                                        <col>
+                                        <col width="10%">
+                                        <col width="8%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                        <th>订单编号</th>
+                                        <th>金融产品名称</th>
+                                        <th>对接机构</th>
+                                        <th>客户经理</th>
+                                        <th>订单进度</th>
+                                        <th>订单耗时</th>
+                                        <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                        <td>110120102716425993575</td>
+                                        <td>线上快审快贷</td>
+                                        <td>宁波银行股份有限公司</td>
+                                        <td></td>
+                                        <td>订单取消</td>
+                                        <td>36天18小时</td>
+                                      <td>
+                                        <a class="color-blue">详情</a>
+                                        </td>
+                                        </tr>
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                        </div>
+                                      {{#  }); }}
+                                    </script>
+
+                                    <!--<div class="layui-collapse" style="margin-top: 10px; border: 0px;">
                                         <div class="layui-colla-item">
                                             <div class="layui-colla-title">
                                                 <div class="layui-form-item">
@@ -384,11 +471,11 @@
                                                         <th>操作</th>
                                                     </tr>
                                                 </thead>
-                                                <!-- <tbody>
+                                                &lt;!&ndash; <tbody>
                                                     <tr>
                                                         <td colspan="7" style="text-align: center;">暂无订单数据</td>
                                                     </tr>
-                                                </tbody> -->
+                                                </tbody> &ndash;&gt;
                                             </table>
                                         </div>
                                     </div>
@@ -467,8 +554,8 @@
                                                         <td>订单取消</td>
                                                         <td>36天18小时</td>
                                                         <td>
-                                                            <!-- <a href="#!fin-need-detail"
-                                                                class="color-blue">详情</a> -->
+                                                            &lt;!&ndash; <a href="#!fin-need-detail"
+                                                                class="color-blue">详情</a> &ndash;&gt;
                                                             <a class="color-blue">详情</a>
                                                             </td>
                                                     </tr>
@@ -551,8 +638,8 @@
                                                         <td>订单取消</td>
                                                         <td>97天15小时</td>
                                                         <td>
-                                                            <!-- <a href="#!fin-need-detail"
-                                                                class="color-blue">详情</a> -->
+                                                            &lt;!&ndash; <a href="#!fin-need-detail"
+                                                                class="color-blue">详情</a> &ndash;&gt;
                                                             <a class="color-blue">详情</a>
                                                             </td>
                                                     </tr>
@@ -626,25 +713,27 @@
                                                         <th>操作</th>
                                                     </tr>
                                                 </thead>
-                                                <!-- <tbody>
+                                                &lt;!&ndash; <tbody>
                                                     <tr>
                                                         <td colspan="7" style="text-align: center;">暂无订单数据</td>
                                                     </tr>
-                                                </tbody> -->
+                                                </tbody> &ndash;&gt;
                                             </table>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
-                                <div class="layui-row" style="text-align: center;margin: 3% 0 0 0;">
+                                <!--<div class="layui-row" style="text-align: center;margin: 3% 0 0 0;">
                                     <div class="ac pagination" id="pagination">
                                         <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
                                             <a href="javascript:;" class="layui-laypage-prev layui-disabled"
                                                 data-page="0">上一页</a><span class="layui-laypage-curr"><em
                                                     class="layui-laypage-em"></em><em>1</em></span><a
                                                 href="javascript:;" class="layui-laypage-next layui-disabled"
-                                                data-page="2">下一页</a></div>
+                                                data-page="2">下一页</a>
+                                        </div>
                                     </div>
-                                </div>
+                                </div>-->
+                                <div id="test11"></div>
                             </div>
                         </div>
                         <input type="hidden" id="publicState" value="0">
@@ -1446,13 +1535,16 @@
 
 
 <script>
-    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload','laypage','layer','laytpl','element'], function () {
         var form = layui.form;
         var table = layui.table;
         var config = layui.config;
         var layer = layui.layer;
         var util = layui.util;
         var admin = layui.admin;
+        var laypage = layui.laypage;
+        var laytpl = layui.laytpl;
+        var element = layui.element;
 
         var cur_span = null;
         var cur_dl = null;
@@ -1461,6 +1553,85 @@
             $(cur_dl).removeClass('layui-show')
             $(cur_span).removeClass('layui-nav-mored')
         }
+
+        var count;
+
+        var test = {
+          page:1,
+          limit: 10,
+          loanPeriod: 12
+        };
+
+        var datas;
+
+        admin.req('api-finance/anceneedcomp/findAll',JSON.stringify(test),function (data) {
+          count = data.count;
+          console.log(data);
+          if (0 == data.code) {
+            datas = data;
+          } else {
+            layer.msg('获取数据失败', {icon: 2, time: 500});
+          }
+        },'POST');
+
+        var getTpl = demo.innerHTML;
+        laytpl(getTpl).render(datas, function(html){
+          document.getElementById('text1').innerHTML = html;
+        });
+
+        laypage.render({
+            elem: 'test11'
+            ,count: count
+            ,layout: ['count', 'prev', 'page', 'next', 'limit','limits']
+            ,jump: function(obj){
+              console.log(obj);
+              test.page = obj.curr;
+              test.limit = obj.limit;
+              admin.req('api-finance/anceneedcomp/findAll',JSON.stringify(test),function (data) {
+                count = data.count;
+                console.log(data);
+                if (0 == data.code) {
+                  datas = data;
+                  laytpl(getTpl).render(datas, function(html){
+                    document.getElementById('text1').innerHTML = html;
+                  });
+                  $('a.color-blue').on({
+                    click: function() {
+                      localStorage.setItem('toDetail', true)
+                      $('#need-detail-cancel').unbind('click')
+                      location.reload()
+                    }
+                  })
+                  $('.ul-change').on({
+                    mouseover: function(){
+                      //关闭之前显示的dl
+                      if(!!cur_dl) {
+                        closeDl(cur_dl, cur_span)
+                      }
+                      cur_span = $(this).find('span')[0]
+                      cur_dl = $(this).find('dl')[0]
+                      $(cur_span).addClass('layui-nav-mored')
+                      $(cur_dl).addClass('layui-show')
+                    } ,
+                    mouseout: function(){
+                      closeDl(cur_dl, cur_span)
+                    }
+                  });
+                  $('.dl-show').on({
+                    mouseover: function() {
+                      isShow = true;
+                    },
+                    mouseout: function() {
+                      closeDl(cur_dl, cur_span)
+                    }
+                  })
+                } else {
+                  layer.msg('获取数据失败', {icon: 2, time: 500});
+                }
+              },'POST');
+            }
+          });
+
         $('.ul-change').on({
             mouseover: function(){
                 //关闭之前显示的dl
