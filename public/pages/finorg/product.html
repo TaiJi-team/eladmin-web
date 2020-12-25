@@ -53,7 +53,18 @@ var financeProductTo;
             cols: [[
                 {type: 'checkbox'},
                 {field: 'name', title: '产品名称', width: "10%"},
-                {field: 'compId',title: '所属机构', width: "20%"},
+                {field: 'compId', templet: function (d) {
+                  if (d.compId!=null){
+                    console.log(d.compId)
+                    var arr=new Array();
+                    arr.push(d.compId)
+                    for (var i=0;i<arr.length;i++){
+                    admin.req('api-finance/financeorg/getNameByid/'+arr[i], {}, function (data) {
+                      console.log(data)
+                      name1=data.datas.name;
+                    },'GET');}
+                    return name1}
+                  }, title: '所属机构', width: "20%"},
                 {field: 'loanRange', title: '贷款额度', width: "9%"},
                 {field: 'loanPeriod', title: '贷款期限', width: "8%"},
                 {field: 'loanRateRange', title: '利率范围', width: "8%"},
