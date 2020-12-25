@@ -41,11 +41,11 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
-
+var financeProductTo;
         // 渲染表格
         table.render({
             elem: '#product-table',
-            url: '/assets/data/products.json',
+            url: config.base_server + 'api-finance/financeproduct/List',
             method: 'GET',
             headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
             page: true,
@@ -81,7 +81,7 @@
                 {fixed: 'right', align: 'center', toolbar: '#product-table-bar', title: '操作', width: '10%'}
             ]]
         });
-
+        console.log(financeProductTo);
         // 添加按钮点击事件
         $('#product-btn-add').click(function () {
             showEditModel();
@@ -191,8 +191,8 @@
             ,before: function(obj){
                 console.log(obj)
             }
-            ,choose: function(obj){   
-                var files = this.files = obj.pushFile(); 
+            ,choose: function(obj){
+                var files = this.files = obj.pushFile();
                 console.log(files)
             }
             ,done: function(res){
