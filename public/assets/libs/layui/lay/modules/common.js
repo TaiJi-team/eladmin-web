@@ -63,9 +63,23 @@ layui.define(['layer', 'config'], function (exports) {
               }
           });
         })
+      },
+      getUserRole: function () {
+        const user = JSON.parse(localStorage.easyweb).login_user
+        if (user) {
+          return JSON.parse(user).roles[0]
+        }
+        return {}
+      },
+      getUserInfo: function () {
+        const user = JSON.parse(localStorage.easyweb).login_user
+        if (user) {
+          return JSON.parse(user)
+        }
+        return {}
       }
     }
-  
+
     //暴露接口
     exports('common', common);
   });

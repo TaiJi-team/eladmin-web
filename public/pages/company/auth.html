@@ -198,7 +198,16 @@
                 },
                 finish: function () {
                     // table.reload('user-table', {});
-                }
+                },
+                yes: function (index, layero) {
+                  form.on('submit(component-form-group)', function (data) {
+                    console.log(data.field);
+                    compAuth(data);
+                  })
+                },
+                cancel: function () {
+
+                },
             });
         };
 
@@ -212,6 +221,47 @@
         $('.layui-btn-normal').click(function () {
             showEditModel();
         });
+
+      // 企业入驻信息保存
+      var compAuth = function (data) {
+        //表单数据formData
+        var formData = null;
+        if (!!data) {
+          formData = data.field;
+          // formData.name = formData.col_name;//金融机构名字
+          console.log(formData.com_code);
+          formData.financeOrg = {
+            name: formData.com_name,
+            creditCode: formData.creditCode,
+            detailAddr: formData.detailAddr
+          }
+          formData.userOrgLegper = {
+            name: formData.operName,
+            cardNum: formData.operCode,
+            cardValidDate: formData.operCardValidDate
+          };
+          formData.userOrgOper = {
+            name: formData.lepName,
+            cardNum: formData.lepCode,
+            cardValidDate: formData.lepCardValidDate
+          };
+          console.log(formData);
+          delete formData.file//暂时不管文件
+          delete formData.hdbusiness_licence//暂时不管证书
+        }
+
+        admin.req('api-finance/financeorg/save', JSON.stringify(formData), function (data) {
+          if (data.code == 0) {
+            layer.msg('提交成功，待平台审核', {icon: 5, time: 2000}, function () {
+              layer.closeAll();
+            });
+          } else {
+            layer.msg(data.msg, {icon: 5, time: 2000}, function () {
+              layer.closeAll();
+            });
+          }
+        }, 'POST');
+      }
         
     });
 </script>

@@ -686,7 +686,7 @@
   </script>
 
   <script type="text/javascript">
-    layui.use(['admin', 'echarts', 'laytpl', 'table', 'util', 'index',"carousel"], function () {
+    layui.use(['admin', 'echarts', 'laytpl', 'table', 'util', 'index', "carousel", "common"], function () {
       let admin = layui.admin;
       let echarts = layui.echarts;
       let laytpl = layui.laytpl;
@@ -696,6 +696,7 @@
       let table = layui.table;
       let util = layui.util;
       let index = layui.index;
+      let common = layui.common;
       let statData;
 
       var renChart = function renChart() {
@@ -744,19 +745,12 @@
         chart.setOption(option);
       }
       
-      function getUserRole() {
-        const user = JSON.parse(localStorage.easyweb).login_user
-        if (user) {
-          return JSON.parse(user).roles[0].code
-        }
-        return {}
-      }
-      var role = getUserRole();
+      var role = common.getUserRole();
       const data = {
-        compType: role
+        compType: role.code
       }
 
-      if (role == 'general') {
+      if (data.compType == 'general') {
         $('.layui-btn-container').show()
         $('.show-site').text('公众用户')
       }
