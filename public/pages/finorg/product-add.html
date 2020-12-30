@@ -694,11 +694,13 @@ a:active {
                 <div class="ac page-head"><span>金融产品信息</span></div>
                 <div class="clearfix page-cont take-release">
                     <div class="layui-form" lay-filter="component-form-group">
+                        <input name="id" type="hidden"/>
+                        <input name="compId" type="hidden"/>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>产品名称：</label>
                             <div class="layui-input-block clearfix">
-                                <input type="tel" name="rate"  placeholder="请输入产品名称" autocomplete="on" maxlength="20" class="layui-input">
+                                <input type="tel" name="name"  placeholder="请输入产品名称" autocomplete="on" maxlength="20" class="layui-input" lay-verify="required" required>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
@@ -707,7 +709,7 @@ a:active {
                                     <span class="form-required">*</span>贷款额度：
                                 </label>
                                 <div class="clearfix layui-input-block">
-                                  <select name="modules" lay-verify="required" lay-search="">
+                                  <select name="loanRange" lay-verify="required" lay-search="" lay-verify="required" required>
                                     <option value="">--直接选择或搜索选择--</option>
                                     <option value="1">0-10万（含）</option>
                                     <option value="2">10-100万（含）</option>
@@ -722,7 +724,7 @@ a:active {
                                 <span class="form-required">*</span>利率范围：</label>
                             <div class="clearfix layui-input-block">
                                 <span class="fr input-unit">%</span>
-                                <input type="text" name="rate" value="5" lay-verify="required|money" autocomplete="off" placeholder="请输入年利率" class="layui-input" maxlength="18">
+                                <input type="text" name="loanRateRange" value="5" lay-verify="required|money" autocomplete="off" placeholder="请输入年利率" class="layui-input" maxlength="18" required>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
@@ -731,7 +733,7 @@ a:active {
                                     <span class="form-required">*</span>贷款期限：
                                 </label>
                                 <div class="layui-input-block">
-                                  <select name="modules" lay-verify="required" lay-search="">
+                                  <select name="loanPeriod" lay-verify="required" lay-search="" lay-verify="required" required>
                                     <option value="">--请选择贷款期限--</option>
                                     <option value="1">6-12月（含）</option>
                                     <option value="2">12-24月（含）</option>
@@ -749,7 +751,7 @@ a:active {
                                     <span class="form-required">*</span>还款方式：
                                 </label>
                                 <div class="layui-input-block">
-                                  <select name="modules" lay-verify="required" lay-search="">
+                                  <select name="repayMode" lay-verify="required" lay-search="" lay-verify="required" required>
                                     <option value="">--请选择还款方式--</option>
                                     <option value="1">等额本息</option>
                                     <option value="2">先息后本</option>
@@ -798,11 +800,12 @@ a:active {
                             </div> -->
                             <div class="layui-block">
                                 <label class="layui-form-label">
-                                    <span class="form-required">*</span>试用地区：
+                                    <span class="form-required">*</span>服务地区：
                                 </label>
                                 <div class="layui-input-block">
-                                  <select name="modules" lay-verify="required" lay-search="">
-                                    <option value="">--请选择试用地区--</option>
+                                  <select name="servArea" lay-verify="required" lay-search="" lay-verify="required" required>
+                                    <option value="">--请选择服务地区--</option>
+                                    <option value="北京">北京</option>
                                     <option value="1">太原</option>
                                     <option value="2">大同</option>
                                     <option value="3">忻州</option>
@@ -816,49 +819,42 @@ a:active {
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>产品特色：</label>
                             <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="feature" placeholder="请输入内容" class="layui-textarea" lay-verify="required" required></textarea>
                             </div>
                         </div>
                         <div class="fl layui-form-item item-full">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>产品介绍</label>
                             <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item item-full">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>试用客户：</label>
-                            <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="introduce" placeholder="请输入内容" class="layui-textarea" lay-verify="required" required></textarea>
                             </div>
                         </div>
                         <div class="fl layui-form-item item-full">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>准入条件：</label>
                             <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="enterCondition" placeholder="请输入内容" class="layui-textarea" lay-verify="required" required></textarea>
                             </div>
                         </div>
                         <div class="fl layui-form-item item-full">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>提交材料：</label>
                             <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="subMaterial" placeholder="请输入内容" class="layui-textarea" lay-verify="required" required></textarea>
                             </div>
                         </div>
                         <div class="fl layui-form-item item-full">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>案例：</label>
                             <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="proCase" placeholder="请输入内容" class="layui-textarea" lay-verify="required" required></textarea>
                             </div>
                         </div>
                         <div class="fl layui-form-item item-full">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>特此申明：</label>
                             <div class="layui-input-block">
-                                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="specExplain" placeholder="请输入内容" class="layui-textarea" lay-verify="required" required></textarea>
                             </div>
                         </div>
                         <div class="fl form-information item-full" style="width: 95%;">
@@ -883,7 +879,7 @@ a:active {
 
 </div>
 <script>
-    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+    layui.use(['form', 'table', 'layer', 'util', 'config', 'admin', 'upload'], function () {
         var form = layui.form;
         var table = layui.table;
         var config = layui.config;
@@ -894,5 +890,40 @@ a:active {
         var upload = layui.upload;
         form.render('select')
 
+      layer.load(2);
+      var saveOrUpdate;
+      // 回显product数据
+      layer.closeAll('loading');
+      var product = admin.getTempData('product');
+      console.log(product);
+      $('.layui-form').attr('method', 'POST');
+      if (product) {
+        form.val('component-form-group', product);
+        $('#product-form').attr('method', 'POST');
+        saveOrUpdate = 0;
+      }
+
+      // 表单提交事件
+      form.on('submit(product-form-submit)', function (data) {
+        console.log(saveOrUpdate);
+        var URL;
+        if (saveOrUpdate == 0) {
+          URL = 'api-finance/financeproduct/update';
+        }else {
+          URL = 'api-finance/financeproduct/save'
+        }
+        layer.load(2);
+        admin.req(URL, JSON.stringify(data.field), function (data) {
+          layer.closeAll('loading');
+          console.log(data);
+          if (data.code == 0) {
+            layer.msg(data.msg, {icon: 1, time: 500});
+            admin.finishPopupCenter();
+          } else {
+            layer.msg('请求失败', {icon: 2, time: 500});
+          }
+        }, "POST");
+        return false;
+      });
     });
 </script>

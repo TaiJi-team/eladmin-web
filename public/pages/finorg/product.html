@@ -104,32 +104,34 @@ var financeProductTo;
                 showEditModel(data);
             } else if (layEvent === 'del') {
                 layer.confirm('确定删除此产品吗？', function (i) {
-                    layer.msg('删除成功', {icon: 1, time: 2000});
+                    //layer.msg('删除成功', {icon: 1, time: 2000});
+                    admin.req('api-finance/financeproduct/delete/'+ data.id, {}, function (data) {
+                      layer.closeAll('loading');
+                      if (data.code == 0) {
+                        layer.msg(data.msg, {icon: 1, time: 500});
+                      } else {
+                        layer.msg(data.msg, {icon: 2, time: 500});
+                      }
+                    }, 'delete');
+                    table.reload('product-table',{});
                 })
             }
         });
 
         //显示表单弹窗
         var showEditModel = function (data) {
+            admin.putTempData('product', data);
+            console.log(data);
             var title = data ? '修改金融产品' : '添加金融产品';
             admin.popupCenter({
                 title: title,
                 path: 'pages/finorg/product-add.html',
                 // area: '83%',
-                area: ['83%', '88%'],
+                area: ['80%', '80%'],
                 zIndex: layer.zIndex,
                 finish: function () {
                     table.reload('product-table', {});
                 },
-                success: function() {
-                    $('.layui-layer').css({
-                        'top': '8%',
-                        'left': '12%'
-                    })
-                    $('.layui-layer-page .layui-layer-content').css({
-                        'overflow': 'scroll'
-                    })
-                }
             });
         };
 
@@ -137,7 +139,17 @@ var financeProductTo;
             click: function() {
                 showSelePmModel();
             }
-        })
+        });
+
+        $('#product-btn-search').on({
+            click: function () {
+              var value = $('#product-search-value').val();
+              table.reload('product-table',
+                {where:{
+                    name: value
+                    }})
+            }
+        });
 
         //显示表单弹窗
         var showSelePmModel = function (data) {
