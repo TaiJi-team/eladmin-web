@@ -801,6 +801,7 @@
                 <div class="ac page-head"><span>发布融资需求</span></div>
                 <div class="clearfix page-cont take-release">
                     <div class="layui-form" lay-filter="component-form-group">
+                        <input name="operUserId" type="hidden" value="123456"/>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>企业名称：</label>
@@ -1015,10 +1016,10 @@
                             <div class="clearfix layui-input-block">
                                 <select id="halfYearIncome" name="halfYearIncome" lay-verify="required">
                                     <option value="" selected="selected">--请选择上年度开票营业收入--</option>
-                                    <option value="1" selected="selected">0-100万（含）</option>
-                                    <option value="2">100-500万（含）</option>
-                                    <option value="3">500-1000万（含）</option>
-                                    <option value="4">1000万以上</option>
+                                    <option value="1" selected="selected">0-10万</option>
+                                    <option value="2">10-100万</option>
+                                    <option value="3">100-500万</option>
+                                    <option value="4">500万以上</option>
                                 </select>
                                 <!--<div class="layui-unselect layui-form-select">
                                     <div class="layui-select-title"><input type="text" placeholder="&#45;&#45;请选择上年度开票营业收入&#45;&#45;"
@@ -1040,9 +1041,9 @@
                             <div class="clearfix layui-input-block">
                                 <select id="taxMoney" name="taxMoney" lay-verify="required">
                                     <option value="" selected="selected">--请选择上年度纳税金额--</option>
-                                    <option value="1" selected="selected">0-2万（含）</option>
-                                    <option value="2">2-5万（含）</option>
-                                    <option value="3">5-10万（含）</option>
+                                    <option value="1" selected="selected">0-2万</option>
+                                    <option value="2">2-5万</option>
+                                    <option value="3">5-10万</option>
                                     <option value="4">10万以上</option>
                                 </select>
                                 <!--<div class="layui-unselect layui-form-select">
@@ -1136,19 +1137,19 @@
                         </div>
                         <div class="fl ac item-full">
                             <!-- <input type="hidden" name="action" value="financing_post"> -->
-                            <button id="fin-need-apply1" class="layui-btn btn g-bg g-shadow take-choose">发布融资需求</button>
+                            <button id="fin-need-apply1" class="layui-btn btn g-bg g-shadow take-choose" lay-filter="fin-need-apply" lay-submit>发布融资需求</button>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <!--<div class="select-prod fl bg-white page-left">
+            <div class="select-prod fl bg-white page-left">
                 <div class="clearfix page-head">
                     <ul class="fr grant-ul">
                         <li class="ac fl">
                             <p class="item-cont"></p>
-                            <p class="item-name">乔禾教育</p>
+<!--                            <p class="item-name">乔禾教育</p>-->
                         </li>
                     </ul> <span>融资需求发布成功，请选择融资产品</span>
                 </div>
@@ -1166,13 +1167,13 @@
                         </div>
                         <div class="line-middle service-contact">
                             <div class="line-middle">
-                                <p class="contact-name">江季垚</p> <a href="tel:4001016871" title="tel:4001016871"> <img
-                                        src="/assets/images/p-ico.png" class="contact-p" alt=""></a> <a
-                                    href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"
-                                    target="_blank" class="chat-btn" data-type="chat"
-                                    data-guid="851d94d2108543dc8160ce29ee8f4578" data-name="江季垚"
-                                    data-headimgurl="/celoan/sysfile/2019/05/10/2019051008114476718.jpg"> <img
-                                        src="/assets/images/msg-ico.png" class="contact-msg" alt=""></a>
+<!--                                <p class="contact-name">江季垚</p> <a href="tel:4001016871" title="tel:4001016871"> <img-->
+<!--                                        src="/assets/images/p-ico.png" class="contact-p" alt=""></a> <a-->
+<!--                                    href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"-->
+<!--                                    target="_blank" class="chat-btn" data-type="chat"-->
+<!--                                    data-guid="851d94d2108543dc8160ce29ee8f4578" data-name="江季垚"-->
+<!--                                    data-headimgurl="/celoan/sysfile/2019/05/10/2019051008114476718.jpg"> <img-->
+<!--                                        src="/assets/images/msg-ico.png" class="contact-msg" alt=""></a>-->
                             </div>
                         </div>
                     </div>
@@ -1231,7 +1232,7 @@
                             class="layui-btn btn g-bg g-shadow take-choose" lay-submit=""
                             lay-filter="addForm3">取消</button> </div>
                 </div>
-            </div>-->
+            </div>
         </div>
         <!-- content end -->
     </div>
@@ -1247,33 +1248,54 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
+        var formData = null;
+        form.on('submit(fin-need-apply)', function (data) {
+          console.log(data.field);
+          formData = data.field;
+        });
+        let toSele = JSON.parse(localStorage.getItem('toSele'));
+        /*if (!toSele) {
+          $('.need-apply').show();
+        } else {
+          $('.need-apply').show();
+        }*/
 
-      form.on('submit(component-form-group)', function (data) {
-        console.log(data.field);
-        compAuth(data);
-      })
-        /*let toSele = JSON.parse(localStorage.getItem('toSele'))
         if (!toSele) {
-            $('.need-apply').show()
+            $('.need-apply').show();
             $('.select-prod').hide()
         } else {
-            $('.need-apply').hide()
+            $('.need-apply').hide();
             $('.select-prod').show()
         }
         $('#fin-need-apply1').on('click', function () {
-            localStorage.setItem('toSele', true)
-            $('#sele-prod-cancel').unbind('click')
-            location.reload()
-        })
-        $('#sele-prod-commit').on('click', function () {
-            localStorage.setItem('toSele', false)
-            $('#fin-need-apply1').unbind('click')
-            location.reload()
+            localStorage.setItem('toSele', true);
+            $('.need-apply').hide();
+            $('.select-prod').show();
+            var productList;
+            admin.req('api-finance/financeproduct/List?page=1&limit=10&loanRange='+ $('#halfYearIncome option:selected').text(),{},function (data) {
+                productList = data.data;
+                console.log(productList);
+              }
+              ,"GET");
         })
         $('#sele-prod-cancel').on('click', function () {
-            localStorage.setItem('toSele', false)
-            $('#fin-need-apply1').unbind('click')
-            location.reload()
-        })*/
+            localStorage.setItem('toSele', false);
+            $('#fin-need-apply1').unbind('click');
+            location.reload();
+        })
+        $('#sele-prod-commit').on('click', function () {
+            formData.productId = '921101316';
+            console.log(formData);
+            admin.req('api-finance/anceneedcomp/save', JSON.stringify(formData), function (data) {
+              layer.closeAll('loading');
+              console.log(data);
+              if (data.code == 0) {
+                layer.msg(data.msg, {icon: 1, time: 500});
+                location.href ='#!fin-need';
+              } else {
+                layer.msg('请求失败', {icon: 2, time: 500});
+              }
+            }, "POST");
+        })
     });
 </script>
