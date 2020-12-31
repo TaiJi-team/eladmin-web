@@ -187,7 +187,7 @@
             admin.popupCenter({
                 type:2,
                 title: title,
-                area: ['65%', '70%'],
+                area: ['75%', '75%'],
                 path: 'pages/company/add.html',
                 btn: ['提交', '取消'],
                 success: function(layero, index) {
@@ -249,11 +249,13 @@
             latestInspectMsg: formData.business_time
           };
           formData.userOrgLegper = {
-            userName: formData.operName,
+            userName: formData.operPhone,
+            nickName: formData.operName,
             idNum: formData.operCode
           };
           formData.userOrgOper = {
-            userName: formData.lepName,
+            userName: formData.lepPhone,
+            nickName: formData.lepName,
             idNum: formData.lepCode
           };
           formData.compExtend = {

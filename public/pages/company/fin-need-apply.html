@@ -810,7 +810,7 @@
                                 </select>
                                 <input type="hidden" name="comid" class="editable-select" id="editable-select" style="display: none;">
                                 <input type="text" name="comid_sele" class="editable-select" id="editable-select_sele" autocomplete="off" placeholder="请选择或输入企业名称" lay-verify="required|companyname">  -->
-                                <select id="businessAmount" name="businessAmount" lay-verify="required">
+                                <select id="compId" name="compId" lay-verify="required">
                                     <option value="" selected="selected">--请选择融资公司--</option>
                                     <option value="1" selected="selected">公司1</option>
                                     <option value="2">公司2</option>
@@ -978,7 +978,7 @@
                                 <span class="form-required">*</span>期望年化利率：</label>
                             <div class="clearfix layui-input-block">
                                 <span class="fr input-unit">%</span>
-                                <input type="text" name="rate" value="5" lay-verify="required|money" autocomplete="off"
+                                <input type="text" name="annuRate" value="5" lay-verify="required|money" autocomplete="off"
                                     placeholder="请输入年利率" class="layui-input" maxlength="18">
                             </div>
                         </div>
@@ -988,7 +988,7 @@
                                 <span class="form-required">*</span>期望融资金额：</label>
                             <div class="clearfix layui-input-block">
                                 <span class="fr input-unit">万元（人民币）</span>
-                                <input type="text" name="amount" value="100" lay-verify="required|money"
+                                <input type="text" name="loanMoney" value="100" lay-verify="required|money"
                                     placeholder="请输入融资金额" class="layui-input" maxlength="18" autocomplete="off">
                             </div>
                         </div>
@@ -997,7 +997,7 @@
                                 <span class="form-required">*</span>贷款期限：</label>
                             <div class="clearfix layui-input-block">
                                 <span class="fr input-unit">月</span>
-                                <input type="text" name="maturity" value="18" lay-verify="required|numberInt"
+                                <input type="text" name="loanPeriod" value="18" lay-verify="required|numberInt"
                                     autocomplete="off" placeholder="请输入融资期限" class="layui-input" maxlength="3">
                             </div>
                         </div>
@@ -1005,7 +1005,7 @@
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>开户行：</label>
                             <div class="clearfix layui-input-block">
-                                <input type="text" id="openBank" name="openBank" value="北京银行" lay-verify="required"
+                                <input type="text" id="bankName" name="bankName" value="北京银行" lay-verify="required"
                                     placeholder="请输入开户行" class="layui-input" autocomplete="off">
                             </div>
                         </div>
@@ -1013,7 +1013,7 @@
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>开票营业收入：</label>
                             <div class="clearfix layui-input-block">
-                                <select id="businessAmount" name="businessAmount" lay-verify="required">
+                                <select id="halfYearIncome" name="halfYearIncome" lay-verify="required">
                                     <option value="" selected="selected">--请选择上年度开票营业收入--</option>
                                     <option value="1" selected="selected">0-100万（含）</option>
                                     <option value="2">100-500万（含）</option>
@@ -1038,7 +1038,7 @@
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>纳税金额：</label>
                             <div class="clearfix layui-input-block">
-                                <select id="payAmount" name="payAmount" lay-verify="required">
+                                <select id="taxMoney" name="taxMoney" lay-verify="required">
                                     <option value="" selected="selected">--请选择上年度纳税金额--</option>
                                     <option value="1" selected="selected">0-2万（含）</option>
                                     <option value="2">2-5万（含）</option>
@@ -1064,7 +1064,7 @@
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>企业是否盈利：</label>
                             <div class="clearfix layui-input-block">
-                                <select id="isProfit" name="isProfit" lay-verify="required">
+                                <select id="isGain" name="isGain" lay-verify="required">
                                     <option value="" selected="selected">--请选择是否盈利--</option>
                                     <option value="0">亏损</option>
                                     <option value="1" selected="selected">盈利</option>
@@ -1093,7 +1093,7 @@
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>纳税等级：</label>
                             <div class="clearfix layui-input-block">
-                                <select id="payGrade" name="payGrade" lay-verify="required">
+                                <select id="taxGrade" name="taxGrade" lay-verify="required">
                                     <option value="" selected="selected">--请选择纳税等级--</option>
                                     <option value="A" selected="selected">A</option>
                                     <option value="B">B</option>
@@ -1143,7 +1143,7 @@
             </div>
 
 
-            <div class="select-prod fl bg-white page-left">
+            <!--<div class="select-prod fl bg-white page-left">
                 <div class="clearfix page-head">
                     <ul class="fr grant-ul">
                         <li class="ac fl">
@@ -1231,7 +1231,7 @@
                             class="layui-btn btn g-bg g-shadow take-choose" lay-submit=""
                             lay-filter="addForm3">取消</button> </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!-- content end -->
     </div>
@@ -1247,7 +1247,12 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
-        let toSele = JSON.parse(localStorage.getItem('toSele'))
+
+      form.on('submit(component-form-group)', function (data) {
+        console.log(data.field);
+        compAuth(data);
+      })
+        /*let toSele = JSON.parse(localStorage.getItem('toSele'))
         if (!toSele) {
             $('.need-apply').show()
             $('.select-prod').hide()
@@ -1269,6 +1274,6 @@
             localStorage.setItem('toSele', false)
             $('#fin-need-apply1').unbind('click')
             location.reload()
-        })
+        })*/
     });
 </script>
