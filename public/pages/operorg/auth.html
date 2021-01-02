@@ -191,18 +191,36 @@
                 area: ['1200px', '680px'],
                 path: 'pages/company/add.html',
                 btn: ['提交', '取消'],
-                success: function() {
-                    $('.layui-layer').css({
-                        // 'z-index': '10000000',
-                        // 'width': '86%',
-                        // 'height': '90%',
-                        'top': '8%',
-                        'left': '18%'
-                    })
+                success: function(layero, index) {
+                  $('.layui-layer').css({
+                    // 'z-index': '10000000',
+                    // 'width': '86%',
+                    // 'height': '90%',
+                    'top': '8%',
+                    'left': '18%'
+                  });
+                  $(':focus').blur();
+                  // 添加form标识
+                  layero.addClass('layui-form');
+                  // 将保存按钮改变成提交按钮
+                  layero.find('.layui-layer-btn0').attr({
+                    'lay-filter': 'component-form-group',
+                    'lay-submit': ''
+                  });
                 },
                 finish: function () {
-                    // table.reload('user-table', {});
-                }
+                  // table.reload('user-table', {});
+                },
+                yes: function (index, layero) {
+                  console.log(11111)
+                  form.on('submit(component-form-group)', function (data) {
+                    console.log(data.field);
+                    operorgAuth(data);
+                  })
+                },
+                cancel: function () {
+
+                },
             });
         };
 
@@ -247,6 +265,53 @@
         $('.layui-btn-normal1').click(function () {
             showEditModel1();
         });
+
+      // 运营机构入驻信息保存
+      var operorgAuth = function (data) {
+        //表单数据formData
+        var formData = null;
+        if (!!data) {
+          formData = data.field;
+          // formData.name = formData.col_name;//金融机构名字
+          console.log(formData.com_code);
+          formData.company = {
+            name: formData.com_name,
+            creditCode: formData.creditCode,
+            detailAddr: formData.detailAddr,
+            latestInspectMsg: formData.business_time
+          };
+          formData.userOrgLegper = {
+            userName: formData.operPhone,
+            nickName: formData.operName,
+            idNum: formData.operCode
+          };
+          formData.userOrgOper = {
+            userName: formData.lepPhone,
+            nickName: formData.lepName,
+            idNum: formData.lepCode
+          };
+          formData.compExtend = {
+            province: formData.province,
+            city: formData.city,
+            county: formData.county
+          };
+          console.log(formData);
+          delete formData.file//暂时不管文件
+          delete formData.hdbusiness_licence//暂时不管证书
+        }
+
+        admin.req('api-finance/company/save', JSON.stringify(formData), function (data) {
+          if (data.code == 0) {
+            layer.msg('提交成功，待平台审核', {icon: 5, time: 2000}, function () {
+              layer.closeAll();
+            });
+          } else {
+            layer.msg(data.msg, {icon: 5, time: 2000}, function () {
+              layer.closeAll();
+            });
+          }
+        }, 'POST');
+      }
 
     });
 </script>
