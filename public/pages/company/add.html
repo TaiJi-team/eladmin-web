@@ -2,7 +2,6 @@
     .layui-layer-content {
         overflow: scroll !important;
     }
-
 </style>
 <div class="layui-fluid">
     <div class="layui-form layui-row layui-col-space15" id="CertificateInfoView" lay-filter="component-form-group">
@@ -33,10 +32,10 @@
                                         <i class="layui-icon"></i>
                                         <p>点击上传，或将文件拖拽到此处</p>
                                         <div class="layui-hide" id="uploadDemoView">
-                                          <hr>
-                                          <img src="" alt="上传成功后渲染" style="max-width: 196px">
+                                            <hr>
+                                            <img src="" alt="上传成功后渲染" style="max-width: 196px">
                                         </div>
-                                      </div>
+                                    </div>
                                 </div><input class="layui-upload-file" type="file" accept="undefined" name="file">
                                 <div class="had-up-box" style="display:none;"> <img src="" class="had-img" alt="">
                                     <div class="hover-tip-box"> <input type="hidden" id="hdbusiness_licence"
@@ -69,9 +68,9 @@
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>统一社会信用代码：</label>
-                                <div class="layui-input-block"> <input type="text" name="creditCode" value="123456789012345678"
-                                        lay-verify="creditcode" autocomplete="off" placeholder="请输入统一社会信用代码(18位)"
-                                        class="layui-input"> </div>
+                                <div class="layui-input-block"> <input type="text" name="creditCode"
+                                        value="123456789012345678" lay-verify="creditcode" autocomplete="off"
+                                        placeholder="请输入统一社会信用代码(18位)" class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>所在区域：</label>
@@ -81,141 +80,65 @@
                                             <div class="layui-input-inline" data-action="province">
                                                 <select name="province" lay-verify="required" lay-filter="province">
                                                     <option value="">请选择省</option>
-                                                    <option value="110000" selected="">北京</option>
-                                                    <option value="120000">天津</option>
-                                                    <option value="130000">河北省</option>
-                                                    <option value="140000">山西省</option>
-                                                    <option value="150000">内蒙古自治区</option>
-                                                    <option value="210000">辽宁省</option>
-                                                    <option value="220000">吉林省</option>
-                                                    <option value="230000">黑龙江省</option>
-                                                    <option value="310000">上海</option>
-                                                    <option value="320000">江苏省</option>
-                                                    <option value="330000">浙江省</option>
-                                                    <option value="340000">安徽省</option>
-                                                    <option value="350000">福建省</option>
-                                                    <option value="360000">江西省</option>
-                                                    <option value="370000">山东省</option>
-                                                    <option value="410000">河南省</option>
-                                                    <option value="420000">湖北省</option>
-                                                    <option value="430000">湖南省</option>
-                                                    <option value="440000">广东省</option>
-                                                    <option value="450000">广西壮族自治区</option>
-                                                    <option value="460000">海南省</option>
-                                                    <option value="500000">重庆</option>
-                                                    <option value="510000">四川省</option>
-                                                    <option value="520000">贵州省</option>
-                                                    <option value="530000">云南省</option>
-                                                    <option value="540000">西藏自治区</option>
-                                                    <option value="610000">陕西省</option>
-                                                    <option value="620000">甘肃省</option>
-                                                    <option value="630000">青海省</option>
-                                                    <option value="640000">宁夏回族自治区</option>
-                                                    <option value="650000">新疆维吾尔自治区</option>
+                                                    <option value="北京" selected="">北京</option>
+                                                    <option value="天津">天津</option>
+                                                    <option value="河北省">河北省</option>
+                                                    <option value="山西省">山西省</option>
+                                                    <option value="内蒙古自治区">内蒙古自治区</option>
+                                                    <option value="辽宁省">辽宁省</option>
+                                                    <option value="吉林省">吉林省</option>
+                                                    <option value="黑龙江省">黑龙江省</option>
+                                                    <option value="上海">上海</option>
+                                                    <option value="江苏省">江苏省</option>
+                                                    <option value="浙江省">浙江省</option>
+                                                    <option value="安徽省">安徽省</option>
+                                                    <option value="福建省">福建省</option>
+                                                    <option value="江西省">江西省</option>
+                                                    <option value="山东省">山东省</option>
+                                                    <option value="河南省">河南省</option>
+                                                    <option value="湖北省">湖北省</option>
+                                                    <option value="湖南省">湖南省</option>
+                                                    <option value="广东省">广东省</option>
+                                                    <option value="广西壮族自治区">广西壮族自治区</option>
+                                                    <option value="海南省">海南省</option>
+                                                    <option value="重庆">重庆</option>
+                                                    <option value="四川省">四川省</option>
+                                                    <option value="贵州省">贵州省</option>
+                                                    <option value="云南省">云南省</option>
+                                                    <option value="西藏自治区">西藏自治区</option>
+                                                    <option value="陕西省">陕西省</option>
+                                                    <option value="甘肃省">甘肃省</option>
+                                                    <option value="青海省">青海省</option>
+                                                    <option value="宁夏回族自治区">宁夏回族自治区</option>
+                                                    <option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
                                                 </select>
-                                                <div class="layui-unselect layui-form-select">
-                                                    <div class="layui-select-title">
-                                                            <input type="text"
-                                                            placeholder="请选择省" value="北京" readonly=""
-                                                            class="layui-input layui-unselect"><i
-                                                            class="layui-edge"></i></div>
-                                                    <dl class="layui-anim layui-anim-upbit">
-                                                        <dd lay-value="" class="layui-select-tips">请选择省</dd>
-                                                        <dd lay-value="110000" class="layui-this">北京</dd>
-                                                        <dd lay-value="120000" class="">天津</dd>
-                                                        <dd lay-value="130000" class="">河北省</dd>
-                                                        <dd lay-value="140000" class="">山西省</dd>
-                                                        <dd lay-value="150000" class="">内蒙古自治区</dd>
-                                                        <dd lay-value="210000" class="">辽宁省</dd>
-                                                        <dd lay-value="220000" class="">吉林省</dd>
-                                                        <dd lay-value="230000" class="">黑龙江省</dd>
-                                                        <dd lay-value="310000" class="">上海</dd>
-                                                        <dd lay-value="320000" class="">江苏省</dd>
-                                                        <dd lay-value="330000" class="">浙江省</dd>
-                                                        <dd lay-value="340000" class="">安徽省</dd>
-                                                        <dd lay-value="350000" class="">福建省</dd>
-                                                        <dd lay-value="360000" class="">江西省</dd>
-                                                        <dd lay-value="370000" class="">山东省</dd>
-                                                        <dd lay-value="410000" class="">河南省</dd>
-                                                        <dd lay-value="420000" class="">湖北省</dd>
-                                                        <dd lay-value="430000" class="">湖南省</dd>
-                                                        <dd lay-value="440000" class="">广东省</dd>
-                                                        <dd lay-value="450000" class="">广西壮族自治区</dd>
-                                                        <dd lay-value="460000" class="">海南省</dd>
-                                                        <dd lay-value="500000" class="">重庆</dd>
-                                                        <dd lay-value="510000" class="">四川省</dd>
-                                                        <dd lay-value="520000" class="">贵州省</dd>
-                                                        <dd lay-value="530000" class="">云南省</dd>
-                                                        <dd lay-value="540000" class="">西藏自治区</dd>
-                                                        <dd lay-value="610000" class="">陕西省</dd>
-                                                        <dd lay-value="620000" class="">甘肃省</dd>
-                                                        <dd lay-value="630000" class="">青海省</dd>
-                                                        <dd lay-value="640000" class="">宁夏回族自治区</dd>
-                                                        <dd lay-value="650000" class="">新疆维吾尔自治区</dd>
-                                                    </dl>
-                                                </div>
                                             </div>
                                             <div class="layui-input-inline" data-action="city"><select name="city"
                                                     lay-verify="required" lay-filter="city">
                                                     <option value="">请选择市</option>
-                                                    <option value="110100" selected="">北京市</option>
+                                                    <option value="北京市" selected="">北京市</option>
                                                 </select>
-                                                <div class="layui-unselect layui-form-select">
-                                                    <div class="layui-select-title"><input type="text"
-                                                            placeholder="请选择市" value="北京市" readonly=""
-                                                            class="layui-input layui-unselect"><i
-                                                            class="layui-edge"></i></div>
-                                                    <dl class="layui-anim layui-anim-upbit">
-                                                        <dd lay-value="" class="layui-select-tips">请选择市</dd>
-                                                        <dd lay-value="110100" class="layui-this">北京市</dd>
-                                                    </dl>
-                                                </div>
                                             </div>
                                             <div class="layui-input-inline" data-action="area"><select name="area"
                                                     lay-verify="required" lay-filter="area">
                                                     <option value="">请选择区/县</option>
-                                                    <option value="110101" selected="">东城区</option>
-                                                    <option value="110102">西城区</option>
-                                                    <option value="110105">朝阳区</option>
-                                                    <option value="110106">丰台区</option>
-                                                    <option value="110107">石景山区</option>
-                                                    <option value="110108">海淀区</option>
-                                                    <option value="110109">门头沟区</option>
-                                                    <option value="110111">房山区</option>
-                                                    <option value="110112">通州区</option>
-                                                    <option value="110113">顺义区</option>
-                                                    <option value="110114">昌平区</option>
-                                                    <option value="110115">大兴区</option>
-                                                    <option value="110116">怀柔区</option>
-                                                    <option value="110117">平谷区</option>
-                                                    <option value="110118">密云区</option>
-                                                    <option value="110119">延庆区</option>
+                                                    <option value="东城区" selected="">东城区</option>
+                                                    <option value="西城区">西城区</option>
+                                                    <option value="朝阳区">朝阳区</option>
+                                                    <option value="丰台区">丰台区</option>
+                                                    <option value="石景山区">石景山区</option>
+                                                    <option value="海淀区">海淀区</option>
+                                                    <option value="门头沟区">门头沟区</option>
+                                                    <option value="房山区">房山区</option>
+                                                    <option value="通州区">通州区</option>
+                                                    <option value="顺义区">顺义区</option>
+                                                    <option value="昌平区">昌平区</option>
+                                                    <option value="大兴区">大兴区</option>
+                                                    <option value="怀柔区">怀柔区</option>
+                                                    <option value="平谷区">平谷区</option>
+                                                    <option value="密云区">密云区</option>
+                                                    <option value="延庆区">延庆区</option>
                                                 </select>
-                                                <div class="layui-unselect layui-form-select">
-                                                    <div class="layui-select-title"><input type="text"
-                                                            placeholder="请选择区/县" value="" readonly=""
-                                                            class="layui-input layui-unselect"><i
-                                                            class="layui-edge"></i></div>
-                                                    <dl class="layui-anim layui-anim-upbit">
-                                                        <dd lay-value="" class="layui-select-tips">请选择区/县</dd>
-                                                        <dd lay-value="110101" class="">东城区</dd>
-                                                        <dd lay-value="110102" class="">西城区</dd>
-                                                        <dd lay-value="110105" class="">朝阳区</dd>
-                                                        <dd lay-value="110106" class="">丰台区</dd>
-                                                        <dd lay-value="110107" class="">石景山区</dd>
-                                                        <dd lay-value="110108" class="">海淀区</dd>
-                                                        <dd lay-value="110109" class="">门头沟区</dd>
-                                                        <dd lay-value="110111" class="">房山区</dd>
-                                                        <dd lay-value="110112" class="">通州区</dd>
-                                                        <dd lay-value="110113" class="">顺义区</dd>
-                                                        <dd lay-value="110114" class="">昌平区</dd>
-                                                        <dd lay-value="110115" class="">大兴区</dd>
-                                                        <dd lay-value="110116" class="">怀柔区</dd>
-                                                        <dd lay-value="110117" class="">平谷区</dd>
-                                                        <dd lay-value="110118" class="">密云区</dd>
-                                                        <dd lay-value="110119" class="">延庆区</dd>
-                                                    </dl>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -233,16 +156,16 @@
                                         name="busiScope" class="layui-textarea"></textarea> </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label"><span
-                                        style="color: red">*</span>营业期限(止)：</label>
-                               <div class="layui-input-block">
-                                     <div class="layui-input-inline">
-                                        <input type="radio" name="busiPeriod" value="1" title="长期" lay-filter="business_time_type">
+                                <label class="layui-form-label"><span style="color: red">*</span>营业期限(止)：</label>
+                                <div class="layui-input-block">
+                                    <div class="layui-input-inline">
+                                        <input type="radio" name="busiPeriod" value="1" title="长期"
+                                            lay-filter="business_time_type">
                                         <div class="layui-unselect layui-form-radio">
                                             <i class="layui-anim layui-icon"></i>
                                             <div>长期</div>
-                                        </div> <input type="radio" name="busiPeriod" value="2" title="固定日期"
-                                            checked="" lay-filter="business_time_type">
+                                        </div> <input type="radio" name="busiPeriod" value="2" title="固定日期" checked=""
+                                            lay-filter="business_time_type">
                                         <div class="layui-unselect layui-form-radio layui-form-radioed"><i
                                                 class="layui-anim layui-icon"></i>
                                             <div>固定日期</div>
@@ -250,8 +173,8 @@
                                     </div>
 
                                     <div class="layui-input-inline"> <input type="text" class="layui-input"
-                                            id="business_time" name="business_time" lay-verify="required" value="2020-12-01"
-                                            placeholder="yyyy-MM-dd" autocomplete="off" lay-key="4">
+                                            id="business_time" name="business_time" lay-verify="required"
+                                            value="2020-12-01" placeholder="yyyy-MM-dd" autocomplete="off" lay-key="4">
                                     </div>
                                 </div>
 
@@ -271,9 +194,9 @@
                             <div class="layui-upload">
                                 <button type="button" class="layui-btn" id="test2">多图片上传</button>
                                 <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
-                                  预览图：
-                                  <div class="layui-upload-list" id="demo2"></div>
-                               </blockquote>
+                                    预览图：
+                                    <div class="layui-upload-list" id="demo2"></div>
+                                </blockquote>
                             </div>
                         </div>
                         <div class="layui-col-md8 layui-form">
@@ -310,16 +233,16 @@
                                         class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
-                              style="color: red">*</span>手机号：</label>
-                              <div class="layui-input-block"> <input type="text" id="operPhone" name="operPhone"
-                                                                     value="15632147861" lay-verify="required" autocomplete="off" placeholder="请输入手机号"
-                                                                     class="layui-input"> </div>
+                                        style="color: red">*</span>手机号：</label>
+                                <div class="layui-input-block"> <input type="text" id="operPhone" name="operPhone"
+                                        value="15632147861" lay-verify="required" autocomplete="off"
+                                        placeholder="请输入手机号" class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>证件号码：</label>
                                 <div class="layui-input-block"> <input type="text" id="cardcode" name="operCode"
-                                        value="450221200005036619" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码"
-                                        class="layui-input"> </div>
+                                        value="450221200005036619" lay-verify="identity" autocomplete="off"
+                                        placeholder="请输入证件号码" class="layui-input"> </div>
                             </div>
                             <!--<div class="layui-form-item"> <label class="layui-form-label"><span
                                         style="color: red">*</span>有效期限(止)：</label>
@@ -355,9 +278,9 @@
                             <div class="layui-upload">
                                 <button type="button" class="layui-btn" id="test3">多图片上传</button>
                                 <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
-                                  预览图：
-                                  <div class="layui-upload-list" id="demo3"></div>
-                               </blockquote>
+                                    预览图：
+                                    <div class="layui-upload-list" id="demo3"></div>
+                                </blockquote>
                             </div>
                         </div>
                         <div class="layui-col-md8">
@@ -401,16 +324,16 @@
                                         class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item"> <label class="layui-form-label"><span
-                              style="color: red">*</span>手机号：</label>
-                              <div class="layui-input-block"> <input type="text" id="lepPhone" name="lepPhone"
-                                                                     value="15632147761" lay-verify="required" autocomplete="off" placeholder="请输入手机号"
-                                                                     class="layui-input"> </div>
+                                        style="color: red">*</span>手机号：</label>
+                                <div class="layui-input-block"> <input type="text" id="lepPhone" name="lepPhone"
+                                        value="15632147761" lay-verify="required" autocomplete="off"
+                                        placeholder="请输入手机号" class="layui-input"> </div>
                             </div>
                             <div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span
                                         style="color: red">*</span>证件号码：</label>
                                 <div class="layui-input-block"> <input type="text" name="lepCode" id="lep_code"
-                                        value="450221200005036619" lay-verify="identity" autocomplete="off" placeholder="请输入证件号码"
-                                        class="layui-input"> </div>
+                                        value="450221200005036619" lay-verify="identity" autocomplete="off"
+                                        placeholder="请输入证件号码" class="layui-input"> </div>
                             </div>
                             <!--<div class="layui-form-item layui-col-lep"> <label class="layui-form-label"><span
                                         style="color: red">*</span>有效期限(止)：</label>
@@ -926,55 +849,55 @@
 
         form.render('radio');
         form.render('select');
-         //拖拽上传
+        //拖拽上传
         upload.render({
             elem: '#png'
             // ,url: 'https://httpbin.org/post' //改成您自己的上传接口
-            ,url: 'https:/localhost'
-            ,done: function(res){
-            layer.msg('上传成功');
-            layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
-            console.log(res)
+            , url: 'https:/localhost'
+            , done: function (res) {
+                layer.msg('上传成功');
+                layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+                console.log(res)
             }
         });
         //多图片上传经办人
         upload.render({
             elem: '#test2'
-            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
-            ,multiple: true
-            ,before: function(obj){
-            //预读本地文件示例，不支持ie8
-            obj.preview(function(index, file, result){
-                $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'"width="'+ 50 +'"height="'+ 50 +'" class="layui-upload-img">&nbsp&nbsp')
+            , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            , multiple: true
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo2').append('<img src="' + result + '" alt="' + file.name + '"width="' + 50 + '"height="' + 50 + '" class="layui-upload-img">&nbsp&nbsp')
                 });
             }
-            ,done: function(res){
-            //上传完毕
+            , done: function (res) {
+                //上传完毕
             }
         });
         //多图片上传法人
         upload.render({
             elem: '#test3'
-            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
-            ,multiple: true
-            ,before: function(obj){
-            //预读本地文件示例，不支持ie8
-            obj.preview(function(index, file, result){
-                $('#demo3').append('<img src="'+ result +'" alt="'+ file.name +'"width="'+ 50 +'"height="'+ 50 +'" class="layui-upload-img">&nbsp&nbsp')
+            , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            , multiple: true
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo3').append('<img src="' + result + '" alt="' + file.name + '"width="' + 50 + '"height="' + 50 + '" class="layui-upload-img">&nbsp&nbsp')
                 });
             }
-            ,done: function(res){
-            //上传完毕
+            , done: function (res) {
+                //上传完毕
             }
         });
         //指定允许上传的文件类型
         upload.render({
             elem: '#test4'
-            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
-            ,accept: 'file' //普通文件
-            ,done: function(res){
-            layer.msg('上传成功');
-            console.log(res);
+            , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            , accept: 'file' //普通文件
+            , done: function (res) {
+                layer.msg('上传成功');
+                console.log(res);
             }
         });
     });
