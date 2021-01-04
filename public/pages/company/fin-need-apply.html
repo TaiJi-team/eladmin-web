@@ -756,6 +756,12 @@
         -webkit-box-shadow: 0 0 10px rgba(167, 167, 167, .73);
         box-shadow: 0 0 10px rgba(167, 167, 167, .73);
     }
+
+    .prod-check {
+        width: 5%;
+        float: left;
+        margin: 4% 5% 0 0;
+    }
 </style>
 
 <div class="layui-card">
@@ -801,7 +807,7 @@
                 <div class="ac page-head"><span>发布融资需求</span></div>
                 <div class="clearfix page-cont take-release">
                     <div class="layui-form" lay-filter="component-form-group">
-                        <input name="operUserId" type="hidden" value="123456"/>
+                        <input name="operUserId" type="hidden" value="123456" />
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>企业名称：</label>
@@ -813,7 +819,7 @@
                                 <input type="text" name="comid_sele" class="editable-select" id="editable-select_sele" autocomplete="off" placeholder="请选择或输入企业名称" lay-verify="required|companyname">  -->
                                 <select id="compId" name="compId" lay-verify="required">
                                     <option value="" selected="selected">--请选择融资公司--</option>
-                                    <option value="1" selected="selected">公司1</option>
+                                    <option value="1344522415231496193" selected="selected">零售店</option>
                                     <option value="2">公司2</option>
                                     <option value="3">公司3</option>
                                     <option value="4">公司4</option>
@@ -979,8 +985,8 @@
                                 <span class="form-required">*</span>期望年化利率：</label>
                             <div class="clearfix layui-input-block">
                                 <span class="fr input-unit">%</span>
-                                <input type="text" name="annuRate" value="5" lay-verify="required|money" autocomplete="off"
-                                    placeholder="请输入年利率" class="layui-input" maxlength="18">
+                                <input type="text" name="annuRate" value="5" lay-verify="required|money"
+                                    autocomplete="off" placeholder="请输入年利率" class="layui-input" maxlength="18">
                             </div>
                         </div>
 
@@ -1137,7 +1143,8 @@
                         </div>
                         <div class="fl ac item-full">
                             <!-- <input type="hidden" name="action" value="financing_post"> -->
-                            <button id="fin-need-apply1" class="layui-btn btn g-bg g-shadow take-choose" lay-filter="fin-need-apply" lay-submit>发布融资需求</button>
+                            <button id="fin-need-apply1" class="layui-btn btn g-bg g-shadow take-choose"
+                                lay-filter="fin-need-apply" lay-submit>发布融资需求</button>
                         </div>
                     </div>
                 </div>
@@ -1149,7 +1156,7 @@
                     <ul class="fr grant-ul">
                         <li class="ac fl">
                             <p class="item-cont"></p>
-<!--                            <p class="item-name">乔禾教育</p>-->
+                            <!--                            <p class="item-name">乔禾教育</p>-->
                         </li>
                     </ul> <span>融资需求发布成功，请选择融资产品</span>
                 </div>
@@ -1167,13 +1174,13 @@
                         </div>
                         <div class="line-middle service-contact">
                             <div class="line-middle">
-<!--                                <p class="contact-name">江季垚</p> <a href="tel:4001016871" title="tel:4001016871"> <img-->
-<!--                                        src="/assets/images/p-ico.png" class="contact-p" alt=""></a> <a-->
-<!--                                    href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"-->
-<!--                                    target="_blank" class="chat-btn" data-type="chat"-->
-<!--                                    data-guid="851d94d2108543dc8160ce29ee8f4578" data-name="江季垚"-->
-<!--                                    data-headimgurl="/celoan/sysfile/2019/05/10/2019051008114476718.jpg"> <img-->
-<!--                                        src="/assets/images/msg-ico.png" class="contact-msg" alt=""></a>-->
+                                <!--                                <p class="contact-name">江季垚</p> <a href="tel:4001016871" title="tel:4001016871"> <img-->
+                                <!--                                        src="/assets/images/p-ico.png" class="contact-p" alt=""></a> <a-->
+                                <!--                                    href="/manage/#/messageList.aspx?id=851d94d2108543dc8160ce29ee8f4578&amp;ut=4"-->
+                                <!--                                    target="_blank" class="chat-btn" data-type="chat"-->
+                                <!--                                    data-guid="851d94d2108543dc8160ce29ee8f4578" data-name="江季垚"-->
+                                <!--                                    data-headimgurl="/celoan/sysfile/2019/05/10/2019051008114476718.jpg"> <img-->
+                                <!--                                        src="/assets/images/msg-ico.png" class="contact-msg" alt=""></a>-->
                             </div>
                         </div>
                     </div>
@@ -1185,8 +1192,20 @@
                                         class="t-num">1</span>个金融产品，请您选择意向产品或选择让融资顾问为您推荐</span> </dt>
                             <dd>
                                 <ul class="clearfix choose-ul">
-                                    <li>
-                                        <div class="item-check-btn">
+                                    <li style="width: 80%;margin-left: -9%;">
+                                        <div
+                                            class="prod-check layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
+                                            <div class="layui-unselect layui-form-checkbox layui-form-checked"
+                                                lay-skin="primary">
+                                                <i class="layui-icon layui-icon-ok"></i>
+                                                <!-- 产品名称 -->
+                                                <input type="hidden" id="prodId" name="prodId" value="39547137" />
+                                                <input type="hidden" id="prodName" name="prodName" value="小微企业贷款" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div>
                                             <div style="display: none;"> <input type="checkbox" name="product"
                                                     title="线上快审快贷" value="326" lay-skin="primary">
                                                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
@@ -1212,13 +1231,16 @@
                         </dl>
                     </div>
                     <div class="bank-product-other">
-                        <div class="item-nocheck-btn">
+                        <!-- <div class="item-nocheck-btn">
                             <div class="clearfix" style="display: none;"> <input type="checkbox" name="noproduct"
                                     value="1" lay-skin="primary" lay-filter="noproduct" title="以上产品都不合适，让融资顾问为我推荐">
                                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                    <span>以上产品都不合适，让融资顾问为我推荐</span><i class="layui-icon layui-icon-ok"></i></div>
+                                    <span>以上产品都不合适，让融资顾问为我推荐</span>
+                                    <i class="layui-icon layui-icon-ok"></i></div>
                             </div>
-                        </div> <span>以上产品均不合适，让融资顾问为我推荐</span> <a href="/#/requIndex/financialProducts" target="_blank"
+                        </div> -->
+                        <!-- <span>以上产品均不合适，让融资顾问为我推荐</span> -->
+                        <a href="/#/requIndex/financialProducts" target="_blank"
                             class="more-product">查看更多金融产品&gt;&gt;</a>
                     </div>
                     <div class="ac choose-btn" style="float: left;margin: 3% 3% 0 0;"> <input type="hidden" name="hdnid"
@@ -1236,65 +1258,110 @@
         </div>
         <!-- content end -->
     </div>
+    <!-- 
+    <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
+        <input type="checkbox" name="layTableCheckbox" lay-skin="primary">
+        <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+            <i class="layui-icon layui-icon-ok"></i></div>
+    </div>
+
+    <div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox"><input type="checkbox"
+            name="layTableCheckbox" lay-skin="primary">
+        <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+            <i class="layui-icon layui-icon-ok"></i>
+        </div>
+    </div> -->
+
 
 </div>
 <script>
-    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload', 'common'], function () {
         var form = layui.form;
         var table = layui.table;
         var config = layui.config;
         var layer = layui.layer;
         var util = layui.util;
         var admin = layui.admin;
+        var common = layui.common;
         //上传
         var upload = layui.upload;
         var formData = null;
+        // 融资申请提交
         form.on('submit(fin-need-apply)', function (data) {
-          console.log(data.field);
-          formData = data.field;
+            formData = data.field;
+            console.log(formData);
+            admin.req('api-finance/anceneedcomp/save', JSON.stringify(formData), function (res) {
+                layer.closeAll('loading');
+                if (res.code == 0) {
+                    layer.msg(res.msg, { icon: 1, time: 500 });
+                    localStorage.setItem('needId', res.datas.id);
+                    localStorage.setItem('toSele', true);
+                    $('.need-apply').hide();
+                    $('.select-prod').show();
+
+                } else {
+                    layer.msg('请求失败', { icon: 2, time: 500 });
+                }
+            }, "POST");
         });
         let toSele = JSON.parse(localStorage.getItem('toSele'));
-        /*if (!toSele) {
-          $('.need-apply').show();
-        } else {
-          $('.need-apply').show();
-        }*/
-
         if (!toSele) {
             $('.need-apply').show();
             $('.select-prod').hide()
+            setTimeout(function () {
+                localStorage.setItem('toSele', false)
+            }, 5000)
+            admin.req('api-finance/financeproduct/List?page=1&limit=10&loanRange=' + $('#halfYearIncome option:selected').text(), {}, function (res) {
+                var prodList = res.data;
+                console.log(prodList);
+                // TODO 渲染模板
+
+                $('.prod-check div').on({
+                    click: function () {
+                        var productList;
+                        var productList;
+                        if ($(this).hasClass('layui-form-checked')) {
+                            $(this).removeClass('layui-form-checked')
+                        } else {
+                            $(this).addClass('layui-form-checked')
+                        }
+                    }
+                })
+            }, "GET");
         } else {
             $('.need-apply').hide();
             $('.select-prod').show()
         }
-        $('#fin-need-apply1').on('click', function () {
-            localStorage.setItem('toSele', true);
-            $('.need-apply').hide();
-            $('.select-prod').show();
-            var productList;
-            admin.req('api-finance/financeproduct/List?page=1&limit=10&loanRange='+ $('#halfYearIncome option:selected').text(),{},function (data) {
-                productList = data.data;
-                console.log(productList);
-              }
-              ,"GET");
-        })
+
         $('#sele-prod-cancel').on('click', function () {
             localStorage.setItem('toSele', false);
             $('#fin-need-apply1').unbind('click');
             location.reload();
         })
+        // 选择金融产品提交
         $('#sele-prod-commit').on('click', function () {
-            formData.productId = '921101316';
-            console.log(formData);
-            admin.req('api-finance/anceneedcomp/save', JSON.stringify(formData), function (data) {
-              layer.closeAll('loading');
-              console.log(data);
-              if (data.code == 0) {
-                layer.msg(data.msg, {icon: 1, time: 500});
-                location.href ='#!fin-need';
-              } else {
-                layer.msg('请求失败', {icon: 2, time: 500});
-              }
+            // console.log(formData);
+            var prodId, prodName;
+            $('.layui-form-checked').each(function (index, ele) {
+                prodId = $($(ele).find('input[name="prodId"]')[0]).val();
+                prodName = $($(ele).find('input[name="prodName"]')[0]).val();
+            })
+            var formData = {
+                needId: localStorage.getItem('needId'),
+                operUserId: common.getUserInfo().id,
+                prodId: prodId,
+                prodName: prodName
+            }
+            console.log(formData)
+            admin.req('api-finance/anceneedcomp/seleProd', JSON.stringify(formData), function (data) {
+                layer.closeAll('loading');
+                console.log(data);
+                if (data.code == 0) {
+                    layer.msg(data.msg, { icon: 1, time: 500 });
+                    location.href = '#!fin-need';
+                } else {
+                    layer.msg('请求失败', { icon: 2, time: 500 });
+                }
             }, "POST");
         })
     });

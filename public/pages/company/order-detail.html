@@ -334,140 +334,7 @@
     }
 </style>
 
-<div class="fin-need layui-card">
-    <div class="layui-card-header">
-        <h2 class="header-title">我的融资需求</h2>
-        <span class="layui-breadcrumb pull-right">
-            <a href="#!console">工作台</a>
-            <a><cite>我的融资需求</cite></a>
-        </span>
-    </div>
-
-    <div class="layui-card-body">
-        <div class="layui-fluid">
-            <div class="layui-row layui-col-space15">
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-body">
-                            <div class="layui-field-box">
-                                <div class="layui-form">
-                                    关键字：
-                                    <div class="layui-inline" style="width: 350px;">
-                                        <input type="text" value="" name="s_key" placeholder="请输入需求编号、订单编号或企业名称"
-                                            class="layui-input search_input">
-                                    </div>
-                                    <div class="layui-inline">
-                                        <a class="layui-btn" lay-submit="" lay-filter="searchForm">查询</a>
-                                    </div>
-                                    <div class="layui-inline">
-                                        <a class="layui-btn layui-btn-normal" href="#!fin-need-apply">发布融资需求</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="fin-need-list layui-show">
-                                <div class="layui-row layui-col-space15" id="page_template_body_id">
-                                    <div class="layui-card" id="text1">
-                                        <script id="demo" type="text/html">
-                                      {{# layui.each(d.data, function(index,item){ }}
-                                      <div class="layui-collapse" style="margin-top: 10px; border: 0px;">
-                                        <div class="layui-colla-item">
-                                        <div class="layui-colla-title">
-                                        <div class="layui-form-item">
-                                        <div class="layui-inline"> <label
-                                      class="layui-form-label">需求编号：</label>
-                                      <div class="layui-input-inline"> {{ item.id }} </div>
-                                        </div>
-                                        <div class="layui-inline">
-                                        <div class="layui-input-inline"> {{item.compName}}<a
-                                      lay-href="enterpriseCert#?id=98966">
-                                      <!-- <span class="color-yellow">【待实名认证】</span> -->
-                                    </a> </div>
-                                      </div>
-                                      <div class="layui-inline"> <label
-                                      class="layui-form-label">需求金额：</label>
-                                      <div class="layui-input-inline"> {{item.loanMoney}}万元 </div>
-                                      </div>
-                                      <div class="layui-inline"> <label class="layui-form-label"
-                                      style="line-height: 30px;">贷款期限：</label>
-                                      <div class="layui-input-inline" style="line-height: 40px;"> {{ item.loanPeriod }}个月
-                                      <ul class="ul-change layui-nav">
-                                        <li class="layui-nav-item"> <a href="javascript:;"
-                                      style="color: #1E9FFF;">详情<span
-                                      class="layui-nav-more"></span></a>
-                                      <dl class="dl-show layui-nav-child">
-                                        <dd><a href="javascript:;">年利率：{{ item.annuRate }}%</a></dd>
-                                      <!-- <dd><a href="javascript:;">担保方式：{{ item.annuRate }}</a></dd>
-                                      <dd><a href="javascript:;">还款方式：{{ item.annuRate }}</a></dd> -->
-                                      <!-- <dd><a href="javascript:;">意向产品：-</a></dd> -->
-                                      <dd><a href="javascript:;">需求进度：<em class="color-yellow">{{ item.progState || ''}}</em></a>
-                                      </dd>
-                                      {{# if(item.progState == '待选择金融产品'){ }}
-                                      <dd><a href="javascript:;" class="to-sele-prod" style="color: #1E9FFF;text-align: center;">选择金融产品</a></dd>
-                                      {{# } }}
-                                      </dl>
-                                      </li> <span class="layui-nav-bar"></span>
-                                      </ul>
-                                      </div>
-                                      </div>
-                                      <div class="layui-inline"> 
-                                          <!-- <label class="layui-form-label">融资顾问：</label>
-                                      <div class="layui-input-inline"> 江季垚4001016871 </div> -->
-                                        </div>
-                                        </div> <i class="layui-icon layui-colla-icon"></i>
-                                        </div>
-                                        <table class="layui-table">
-                                        <colgroup>
-                                        <col width="15%">
-                                        <col width="15%">
-                                        <col width="20%">
-                                        <col width="10%">
-                                        <col>
-                                        <col width="10%">
-                                        <col width="8%">
-                                        </colgroup>
-                                        <thead>
-                                        <tr>
-                                        <th>订单编号</th>
-                                        <th>金融产品名称</th>
-                                        <th>对接机构</th>
-                                        <th>客户经理</th>
-                                        <th>订单进度</th>
-                                        <th>订单耗时</th>
-                                        <th>操作</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {{# layui.each(item.orders, function(index,order){ }}
-                                        <tr>
-                                          <td>{{ order.id }}</td>
-                                          <td>{{ order.prodName }}</td>
-                                          <td>{{ order.finOrg || ''}}</td>
-                                          <td>{{ order.custManager || ''}}</td>
-                                          <td>{{ order.financeStat }}</td>
-                                          <td>36天18小时</td>
-                                          <td><a class="color-blue" onclick="orderDetail(order)">详情</a></td>
-                                        </tr>
-                                        {{#  }); }}
-                                        </tbody>
-                                        </table>
-                                        </div>
-                                        </div>
-                                      {{#  }); }}
-                                    </script>
-                                    </div>
-                                    <div id="test11"></div>
-                                </div>
-                            </div>
-                            <input type="hidden" id="publicState" value="0">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="fin-need-detail layui-card" style="display: none;">
+<div class="fin-need-detail layui-card">
     <div class="layui-card-header">
         <h2 class="header-title">融资需求详情</h2>
         <span class="layui-breadcrumb pull-right">
@@ -723,258 +590,6 @@
                                                                             lay-event="upload">上传</a> </div>
                                                                 </td>
                                                             </tr>
-                                                            <!-- <tr data-index="4">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51519</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        企业基本信息</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-index="5">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51520</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        企业银行账户</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-index="6">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51521</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        公司章程</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-index="7">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51522</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        验资报告</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-index="8">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51523</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        企业人行征信报告</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-index="9">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51524</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        贷款用途资料</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-index="10">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51525</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        主要供销客户的销购合同/协议</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-index="11">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51526</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        法定代表人（实际控制人）婚姻状况</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-index="12">
-                                                                <td data-field="id" data-key="3-0-0" align="center"
-                                                                    class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-0">
-                                                                        51527</div>
-                                                                </td>
-                                                                <td data-field="pretrialname" data-key="3-0-1"
-                                                                    align="center" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-1">
-                                                                        法定代表人（实际控制人）人行征信报告</div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-2" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-2">
-                                                                        未上传 </div>
-                                                                </td>
-                                                                <td data-field="state" data-key="3-0-3" align="center"
-                                                                    data-content="1" class="">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-3">
-                                                                        待提交 </div>
-                                                                </td>
-                                                                <td data-field="4" data-key="3-0-4" align="center"
-                                                                    data-off="true" class="layui-table-col-special">
-                                                                    <div class="layui-table-cell laytable-cell-3-0-4">
-                                                                        <a class="layui-btn layui-btn-xs"
-                                                                            lay-event="upload">上传</a> </div>
-                                                                </td>
-                                                            </tr> -->
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -1157,26 +772,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="layui-row layui-col-space15">
-                            <div class="layui-col-md12">
-                                <div class="layui-card">
-                                    <div class="layui-card-header">机构客户经理 </div>
-                                    <div class="layui-card-body layadmin-maillist-fluid layui-row">
-                                        <div class="layadmin-homepage-panel layadmin-homepage-shadow">
-                                            <div style="text-align: center;">
-                                                <div class="layui-card-body LAY-senior-im-chat">
-                                                    <div class="layadmin-homepage-pad-ver"> <img
-                                                            class="layadmin-homepage-pad-img"
-                                                            src="/res/images/default_face.png" width="96" height="96">
-                                                    </div>
-                                                    <h4 class="layadmin-homepage-font">企业实名认证审核通过后，将为您分配客户经理</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="layui-row layui-col-space15">
                             <div class="layui-col-md12">
                                 <div class="layui-card">
@@ -1245,7 +840,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="layui-col-md7 ac choose-btn"> <input type="hidden" name="hdnid" value="36425"> <input
+                    <div class="layui-col-md9 ac choose-btn"> <input type="hidden" name="hdnid" value="36425"> <input
                             type="hidden" name="hdproductCount" value="1"> <input type="hidden" name="action"
                             value="financingPublish2_post"> <button id="need-detail-cancel"
                             class="layui-btn btn g-bg g-shadow take-choose" lay-submit=""
@@ -1288,116 +883,73 @@
 
         var datas;
 
-        admin.req('api-finance/anceneedcomp/findAll', JSON.stringify(test), function (data) {
-            count = data.count;
-            console.log(data);
-            if (0 == data.code) {
-                datas = data;
-            } else {
-                layer.msg('获取数据失败', { icon: 2, time: 500 });
-            }
-        }, 'POST');
+        // admin.req('api-finance/anceneedcomp/findAll', JSON.stringify(test), function (data) {
+        //     count = data.count;
+        //     console.log(data);
+        //     if (0 == data.code) {
+        //         datas = data;
+        //     } else {
+        //         layer.msg('获取数据失败', { icon: 2, time: 500 });
+        //     }
+        // }, 'POST');
 
-        var getTpl = demo.innerHTML;
-        laytpl(getTpl).render(datas, function (html) {
-            document.getElementById('text1').innerHTML = html;
-        });
+        // var getTpl = demo.innerHTML;
+        // laytpl(getTpl).render(datas, function (html) {
+        //     document.getElementById('text1').innerHTML = html;
+        // });
 
-        var progState = function (state) {
-            // '0'未选择产品 '1'对接中 '-1'需求取消
-            switch (state) {
-                case '0':
-                    return '待选择金融产品'
-                case '1':
-                    return '融资需求对接中'
-                case '-1':
-                    return '需求取消'
-            }
-        }
-
-        var finState = function (state) {
-            switch (state) {
-                case '1':
-                    return '待平台审核'
-                case '2':
-                    return '审核通过'
-                case '3':
-                    return '业务受理中'
-                case '4':
-                    return '审批通过'
-                case '0':
-                    return '未选择产品'
-                case '-1':
-                    return '订单取消'
-            }
-        }
-        laypage.render({
-            elem: 'test11'
-            , count: count
-            , layout: ['count', 'prev', 'page', 'next', 'limit', 'limits']
-            , jump: function (obj) {
-                console.log(obj);
-                test.page = obj.curr;
-                test.limit = 5;
-                admin.req('api-finance/anceneedcomp/findAll', JSON.stringify(test), function (res) {
-                    count = res.count;
-                    console.log(res);
-                    if (0 == res.code) {
-                        datas = res;
-                        (datas.data).forEach(function (index, d) {
-                            datas.data[d].progState = progState(datas.data[d].progState);
-                            var arr = datas.data[d].orders;
-                            arr.forEach(function (index, order) {
-                                arr[order].financeStat = finState(arr[order].financeStat);
-                            })
-                        })
-                        console.log(1111)
-                        laytpl(getTpl).render(datas, function (html) {
-                            document.getElementById('text1').innerHTML = html;
-                        });
-                        // $('a.color-blue').on({
-                        //     click: function () {
-                        //         localStorage.setItem('toDetail', true)
-                        //         $('#need-detail-cancel').unbind('click')
-                        //         location.reload()
-                        //     }
-                        // })
-                        $('.ul-change').on({
-                            mouseover: function () {
-                                //关闭之前显示的dl
-                                if (!!cur_dl) {
-                                    closeDl(cur_dl, cur_span)
-                                }
-                                cur_span = $(this).find('span')[0]
-                                cur_dl = $(this).find('dl')[0]
-                                $(cur_span).addClass('layui-nav-mored')
-                                $(cur_dl).addClass('layui-show')
-                            },
-                            mouseout: function () {
-                                closeDl(cur_dl, cur_span)
-                            }
-                        });
-                        $('.dl-show').on({
-                            mouseover: function () {
-                                isShow = true;
-                            },
-                            mouseout: function () {
-                                closeDl(cur_dl, cur_span)
-                            }
-                        });
-                        // 选择金融产品
-                        $('.to-sele-prod').on({
-                            click: function () {
-                                localStorage.setItem('toSele', true)
-                                location.href = "#!fin-need-apply"
-                            }
-                        })
-                    } else {
-                        layer.msg('获取数据失败', { icon: 2, time: 500 });
-                    }
-                }, 'POST');
-            }
-        });
+        // laypage.render({
+        //     elem: 'test11'
+        //     , count: count
+        //     , layout: ['count', 'prev', 'page', 'next', 'limit', 'limits']
+        //     , jump: function (obj) {
+        //         console.log(obj);
+        //         test.page = obj.curr;
+        //         test.limit = obj.limit;
+        //         admin.req('api-finance/anceneedcomp/findAll', JSON.stringify(test), function (data) {
+        //             count = data.count;
+        //             console.log(data);
+        //             if (0 == data.code) {
+        //                 datas = data;
+        //                 laytpl(getTpl).render(datas, function (html) {
+        //                     document.getElementById('text1').innerHTML = html;
+        //                 });
+        //                 $('a.color-blue').on({
+        //                     click: function () {
+        //                         localStorage.setItem('toDetail', true)
+        //                         $('#need-detail-cancel').unbind('click')
+        //                         location.reload()
+        //                     }
+        //                 })
+        //                 $('.ul-change').on({
+        //                     mouseover: function () {
+        //                         //关闭之前显示的dl
+        //                         if (!!cur_dl) {
+        //                             closeDl(cur_dl, cur_span)
+        //                         }
+        //                         cur_span = $(this).find('span')[0]
+        //                         cur_dl = $(this).find('dl')[0]
+        //                         $(cur_span).addClass('layui-nav-mored')
+        //                         $(cur_dl).addClass('layui-show')
+        //                     },
+        //                     mouseout: function () {
+        //                         closeDl(cur_dl, cur_span)
+        //                     }
+        //                 });
+        //                 $('.dl-show').on({
+        //                     mouseover: function () {
+        //                         isShow = true;
+        //                     },
+        //                     mouseout: function () {
+        //                         closeDl(cur_dl, cur_span)
+        //                     }
+        //                 })
+        //             } else {
+        //                 layer.msg('获取数据失败', { icon: 2, time: 500 });
+        //             }
+        //         }, 'POST');
+        //     }
+        // });
 
         // $('.ul-change').on({
         //     mouseover: function () {
@@ -1414,12 +966,21 @@
         //         closeDl(cur_dl, cur_span)
         //     }
         // });
+
         // $('.dl-show').on({
         //     mouseover: function () {
         //         isShow = true;
         //     },
         //     mouseout: function () {
         //         closeDl(cur_dl, cur_span)
+        //     }
+        // })
+
+        // 选择金融产品
+        // $('#select-prod').on({
+        //     click: function () {
+        //         localStorage.setItem('toSele', true)
+        //         location.href = "#!fin-need-apply"
         //     }
         // })
 
@@ -1430,25 +991,24 @@
         //     }
         // })
 
-        let toDetail = JSON.parse(localStorage.getItem('toDetail'))
-        if (!toDetail) {
-            $('.fin-need').show()
-            $('.fin-need-detail').hide()
-        } else {
-            $('.fin-need').hide()
-            $('.fin-need-detail').show()
-            setTimeout(function () {
-                localStorage.setItem('toDetail', false)
-            }, 3000)
-        }
+        // let toDetail = JSON.parse(localStorage.getItem('toDetail'))
+        // if (!toDetail) {
+        //     $('.fin-need').show()
+        //     $('.fin-need-detail').hide()
+        // } else {
+        //     $('.fin-need').hide()
+        //     $('.fin-need-detail').show()
+        // }
+
         // 详情
-        $('a.color-blue').on({
-            click: function () {
-                localStorage.setItem('toDetail', true)
-                $('#need-detail-cancel').unbind('click')
-                location.reload()
-            }
-        })
+        // $('a.color-blue').on({
+        //     click: function () {
+        //         localStorage.setItem('toDetail', true)
+        //         $('#need-detail-cancel').unbind('click')
+        //         location.reload()
+        //     }
+        // })
+
         // 返回
         $('.my-fin-need').on({
             click: function () {
@@ -1516,7 +1076,7 @@
             });
         };
         var orderDetail = function (order) {
-            console.log(order1)
+            console.log(order)
         };
     });
 
