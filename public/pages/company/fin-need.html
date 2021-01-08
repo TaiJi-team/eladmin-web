@@ -432,7 +432,7 @@
                                         <th>对接机构</th>
                                         <th>客户经理</th>
                                         <th>订单进度</th>
-                                        <th>订单耗时</th>
+                                        <!--<th>订单耗时</th>-->
                                         <th>操作</th>
                                         </tr>
                                         </thead>
@@ -444,7 +444,7 @@
                                           <td>{{ order.finOrg || ''}}</td>
                                           <td>{{ order.custManager || ''}}</td>
                                           <td>{{ order.financeStat }}</td>
-                                          <td>36天18小时</td>
+                                          <!--<td>36天18小时</td>-->
                                           <td><a class="color-blue" value="{{ order.id }}">详情</a></td>
                                         </tr>
                                         {{#  }); }}
@@ -523,27 +523,27 @@
                                                   </tr>
                                                   <tr>
                                                     <td style="background-color: #f2f2f2;">融资金额</td>
-                                                    <td>1000万元</td>
+                                                    <td>{{ d.loanMoney }}万元</td>
                                                     <td style="background-color: #f2f2f2;">年利率</td>
-                                                    <td>5%</td>
+                                                    <td>{{ d.annuRate }}%</td>
                                                   </tr>
                                                   <tr>
                                                     <td style="background-color: #f2f2f2;">融资期限</td>
-                                                    <td>12月</td>
-                                                    <td style="background-color: #f2f2f2;">融资投向</td>
-                                                    <td></td>
+                                                    <td>{{ d.loanPeriod }}月</td>
+                                                    <!--<td style="background-color: #f2f2f2;">融资投向</td>
+                                                    <td></td>-->
                                                   </tr>
-                                                  <tr>
+                                                  <!--<tr>
                                                     <td style="background-color: #f2f2f2;">担保方式</td>
                                                     <td>不限</td>
                                                     <td style="background-color: #f2f2f2;">还款方式</td>
                                                     <td>不限</td>
-                                                  </tr>
+                                                  </tr>-->
                                                   <tr>
                                                     <td style="background-color: #f2f2f2;">申请企业</td>
-                                                    <td>乔禾教育</td>
+                                                    <td>{{ d.compName || '' }}</td>
                                                     <td style="background-color: #f2f2f2;">法定代表人</td>
-                                                    <td></td>
+                                                    <td>{{ d.nickName || '' }}</td>
                                                   </tr>
                                                   <tr>
                                                     <td style="background-color: #f2f2f2;">对接机构</td>
@@ -555,8 +555,8 @@
                                                   <tr>
                                                     <td style="background-color: #f2f2f2;">创建时间</td>
                                                     <td>2020-08-27 19:17:04</td>
-                                                    <td style="background-color: #f2f2f2;">订单耗时</td>
-                                                    <td>36天18小时</td>
+                                                    <!--<td style="background-color: #f2f2f2;">订单耗时</td>
+                                                    <td>36天18小时</td>-->
                                                   </tr>
                                                   </tbody>
                                             </table>
