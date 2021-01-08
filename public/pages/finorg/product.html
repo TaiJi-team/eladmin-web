@@ -46,8 +46,8 @@
         // 渲染表格
         table.render({
             elem: '#product-table',
-            url: config.base_server + 'api-finance/financeproduct/List',
-            method: 'GET',
+            url: config.base_server + 'api-finance/financeproduct/listByForm',
+            method: 'POST',
             headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
             page: true,
             cols: [[
