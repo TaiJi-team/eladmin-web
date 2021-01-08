@@ -508,6 +508,7 @@
                                     <div class="layui-card-header">融资需求</div>
                                     <div class="layui-card">
                                         <div class="layui-card-body layadmin-maillist-fluid layui-row">
+                                          <script id="demo2" type="text/html">
                                             <table class="layui-table">
                                                 <colgroup>
                                                     <col width="100">
@@ -515,50 +516,52 @@
                                                     <col width="100">
                                                     <col width="180">
                                                 </colgroup>
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="background-color: #f2f2f2;">订单编号</td>
-                                                        <td colspan="3">110120082719170452503</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="background-color: #f2f2f2;">融资金额</td>
-                                                        <td>1000万元</td>
-                                                        <td style="background-color: #f2f2f2;">年利率</td>
-                                                        <td>5%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="background-color: #f2f2f2;">融资期限</td>
-                                                        <td>12月</td>
-                                                        <td style="background-color: #f2f2f2;">融资投向</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="background-color: #f2f2f2;">担保方式</td>
-                                                        <td>不限</td>
-                                                        <td style="background-color: #f2f2f2;">还款方式</td>
-                                                        <td>不限</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="background-color: #f2f2f2;">申请企业</td>
-                                                        <td>乔禾教育</td>
-                                                        <td style="background-color: #f2f2f2;">法定代表人</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="background-color: #f2f2f2;">对接机构</td>
-                                                        <td>中国光大银行股份有限公司</td>
-                                                        <td style="background-color: #f2f2f2;">对接产品</td>
-                                                        <td><a href="javascript:;" class="product-detail-btn color-blue"
-                                                                data-id="824">阳光e餐贷</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="background-color: #f2f2f2;">创建时间</td>
-                                                        <td>2020-08-27 19:17:04</td>
-                                                        <td style="background-color: #f2f2f2;">订单耗时</td>
-                                                        <td>97天19小时</td>
-                                                    </tr>
-                                                </tbody>
+                                                  <tbody>
+                                                  <tr>
+                                                    <td style="background-color: #f2f2f2;">订单编号</td>
+                                                    <td colspan="3">{{ d.id }}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td style="background-color: #f2f2f2;">融资金额</td>
+                                                    <td>1000万元</td>
+                                                    <td style="background-color: #f2f2f2;">年利率</td>
+                                                    <td>5%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td style="background-color: #f2f2f2;">融资期限</td>
+                                                    <td>12月</td>
+                                                    <td style="background-color: #f2f2f2;">融资投向</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td style="background-color: #f2f2f2;">担保方式</td>
+                                                    <td>不限</td>
+                                                    <td style="background-color: #f2f2f2;">还款方式</td>
+                                                    <td>不限</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td style="background-color: #f2f2f2;">申请企业</td>
+                                                    <td>乔禾教育</td>
+                                                    <td style="background-color: #f2f2f2;">法定代表人</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td style="background-color: #f2f2f2;">对接机构</td>
+                                                    <td>{{ d.finOrg }}</td>
+                                                    <td style="background-color: #f2f2f2;">对接产品</td>
+                                                    <td><a href="javascript:;" class="product-detail-btn color-blue"
+                                                           data-id="824">{{ d.prodName }}</a></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td style="background-color: #f2f2f2;">创建时间</td>
+                                                    <td>2020-08-27 19:17:04</td>
+                                                    <td style="background-color: #f2f2f2;">订单耗时</td>
+                                                    <td>36天18小时</td>
+                                                  </tr>
+                                                  </tbody>
                                             </table>
+                                            </script>
+                                            <div id="view2"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1439,15 +1442,26 @@
             $('.fin-need-detail').show()
             setTimeout(function () {
                 localStorage.setItem('toDetail', false)
-            }, 3000)
+            }, 3000);
+            let productId = localStorage.getItem('productId')
+            let datas ;
+            admin.req('api-finance/authfinance/selectById/' + productId, {}, function (res) {
+              datas = res.datas;
+            },'GET')
+            console.log(datas);
+            var getTpl = demo2.innerHTML
+              ,view = document.getElementById('view2');
+            laytpl(getTpl).render(datas, function(html){
+              view.innerHTML = html;
+            });
         }
         // 详情
         $('a.color-blue').on({
             click: function () {
                 localStorage.setItem('toDetail', true)
                 $('#need-detail-cancel').unbind('click')
-                console.log($(this)[0].attributes[1].nodeValue)
-                // location.reload()
+                localStorage.setItem('productId',$(this)[0].attributes[1].nodeValue);
+                location.reload()
             }
         })
         // 返回

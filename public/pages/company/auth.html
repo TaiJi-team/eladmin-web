@@ -164,8 +164,7 @@
                     <a class="layui-btn layui-btn-normal" lay-href="enterpriseCert">删除</a>
                 </div>
             </div>
-
-            <div id="comp-view"></div>
+            <div id="view"></div>
             <div id="comp-pagenation"></div>
             <!-- <div class="ac pagination" id="pagination">
                 <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-11">
@@ -177,28 +176,28 @@
                 </div>
             </div> -->
             <script id="tmpl" type="text/html">
-                <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">   
+                <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">
                     {{#  layui.each(d.data, function(index, item){ }}
-                    <div class="caller-item"> <img src="assets/images/edu-online.png" alt="" class="caller-img caller-fl" data-id="98966"> 
-                        <div class="caller-main caller-fl"> <p> </p><h2> <strong>{{ item.name }}</strong>  
+                    <div class="caller-item"> <img src="assets/images/edu-online.png" alt="" class="caller-img caller-fl" data-id="98966">
+                        <div class="caller-main caller-fl"> <p> </p><h2> <strong>{{ item.name }}</strong>
                             {{#  if(item.authState === '0'){ }}
                                 <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">待审核</em>
                             {{#  } }}
                             {{#  if(item.authState === '1'){ }}
-                                <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">审核通过</a></em>  
+                                <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">审核通过</a></em>
                             {{#  } }}
                             {{#  if(item.authState === '2'){ }}
-                                <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">审核通过</a></em>  
+                                <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">审核通过</a></em>
                             {{#  } }}
-                        </h2> <p></p> <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>{{ item.actualOfficeAddr }}</p> 
-                        <p class="caller-iconset"></p> </div> 
+                        </h2> <p></p> <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>{{ item.actualOfficeAddr }}</p>
+                        <p class="caller-iconset"></p> </div>
                         <a href="javascript:;" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr show-detail" v="{{ item.id }}">修改 </a>
-                        <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;"> 
-                            <a href="#!fin-need?compId=1" class="layui-blue layui-text-site20" style="cursor: pointer;color: #29b2ac;">{{ item.finNeedCnt }}笔</a><br> 融资需求 </div> 
-                    </div> 
-                    {{#  }) }}  
+                        <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;">
+                            <a href="#!fin-need?compId=1" class="layui-blue layui-text-site20" style="cursor: pointer;color: #29b2ac;">{{ item.finNeedCnt }}笔</a><br> 融资需求 </div>
+                    </div>
+                    {{#  }) }}
 
-                    
+
                 </div>
             </script>
         </div>
@@ -246,7 +245,7 @@
             admin.req('api-finance/company/findAll', JSON.stringify(param), function (res) {
                 if (res.code == 0) {
                     var tmpl = document.getElementById('tmpl').innerHTML,
-                        $view = $("#comp-view");
+                        $view = $("#view");
                     count = res.count
                     laytpl(tmpl).render(res, function (html) {
                         $view.html(html);
@@ -270,7 +269,7 @@
         admin.req('api-finance/company/findAll', JSON.stringify(param), function (res) {
             if (res.code == 0) {
                 var tmpl = document.getElementById('tmpl').innerHTML,
-                    $view = $("#comp-view");
+                    $view = $("#view");
                 laypage.render({
                     elem: 'comp-pagenation',
                     count: res.count,
@@ -365,11 +364,11 @@
                     nickName: data.lepName,
                     idNum: data.lepCode
                 };
-                formData.compExtend = {
+                /*formData.compExtend = {
                     province: data.province,
                     city: data.city,
                     county: data.county
-                };
+                };*/
                 console.log(formData);
             }
 
