@@ -2,13 +2,16 @@
     .layui-card-body {
         height: 400px;
     }
+
     .check-btns {
         margin: 5% 40% 0 0;
     }
+
     .check-btns button {
         float: right;
         margin: 0 3% 0 0;
     }
+
     .layui-form-item {
         width: 80%;
     }
@@ -17,30 +20,30 @@
     <div class="layui-card-header">
         <h2 class="header-title">审核管理</h2>
         <span class="layui-breadcrumb pull-right">
-          <a href="#!console">工作台</a>
-          <a><cite>审核管理</cite></a>
+            <a href="#!console">工作台</a>
+            <a><cite>审核管理</cite></a>
         </span>
     </div>
     <div class="layui-card-body">
         <div class="layui-tab layui-tab-card">
             <ul class="check-title layui-tab-title">
-              <li class="layui-this" check-type="auth">入驻审核</li>
-              <li check-type="fin-need">融资需求审核</li>
-              <li check-type="fin-product">金融产品审核</li>
+                <li class="layui-this" check-type="auth" value="1">入驻审核</li>
+                <li check-type="fin-need" value="2">融资需求审核</li>
+                <li check-type="fin-product" value="3">金融产品审核</li>
             </ul>
             <div class="check-tab-content layui-tab-content">
-              <div class="layui-tab-item layui-show" style="overflow: visible;">
-                <table class="layui-table" id="auth-check-table" lay-filter="check-order-table"></table>
-                
+                <div class="layui-tab-item layui-show" style="overflow: visible;">
+                    <table class="layui-table" id="auth-check-table" lay-filter="check-order-table"></table>
+
+                </div>
+                <div class="layui-tab-item" style="overflow: visible;">
+                    <table class="layui-table" id="fin-need-check-table" lay-filter="check-order-table"></table>
+                </div>
+                <div class="layui-tab-item" style="overflow: visible;">
+                    <table class="layui-table" id="fin-product-check-table" lay-filter="check-order-table"></table>
+                </div>
             </div>
-            <div class="layui-tab-item"  style="overflow: visible;">
-                <table class="layui-table" id="fin-need-check-table" lay-filter="check-order-table"></table>
-            </div>
-            <div class="layui-tab-item"  style="overflow: visible;">
-                <table class="layui-table" id="fin-product-check-table" lay-filter="check-order-table"></table>
-              </div>
-            </div>
-          </div>
+        </div>
 
         <!-- <div class="layui-form toolbar">
             <input id="check-order-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
@@ -59,26 +62,27 @@
         <div class="fl layui-inline layui-form-item">
             <label class="layui-form-label">审核：</label>
             <div class="layui-input-inline">
-              <select name="modules" lay-verify="required" lay-search="">
-                <option value="">--请选择--</option>
-                <option value="1">通过</option>
-                <option value="2">不通过</option>
-              </select>
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">--请选择--</option>
+                    <option value="1">通过</option>
+                    <option value="2">不通过</option>
+                </select>
             </div>
-          </div>
-        </div>
-        <div class="fl layui-form-item">
-            <label class="layui-form-label">
-                <span class=""></span>未通过原因</label>
-            <div class="layui-input-block">
-                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-            </div>
-        </div>
-        <div class="check-btns fl ac item-full">
-            <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
-            <button id="check-commit" lay-filter="check-form-submit" class="layui-btn" lay-submit ew-event="closeDialog">提交</button>
         </div>
     </div>
+    <div class="fl layui-form-item">
+        <label class="layui-form-label">
+            <span class=""></span>未通过原因</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="check-btns fl ac item-full">
+        <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
+        <button id="check-commit" lay-filter="check-form-submit" class="layui-btn" lay-submit
+            ew-event="closeDialog">提交</button>
+    </div>
+</div>
 </div>
 
 
@@ -92,27 +96,31 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
-        
-        var type = function() {
-            return $($('.check-title .layui-this')[0]).attr('check-type');
+
+        var type = function () {
+            // return $($('.check-title .layui-this')[0]).attr('check-type');
+            return $($('.check-title .layui-this')[0]).attr('value');
         }
-        var tableEle = function() {
+        var tableEle = function () {
             return '#' + $($('.check-tab-content .layui-show table')[0]).attr('id');
         }
-        var renderTable = function() {
+        var renderTable = function () {
             var tab = tableEle(), tp = type();
             table.render({
                 elem: tab,
-                url: '/assets/data/' + tp +'-check.json',
+                // 'api-finance/anceneedcomp/findAll'
+                // url: '/assets/data/' + tp + '-check.json',
+                url: config.base_server + 'api-finance/anceneedcomp/findAll?type=' + tp + '&userId=' + userId,
                 method: 'GET',
-                headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
+                headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
                 page: true,
                 cols: [[
-                    {type: 'numbers'},
-                    {field: 'id', title: '编码', width: "7.85%"},
-                    {field: 'compName', title: '企业名称', width: "20%"},
-                    {field: 'compType', templet: function (d) {
-                            switch(d.compType) {
+                    { type: 'numbers' },
+                    { field: 'id', title: '编码', width: "7.85%" },
+                    { field: 'compName', title: '企业名称', width: "20%" },
+                    {
+                        field: 'compType', templet: function (d) {
+                            switch (d.compType) {
                                 case '1-0':
                                     return '个体户'
                                 case '1-1':
@@ -130,9 +138,11 @@
                                 case '3':
                                     return '运营机构'
                             }
-                        },title: '企业类型', width: "12%"},
-                    {field: 'credGrade', templet: function (d) {
-                            switch(d.credGrade) {
+                        }, title: '企业类型', width: "12%"
+                    },
+                    {
+                        field: 'credGrade', templet: function (d) {
+                            switch (d.credGrade) {
                                 case 0:
                                     return '极好'
                                 case 1:
@@ -144,10 +154,11 @@
                                 case 4:
                                     return '小白'
                             }
-                        },title: '企业信用评级', width: "10%"
+                        }, title: '企业信用评级', width: "10%"
                     },
-                    {field: 'applyType', templet: function (d) {
-                            switch(d.applyType) {
+                    {
+                        field: 'applyType', templet: function (d) {
+                            switch (d.applyType) {
                                 case 0:
                                     return '入驻申请'
                                 case 1:
@@ -155,10 +166,11 @@
                                 case 2:
                                     return '金融产品申请'
                             }
-                        },title: '申请类型', width: "12%"
+                        }, title: '申请类型', width: "12%"
                     },
-                    {field: 'status', templet: function (d) {
-                            switch(d.status) {
+                    {
+                        field: 'status', templet: function (d) {
+                            switch (d.status) {
                                 case 0:
                                     return '未审核'
                                 case 1:
@@ -168,20 +180,21 @@
                             }
                         }, title: '审核状态', width: "8%"
                     },
-                    {field: 'applyTime', sort: true, templet: function (d) {
+                    {
+                        field: 'applyTime', sort: true, templet: function (d) {
                             return util.toDateString(d.createTime);
                         }, title: '申请时间', width: "15%"
                     },
-                    {fixed: 'right', align: 'center', toolbar: '#check-table-bar', title: '操作', width: '12%'}
+                    { fixed: 'right', align: 'center', toolbar: '#check-table-bar', title: '操作', width: '12%' }
                 ]],
-                done: function(res, curr, count){
+                done: function (res, curr, count) {
                     // //如果是异步请求数据方式，res即为你接口返回的信息。
                     // //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
                     // console.log(res);
-                    
+
                     // //得到当前页码
                     // console.log(curr); 
-                    
+
                     // //得到数据总量
                     // console.log(count);
                     tabOnEvt();
@@ -189,11 +202,11 @@
             });
         }
         // 工具条点击事件
-        var tabOnEvt = function() {
+        var tabOnEvt = function () {
             var tab = tableEle();
             console.log('on evt' + tab)
             $('.row-btn').on({
-                click: function(obj) {
+                click: function (obj) {
                     var layEvent = $(this).attr('lay-event');
                     if (layEvent === 'detail') { // 修改
                         //showEditModel(data);
@@ -213,20 +226,20 @@
             layer.open({
                 type: 1,
                 title: cfg.title,
-                area: ['500px', '300px'],
+                area: ['40%', '40%'],
                 // shadeClose: false,
                 shade: 0,
                 content: $('.' + cfg.ele),
                 zIndex: layer.zIndex,
                 success: function () {
-                $('.layui-layer').css({
-                    'z-index': '10000000',
-                    'top': '20%',
-                    'left': '33%'
-                })
-                $('.layui-layer-page .layui-layer-content').css({
-                    'overflow': 'visible'
-                })
+                    $('.layui-layer').css({
+                        'z-index': '10000000',
+                        'top': '20%',
+                        'left': '33%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'visible'
+                    })
                 },
                 cancel: function () {
                     $('.' + cfg.ele).css({ "display": "none" })
@@ -234,10 +247,10 @@
             });
 
         }
-        
+
         $('.check-title li').on({
-            click: function() {
-                setTimeout(function() {
+            click: function () {
+                setTimeout(function () {
                     renderTable();
                 }, 20)
             }
@@ -246,7 +259,7 @@
         $('#check-order-btn-search').click(function () {
             var key = $('#check-order-search-key').val();
             var value = $('#check-order-search-value').val();
-            table.reload('check-order-table', {where: {searchKey: key, searchValue: value}});
+            table.reload('check-order-table', { where: { searchKey: key, searchValue: value } });
         });
     });
 

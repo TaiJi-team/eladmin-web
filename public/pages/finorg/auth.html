@@ -152,9 +152,9 @@
   <div class="layui-card-header" id="auth-finorg">
     <h2 class="header-title"></h2>
     <span class="layui-breadcrumb pull-right">
-            <a href="#!console">工作台</a>
-            <a><cite></cite></a>
-        </span>
+      <a href="#!console">工作台</a>
+      <a><cite></cite></a>
+    </span>
   </div>
   <div class="layui-fluid">
     <div class="layadmin-caller">
@@ -165,44 +165,44 @@
         </div>
       </div>
       <div class="caller-contar" id="page_template_body_id" style="padding-top: 20px;">
-        <div id="view">
+        <div id="finorg-view">
 
         </div>
-<!--        <div class="caller-item"><img src="assets/images/edu-online.png" alt="" class="caller-img caller-fl"-->
-<!--                                      data-id="98966">-->
-<!--          <div class="caller-main caller-fl">-->
-<!--            <p></p>-->
-<!--            <h2><strong>微捷贷</strong>-->
-<!--              <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">已认证</em>-->
-<!--              &lt;!&ndash; <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>   &ndash;&gt;-->
-<!--            </h2>-->
-<!--            <p></p>-->
-<!--            <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>北京市海淀区</p>-->
-<!--            <p class="caller-iconset"></p>-->
-<!--          </div>-->
-<!--          <a href="#!fin-need?compId=1" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看-->
-<!--          </a>-->
-<!--          <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;">-->
-<!--            <a href="#!fin-product?prodId=1" class="layui-blue layui-text-site20"-->
-<!--               style="cursor: pointer;color: #29b2ac;">12款</a><br> 金融产品-->
-<!--          </div>-->
-        </div>
-
-
-
-        <div id="demo7"></div>
-        <!--        <div class="ac pagination" id="pagination">-->
-        <!--          <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-11">-->
-        <!--            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>-->
-        <!--            <span class="layui-laypage-curr">-->
-        <!--                            <em class="layui-laypage-em"></em><em>1</em>-->
-        <!--                        </span>-->
-        <!--            <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a>-->
+        <!--        <div class="caller-item"><img src="assets/images/edu-online.png" alt="" class="caller-img caller-fl"-->
+        <!--                                      data-id="98966">-->
+        <!--          <div class="caller-main caller-fl">-->
+        <!--            <p></p>-->
+        <!--            <h2><strong>微捷贷</strong>-->
+        <!--              <em class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">已认证</em>-->
+        <!--              &lt;!&ndash; <em><a lay-href="enterpriseCert#?id=98966" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">立即认证</a></em>   &ndash;&gt;-->
+        <!--            </h2>-->
+        <!--            <p></p>-->
+        <!--            <p class="caller-adds"><i class="layui-icon layui-icon-location"></i>北京市海淀区</p>-->
+        <!--            <p class="caller-iconset"></p>-->
         <!--          </div>-->
-        <!--        </div>-->
+        <!--          <a href="#!fin-need?compId=1" class="layui-btn layui-btn-sm layui-btn layui-btn-primary caller-fr">查看-->
+        <!--          </a>-->
+        <!--          <div class="caller-main caller-fr" style="margin-right: 30px; text-align: center;">-->
+        <!--            <a href="#!fin-product?prodId=1" class="layui-blue layui-text-site20"-->
+        <!--               style="cursor: pointer;color: #29b2ac;">12款</a><br> 金融产品-->
+        <!--          </div>-->
       </div>
+
+
+
+      <div id="demo7"></div>
+      <!--        <div class="ac pagination" id="pagination">-->
+      <!--          <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-11">-->
+      <!--            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>-->
+      <!--            <span class="layui-laypage-curr">-->
+      <!--                            <em class="layui-laypage-em"></em><em>1</em>-->
+      <!--                        </span>-->
+      <!--            <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a>-->
+      <!--          </div>-->
+      <!--        </div>-->
     </div>
   </div>
+</div>
 
 
 <script id="demo" type="text/html">
@@ -243,11 +243,11 @@
     var laytpl = layui.laytpl;
     var zs = '';
     var kvMap = new Map();
-    var list=new Array();
+    var list = new Array();
     //分页
     var financeOrgTo = {
-      page:1
-      ,limit:10
+      page: 1
+      , limit: 10
     }
     console.log(financeOrgTo);
     admin.req('api-finance/financeorg/findAll', JSON.stringify(financeOrgTo), function (data) {
@@ -255,34 +255,34 @@
     }, 'POST');
 
 
-        laypage.render({
-          elem: 'demo7'
-          ,count: zs
-          ,layout: ['count', 'prev', 'page', 'next', 'limit','limits']
-          ,jump: function(obj){
-            console.log(obj);
-            var financeOrgTo = {
-              page:obj.curr
-              ,limit:obj.limit
-            }
-            console.log(financeOrgTo);
-            admin.req('api-finance/financeorg/findAll', JSON.stringify(financeOrgTo), function (data) {
-              zs = data.count;
-              console.log(data.data);
-              list=data.data;
-              console.log(list);
-            }, 'POST');
-            var data2 = { //数据
-              "title": "Layui常用模块"
-              , "list": list
-            }
-            var getTpl = demo.innerHTML;
-            view = document.getElementById('view');
-            laytpl(getTpl).render(data2, function (html) {
-              view.innerHTML = html;
-            });
-          }
+    laypage.render({
+      elem: 'demo7'
+      , count: zs
+      , layout: ['count', 'prev', 'page', 'next', 'limit', 'limits']
+      , jump: function (obj) {
+        console.log(obj);
+        var financeOrgTo = {
+          page: obj.curr
+          , limit: obj.limit
+        }
+        console.log(financeOrgTo);
+        admin.req('api-finance/financeorg/findAll', JSON.stringify(financeOrgTo), function (data) {
+          zs = data.count;
+          console.log(data.data);
+          list = data.data;
+          console.log(list);
+        }, 'POST');
+        var data2 = { //数据
+          "title": "Layui常用模块"
+          , "list": list
+        }
+        var getTpl = demo.innerHTML;
+        view = document.getElementById('finorg-view');
+        laytpl(getTpl).render(data2, function (html) {
+          view.innerHTML = html;
         });
+      }
+    });
 
 
 
@@ -411,11 +411,11 @@
 
       admin.req('api-finance/financeorg/save', JSON.stringify(formData), function (data) {
         if (data.code == 0) {
-          layer.msg('提交成功，待平台审核', {icon: 5, time: 2000}, function () {
+          layer.msg('提交成功，待平台审核', { icon: 5, time: 2000 }, function () {
             layer.closeAll();
           });
         } else {
-          layer.msg(data.msg, {icon: 5, time: 2000}, function () {
+          layer.msg(data.msg, { icon: 5, time: 2000 }, function () {
             layer.closeAll();
           });
         }

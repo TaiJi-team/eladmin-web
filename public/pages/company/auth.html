@@ -164,7 +164,8 @@
                     <a class="layui-btn layui-btn-normal" lay-href="enterpriseCert">删除</a>
                 </div>
             </div>
-            <div id="view"></div>
+
+            <div id="comp-view"></div>
             <div id="comp-pagenation"></div>
             <!-- <div class="ac pagination" id="pagination">
                 <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-11">
@@ -245,7 +246,7 @@
             admin.req('api-finance/company/findAll', JSON.stringify(param), function (res) {
                 if (res.code == 0) {
                     var tmpl = document.getElementById('tmpl').innerHTML,
-                        $view = $("#view");
+                        $view = $("#comp-view");
                     count = res.count
                     laytpl(tmpl).render(res, function (html) {
                         $view.html(html);
@@ -269,7 +270,7 @@
         admin.req('api-finance/company/findAll', JSON.stringify(param), function (res) {
             if (res.code == 0) {
                 var tmpl = document.getElementById('tmpl').innerHTML,
-                    $view = $("#view");
+                    $view = $("#comp-view");
                 laypage.render({
                     elem: 'comp-pagenation',
                     count: res.count,

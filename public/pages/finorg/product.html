@@ -2,14 +2,14 @@
     <div class="layui-card-header">
         <h2 class="header-title">金融产品</h2>
         <span class="layui-breadcrumb pull-right">
-          <a href="#!console">工作台</a>
-          <a><cite>金融产品</cite></a>
+            <a href="#!console">工作台</a>
+            <a><cite>金融产品</cite></a>
         </span>
     </div>
     <div class="layui-card-body">
         <div class="layui-form toolbar">
             搜索：
-            <input id="product-search-value" class="layui-input search-input" type="text" placeholder="输入关键字"/>&emsp;
+            <input id="product-search-value" class="layui-input search-input" type="text" placeholder="输入关键字" />&emsp;
             <button id="product-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
             <button id="product-btn-add" class="layui-btn icon-btn">添加</button>
             <button id="product-btn-sele-pm" class="layui-btn icon-btn">选择产品经理和业务员</button>
@@ -41,36 +41,41 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
-        var name1="";
-var financeProductTo;
+        var name1 = "";
+        var financeProductTo;
         // 渲染表格
         table.render({
             elem: '#product-table',
             url: config.base_server + 'api-finance/financeproduct/List',
             method: 'GET',
-            headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
+            headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
             page: true,
             cols: [[
-                {type: 'checkbox'},
-                {field: 'name', title: '产品名称', width: "10%"},
-                {field: 'compId', templet: function (d) {
-                  if (d.compId!=null){
-                    console.log(d.compId)
-                    var arr=new Array();
-                    arr.push(d.compId)
-                    for (var i=0;i<arr.length;i++){
-                    admin.req('api-finance/financeorg/getNameByid/'+arr[i], {}, function (data) {
-                      console.log(data)
-                      name1=data.datas.name;
-                    },'GET');}
-                    return name1}
-                  }, title: '所属机构', width: "20%"},
-                {field: 'loanRange', title: '贷款额度', width: "9%"},
-                {field: 'loanPeriod', title: '贷款期限', width: "8%"},
-                {field: 'loanRateRange', title: '利率范围', width: "8%"},
-                {field: 'repayMode', title: '还款方式', width: "13%"},
-                {field: 'isPub', templet: function (d) {
-                        switch(d.isPub) {
+                { type: 'checkbox' },
+                { field: 'name', title: '产品名称', width: "10%" },
+                {
+                    field: 'compId', templet: function (d) {
+                        if (d.compId != null) {
+                            console.log(d.compId)
+                            var arr = new Array();
+                            arr.push(d.compId)
+                            for (var i = 0; i < arr.length; i++) {
+                                admin.req('api-finance/financeorg/getNameByid/' + arr[i], {}, function (data) {
+                                    console.log(data)
+                                    name1 = data.datas.name;
+                                }, 'GET');
+                            }
+                            return name1
+                        }
+                    }, title: '所属机构', width: "20%"
+                },
+                { field: 'loanRange', title: '贷款额度', width: "9%" },
+                { field: 'loanPeriod', title: '贷款期限', width: "8%" },
+                { field: 'loanRateRange', title: '利率范围', width: "8%" },
+                { field: 'repayMode', title: '还款方式', width: "13%" },
+                {
+                    field: 'isPub', templet: function (d) {
+                        switch (d.isPub) {
                             case 0:
                                 return '审核中'
                             case 1:
@@ -81,12 +86,12 @@ var financeProductTo;
                     }, title: '状态', width: "8%"
                 },
                 // {field: 'applyArea', title: '适用地区', width: "10%"},
-                {field: 'applyNum', sort: true, title: '申请次数', width: "10%"},
+                { field: 'applyNum', sort: true, title: '申请次数', width: "10%" },
                 // {field: 'pubTime', sort: true, templet: function (d) {
                 //         return util.toDateString(d.pubTime);
                 //     }, title: '发布时间', width: "15%"
                 // },
-                {fixed: 'right', align: 'center', toolbar: '#product-table-bar', title: '操作', width: '10%'}
+                { fixed: 'right', align: 'center', toolbar: '#product-table-bar', title: '操作', width: '10%' }
             ]]
         });
         console.log(financeProductTo);
@@ -105,15 +110,15 @@ var financeProductTo;
             } else if (layEvent === 'del') {
                 layer.confirm('确定删除此产品吗？', function (i) {
                     //layer.msg('删除成功', {icon: 1, time: 2000});
-                    admin.req('api-finance/financeproduct/delete/'+ data.id, {}, function (data) {
-                      layer.closeAll('loading');
-                      if (data.code == 0) {
-                        layer.msg(data.msg, {icon: 1, time: 500});
-                      } else {
-                        layer.msg(data.msg, {icon: 2, time: 500});
-                      }
+                    admin.req('api-finance/financeproduct/delete/' + data.id, {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, { icon: 1, time: 500 });
+                        } else {
+                            layer.msg(data.msg, { icon: 2, time: 500 });
+                        }
                     }, 'delete');
-                    table.reload('product-table',{});
+                    table.reload('product-table', {});
                 })
             }
         });
@@ -131,31 +136,33 @@ var financeProductTo;
                 finish: function () {
                     table.reload('product-table', {});
                 },
-                success: function() {
+                success: function () {
                     $('.layui-layer').css({
-                      'top': '8%',
-                      'left': '12%'
+                        'top': '8%',
+                        'left': '12%'
                     })
                     $('.layui-layer-page .layui-layer-content').css({
-                      'overflow': 'scroll'
+                        'overflow': 'scroll'
                     })
-          }
+                }
             });
         };
 
         $('#product-btn-sele-pm').on({
-            click: function() {
+            click: function () {
                 showSelePmModel();
             }
         });
 
         $('#product-btn-search').on({
             click: function () {
-              var value = $('#product-search-value').val();
-              table.reload('product-table',
-                {where:{
-                    name: value
-                    }})
+                var value = $('#product-search-value').val();
+                table.reload('product-table',
+                    {
+                        where: {
+                            name: value
+                        }
+                    })
             }
         });
 
@@ -169,7 +176,7 @@ var financeProductTo;
                 finish: function () {
                     table.reload('product-table', {});
                 },
-                success: function() {
+                success: function () {
                     $('.layui-layer').css({
                         'top': '8%',
                         'left': '12%'
@@ -183,54 +190,54 @@ var financeProductTo;
 
         var dataChecked = false;
         //监听表格复选框选择
-        table.on('checkbox(product-table)', function(data){
+        table.on('checkbox(product-table)', function (data) {
             // data.status
             dataChecked = data.checked;
         });
 
         $('#product-btn-publish').on({
-            click: function() {
+            click: function () {
                 optFunc('发布');
             }
         })
 
         $('#product-btn-revoke').on({
-            click: function() {
+            click: function () {
                 optFunc('撤销');
             }
         })
 
-        var optFunc = function(opt) {
-            if(!dataChecked) {
-                layer.msg('请选择金融产品', {icon: 2, time: 2000});
+        var optFunc = function (opt) {
+            if (!dataChecked) {
+                layer.msg('请选择金融产品', { icon: 2, time: 2000 });
                 return;
             }
             layer.confirm('确定' + opt + '此产品吗？', function (i) {
-                layer.msg(opt + '成功', {icon: 1, time: 2000});
+                layer.msg(opt + '成功', { icon: 1, time: 2000 });
             })
         }
 
         upload.render({
             elem: '#product-btn-import'
-            ,url: 'https://httpbin.org/post' //改成您自己的上传接口
-            ,accept: 'file' //普通文件
-            ,exts: 'xlsx|xls'
-            ,before: function(obj){
+            , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            , accept: 'file' //普通文件
+            , exts: 'xlsx|xls'
+            , before: function (obj) {
                 console.log(obj)
             }
-            ,choose: function(obj){
+            , choose: function (obj) {
                 var files = this.files = obj.pushFile();
                 console.log(files)
             }
-            ,done: function(res){
+            , done: function (res) {
                 console.log(res);
-                if(res.code > 0){
+                if (res.code > 0) {
                     return layer.msg('上传失败');
                 }
                 layer.msg('上传成功');
             },
-            error: function(index, upload){
-                layer.msg('请求失败', {icon: 2, time: 2000});
+            error: function (index, upload) {
+                layer.msg('请求失败', { icon: 2, time: 2000 });
             }
         });
 
@@ -242,7 +249,7 @@ var financeProductTo;
             xhr.responseType = "blob";
             xhr.setRequestHeader("client_type", "DESKTOP_WEB");
             xhr.setRequestHeader("Authorization", "Bearer " + config.getToken().access_token);
-            xhr.onload = function() {
+            xhr.onload = function () {
                 if (this.status == 200) {
                     var fileName = "products.xlsx";
                     var blob = this.response;
