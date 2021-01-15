@@ -649,7 +649,7 @@ export default {
       }).then((res) => {
         if (res.data.code === 0) {
           this.products = res.data.data
-          this.total = res.data.count
+          this.total = parseInt(res.data.count)
           // console.log(res.data.data)
         } else {
           this.$message.error(res.data.msg)

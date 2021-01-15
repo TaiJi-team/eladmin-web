@@ -10,8 +10,8 @@
       </el-carousel>
       <!-- <div class="banner" id="bannerDetail" style="background :width: 100%; height: 50%" :src="orgdetail_banner01"> <h1 class="bannerDetail__title">招商银行股份有限公司北京分行</h1> </div> -->
       <div class="min-width g-bg"> <div class="min-page ac office-hours" style="display: none;" /> </div>
-      <div class="bg-white default-mar-top small-mar-bottom min-page clearfix box-sizing finance-head"> <div class="fl pos-center head-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div> <div class="overflow"> <h2 class="head-name">招商银行股份有限公司北京分行<span class="release-time">发布时间：2019-09-12</span></h2> <p class="head-info"> 招商银行1987年成立于中国改革开放的最前沿——深圳蛇口，是中国境内第一家完全由企业法人持股的股份制商业银行，也是国家从体制外推动银行业改革的第一家试点银行。在英国权威金融杂志《银行家》公布的2019年全球银行品牌1,000强中，招商银行品牌品牌价值位列全球第9位，一级资本位列全球第19位；在《财富》世界500强榜单中，招商银行连续8年强势入榜，2019年名列世界第188位。 </p> </div> </div>
-      <div class="bg-white small-mar-bottom min-page finance-achieve"> <ul class="clearfix achieve-list"> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">0<span class="unit">次</span></p> <p class="item-t"> <img src="res/images/f-i-2.png" alt="">成功对接 </p> </div> </li> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">1<span class="unit">个</span></p> <p class="item-t"> <img src="res/images/f-i-3.png" alt="">金融产品数 </p> </div> </li> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">-<span class="unit">分</span></p> <p class="item-t"> <img src="res/images/f-i-4.png" alt="">综合评价 </p> </div> </li> </ul> </div>
+      <div class="bg-white default-mar-top small-mar-bottom min-page clearfix box-sizing finance-head"> <div class="fl pos-center head-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div> <div class="overflow"> <h2 class="head-name">{{ finaceOrg.name }}<span class="release-time">发布时间：2019-09-12</span></h2> <p class="head-info"> {{ finaceOrg.name }} 1987年成立于中国改革开放的最前沿——深圳蛇口，是中国境内第一家完全由企业法人持股的股份制商业银行，也是国家从体制外推动银行业改革的第一家试点银行。在英国权威金融杂志《银行家》公布的2019年全球银行品牌1,000强中，招商银行品牌品牌价值位列全球第9位，一级资本位列全球第19位；在《财富》世界500强榜单中，招商银行连续8年强势入榜，2019年名列世界第188位。 </p> </div> </div>
+      <div class="bg-white small-mar-bottom min-page finance-achieve"> <ul class="clearfix achieve-list"> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">0<span class="unit">次</span></p> <p class="item-t"> <img src="res/images/f-i-2.png" alt="">成功对接 </p> </div> </li> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">{{ total }}<span class="unit">个</span></p> <p class="item-t"> <img src="res/images/f-i-3.png" alt="">金融产品数 </p> </div> </li> <li class="fl box-sizing"> <div class="ac line-middle item-cont"> <p class="item-num">-<span class="unit">分</span></p> <p class="item-t"> <img src="res/images/f-i-4.png" alt="">综合评价 </p> </div> </li> </ul> </div>
       <div class="bg-white mar-top min-page layui-form">
         <div class="content-filter-box">
           <div class="clearfix box-head">
@@ -105,12 +105,12 @@
       </div>
 
       <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
-        <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
+        <p class="result-text">搜索到<span class="result-num">{{ total }}</span>个结果</p>
         <div class="list-tool">
           <div id="listSort" class="fl tool-left">
-            <div class="tool-item on" data-id="0"> <span class="item-name">默认排序</span> </div>
-            <div class="tool-item" data-id="1"> <span class="item-name">利率</span> </div>
-            <div class="tool-item" data-id="2"> <span class="item-name">申请次数</span> </div>
+            <div class="tool-item" data-id="0" :class="{ 'tool-item on': activeA == 0 }" @click="activeA = 0"> <span class="item-name">默认排序</span> </div>
+            <div class="tool-item" data-id="1" :class="{ 'tool-item on': activeA == 1 }" @click="activeA = 1"> <span class="item-name">利率</span> </div>
+            <div class="tool-item" data-id="2" :class="{ 'tool-item on': activeA == 2 }" @click="activeA = 2"> <span class="item-name">申请次数</span> </div>
           </div>
           <div id="listType" class="fr tool-right">
             <div class="tool-item" :class="{'on':isBlock==true}" data-type="block" @click="isBlock=true"> <span class="item-name"> <img :src="ico_type1" alt=""> </span> </div>
@@ -118,141 +118,118 @@
           </div>
         </div>
         <!--  style="display: none;" -->
-        <ul v-show="isBlock" id="productListBlock" class="clearfix product-list">
-          <router-link to="/fin-market/detail" tag="li">
-            <div class="bg-white line-action-hover item-main"> <a>
-              <div class="item-title">
-                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" class="middle-center" alt=""> </div>
-                <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小微企业贷款</span> <br> <em class="org-name">招商银行北京分行</em> </h2>
-                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
+        <ul
+          v-show="isBlock"
+          id="productListBlock"
+          class="clearfix product-list"
+        >
+          <router-link
+            v-for="(item, index) in products"
+            :key="index"
+            class="fl"
+            :to="{ path: '/fin-market/detail/' + item.id }"
+            tag="li"
+          >
+            <div class="bg-white line-action-hover item-main">
+              <a>
+                <div class="item-title">
+                  <div class="pos-center overflow fl item-img">
+                    <img :src="item.imgSrc" class="middle-center" alt="">
+                  </div>
+                  <div class="overflow title-cont">
+                    <h2 class="text-ellipsis item-name">
+                      <span class="line-middle sub-name">{{ item.name }}</span>
+                      <br>
+                      <em class="org-name">{{ item.compName }}</em>
+                    </h2>
+                    <div class="item-adr text-ellipsis">
+                      <span class="adr-label">适用地区：</span>
+                      <span class="adr-cont">北京市</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <ul class="item-info">
-                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">5-1000万</span></li>
-                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-60月</span></li>
-                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5.22-5.7%</span></li>
-                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
-              </ul>
-              <div class="item-label" />
-              <!-- <button class="g-bg g-shadow item-btn">查看详情</button> -->
-              <router-link class="g-bg g-shadow item-btn" to="/fin-market/detail" tag="button">查看详情</router-link>
-              <div class="line-top" />
-              <div class="line-bottom" />
-              <div class="line-left" />
-              <div class="line-right" />
-            </a> </div>
+                <ul class="item-info">
+                  <li class="fl">
+                    <span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">{{
+                      item.loanRange
+                    }}</span>
+                  </li>
+                  <li class="fl">
+                    <span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">{{
+                      item.loanPeriod
+                    }}</span>
+                  </li>
+                  <li class="fl">
+                    <span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">{{
+                      item.loanRateRange
+                    }}</span>
+                  </li>
+                  <li class="fl">
+                    <span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">{{
+                      item.guaMode
+                    }}</span>
+                  </li>
+                </ul>
+                <div class="item-label" />
+                <router-link
+                  class="g-bg g-shadow item-btn"
+                  :to="{ path: '/fin-market/detail/' + item.id }"
+                  tag="button"
+                >查看详情</router-link>
+                <div class="line-top" />
+                <div class="line-bottom" />
+                <div class="line-left" />
+                <div class="line-right" />
+              </a>
+            </div>
           </router-link>
-          <!-- <li class="fl">
-            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=346" target="_blank">
-              <div class="item-title">
-                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" class="middle-center" alt=""> </div>
-                <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">小企业知识产权质押...</span> <br> <em class="org-name">中国邮政储蓄银行北京分行</em> </h2>
-                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                </div>
-              </div>
-              <ul class="item-info">
-                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-500万</span></li>
-                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-12月</span></li>
-                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
-                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押,质押,一般保证,信用</span></li>
-              </ul>
-              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
-              <div class="line-top" />
-              <div class="line-bottom" />
-              <div class="line-left" />
-              <div class="line-right" />
-            </a> </div>
-          </li>
-          <li class="fl">
-            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=335" target="_blank">
-              <div class="item-title">
-                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> </div>
-                <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">首都职工创业小额贷...</span> <br> <em class="org-name">北京农商银行</em> </h2>
-                  <div class="item-adr text-ellipsis"><img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" class="middle-center" alt=""> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                </div>
-              </div>
-              <ul class="item-info">
-                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-50万</span></li>
-                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">12-24月</span></li>
-                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">面议</span></li>
-                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">一般保证</span></li>
-              </ul>
-              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
-              <div class="line-top" />
-              <div class="line-bottom" />
-              <div class="line-left" />
-              <div class="line-right" />
-            </a> </div>
-          </li>
-          <li class="fl">
-            <div class="bg-white line-action-hover item-main"> <a href="/#/requIndex/financingProductDetail#?id=326" target="_blank">
-              <div class="item-title">
-                <div class="pos-center overflow fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" class="middle-center" alt=""> </div>
-                <div class="overflow title-cont">
-                  <h2 class="text-ellipsis item-name"> <span class="line-middle sub-name">线上快审快贷</span> <br> <em class="org-name">宁波银行</em> </h2>
-                  <div class="item-adr text-ellipsis"> <span class="adr-label">适用地区：</span> <span class="adr-cont">北京市</span> </div>
-                </div>
-              </div>
-              <ul class="item-info">
-                <li class="fl"><span class="fl info-label">额度：</span><span class="line-middle text-ellipsis info-cont">1-800万</span></li>
-                <li class="fl"><span class="fl info-label">期限：</span><span class="line-middle text-ellipsis info-cont">1-120月</span></li>
-                <li class="fl"><span class="fl info-label">利率：</span><span class="line-middle text-ellipsis info-cont">5-7%</span></li>
-                <li class="fl"><span class="fl info-label">担保：</span><span class="line-middle text-ellipsis info-cont">抵押</span></li>
-              </ul>
-              <div class="item-label" /> <button class="g-bg g-shadow item-btn">查看详情</button>
-              <div class="line-top" />
-              <div class="line-bottom" />
-              <div class="line-left" />
-              <div class="line-right" />
-            </a> </div>
-          </li>-->
         </ul>
         <ul v-show="!isBlock" id="productListLine" class="product-list-line">
-          <router-link to="/fin-market/detail" tag="li"> <a>
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091008233155906.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">小微企业贷款—招商银行北京分行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
+          <router-link
+            v-for="(item, index) in products"
+            :key="index"
+            :to="{ path: '/fin-market/detail/' + item.id }"
+            tag="li"
+          ><a>
+            <!-- <router-link class="" to="/fin-market/detail" tag="a"></router-link> -->
+            <div class="fl item-img"><img :src="item.imgSrc" alt=""></div>
+            <div class="fl item-title">
+              <span class="t">{{ item.name }}—{{ item.compName }}</span>
+              <p class="st">
+                <span class="st-label">适用地区：</span>
+                <span class="adr-cont">北京市</span>
+              </p>
             </div>
-            <div class="fl item-info"> <span class="info-c">5.22-5.7%</span> <span class="info-n">参考利率范围</span> </div>
-            <div class="fl item-info"> <span class="info-c">12-60月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">5-1000万</span> <span class="info-n">贷款额度</span> </div>
-            <button type="button" class="fl layui-btn item-btn">立即申请</button>
+            <div class="fl item-info">
+              <span class="info-c">{{ item.loanRateRange }}</span>
+              <span class="info-n">参考利率范围</span>
+            </div>
+            <div class="fl item-info">
+              <span class="info-c">{{ item.loanPeriod }}</span>
+              <span class="info-n">贷款期限</span>
+            </div>
+            <div class="fl item-info">
+              <span class="info-c">{{ item.loanRange }}</span>
+              <span class="info-n">贷款额度</span>
+            </div>
+            <button type="button" class="fl layui-btn item-btn">
+              立即申请
+            </button>
             <!-- <router-link class="fl layui-btn item-btn" to="/fin-market/detail" tag="button">立即申请</router-link> -->
-          </a> </router-link>
-          <!-- <li> <a href="/#/requIndex/financingProductDetail#?id=346&amp;guid=f93e1b10c3ab4b3086e1428118a535bf" target="_blank">
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/201909100832386184.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">小企业知识产权质押贷—中国邮政储蓄银行北京分行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-            </div>
-            <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-12月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-500万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-          </a> </li>
-          <li> <a href="/#/requIndex/financingProductDetail#?id=335&amp;guid=06026fa341924905a302338d354d7466" target="_blank">
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/10/2019091005182633856.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">首都职工创业小额贷款—北京农商银行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-            </div>
-            <div class="fl item-info"> <span class="info-c">面议</span> <span class="info-n">参考利率范围</span> </div>
-            <div class="fl item-info"> <span class="info-c">12-24月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-50万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-          </a> </li>
-          <li> <a href="/#/requIndex/financingProductDetail#?id=326&amp;guid=d22aa5c073df419db31f60c07264c564" target="_blank">
-            <div class="fl item-img"> <img src="https://celoan-file.oss-cn-shenzhen.aliyuncs.com/celoan/crop/2019/09/12/2019091212524674721.png" alt=""> </div>
-            <div class="fl item-title"> <span class="t">线上快审快贷—宁波银行</span>
-              <p class="st"> <span class="st-label">适用地区：</span> <span class="adr-cont">北京市</span> </p>
-            </div>
-            <div class="fl item-info"> <span class="info-c">5-7%</span> <span class="info-n">参考利率范围</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-120月</span> <span class="info-n">贷款期限</span> </div>
-            <div class="fl item-info"> <span class="info-c">1-800万</span> <span class="info-n">贷款额度</span> </div> <button type="button" class="fl layui-btn item-btn">立即申请</button>
-          </a> </li> -->
+          </a></router-link>
         </ul>
-        <div id="pagination" class="ac pagination">
+        <template>
+          <pagenation
+            :total="total"
+            :page-size="param.limit"
+            :current-page="param.page"
+            @handleSizeChangeSub="handleSizeChange"
+            @handleCurrentChangeSub="handleCurrentChange"
+          />
+        </template>
+        <!--<div id="pagination" class="ac pagination">
           <div id="layui-laypage-59" class="layui-box layui-laypage layui-laypage-default"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" /><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
-        </div>
+        </div>-->
       </div>
     </div>
     <lzfooter />
@@ -268,12 +245,14 @@ import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
 import ico_type1 from '@/assets/images/portal/ico-type1.png'
 import ico_type2 from '@/assets/images/portal/ico-type2.png'
+import pagenation from '@/views/components/pagenation'
 
 export default {
   name: 'FinOrgList',
   components: {
     lzhead,
-    lzfooter
+    lzfooter,
+    pagenation
   },
   data() {
     return {
@@ -283,6 +262,14 @@ export default {
       t_img: t_img,
       ico_type2: ico_type2,
       ico_type1: ico_type1,
+      total: 0,
+      param: {
+        page: 1,
+        limit: 10,
+        compId: ''
+      },
+      products: [],
+      finaceOrg: [],
       isBlock: true,
       more_icon: {
         backgroundImage: 'url(' + more_img + ')',
@@ -290,6 +277,7 @@ export default {
         backgroundPositionX: 'right',
         backgroundPositionY: 'center'
       },
+      activeA: 0,
       activeB: 0,
       activeC: 0,
       activeD: 0,
@@ -297,9 +285,45 @@ export default {
     }
   },
   mounted() {
-
+    this.id = this.$route.query.id
+    this.selectById(this.id)
+    this.param.compId = this.id
+    this.findAll(this.param)
   },
   methods: {
+    selectById(id) {
+      this.$axios({
+        url: 'http://127.0.0.1:9900/api-finance/financeorg/selectById/' + id,
+        method: 'GET'
+      }).then(res => {
+        this.finaceOrg = res.data.datas
+        console.log(res.data)
+      })
+    },
+    findAll(param) {
+      this.$axios({
+        url: 'http://127.0.0.1:9900/api-finance/financeproduct/list',
+        method: 'POST',
+        data: param
+      }).then((res) => {
+        if (res.data.code === 0) {
+          this.products = res.data.data
+          this.total = parseInt(res.data.count)
+          // console.log(res.data.data)
+        } else {
+          this.$message.error(res.data.msg)
+        }
+      })
+    },
+    handleSizeChange(size) {
+      this.param.page = 1
+      this.param.limit = size
+      this.findAll(this.param)
+    },
+    handleCurrentChange(page) {
+      this.param.page = page
+      this.findAll(this.param)
+    }
   }
 }
 </script>
