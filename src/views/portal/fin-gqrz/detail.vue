@@ -13,29 +13,29 @@
                   <div class="overflow head-cont">
                     <div class="clearfix">
                       <div class="fr ar clearfix"> <span id="productCollect" class="head-collect " /> <input type="hidden" name="collect" value="0"> </div>
-                      <h2 class="text-ellipsis head-name">红杉资本（中国）</h2>
+                      <h2 class="text-ellipsis head-name">{{ org.name }}</h2>
                     </div>
                     <div class="product-list cont-info">
                       <ul class="item-info">
-                        <li class="fl text-ellipsis"><span class="line-middle info-label">组织形式</span><span class="line-middle info-cont" title="5-1000万">其他</span></li>
-                        <li class="fl text-ellipsis"><span class="line-middle info-label">证件号码</span><span class="line-middle info-cont">无</span></li>
-                        <li class="fl text-ellipsis"><span class="line-middle info-label">注册日期</span><span class="line-middle info-cont">2005-09-01</span></li>
-                        <li class="fl text-ellipsis"><span class="line-middle info-label">所属地区</span><span class="line-middle info-cont">北京市</span></li>
-                        <li class="fl text-ellipsis"><span class="line-middel info-label">管理资金规模</span><span class="line-middle info-cont" title="抵押">2000亿元</span></li>
+                        <li class="fl text-ellipsis"><span class="line-middle info-label">组织形式</span><span class="line-middle info-cont" title="5-1000万">{{ org.organization }}</span></li>
+                        <li class="fl text-ellipsis"><span class="line-middle info-label">证件号码</span><span class="line-middle info-cont">{{ org.creditCode }}</span></li>
+                        <li class="fl text-ellipsis"><span class="line-middle info-label">注册日期</span><span class="line-middle info-cont">{{ org.regDate }}</span></li>
+                        <li class="fl text-ellipsis"><span class="line-middle info-label">所属地区</span><span class="line-middle info-cont">{{ org.regAddr }}</span></li>
+                        <li class="fl text-ellipsis"><span class="line-middel info-label">管理资金规模</span><span class="line-middle info-cont" title="抵押">{{ org.fundScale }}</span></li>
                       </ul>
                     </div>
                     <div class="clearfix">
                       <ul class="head-info">
                         <li class="fl"> <span class="fl li-label">注册地址：</span>
-                          <div class="text-ellipsis"> <span class="li-data">无</span> </div>
+                          <div class="text-ellipsis"> <span class="li-data">{{ org.belongArea }}</span> </div>
                         </li>
                         <br>
                         <li class="fl"> <span class="fl li-label">办公地址：</span>
-                          <div class="text-ellipsis"> <span class="li-data">北京市朝阳区建国路77号华贸中心3号写字楼3606室</span> </div>
+                          <div class="text-ellipsis"> <span class="li-data">{{ org.actualOfficeAddr }}</span> </div>
                         </li> <!-- 修改 -->
                         <br>
                         <li class="fl"> <span class="fl li-label">法定代表人：</span>
-                          <div class="text-ellipsis"> <span class="li-data">红杉</span> </div>
+                          <div class="text-ellipsis"> <span class="li-data">{{ org.legalPerson }}</span> </div>
                         </li> <!-- 修改 -->
                       </ul>
                     </div>
@@ -48,20 +48,20 @@
                   <div class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">投资机构简介</span> </div>
                     <div class="page-main">
-                      <p class="detail-text">红杉资本始终致力于帮助创业者成就基业长青的伟大公司，为成员企业带来丰富的全球资源和宝贵的历史经验。47 年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。十四年来，红杉资本中国基金投资了超过 500 家具有鲜明技术特征、创新商业模式、具备高成长性和高发展潜力的企业</p>
+                      <p class="detail-text">{{ org.investOrgBrief }}</p>
                     </div>
                   </div>
                   <div class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">投资团队简介</span> </div>
                     <div class="page-main">
-                      <p class="detail-text">1沈南鹏红杉资本全球执行合伙人，红杉资本中国基金创始及执行合伙人 2周逵红杉资本中国基金合伙人 3计越红杉资本中国基金合伙人 4刘星红杉资本中国基金合伙人 5孙谦红杉资本中国基金合伙人 6陆潇波红杉资本中国基金合伙人 7富欣红杉资本中国基金合伙人 8王岑红杉资本中国基金合伙人 9郑庆生红杉资本中国基金合伙人 10曹曦红杉资本中国基金合伙人 11郭山汕红杉资本中国基金合伙人 12浦晓燕红杉资本中国基金合伙人</p>
+                      <p class="detail-text">{{ org.investTeamBrief }}</p>
                       <p />
                     </div>
                   </div>
                   <div class="small-mar-bottom cont-page">
                     <div class="label-ico page-head"> <span class="line-middle">投资方向简介</span> </div>
                     <div class="page-main">
-                      <p class="detail-text">红杉资本中国专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇，投资了包括阿里巴巴、贝达药业、大众点评网、德邦物流、DJI大疆创新、赶集网、高德软件、光环新网、华大基因、今日头条、京东、聚美优品、美丽说、美团网、陌陌、诺亚财富、奇虎360、万达院线、威高集团、唯品会、文思创新、新产业生物、新浪网、英雄互娱、鱼跃医疗、掌趣科技、中通快递在内的300余家企业。红杉资本在中国、印度、美国三个全球最具创新力或发展潜力的国家设有本地化基金。</p>
+                      <p class="detail-text">{{ org.investIntentBrief }}</p>
                     </div>
                   </div>
                   <div class="small-mar-bottom cont-page">
@@ -101,14 +101,27 @@ export default {
     return {
       tableData: [],
       wantSelected: 1,
-      market_banner: market_banner
+      id: 0,
+      market_banner: market_banner,
+      org: {}
     }
   },
   mounted() {
-
+    this.id = this.$route.params.id
+    this.selectById(this.id)
   },
   methods: {
-
+    selectById(id) {
+      this.$axios({
+        url: 'http://127.0.0.1:9900/api-finance/investorg/selectById/' + id,
+        method: 'get'
+      }).then(res => {
+        // this.products = res.data.data
+        // this.total = res.data.count
+        this.org = res.data.datas
+        console.log(res.data)
+      })
+    }
   }
 }
 </script>

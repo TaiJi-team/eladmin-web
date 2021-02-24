@@ -1,0 +1,255 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">金融产品</h2>
+        <span class="layui-breadcrumb pull-right">
+            <a href="#!console">工作台</a>
+            <a><cite>金融产品</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <div class="layui-form toolbar">
+            搜索：
+            <input id="stock-search-value" class="layui-input search-input" type="text" placeholder="输入关键字" />&emsp;
+            <button id="stock-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            <button id="stock-btn-add" class="layui-btn icon-btn">添加</button>
+        </div>
+        <table class="layui-table" id="stock-table" lay-filter="stock-table"></table>
+    </div>
+</div>
+
+
+<!-- 表格操作列 -->
+<script type="text/html" id="stock-table-bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        //上传
+        var upload = layui.upload;
+        var name1 = "";
+        var financeProductTo;
+        // 渲染表格
+        table.render({
+            elem: '#stock-table',
+            url: config.base_server + 'api-finance/financerequire/list?listStatus=1',
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
+            page: true,
+            cols: [[
+                { type: 'checkbox' },
+                { field: 'equityName', title: '项目名称', width: "15%" },
+                { field: 'equityTransfer', title: '出让股权', width: "15%" },
+                { field: 'financeTurn', title: '融资轮次', width: "15%" },
+                { field: 'expectAmount', title: '期望融资额（万元）', width: "15%" },
+                {
+                    field: 'whetherPublic', templet: function (d) {
+                        switch (d.whetherPublic) {
+                            case '1':
+                                return '是'
+                            case '0':
+                                return '否'
+                            default:
+                                return '未知'
+                        }
+                    }, title: '是否公开', width: "12%"
+                },
+                {
+                    field: 'whetherFocus', templet: function (d) {
+                        switch (d.whetherFocus) {
+                            case '1':
+                                return '是'
+                            case '0':
+                                return '否'
+                            default:
+                                return '未知'
+                        }
+                    }, title: '是否关注', width: "12%"
+                },
+                // {field: 'applyArea', title: '适用地区', width: "10%"},
+
+                { fixed: 'right', align: 'center', toolbar: '#stock-table-bar',title: '操作', width: '10%' }
+            ]]
+        });
+        console.log(financeProductTo);
+        // 添加按钮点击事件
+        $('#stock-btn-add').click(function () {
+            showEditModel();
+        });
+
+        // 工具条点击事件
+        table.on('tool(stock-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            // layer.msg(layEvent, {icon: 2, time: 1000});
+            if (layEvent === 'edit') { // 修改
+                showEditModel(data);
+            } else if (layEvent === 'del') {
+                layer.confirm('确定删除此需求吗？', function (i) {
+                    //layer.msg('删除成功', {icon: 1, time: 2000});
+                    admin.req('api-finance/financerequire/deleteById/' + data.id, {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, { icon: 1, time: 500 });
+                        } else {
+                            layer.msg(data.msg, { icon: 2, time: 500 });
+                        }
+                    }, 'get');
+                    table.reload('stock-table', {});
+                })
+            }
+        });
+
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            admin.putTempData('stock', data);
+            console.log(data);
+            var title = data ? '修改股权融资' : '添加股权融资';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/invest/stock-add.html',
+                // area: '83%',
+                area: ['80%', '80%'],
+                finish: function () {
+                    table.reload('stock-table', {});
+                },
+                success: function () {
+                    $('.layui-layer').css({
+                        'top': '8%',
+                        'left': '12%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
+                }
+            });
+        };
+
+        $('#stock-btn-sele-pm').on({
+            click: function () {
+                showSelePmModel();
+            }
+        });
+
+        $('#stock-btn-search').on({
+            click: function () {
+                var value = $('#stock-search-value').val();
+                table.reload('stock-table',
+                    {
+                        where: {
+                            name: value
+                        }
+                    })
+            }
+        });
+
+        //显示表单弹窗
+        var showSelePmModel = function (data) {
+            var title = '选择产品经理和业务员';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/finorg/select-pm.html',
+                area: ['60%', '65%'],
+                finish: function () {
+                    table.reload('stock-table', {});
+                },
+                success: function () {
+                    $('.layui-layer').css({
+                        'top': '8%',
+                        'left': '12%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
+                }
+            });
+        };
+
+        var dataChecked = false;
+        //监听表格复选框选择
+        table.on('checkbox(stock-table)', function (data) {
+            // data.status
+            dataChecked = data.checked;
+        });
+
+        $('#stock-btn-publish').on({
+            click: function () {
+                optFunc('发布');
+            }
+        })
+
+        $('#stock-btn-revoke').on({
+            click: function () {
+                optFunc('撤销');
+            }
+        })
+
+        var optFunc = function (opt) {
+            if (!dataChecked) {
+                layer.msg('请选择金融产品', { icon: 2, time: 2000 });
+                return;
+            }
+            layer.confirm('确定' + opt + '此产品吗？', function (i) {
+                layer.msg(opt + '成功', { icon: 1, time: 2000 });
+            })
+        }
+
+        upload.render({
+            elem: '#stock-btn-import'
+            , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            , accept: 'file' //普通文件
+            , exts: 'xlsx|xls'
+            , before: function (obj) {
+                console.log(obj)
+            }
+            , choose: function (obj) {
+                var files = this.files = obj.pushFile();
+                console.log(files)
+            }
+            , done: function (res) {
+                console.log(res);
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                layer.msg('上传成功');
+            },
+            error: function (index, upload) {
+                layer.msg('请求失败', { icon: 2, time: 2000 });
+            }
+        });
+
+        // 导出
+        $('#stock-btn-export').click(function () {
+            var url = config.base_server + 'api-user/users/export';
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.responseType = "blob";
+            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+            xhr.setRequestHeader("Authorization", "Bearer " + config.getToken().access_token);
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    var fileName = "stocks.xlsx";
+                    var blob = this.response;
+                    var a = document.createElement('a');
+                    a.innerHTML = fileName;
+                    // 指定生成的文件名
+                    a.download = fileName;
+                    a.href = URL.createObjectURL(blob);
+                    document.body.appendChild(a);
+                    var evt = document.createEvent("MouseEvents");
+                    evt.initEvent("click", false, false);
+                    a.dispatchEvent(evt);
+                    document.body.removeChild(a);
+                }
+            }
+            xhr.send();
+        });
+    });
+</script>

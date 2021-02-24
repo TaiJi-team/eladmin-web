@@ -1,0 +1,146 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">融资需求推送</h2>
+        <span class="layui-breadcrumb pull-right">
+            <a href="#!console">工作台</a>
+            <a><cite>融资需求推送</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <div class="layui-form toolbar">
+            企业名称：
+            <input id="need-push-search-value" class="layui-input search-input" type="text" placeholder="输入关键字" />&emsp;
+            公开融资：
+            <select name="loanRange" lay-search="" required>
+                <option value="">--请选择--</option>
+                <option value="是">是</option>
+                <option value="否">否</option>>
+            </select>
+            <button id="need-push-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+        </div>
+
+        <table class="layui-table" id="require-table" lay-filter="require-table"></table>
+    </div>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="require-table-bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        //上传
+        var upload = layui.upload;
+
+        // 渲染表格
+        table.render({
+            elem: '#require-table',
+            url: '/assets/data/need-push.json',
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
+            page: true,
+            cols: [[
+                { type: 'checkbox' },
+                { field: 'orderCode', title: '融资订单编码', width: "12%" },
+                { field: 'compName', title: '企业名称', width: "15%" },
+                {
+                    field: 'credGrade', templet: function (d) {
+                        switch (d.credGrade) {
+                            case 0:
+                                return '极好'
+                            case 1:
+                                return '良好'
+                            case 2:
+                                return '较好'
+                            case 3:
+                                return '一般'
+                            case 4:
+                                return '小白'
+                        }
+                    }, title: '企业信用评级', width: "15%"
+                },
+                { field: 'loanLimit', title: '出让股权', width: "8%" },
+                { field: 'loanDeadl', title: '融资轮次', width: "8%" },
+                { field: 'rateRange', title: '期望融资额', width: "13%" },
+                { field: 'repayWay', title: '状态', width: "8%" },
+                { field: 'pushTime', align: 'center', toolbar: '#require-table-bar', title: '操作', width: "15%" }
+            ]]
+        });
+
+        // 搜索按钮点击事件
+        $('#need-push-btn-search').click(function () {
+            var key = $('#need-push-search-key').val();
+            var value = $('#need-push-search-value').val();
+            table.reload('require-table', { where: { searchKey: key, searchValue: value } });
+        });
+
+        // 融资需求数据下载
+        // $('#need-push-btn-export').click(function () {
+        //     var path = '/assets/data/', fileName = '融资需求推送资料_2020-12-07.zip';
+        //     var url = path + fileName;
+        //     window.open(url);
+        // });
+
+        $('#require-btn-add').click(function () {
+            showEditModel();
+        });
+
+        // 工具条点击事件
+        table.on('tool(require-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            // layer.msg(layEvent, {icon: 2, time: 1000});
+            if (layEvent === 'edit') { // 修改
+                showEditModel(data);
+            } else if (layEvent === 'del') {
+                layer.confirm('确定删除此需求吗？', function (i) {
+                    //layer.msg('删除成功', {icon: 1, time: 2000});
+                    admin.req('api-finance/financeproduct/delete/' + data.id, {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, { icon: 1, time: 500 });
+                        } else {
+                            layer.msg(data.msg, { icon: 2, time: 500 });
+                        }
+                    }, 'delete');
+                    table.reload('require-table', {});
+                })
+            }
+        });
+
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            admin.putTempData('requirePush', data);
+            console.log(data);
+            var title = '股权融资';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/invest/stock-edit.html',
+                // area: '83%',
+                area: ['80%', '80%'],
+                finish: function () {
+                    table.reload('require-table', {});
+                },
+                success: function () {
+                    $('.layui-layer').css({
+                        'top': '8%',
+                        'left': '12%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
+                }
+            });
+        };
+
+    });
+</script>

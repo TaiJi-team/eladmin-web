@@ -93,17 +93,24 @@
       </div>
 
       <div id="page_template_body_id" class="min-page small-mar-top search-result mar-top-bottom">
-        <p class="result-text">搜索到<span class="result-num">4</span>个结果</p>
+        <p class="result-text">搜索到<span class="result-num">{{ total }}</span>个结果</p>
         <ul id="productListLine" class="product-list-line">
-          <li>
-            <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAZ68fAAAjOg2Yhz4764.png" alt=""> </div>
-            <div class="fl item-title">
-              <p class="st"> <span class="st-label">红杉资本(中国)</span> </p>
-              <p class="t">红杉资本始终致力于帮助创业者成就基业长青的伟大公司，为成员企业带来丰富的全球资源和宝贵的历史经验。47 年来，红杉资本投资了众多创新企业和产业潮流的领导者。 红杉资本中国基金作为「创业者背后的创业者」，专注于科技/传媒、医疗健康、消费品/服务、工业科技四个方向的投资机遇。</p>
-            </div>
-            <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
-          </li>
-          <li>
+          <router-link
+            v-for="(item, index) in stock"
+            :key="index"
+            :to="{ path: '/fin-gqrz/detail/' + item.id }"
+            tag="li"
+          >
+            <li>
+              <div class="fl item-img"> <img :src="item.imgUrl" alt=""> </div>
+              <div class="fl item-title">
+                <p class="st"> <span class="st-label">{{ item.name }}</span> </p>
+                <p class="t">{{ item.investOrgBrief }}</p>
+              </div>
+              <div><router-link :to="{ path: '/fin-gqrz/detail/' + item.id }"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
+            </li>
+          </router-link>
+          <!-- <li>
             <div class="fl item-img"> <img src="http://39.107.117.137:18899/group1/M01/00/00/rBEUUl3uGHGAeQBjAAAPPbGM7O8531.png" alt=""> </div>
             <div class="fl item-title">
               <p class="st"> <span class="st-label">京西文旅</span> </p>
@@ -128,13 +135,18 @@
               </p>
             </div>
             <div><router-link to="/fin-gqrz/detail"><button class="fl layui-btn item-btn" type="button">查看详情</button></router-link></div>
-          </li>
+          </li> -->
         </ul>
-        <div id="pagination" class="ac pagination">
-          <div id="layui-laypage-59" class="layui-box layui-laypage layui-laypage-default"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" /><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
-        </div>
+        <template>
+          <pagenation
+            :total="total"
+            :page-size="param.limit"
+            :current-page="param.page"
+            @handleSizeChangeSub="handleSizeChange"
+            @handleCurrentChangeSub="handleCurrentChange"
+          />
+        </template>
       </div>
-
     </div>
     <lzfooter />
   </div>
@@ -149,15 +161,18 @@ import t_img from '@/assets/images/portal/t-img.png'
 import more_img from '@/assets/icons/svg/arr-down.png'
 import ico_type1 from '@/assets/images/portal/ico-type1.png'
 import ico_type2 from '@/assets/images/portal/ico-type2.png'
+import pagenation from '@/views/components/pagenation'
 
 export default {
   name: 'FinOrgList',
   components: {
     lzhead,
-    lzfooter
+    lzfooter,
+    pagenation
   },
   data() {
     return {
+      total: 0,
       tableData: [],
       wantSelected: 1,
       org_banner: org_banner,
@@ -165,6 +180,12 @@ export default {
       ico_type2: ico_type2,
       ico_type1: ico_type1,
       isBlock: true,
+      param: {
+        page: 1,
+        limit: 10,
+        financeRound: '',
+        investIndus: ''
+      },
       more_icon: {
         backgroundImage: 'url(' + more_img + ')',
         backgroundRepeat: 'no-repeat',
@@ -172,17 +193,42 @@ export default {
         backgroundPositionY: 'center'
       },
       activeB: 0,
-      activeC: 0
+      activeC: 0,
+      stock: []
     }
   },
   mounted() {
-
+    this.findAll(this.param)
   },
   methods: {
     showDetail(id) {
       this.$router.push({
-        path: '/fin-market/detail'
+        path: '/fin-gqrz/detail'
         // params: { data: 'query' }
+      })
+    },
+    handleSizeChange(size) {
+      this.param.page = 1
+      this.param.limit = size
+      this.findAll(this.param)
+    },
+    handleCurrentChange(page) {
+      this.param.page = page
+      this.findAll(this.param)
+    },
+    findAll(param) {
+      this.$axios({
+        url: 'http://127.0.0.1:9900/api-finance/investorg/getList',
+        method: 'POST',
+        data: param
+      }).then((res) => {
+        if (res.data.code === 0) {
+          this.stock = res.data.data
+          this.total = parseInt(res.data.count)
+          // console.log(res.data.data)
+        } else {
+          this.$message.error(res.data.msg)
+        }
       })
     }
   }
@@ -746,6 +792,9 @@ li[data-v-f123e482] {
     display: list-item;
     text-align: -webkit-match-parent;
 }
+.div_body{
+    margin-bottom: 30px;
+}
 .product-list-line .item-img {
     width: 80px;
     height: 80px;
@@ -773,7 +822,6 @@ li[data-v-f123e482] {
 } */
 .product-list-line li {
     position: relative;
-    height: 110px;
     padding: 28px 15px;
     padding-top: 28px;
     padding-right: 15px;

@@ -107,7 +107,7 @@ export const constantRouterMap = [
     component: resolve => (require(['@/views/portal/fin-gqrz/list.vue'], resolve))
   },
   {
-    path: '/fin-gqrz/detail',
+    path: '/fin-gqrz/detail/:id',
     component: resolve => (require(['@/views/portal/fin-gqrz/detail.vue'], resolve))
   },
   {
