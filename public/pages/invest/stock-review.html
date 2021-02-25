@@ -872,32 +872,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="fl layui-form-item">
-                            <label class="layui-form-label">约谈时间：</label>
-                            <div class="clearfix layui-input-block">
-                                <input id="interviewTime" type="text" name="interviewTime" autocomplete="off" class="layui-input" maxlength="18" required>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item">
-                            <label class="layui-form-label">约谈地点：</label>
-                            <div class="clearfix layui-input-block">
-                                <input type="text" name="interviewArea" autocomplete="off" class="layui-input" maxlength="18" required>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item">
-                            <label class="layui-form-label">实际融资额：</label>
-                            <div class="clearfix layui-input-block">
-                                <input type="text" name="actualAmount" autocomplete="off" class="layui-input" maxlength="18">
-                            </div>
-                        </div>
-                        <div class="fl form-information item-full" style="width: 95%;">
-                            <p class="information-text">
-                                1.您确认需求后，平台将及时反馈给相关企业。
-                            </p>
-                            <p class="information-text">
-                                2.融资信用平台会保护您的个人信息，仅有被派单的企业能看到您的信息，请您放心填写。
-                            </p>
-                        </div>
                         <div class="fl ac item-full">
                             <button id="product-commit" lay-filter="product-form-submit" class="layui-btn" lay-submit ew-event="closeDialog">提交</button>
                             <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
@@ -933,7 +907,7 @@
         var saveOrUpdate;
         // 回显product数据
         layer.closeAll('loading');
-        var requirePush = admin.getTempData('requirePush');
+        var requirePush = admin.getTempData('requireReview');
         console.log(requirePush);
         $('.layui-form').attr('method', 'POST');
         if (requirePush) {

@@ -1,3 +1,8 @@
+<style>
+    .fl {
+        display: inline !important;
+    }
+</style>
 <div class="layui-card">
     <div class="layui-card-header">
         <h2 class="header-title">金融产品</h2>
@@ -8,8 +13,29 @@
     </div>
     <div class="layui-card-body">
         <div class="layui-form toolbar">
-            搜索：
-            <input id="stock-search-value" class="layui-input search-input" type="text" placeholder="输入关键字" />&emsp;
+            项目名称：
+            <input id="stock-search-value" class="layui-input search-input" name="equityName" type="text" placeholder="请输入项目名称" />
+            <div class="layui-inline">
+                <label class="layui-form-label">
+                    融资轮次：
+                </label>
+                <div class="layui-input-block">
+                    <select id="stock-search-financeTurn" name="financeTurn" lay-search="" required>
+                        <option value="">--融资轮次--</option>
+                        <option value="种子轮">种子轮</option>
+                        <option value="天使轮">天使轮</option>
+                        <option value="A轮">A轮</option>
+                        <option value="B轮">B轮</option>
+                        <option value="C轮">C轮</option>
+                        <option value="D轮">D轮</option>
+                        <option value="E轮">E轮</option>
+                        <option value="F轮">F轮</option>
+                        <option value="G轮">G轮</option>
+                        <option value="新三板定增">新三板定增</option>
+                        <option value="上市定增">上市定增</option>
+                    </select>
+                </div>
+            </div>&emsp;
             <button id="stock-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
             <button id="stock-btn-add" class="layui-btn icon-btn">添加</button>
         </div>
@@ -39,16 +65,16 @@
         // 渲染表格
         table.render({
             elem: '#stock-table',
-            url: config.base_server + 'api-finance/financerequire/list?listStatus=1',
+            url: config.base_server + 'api-finance/financerequire/list?listState=1',
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
             page: true,
             cols: [[
                 { type: 'checkbox' },
-                { field: 'equityName', title: '项目名称', width: "15%" },
-                { field: 'equityTransfer', title: '出让股权', width: "15%" },
-                { field: 'financeTurn', title: '融资轮次', width: "15%" },
-                { field: 'expectAmount', title: '期望融资额（万元）', width: "15%" },
+                { field: 'equityName', title: '项目名称', width: "12%" },
+                { field: 'equityTransfer', title: '出让股权', width: "12%" },
+                { field: 'financeTurn', title: '融资轮次', width: "12%" },
+                { field: 'expectAmount', title: '期望融资额（万元）', width: "12%" },
                 {
                     field: 'whetherPublic', templet: function (d) {
                         switch (d.whetherPublic) {
@@ -62,6 +88,20 @@
                     }, title: '是否公开', width: "12%"
                 },
                 {
+                    field: 'state', templet: function (d) {
+                        switch (d.state) {
+                            case '2':
+                                return '通过'
+                            case '1':
+                                return '驳回'
+                            case '0':
+                                return '审核中'
+                            default:
+                                return '未知'
+                        }
+                    }, title: '订单状态', width: "12%"
+                },
+                {
                     field: 'whetherFocus', templet: function (d) {
                         switch (d.whetherFocus) {
                             case '1':
@@ -71,11 +111,11 @@
                             default:
                                 return '未知'
                         }
-                    }, title: '是否关注', width: "12%"
+                    }, title: '是否受关注', width: "12%"
                 },
                 // {field: 'applyArea', title: '适用地区', width: "10%"},
 
-                { fixed: 'right', align: 'center', toolbar: '#stock-table-bar',title: '操作', width: '10%' }
+                { fixed: 'right', align: 'center', toolbar: '#stock-table-bar', title: '操作', width: '10%' }
             ]]
         });
         console.log(financeProductTo);
@@ -141,10 +181,12 @@
         $('#stock-btn-search').on({
             click: function () {
                 var value = $('#stock-search-value').val();
+                var financeTurn = $("#stock-search-financeTurn").val();
                 table.reload('stock-table',
                     {
                         where: {
-                            name: value
+                            equityName: value,
+                            financeTurn: financeTurn
                         }
                     })
             }
