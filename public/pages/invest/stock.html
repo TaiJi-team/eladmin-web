@@ -12,7 +12,7 @@
         </span>
     </div>
     <div class="layui-card-body">
-        <div class="layui-form toolbar">
+        <form class="layui-form toolbar">
             项目名称：
             <input id="stock-search-value" class="layui-input search-input" name="equityName" type="text" placeholder="请输入项目名称" />
             <div class="layui-inline">
@@ -20,7 +20,7 @@
                     融资轮次：
                 </label>
                 <div class="layui-input-block">
-                    <select id="stock-search-financeTurn" name="financeTurn" lay-search="" required>
+                    <select id="stock-search-financeTurn" name="financeTurn">
                         <option value="">--融资轮次--</option>
                         <option value="种子轮">种子轮</option>
                         <option value="天使轮">天使轮</option>
@@ -36,9 +36,10 @@
                     </select>
                 </div>
             </div>&emsp;
-            <button id="stock-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-            <button id="stock-btn-add" class="layui-btn icon-btn">添加</button>
-        </div>
+            <button id="stock-btn-search" class="layui-btn icon-btn" type="button"><i class="layui-icon">&#xe615;</i>搜索</button>
+            <button class="layui-btn icon-btn" type="reset"><i class="layui-icon layui-icon-refresh"></i>重置</button>
+            <button id="stock-btn-add" class="layui-btn icon-btn" type="button">添加</button>
+        </form>
         <table class="layui-table" id="stock-table" lay-filter="stock-table"></table>
     </div>
 </div>
@@ -178,10 +179,11 @@
             }
         });
 
+
         $('#stock-btn-search').on({
             click: function () {
-                var value = $('#stock-search-value').val();
-                var financeTurn = $("#stock-search-financeTurn").val();
+                let value = $('#stock-search-value').val();
+                let financeTurn = $("#stock-search-financeTurn").val();
                 table.reload('stock-table',
                     {
                         where: {

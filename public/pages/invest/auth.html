@@ -324,12 +324,14 @@
           investIntentBrief: data.field.investIntentBrief
         }
         formData.userOrgOper = {
-          userName: data.field.operName,
+          userName: data.field.lepPhone,
+          nickName: data.field.operName,
           mobile: data.field.operPhone,
           idNum: data.field.operCode
         };
         formData.userOrgLegper = {
-          userName: data.field.lepName,
+          userName: data.field.lepPhone,
+          nickName: data.field.lepName,
           mobile: data.field.lepPhone,
           idNum: data.field.lepCode
         };

@@ -7,7 +7,7 @@
         </span>
     </div>
     <div class="layui-card-body">
-        <div class="layui-form toolbar">
+        <form class="layui-form toolbar">
             项目名称：
             <input id="stock-search-value" class="layui-input search-input" name="equityName" type="text" placeholder="请输入项目名称" />&emsp;
             企业名称：
@@ -17,7 +17,7 @@
                     融资轮次：
                 </label>
                 <div class="layui-input-block">
-                    <select id="stock-search-financeTurn" name="financeTurn" lay-search="" required>
+                    <select id="stock-search-financeTurn" name="financeTurn">
                         <option value="">--融资轮次--</option>
                         <option value="种子轮">种子轮</option>
                         <option value="天使轮">天使轮</option>
@@ -33,16 +33,22 @@
                     </select>
                 </div>
             </div>&emsp;
-            <button id="need-push-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-        </div>
+            <button id="need-push-btn-search" class="layui-btn icon-btn" type="button"><i class="layui-icon">&#xe615;</i>搜索</button>
+            <button class="layui-btn icon-btn" type="reset"><i class="layui-icon layui-icon-refresh"></i>重置</button>
+        </form>
 
-        <table class="layui-table" id="require-table" lay-filter="require-table"></table>
+        <table class="layui-table" id="push-table" lay-filter="push-table"></table>
     </div>
 </div>
 
 <!-- 表格操作列 -->
-<script type="text/html" id="require-table-bar">
+<script type="text/html" id="push-table-bar">
+    {{# if(d.actualAmount == "" || d.actualAmount == null){ }}
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">处理</a>
+    {{# } }}
+    {{# if(d.actualAmount != "" &&  d.actualAmount != null){ }}
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">详情</a>
+    {{# } }}
 </script>
 
 
@@ -59,7 +65,7 @@
 
         // 渲染表格
         table.render({
-            elem: '#require-table',
+            elem: '#push-table',
             url: config.base_server + 'api-finance/financerequire/list?listState=1',
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
@@ -98,7 +104,7 @@
                     }, title: '订单状态', width: "10%"
                 },
                 { field: 'createTime', title: '创建时间', width: "15%" },
-                { field: '', align: 'center', toolbar: '#require-table-bar', title: '操作', width: "10%" }
+                { field: '', align: 'center', toolbar: '#push-table-bar', title: '操作', width: "10%" }
             ]]
         });
 
@@ -107,7 +113,7 @@
             var value = $('#stock-search-value').val();
             var financeTurn = $('#stock-search-financeTurn').val();
             var companyName = $("#companyName").val();
-            table.reload('require-table', {
+            table.reload('push-table', {
                 where: {
                     equityName: value,
                     financeTurn: financeTurn,
@@ -128,12 +134,14 @@
         });
 
         // 工具条点击事件
-        table.on('tool(require-table)', function (obj) {
+        table.on('tool(push-table)', function (obj) {
             var data = obj.data;
             var layEvent = obj.event;
             // layer.msg(layEvent, {icon: 2, time: 1000});
             if (layEvent === 'edit') { // 修改
                 showEditModel(data);
+            }else if(layEvent === 'detail'){
+                showEditModel2(data);
             } else if (layEvent === 'concern') {
                 layer.confirm('确定关注此需求吗？', function (i) {
                     //layer.msg('删除成功', {icon: 1, time: 2000});
@@ -146,7 +154,7 @@
                             layer.msg(data.msg, { icon: 2, time: 500 });
                         }
                     }, 'delete');
-                    table.reload('require-table', {});
+                    table.reload('push-table', {});
                 })
             }
         });
@@ -158,11 +166,36 @@
             var title = '股权融资';
             admin.popupCenter({
                 title: title,
-                path: 'pages/invest/stock-edit.html',
+                path: 'pages/invest/stock-invest-edit.html',
                 // area: '83%',
                 area: ['80%', '80%'],
                 finish: function () {
-                    table.reload('require-table', {});
+                    table.reload('push-table', {});
+                },
+                success: function () {
+                    $('.layui-layer').css({
+                        'top': '8%',
+                        'left': '12%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
+                }
+            });
+        };
+
+        //显示详情
+        var showEditModel2 = function (data) {
+            admin.putTempData('requirePush', data);
+            console.log(data);
+            var title = '股权融资';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/invest/stock-invest-detail.html',
+                // area: '83%',
+                area: ['80%', '80%'],
+                finish: function () {
+                    table.reload('push-table', {});
                 },
                 success: function () {
                     $('.layui-layer').css({

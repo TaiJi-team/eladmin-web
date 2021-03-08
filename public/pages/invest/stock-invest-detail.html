@@ -8,11 +8,6 @@
         color: #666;
     }
 
-    .more-info {
-        float: left;
-        display: none;
-    }
-
     .layadmin-header {
         display: none;
         height: 50px;
@@ -114,11 +109,6 @@
         padding: 0;
     }
 
-    .direct-org {
-        float: left;
-        display: none;
-    }
-
     .release-cont .page-head {
         padding: 10px 10px 0;
         border-bottom: 1px dashed #d1d1d1;
@@ -128,9 +118,7 @@
         color: #eb9835;
     }
 
-    .grep {
-        background: #e6e6e6
-    }
+   
 
     .release-cont .release-side-list {
         padding: 0 0 15px;
@@ -284,8 +272,8 @@
     }
 
     /* .detail-cont {
-    padding: 20px 30px;
-} */
+        padding: 20px 30px;
+    } */
     .detail-cont .page-right {
         width: 350px;
         padding: 20px;
@@ -443,8 +431,8 @@
     }
 
     /* .need-apply {
-    display: none;
-} */
+        display: none;
+    } */
     /* grant */
     .grant-ul {
         padding: 0 0 5px;
@@ -753,8 +741,8 @@
     }
 
     /* a {
-    color: #555;
-} */
+        color: #555;
+    } */
     .choose-btn .layui-btn {
         width: 108px;
         height: 38px;
@@ -773,12 +761,12 @@
 
 <div class="layui-card">
     <!-- <div class="layui-card-header">
-        <h2 class="header-title">金融产品</h2>
-        <span class="layui-breadcrumb pull-right">
-          <a href="#!console">工作台</a>
-          <a><cite>金融产品</cite></a>
-        </span>
-    </div> -->
+            <h2 class="header-title">金融产品</h2>
+            <span class="layui-breadcrumb pull-right">
+              <a href="#!console">工作台</a>
+              <a><cite>金融产品</cite></a>
+            </span>
+        </div> -->
 
     <div class="layui-fluid">
         <!-- content -->
@@ -811,127 +799,104 @@
                 <div class="ac page-head"><span>股权融资信息</span></div>
                 <div class="clearfix page-cont take-release">
                     <div class="layui-form" lay-filter="component-form-group">
-                        <input name="state" type="hidden" value="0" />
-                        <input name="whetherFocus" type="hidden" value="0" />
+                        <input name="id" type="hidden" />
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
-                                <span class="form-required">*</span>期望融资额：</label>
+                                <span class="form-required">*</span>企业名称</label>
                             <div class="layui-input-block clearfix">
-                                <input type="tel" name="expectAmount" placeholder="请输入期望融资额" autocomplete="on" maxlength="20" class="layui-input" required>
+                                <input type="tel" name="companyName" autocomplete="on" maxlength="20"  class="layui-input " disabled required>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item">
+                            <label class="layui-form-label">
+                                <span class="form-required">*</span>项目名称</label>
+                            <div class="layui-input-block clearfix">
+                                <input type="tel" name="equityName" autocomplete="on" maxlength="20"  class="layui-input " disabled required>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item">
+                            <label class="layui-form-label">
+                                <span class="form-required">*</span>期望融资额（万元）：</label>
+                            <div class="layui-input-block clearfix">
+                                <input type="tel" name="expectAmount" autocomplete="on" maxlength="20"  class="layui-input " disabled required>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>出让股权：</label>
                             <div class="layui-input-block clearfix">
-                                <input type="tel" name="equityTransfer" placeholder="请输入出让股权" autocomplete="on" maxlength="20" class="layui-input" required>
-                            </div>
-                        </div>
-                        <div class="fl layui-form-item">
-                            <div class="layui-block">
-                                <label class="layui-form-label">
-                                    <span class="form-required">*</span>是否公开：
-                                </label>
-                                <div class="clearfix layui-input-block">
-                                    <select name="whetherPublic" id="whetherPublic" lay-search="" lay-filter="isPublic">
-                                        <option value="2">--请选择--</option>
-                                        <option value="1">是</option>
-                                        <option value="0">否</option>>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-form-item direct-org">
-                            <div class="layui-block">
-                                <label class="layui-form-label">
-                                    <span class="form-required">*</span>指定机构：
-                                </label>
-                                <div class="layui-input-block">
-                                    <select name="financeIds" id="financeIds" lay-search="">
-                                        <option value="">--指定投资机构--</option>
-                                    </select>
-                                </div>
+                                <input type="tel" name="equityTransfer" autocomplete="on" maxlength="20"  class="layui-input " disabled required>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>所处行业：</label>
                             <div class="layui-input-block clearfix">
-                                <input type="tel" name="industry" placeholder="请输入所处行业：" autocomplete="on" maxlength="20" class="layui-input" required>
+                                <input type="tel" name="industry" autocomplete="on"  maxlength="20" class="layui-input " disabled required>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>联系人名称：</label>
                             <div class="clearfix layui-input-block">
-                                <input type="text" name="comContactName" autocomplete="off" placeholder="请输入联系人名称" class="layui-input" maxlength="18" required>
+                                <input type="text" name="comContactName" autocomplete="off" class="layui-input "  maxlength="18" disabled required>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
                             <label class="layui-form-label">
                                 <span class="form-required">*</span>联系人电话：</label>
                             <div class="clearfix layui-input-block">
-                                <input type="text" name="comContactPhone" autocomplete="off" placeholder="请输入联系人电话" class="layui-input" maxlength="18" required>
+                                <input type="text" name="comContactPhone" autocomplete="off" class="layui-input "  maxlength="18" disabled required>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item">
+                            <label class="layui-form-label">
+                                <span class="form-required">*</span>融资轮次：</label>
+                            <div class="clearfix layui-input-block">
+                                <input type="text" name="financeTurn" autocomplete="off" class="layui-input "  maxlength="18" disabled required>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
                             <div class="layui-block">
                                 <label class="layui-form-label">
-                                    <span class="form-required">*</span>融资轮次：
+                                    <span class="form-required">*</span>定向投递：
                                 </label>
-                                <div class="layui-input-block">
-                                    <select name="financeTurn" id="financeTurn" lay-search="" required>
-                                        <option value="1">--融资轮次--</option>
-                                        <option value="种子轮">种子轮</option>
-                                        <option value="天使轮">天使轮</option>
-                                        <option value="A轮">A轮</option>
-                                        <option value="B轮">B轮</option>
-                                        <option value="C轮">C轮</option>
-                                        <option value="D轮">D轮</option>
-                                        <option value="E轮">E轮</option>
-                                        <option value="F轮">F轮</option>
-                                        <option value="G轮">G轮</option>
-                                        <option value="新三板定增">新三板定增</option>
-                                        <option value="上市定增">上市定增</option>
+                                <div class="clearfix layui-input-block">
+                                    <select name="whetherPublic" lay-search=""  lay-filter="isPublic" disabled>
+                                        <option value="2">--请选择--</option>
+                                        <option value="1">否</option>
+                                        <option value="0">是</option>>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="fl layui-form-item">
-                            <label class="layui-form-label">
-                                <span class="form-required">*</span>项目名称：</label>
-                            <div class="clearfix layui-input-block">
-                                <input type="text" name="equityName" autocomplete="off" placeholder="请输入项目名称：" class="layui-input" maxlength="18" required>
-                            </div>
-                        </div>
-                        <div class="layui-form-item more-info">
                             <label class="layui-form-label">约谈时间：</label>
                             <div class="clearfix layui-input-block">
-                                <input type="text" name="interviewTime" disabled autocomplete="off" class="layui-input" maxlength="18" required>
+                                <input id="interviewTime" type="text" name="interviewTime" autocomplete="off" class="layui-input" maxlength="18" disabled required>
                             </div>
                         </div>
-                        <div class="layui-form-item more-info">
+                        <div class="fl layui-form-item">
                             <label class="layui-form-label">约谈地点：</label>
                             <div class="clearfix layui-input-block">
-                                <input type="text" name="interviewArea" disabled autocomplete="off" class="layui-input" maxlength="18" required>
+                                <input type="text" name="interviewArea" autocomplete="off" class="layui-input" maxlength="18" disabled required>
                             </div>
                         </div>
-                        <div class="layui-form-item more-info">
-                            <label class="layui-form-label">实际投资额：</label>
+                        <div class="fl layui-form-item">
+                            <label class="layui-form-label">实际融资额：</label>
                             <div class="clearfix layui-input-block">
-                                <input type="text" name="actualAmount" disabled autocomplete="off" class="layui-input" maxlength="18" required>
+                                <input type="text" name="actualAmount" autocomplete="off" class="layui-input" maxlength="18" disabled>
                             </div>
                         </div>
                         <div class="fl form-information item-full" style="width: 95%;">
                             <p class="information-text">
-                                1.您的需求提交后，为保证服务质量，我们可能会向多家机构推荐您的需求。
+                                1.您确认需求后，平台将及时反馈给相关企业。
                             </p>
                             <p class="information-text">
-                                2.融资信用平台会保护您的个人信息，仅有被派单的机构能看到您的联系方式，请您放心提供。
+                                2.融资信用平台会保护您的个人信息，仅有被派单的企业能看到您的信息，请您放心填写。
                             </p>
                         </div>
                         <div class="fl ac item-full">
-                            <button id="product-commit" lay-filter="product-form-submit" class="layui-btn" lay-submit ew-event="closeDialog">提交</button>
                             <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
                         </div>
                     </div>
@@ -944,7 +909,7 @@
 
 </div>
 <script>
-    layui.use(['form', 'table', 'layer', 'util', 'config', 'admin', 'upload'], function () {
+    layui.use(['form', 'table', 'layer', 'util', 'config', 'admin', 'upload','laydate'], function () {
         var form = layui.form;
         var table = layui.table;
         var config = layui.config;
@@ -953,59 +918,35 @@
         var admin = layui.admin;
         //上传
         var upload = layui.upload;
+        var laydate = layui.laydate;
         form.render('select')
+        $(".layui-select-title").css('background', '#e6e6e6');
+
+        laydate.render({
+            elem: '#interviewTime' //指定元素
+        });
 
         layer.load(2);
         var saveOrUpdate;
         // 回显product数据
         layer.closeAll('loading');
-        var stock = admin.getTempData('stock');
-        console.log(stock);
+        var requirePush = admin.getTempData('requirePush');
+        console.log(requirePush);
         $('.layui-form').attr('method', 'POST');
-
-        form.on('select(isPublic)', function (data) {
-            let selectValue = $("select[name='whetherPublic']").val();
-            if (selectValue == 0) {
-                $(".direct-org").css("display", "inline");
-                $("[name=whetherFocus]").val("1");
-            } else {
-                $(".direct-org").css("display", "none");
-                $("[name=whetherFocus]").val("0");
-            }
-            form.render('select');
-        });
-
-        //查询所有的投资机构
-        admin.req('api-finance/investorg/findAll', JSON.stringify({ "page": 1, "limit": 10 }), function (data) {
-            for (let i = 0; i < data.data.length; i++) {
-                $("select[name=financeIds]").append("<option value=" + data.data[i].id + ">" + data.data[i].name + "</option>");
-            }
-            form.render('select');
-            //这里进行区分新增和查询
-            if (stock) {
-                form.val('component-form-group', stock);
-                $('#product-form').attr('method', 'POST');
-                saveOrUpdate = 0;
-                $("#product-commit").hide();
-                if (stock.whetherPublic == 0) {
-                    $(".direct-org").css("display", "inline");
-                }
-                $(".more-info").css("display", "inline");
-                //设置只读
-                $("input").attr("disabled", true);
-                $("select").attr("disabled", true);
-                form.render('select');
-            }
-        }, 'POST');
-
+        if (requirePush) {
+            form.val('component-form-group', requirePush);
+            $('#product-form').attr('method', 'POST');
+            saveOrUpdate = 0;
+        }
 
         // 表单提交事件
         form.on('submit(product-form-submit)', function (data) {
-            var URL = 'api-finance/financerequire/save';
+            console.log(saveOrUpdate);
+            var URL = 'api-finance/financerequire/updateById';;
             // if (saveOrUpdate == 0) {
-            //   URL = 'api-finance/financerequire/update';
-            // }else {
-            //   URL = 'api-finance/financerequire/save'
+            //     URL = 'api-finance/financeproduct/update';
+            // } else {
+            //     URL = 'api-finance/financeproduct/save'
             // }
             layer.load(2);
             admin.req(URL, JSON.stringify(data.field), function (data) {

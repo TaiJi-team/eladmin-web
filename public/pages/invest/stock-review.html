@@ -872,6 +872,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="fl layui-form-item">
+                            <div class="layui-block">
+                                <label class="layui-form-label">
+                                    <span class="form-required">*</span>审核结果：
+                                </label>
+                                <div class="clearfix layui-input-block">
+                                    <select name="state" lay-search="" lay-filter="isPublic" lay-verify="required">
+                                        <option value="1">驳回</option>
+                                        <option value="2">通过</option>>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item" style="width:755px">
+                            <label class="layui-form-label">
+                                <span class="form-required">*</span>审核评语：</label>
+                            <div class="clearfix layui-input-block">
+                                <textarea  name="auditRemark" autocomplete="off" class="layui-textarea" lay-verify="required"></textarea>
+                            </div>
+                        </div>
                         <div class="fl ac item-full">
                             <button id="product-commit" lay-filter="product-form-submit" class="layui-btn" lay-submit ew-event="closeDialog">提交</button>
                             <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
@@ -886,7 +906,7 @@
 
 </div>
 <script>
-    layui.use(['form', 'table', 'layer', 'util', 'config', 'admin', 'upload','laydate'], function () {
+    layui.use(['form', 'table', 'layer', 'util', 'config', 'admin', 'upload', 'laydate'], function () {
         var form = layui.form;
         var table = layui.table;
         var config = layui.config;

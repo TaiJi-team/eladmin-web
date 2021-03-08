@@ -13,8 +13,8 @@
         <div class="content-filter-box">
           <div class="clearfix box-head">
             <div class="fr head-search">
-              <input type="text" name="s_key" placeholder="请输入关键字，支持模糊搜索" lay-verify="" class="fl layui-input search-ipt">
-              <button class="fl g-bg search-btn" lay-submit="" lay-filter="formFilter">搜 索</button>
+              <input v-model="keywordParam" type="text" placeholder="请输入关键字，支持模糊搜索" lay-verify="" class="fl layui-input search-ipt">
+              <button class="fl g-bg search-btn" lay-submit="" lay-filter="formFilter" @click="searchKeyword">搜 索</button>
             </div>
             <div class="head-title">
               <img :src="t_img" alt="">
@@ -39,20 +39,20 @@
               <div class="overflow item-cont item-on">
                 <div class="clearfix pos-rela item-city">
                   <!-- <div id="OrgType" class="overflow"><a class="fl item-l item-b item-l-on" data-type="OrgType" data-id="0">不限</a><a class="fl item-l" data-type="OrgType" data-id="1">银行</a><a class="fl item-l" data-type="OrgType" data-id="2">担保公司</a><a class="fl item-l" data-type="OrgType" data-id="4">融资租赁公司</a><a class="fl item-l" data-type="OrgType" data-id="5">消费金融公司</a><a class="fl item-l" data-type="OrgType" data-id="6">风险投资机构</a><a class="fl item-l" data-type="OrgType" data-id="7">资产管理公司</a><a class="fl item-l" data-type="OrgType" data-id="8">保险公司</a><a class="fl item-l" data-type="OrgType" data-id="9">保理公司</a><a class="fl item-l" data-type="OrgType" data-id="10">信托公司</a><a class="fl item-l" data-type="OrgType" data-id="11">供应链机构</a><a class="fl item-l" data-type="OrgType" data-id="18">其他</a></div> -->
-                  <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="activeB=0">不限</a>
-                  <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="1" @click="activeB=1">电商</a>
-                  <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="2" @click="activeB=2">硬件</a>
-                  <a :class="{'item-l-on':activeB==3}" class="fl item-l " data-type="OrgType" data-id="3" @click="activeB=3">文娱传媒</a>
-                  <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="4" @click="activeB=4">工具</a>
-                  <a :class="{'item-l-on':activeB==5}" class="fl item-l" data-type="OrgType" data-id="5" @click="activeB=5">消费生活</a>
-                  <a :class="{'item-l-on':activeB==6}" class="fl item-l " data-type="OrgType" data-id="6" @click="activeB=6">金融</a>
-                  <a :class="{'item-l-on':activeB==7}" class="fl item-l" data-type="OrgType" data-id="7" @click="activeB=7">医疗健康</a>
-                  <a :class="{'item-l-on':activeB==8}" class="fl item-l" data-type="OrgType" data-id="8" @click="activeB=8">企业服务</a>
-                  <a :class="{'item-l-on':activeB==9}" class="fl item-l " data-type="OrgType" data-id="9" @click="activeB=9">旅游</a>
-                  <a :class="{'item-l-on':activeB==10}" class="fl item-l" data-type="OrgType" data-id="10" @click="activeB=1">房产家居</a>
-                  <a :class="{'item-l-on':activeB==11}" class="fl item-l" data-type="OrgType" data-id="11" @click="activeB=10">教育</a>
-                  <a :class="{'item-l-on':activeB==12}" class="fl item-l" data-type="OrgType" data-id="12" @click="activeB=2">汽车</a>
-                  <a :class="{'item-l-on':activeB==13}" class="fl item-l" data-type="OrgType" data-id="13" @click="activeB=2">张三</a><br>
+                  <a :class="{'item-l-on':activeB==0}" class="fl item-l " data-type="OrgType" data-id="0" @click="(activeB=0), (param.investIndus = '')">不限</a>
+                  <a :class="{'item-l-on':activeB==1}" class="fl item-l" data-type="OrgType" data-id="1" @click="(activeB=1), (param.investIndus = '电商')">电商</a>
+                  <a :class="{'item-l-on':activeB==2}" class="fl item-l" data-type="OrgType" data-id="2" @click="(activeB=2), (param.investIndus = '硬件')">硬件</a>
+                  <a :class="{'item-l-on':activeB==3}" class="fl item-l " data-type="OrgType" data-id="3" @click="(activeB=3), (param.investIndus = '文娱传媒')">文娱传媒</a>
+                  <a :class="{'item-l-on':activeB==4}" class="fl item-l" data-type="OrgType" data-id="4" @click="(activeB=4), (param.investIndus = '工具')">工具</a>
+                  <a :class="{'item-l-on':activeB==5}" class="fl item-l" data-type="OrgType" data-id="5" @click="(activeB=5), (param.investIndus = '消费生活')">消费生活</a>
+                  <a :class="{'item-l-on':activeB==6}" class="fl item-l " data-type="OrgType" data-id="6" @click="(activeB=6), (param.investIndus = '金融')">金融</a>
+                  <a :class="{'item-l-on':activeB==7}" class="fl item-l" data-type="OrgType" data-id="7" @click="(activeB=7), (param.investIndus = '医疗健康')">医疗健康</a>
+                  <a :class="{'item-l-on':activeB==8}" class="fl item-l" data-type="OrgType" data-id="8" @click="(activeB=8), (param.investIndus = '企业服务')">企业服务</a>
+                  <a :class="{'item-l-on':activeB==9}" class="fl item-l " data-type="OrgType" data-id="9" @click="(activeB=9), (param.investIndus = '旅游')">旅游</a>
+                  <a :class="{'item-l-on':activeB==10}" class="fl item-l" data-type="OrgType" data-id="10" @click="(activeB=10), (param.investIndus = '房产家居')">房产家居</a>
+                  <a :class="{'item-l-on':activeB==11}" class="fl item-l" data-type="OrgType" data-id="11" @click="(activeB=11), (param.investIndus = '教育')">教育</a>
+                  <a :class="{'item-l-on':activeB==12}" class="fl item-l" data-type="OrgType" data-id="12" @click="(activeB=12), (param.investIndus = '汽车')">汽车</a>
+                  <a :class="{'item-l-on':activeB==13}" class="fl item-l" data-type="OrgType" data-id="13" @click="(activeB=13), (param.investIndus = '张三')">张三</a><br>
                   <input type="hidden" name="OrgType">
                 </div>
               </div>
@@ -67,20 +67,19 @@
                   <!-- <div class="overflow item-sub_city item-sub_level_1"> -->
                   <!-- <a class="fl item-l item-b item-l-on" data-type="CityType" data-id="0">不限</a>
                     <a class="fl item-l" data-type="CityType" data-id="110100">北京市</a></div> -->
-                  <a :class="{'item-l-on':activeC==0}" class="fl item-l " data-type="CityType" data-id="0" @click="activeC=0">不限</a>
-                  <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="CityType" data-id="1" @click="activeC=1">种子轮</a>
-                  <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="CityType" data-id="2" @click="activeC=2">天使轮</a>
-                  <a :class="{'item-l-on':activeC==3}" class="fl item-l " data-type="CityType" data-id="3" @click="activeC=3">pre-A轮</a>
-                  <a :class="{'item-l-on':activeC==4}" class="fl item-l" data-type="CityType" data-id="4" @click="activeC=4">A轮</a>
-                  <a :class="{'item-l-on':activeC==5}" class="fl item-l" data-type="CityType" data-id="5" @click="activeC=5">B轮</a>
-                  <a :class="{'item-l-on':activeC==6}" class="fl item-l " data-type="CityType" data-id="6" @click="activeC=6">C轮</a>
-                  <a :class="{'item-l-on':activeC==7}" class="fl item-l" data-type="CityType" data-id="7" @click="activeC=7">D轮</a>
-                  <a :class="{'item-l-on':activeC==8}" class="fl item-l" data-type="CityType" data-id="8" @click="activeC=8">E轮</a>
-                  <a :class="{'item-l-on':activeC==9}" class="fl item-l " data-type="CityType" data-id="9" @click="activeC=9">F轮</a>
-                  <a :class="{'item-l-on':activeC==10}" class="fl item-l" data-type="CityType" data-id="10" @click="activeC=1">G轮</a>
-                  <a :class="{'item-l-on':activeC==11}" class="fl item-l" data-type="CityType" data-id="11" @click="activeC=10">PRE-IPO</a>
-                  <a :class="{'item-l-on':activeC==12}" class="fl item-l" data-type="CityType" data-id="12" @click="activeC=2">IPO</a>
-                  <a :class="{'item-l-on':activeC==13}" class="fl item-l" data-type="CityType" data-id="13" @click="activeC=2">上市企业</a><br>
+                  <a :class="{'item-l-on':activeC==0}" class="fl item-l " data-type="CityType" data-id="0" @click="(activeC=0), (param.financeRound = '')">不限</a>
+                  <a :class="{'item-l-on':activeC==1}" class="fl item-l" data-type="CityType" data-id="1" @click="(activeC=1), (param.financeRound = '种子轮')">种子轮</a>
+                  <a :class="{'item-l-on':activeC==2}" class="fl item-l" data-type="CityType" data-id="2" @click="(activeC=2), (param.financeRound = '天使轮')">天使轮</a>
+                  <a :class="{'item-l-on':activeC==3}" class="fl item-l " data-type="CityType" data-id="3" @click="(activeC=3), (param.financeRound = 'pre-A轮')">pre-A轮</a>
+                  <a :class="{'item-l-on':activeC==4}" class="fl item-l" data-type="CityType" data-id="4" @click="(activeC=4), (param.financeRound = 'A轮')">A轮</a>
+                  <a :class="{'item-l-on':activeC==5}" class="fl item-l" data-type="CityType" data-id="5" @click="(activeC=5), (param.financeRound = 'B轮')">B轮</a>
+                  <a :class="{'item-l-on':activeC==6}" class="fl item-l " data-type="CityType" data-id="6" @click="(activeC=6), (param.financeRound = 'C轮')">C轮</a>
+                  <a :class="{'item-l-on':activeC==7}" class="fl item-l" data-type="CityType" data-id="7" @click="(activeC=7), (param.financeRound = 'D轮')">D轮</a>
+                  <a :class="{'item-l-on':activeC==8}" class="fl item-l" data-type="CityType" data-id="8" @click="(activeC=8), (param.financeRound = 'E轮')">E轮</a>
+                  <a :class="{'item-l-on':activeC==9}" class="fl item-l " data-type="CityType" data-id="9" @click="(activeC=9), (param.financeRound = 'F轮')">F轮</a>
+                  <a :class="{'item-l-on':activeC==10}" class="fl item-l" data-type="CityType" data-id="10" @click="(activeC=10), (param.financeRound = 'G轮')">G轮</a>
+                  <a :class="{'item-l-on':activeC==11}" class="fl item-l" data-type="CityType" data-id="11" @click="(activeC=11), (param.financeRound = 'PRE-IPO')">PRE-IPO</a>
+                  <a :class="{'item-l-on':activeC==12}" class="fl item-l" data-type="CityType" data-id="12" @click="(activeC=12), (param.financeRound = 'IPO')">IPO</a>
                   <input type="hidden" name="CityType">
                 </div>
               </div>
@@ -180,11 +179,13 @@ export default {
       ico_type2: ico_type2,
       ico_type1: ico_type1,
       isBlock: true,
+      keywordParam: '',
       param: {
         page: 1,
         limit: 10,
+        investIndus: '',
         financeRound: '',
-        investIndus: ''
+        keyword: ''
       },
       more_icon: {
         backgroundImage: 'url(' + more_img + ')',
@@ -195,6 +196,14 @@ export default {
       activeB: 0,
       activeC: 0,
       stock: []
+    }
+  },
+  watch: {
+    param: {
+      handler(val, oldVal) {
+        this.findAll(this.param)
+      },
+      deep: true
     }
   },
   mounted() {
@@ -230,6 +239,9 @@ export default {
           this.$message.error(res.data.msg)
         }
       })
+    },
+    searchKeyword() {
+      this.param.keyword = this.keywordParam
     }
   }
 }
