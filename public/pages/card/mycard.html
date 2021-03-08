@@ -1,0 +1,131 @@
+
+<div class="layui-fluid">
+  <div class="layui-form layui-row layui-col-space15" id="CertificateInfoView" lay-filter="component-form-group">
+    <div class="layui-col-md12">
+
+      <div class="layui-card">
+        <div class="layui-card-header">
+          <h2 class="header-title">我的名片</h2>
+          <span class="layui-breadcrumb pull-right">
+            <a href="#!console">工作台</a>
+            <a><cite>我的名片</cite></a>
+        </span>
+        </div>
+        <div class="layui-card-body">
+          <div class="layui-row layui-col-space15">
+            <div class="layui-col-md5 layui-form" style="text-align: right">
+              <input name="id" type="hidden" />
+
+              <div class="layui-form-item"> <label class="layui-form-label"><span
+                style="color: red">*</span>姓名：</label>
+                <div class="layui-input-block"><input type="text" id="name" name="name"  lay-verify="required"
+                                                       placeholder="请输入姓名" class="layui-input" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-form-item"> <label class="layui-form-label"><span
+                style="color: red">*</span>职务：</label>
+                <div class="layui-input-block"><input type="text" id="position" name="position"  lay-verify="required"
+                                                      placeholder="请输入职务" class="layui-input" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-form-item"> <label class="layui-form-label"><span
+                style="color: red">*</span>公司名称：</label>
+                <div class="layui-input-block"><input type="text" id="company" name="company"  lay-verify="required"
+                                                      placeholder="请输入公司名称" class="layui-input" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-form-item"> <label class="layui-form-label"><span
+                style="color: red">*</span>电话：</label>
+                <div class="layui-input-block"><input type="text" id="phone" name="phone"  lay-verify="required"
+                                                      placeholder="请输入电话" class="layui-input" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-form-item"> <label class="layui-form-label"><span
+                style="color: red">*</span>邮箱：</label>
+                <div class="layui-input-block"><input type="text" id="email" name="email"  lay-verify="required"
+                                                      placeholder="请输入邮箱" class="layui-input" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-form-item"> <label class="layui-form-label"><span
+                style="color: red">*</span>公司地址：</label>
+                <div class="layui-input-block"><input type="text" id="companyAddress" name="companyAddress"  lay-verify="required"
+                                                      placeholder="请输入公司地址" class="layui-input" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="layui-card-body">
+                <div class="layui-row layui-col-space15">
+                  <div class="layui-form-item">
+                    <div class="layui-input-block">
+                      <button class="layui-btn" id="save" lay-submit lay-filter="card-form-submit">保存</button>
+<!--                      <button class="layui-btn layui-btn-primary"  lay-submit="" lay-filter="addForm">取消</button>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  layui.use(['layer', 'admin', 'form', 'formSelects', 'upload'], function () {
+    var layer = layui.layer;
+    var admin = layui.admin;
+    var form = layui.form;
+    var formSelects = layui.formSelects;
+    var upload = layui.upload;
+
+    admin.req('api-finance/businessCard/selectByUserId',{} ,function (data) {
+      console.log(data);
+      form.val('component-form-group', data.datas);
+      $('#card-form').attr('method', 'POST');
+    }, 'GET');
+
+    form.on('submit(card-form-submit)',function (data) {
+      admin.req('api-finance/businessCard/saveOrUpdate', JSON.stringify(data.field), function (data) {
+        console.log(data);
+        if (data.code == 0) {
+          layer.msg(data.msg, {icon: 1, time: 500});
+          admin.finishPopupCenter();
+        } else {
+          layer.msg('请求失败', {icon: 2, time: 500});
+        }
+      }, "POST");
+    });
+
+   /* //拖拽上传
+    upload.render({
+      elem: '#png'
+      // ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+      , url: 'https:/localhost'
+      , done: function (res) {
+        layer.msg('上传成功');
+        layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+        console.log(res)
+      }
+    });
+    //指定允许上传的文件类型
+    upload.render({
+      elem: '#test4'
+      , url: 'https://httpbin.org/post' //改成您自己的上传接口
+      , accept: 'file' //普通文件
+      , done: function (res) {
+        layer.msg('上传成功');
+        console.log(res);
+      }
+    });*/
+  });
+
+</script>

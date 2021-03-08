@@ -1,0 +1,102 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">收到的名片</h2>
+        <span class="layui-breadcrumb pull-right">
+            <a href="#!console">工作台</a>
+            <a><cite>收到的名片</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <div class="layui-form toolbar">
+            姓名：
+            <input id="stock-search-value" class="layui-input search-input" name="name" type="text" placeholder="请输入姓名" />&emsp;
+            <button id="need-push-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+        </div>
+
+        <table class="layui-table" id="all-table" lay-filter="all-table"></table>
+    </div>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="all-table-bar">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">查看详情</a>
+</script>
+
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        //上传
+        var upload = layui.upload;
+
+        // 渲染表格
+        table.render({
+            elem: '#all-table',
+            url: config.base_server + 'api-finance/businessCard/list',
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
+            contentType: 'application/json;charset=UTF-8',
+            page: true,
+            cols: [[
+                { type: 'numbers',title: '序号', width: "6%"},
+                { field: 'name', title: '联系人'},
+                { field: 'phone', title: '电话'},
+                { field: 'email', title: '邮箱'},
+                { field: '', align: 'center', toolbar: '#all-table-bar', title: '操作'}
+            ]]
+        });
+
+        // 搜索按钮点击事件
+        $('#need-push-btn-search').click(function () {
+            var value = $('#stock-search-value').val();
+            table.reload('all-table', {
+                where: {
+                    name: value
+                }
+            });
+        });
+
+
+
+
+        // 工具条点击事件
+        table.on('tool(all-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            if (layEvent === 'detail') { // 修改
+                showEditModel(data);
+            }
+        });
+
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            admin.putTempData('cardDetail', data);
+            console.log(data);
+            var title = '名片详情';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/card/card-detail.html',
+                // area: '83%',
+                area: ['50%', '50%'],
+                finish: function () {
+                    table.reload('all-table', {});
+                },
+                success: function () {
+                    $('.layui-layer').css({
+                        'top': '20%',
+                        'left': '30%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
+                }
+            });
+        };
+
+    });
+</script>
