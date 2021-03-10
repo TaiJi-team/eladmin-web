@@ -1,0 +1,630 @@
+<style>
+    .item-div2 {
+        display: inline-block;
+    }
+    .show-div2{
+        border-bottom: solid #E4E4E4 1px;
+        border-top: solid #E4E4E4 1px;
+        height: 390px;
+    }
+    .input-div2{
+        height: 390px;
+        margin-bottom: 20px;
+    }
+    .upload-div{
+        height: 100px;
+        margin-bottom: 20px;
+    }
+    .show-item2{
+      background-color: #f1f1f5;
+      width: 400px;
+    }
+    .input-item2{
+        width: 400px;
+    }
+    .select-item2 {
+        width: 300px;
+    }
+
+    .later-window2 {
+        margin-top: 20px;
+    }
+
+    .top-window2 {
+        border: solid #E4E4E4 1px;
+        height: 900px;
+    }
+
+    .tab-title2 {
+        margin-top: -50px;
+        background-color: #F3F3F3;
+        border-bottom: solid #E4E4E4 1px;
+        height: 40px;
+    }
+
+    .child-title{
+        background-color: #F3F3F3;
+        border-bottom: solid #E4E4E4 1px;
+        height: 40px;
+    }
+
+    .tab-title2-span {
+        margin-top: 10px;
+        margin-left: 20px;
+        display: inline-block
+    }
+
+    .top-small-window {
+        float: left;
+        border: #E4E4E4 solid 1px;
+        margin-top: 25px;
+        margin-left: 50px;
+        width: 230px;
+        height: 100px;
+    }
+
+    .layadmin-caller {
+        background: #fff;
+        padding: 30px
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    .layadmin-caller em {
+        font-style: normal
+    }
+
+    .layadmin-caller .caller-fl {
+        float: left
+    }
+
+    .layadmin-caller .caller-fr {
+        float: right
+    }
+
+    .layadmin-caller .caller-seach {
+        position: relative;
+        padding-bottom: 40px
+    }
+
+    .layadmin-caller .caller-seach .caller-icon {
+        font-size: 18px;
+        position: absolute;
+        top: 9px
+    }
+
+    .layadmin-caller .caller-seach-icon {
+        left: 6px
+    }
+
+    .layadmin-caller .caller-dump-icon {
+        right: 6px;
+        cursor: pointer
+    }
+
+    .layadmin-caller .caller-pl32 {
+        padding: 0 32px
+    }
+
+    .layadmin-caller .caller-tab {
+        margin: 0
+    }
+
+    .layadmin-caller .caller-contar {
+        padding-bottom: 20px
+    }
+
+    .layadmin-caller .caller-contar .caller-item {
+        padding: 25px 0;
+        overflow: hidden;
+        border-bottom: 1px solid #e0e0e0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main {
+        margin-left: 20px
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main p {
+        line-height: 100%;
+        padding: 8px 0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main p:first-child {
+        padding-top: 0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main em {
+        margin-left: 5px
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i {
+        padding-right: 5px;
+        margin: 0
+    }
+
+    .layadmin-caller .caller-contar .caller-item .caller-main .caller-adds {
+        padding-bottom: 12px
+    }
+
+    .layadmin-caller .caller-contar .caller-iconset i {
+        margin: 0 5px
+    }
+
+    .layadmin-caller .caller-contar .caller-iconset i:first-child {
+        margin-left: 0
+    }
+
+    .layadmin-caller .caller-contar button {
+        margin-top: 22px
+    }
+
+    .layadmin-caller .caller-contar .caller-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%
+    }
+
+    .right-title {
+        visibility: visible;
+        float: right;
+        margin-right: 1%;
+        width: 13%;
+    }
+
+    .right-title a:hover {
+        color: #5FB878 !important;
+    }
+
+    .layui-fluid {
+        padding: 15px;
+    }
+
+    .layadmin-header {
+        display: none;
+        height: 50px;
+        line-height: 50px;
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+
+    .layadmin-header .layui-breadcrumb {
+        padding: 0 15px;
+    }
+
+    .layui-card-header {
+        position: relative;
+    }
+
+    .fl {
+        float: left;
+    }
+
+    .layui-card-header .layui-icon {
+        line-height: initial;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        margin-top: -7px;
+    }
+
+    .layadmin-iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+
+<div class="layui-card">
+    <!-- <div class="layui-card-header" id="auth-finorg">
+      <h2 class="header-title"></h2>
+      <span class="layui-breadcrumb pull-right">
+        <a href="#!console">工作台</a>
+        <a><cite></cite></a>
+      </span>
+    </div> -->
+    <div class="layui-fluid">
+        <div class="layadmin-caller">
+            <div class="top-window2 later-window2">
+                <div class="tab-title2"><span class="tab-title2-span">业务申报</span></div>
+                <form class="layui-form" action="">
+                    <div class="layui-form-item item-div2">
+                        <label class="layui-form-label">审批分类</label>
+                        <div class="layui-input-block select-item2">
+                            <select name="city" lay-verify="required">
+                                <option value="">[请选择审批事项分类]</option>
+                                <option value="0">融资担保</option>
+                                <option value="1">小额贷款</option>
+                                <option value="2">商业保理</option>
+                                <option value="3">典当行</option>
+                                <option value="4">资产管理</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item item-div2">
+                        <label class="layui-form-label">审批事项</label>
+                        <div class="layui-input-block  select-item2">
+                            <select name="city" lay-verify="required">
+                                <option value="">[请选择审批事项]</option>
+                                <option value="0">小额信用贷款</option>
+                                <option value="1">小额质押贷款</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item item-div2">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo" type="button">查询</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="show-div2">
+                    <div class="child-title"><span class="tab-title2-span">事项信息</span></div>
+                    <form class="layui-form" action="">
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label">事项名称</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label">事项编号</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label">受理部门</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label">联合机构</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label">办理事项</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label">在线支付</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label">法规管辖地</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label">咨询电话</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label">业务管辖地</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label">事项类型</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label">备注</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input show-item2" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="input-div2">
+                    <div class="child-title"><span class="tab-title2-span">请在此输入申报信息</span></div>
+                    <form class="layui-form" action="">
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label"><span style="color: red;">*</span>业务流水号</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label"><span style="color: red;">*</span>申请单位</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label"><span style="color: red;">*</span>申请人名称</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label"><span style="color: red;">*</span>手机号</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label">单位固话</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input input-item2">
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label">邮箱</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input input-item2">
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label"><span style="color: red;">*</span>单位地址</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label"><span style="color: red;">*</span>身份证号</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label"><span style="color: red;">*</span>提交时间</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" id="submitDate"  class="layui-input input-item2" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div2">
+                            <label class="layui-form-label"><span style="color: red;">*</span>申请内容</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="fl layui-form-item item-div2">
+                            <label class="layui-form-label">备注</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" class="layui-input input-item2">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                              <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                              <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="upload-div">
+                <div class="layui-upload-list">
+                  <table class="layui-table">
+                    <thead>
+                      <tr><th>材料名</th>
+                      <th>大小</th>
+                      <th>状态</th>
+                      <th>操作</th>
+                    </tr></thead>
+                    <tbody id="demoList"></tbody>
+                  </table>
+                </div>
+                <button type="button" class="layui-btn layui-btn-normal" id="testList">选择申报材料</button> 
+                <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload', 'laytpl', 'laypage','laydate'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        var laypage = layui.laypage;
+        //上传
+        var upload = layui.upload;
+        var laytpl = layui.laytpl;
+        var laydate = layui.laydate;
+        var zs = '';
+        var kvMap = new Map();
+        var list = new Array();
+        //分页
+        var financeOrgTo = {
+            page: 1
+            , limit: 10
+        }
+        laydate.render({
+            elem: '#submitDate' //指定元素
+        });
+        console.log(financeOrgTo);
+        admin.req('api-finance/investorg/getList', JSON.stringify(financeOrgTo), function (data) {
+            zs = data.count;
+        }, 'POST');
+
+        //多文件列表示例
+        var demoListView = $('#demoList')
+            , uploadListIns = upload.render({
+                elem: '#testList'
+                , url: 'https://httpbin.org/post' //改成您自己的上传接口
+                , accept: 'file'
+                , multiple: true
+                , auto: false
+                , bindAction: '#testListAction'
+                , choose: function (obj) {
+                    var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                    //读取本地文件
+                    obj.preview(function (index, file, result) {
+                        var tr = $(['<tr id="upload-' + index + '">'
+                            , '<td>' + file.name + '</td>'
+                            , '<td>' + (file.size / 1024).toFixed(1) + 'kb</td>'
+                            , '<td>等待上传</td>'
+                            , '<td>'
+                            , '<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                            , '<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                            , '</td>'
+                            , '</tr>'].join(''));
+                        
+                        //单个重传
+                        tr.find('.demo-reload').on('click', function () {
+                            obj.upload(index, file);
+                        });
+
+                        //删除
+                        tr.find('.demo-delete').on('click', function () {
+                            delete files[index]; //删除对应的文件
+                            tr.remove();
+                            uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                        });
+
+                        demoListView.append(tr);
+                    });
+                }
+                , done: function (res, index, upload) {
+                    if (res.files.file) { //上传成功
+                        var tr = demoListView.find('tr#upload-' + index)
+                            , tds = tr.children();
+                        tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                        tds.eq(3).html(''); //清空操作
+                        return delete this.files[index]; //删除文件队列已经上传成功的文件
+                    }
+                    this.error(index, upload);
+                }
+                , error: function (index, upload) {
+                    var tr = demoListView.find('tr#upload-' + index)
+                        , tds = tr.children();
+                    tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                    tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+                }
+            });
+
+
+        // laypage.render({
+        //     elem: 'demo7'
+        //     , count: zs
+        //     , layout: ['count', 'prev', 'page', 'next', 'limit', 'limits']
+        //     , jump: function (obj) {
+        //         var financeOrgTo = {
+        //             page: obj.curr
+        //             , limit: obj.limit
+        //         }
+        //         console.log(financeOrgTo);
+        //         admin.req('api-finance/investorg/getList', JSON.stringify(financeOrgTo), function (data) {
+        //             zs = data.count;
+        //             console.log(data.data);
+        //             list = data.data;
+        //             console.log(list);
+        //         }, 'POST');
+        //         for (i = 0; i < list.length; i++) {
+        //             list[i].id = list[i].id
+        //             console.log(list[i].id)
+        //         }
+        //         var data2 = { //数据
+        //             "title": "Layui常用模块"
+        //             , "list": list
+        //         }
+        //         var getTpl = demo.innerHTML;
+        //         view = document.getElementById('finorg-view');
+        //         laytpl(getTpl).render(data2, function (html) {
+        //             view.innerHTML = html;
+        //         });
+        //     }
+        // });
+
+        kvMap.set('comp-auth', '企业认证');
+        kvMap.set('fin-org-auth', '金融机构认证');
+        kvMap.set('oper-org-auth', '运营机构认证');
+        var key = location.href.split('#!')[1];
+        let data = {
+            authName: kvMap.get(key)
+        }
+        $('#auth-finorg').find('h2').text(kvMap.get(key));
+        $($('#auth-finorg').find('a')[1]).text(kvMap.get(key));
+
+        
+
+        if (!!localStorage.getItem('url-redirect')) {
+            showEditModel();
+            localStorage.removeItem('url-redirect')
+            // return;
+        }
+
+        // 添加按钮点击事件
+        $('.layui-btn-normal').click(function () {
+            showEditModel();
+        });
+
+
+        // 金融入驻信息保存
+        var finOrgAuth = function (data) {
+            //表单数据formData
+            var formData = {};
+            console.log(data);
+            if (data) {
+                // formData.name = formData.col_name;//金融机构名字
+                formData.investOrg = {
+                    name: data.field.name,
+                    creditCode: data.field.creditCode,
+                    detailAddr: data.field.detailAddr,
+                    busiScope: data.field.busiScope,
+                    busiPeriod: data.field.business_time,
+                    organization: data.field.organization,
+                    investIndus: data.field.investIndus,
+                    financeRound: data.field.financeRound,
+                    fundScale: data.field.fundScale,
+                    investOrgBrief: data.field.investOrgBrief,
+                    investTeamBrief: data.field.investTeamBrief,
+                    investIntentBrief: data.field.investIntentBrief
+                }
+                formData.userOrgOper = {
+                    userName: data.field.lepPhone,
+                    nickName: data.field.operName,
+                    mobile: data.field.operPhone,
+                    idNum: data.field.operCode
+                };
+                formData.userOrgLegper = {
+                    userName: data.field.lepPhone,
+                    nickName: data.field.lepName,
+                    mobile: data.field.lepPhone,
+                    idNum: data.field.lepCode
+                };
+                console.log(formData);
+            }
+
+            admin.req('api-finance/investorg/save', JSON.stringify(formData), function (data) {
+                if (data.code == 0) {
+                    layer.msg('提交成功，待平台审核', { icon: 5, time: 2000 }, function () {
+                        layer.closeAll();
+                    });
+                } else {
+                    layer.msg(data.msg, { icon: 5, time: 2000 }, function () {
+                        layer.closeAll();
+                    });
+                }
+            }, 'POST');
+        }
+    });
+
+</script>

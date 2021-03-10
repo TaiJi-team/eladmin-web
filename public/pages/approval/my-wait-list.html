@@ -1,0 +1,203 @@
+<style>
+    .apply-search-input1 {
+        width: 150px;
+        display: inline-block;
+        height: 36px;
+        vertical-align: middle;
+        padding: 3px 6px;
+    }
+</style>
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">待办审批</h2>
+        <span class="layui-breadcrumb pull-right">
+            <a href="#!console">工作台</a>
+            <a><cite>待办审批</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <form class="layui-form toolbar">
+            事项名称：
+            <input id="stock-search-value" class="layui-input apply-search-input1 " name="" type="text" placeholder="请输入事项名称" />&emsp;
+            受理部门：
+            <input id="companyName" class="layui-input apply-search-input1 " name="" type="text" placeholder="请输入受理部门" />
+            <div class="layui-inline">
+                <label class="layui-form-label">
+                    事项类型：
+                </label>
+                <div class="layui-input-block">
+                    <select id="stock-search-financeTurn" name="financeTurn">
+                        <option value="">--事项类型--</option>
+                        <option value="种子轮">小额贷款</option>
+                        <option value="天使轮">典当行</option>
+                        <option value="A轮">融资担保</option>
+                    </select>
+                </div>
+            </div>&emsp;
+            <button id="need-push-btn-search" class="layui-btn icon-btn" type="button"><i class="layui-icon">&#xe615;</i>搜索</button>
+            <button class="layui-btn icon-btn" type="reset"><i class="layui-icon layui-icon-refresh"></i>重置</button>
+        </form>
+
+        <table class="layui-table" id="my-apply-table" lay-filter="my-apply-table"></table>
+    </div>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="my-apply-table-bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看详情</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="progress">进度查询</a>
+</script>
+
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'upload'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        //上传
+        var upload = layui.upload;
+
+        // 渲染表格
+        table.render({
+            elem: '#my-apply-table',
+            url: config.base_server + 'api-finance/financerequire/list?listState=1',
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + config.getToken().access_token },
+            page: true,
+            cols: [[
+                { type: 'checkbox' },
+                { field: 'companyName', title: '事项编号', width: "10%" },
+                { field: 'equityName', title: '事项名称', width: "10%" },
+                { field: 'equityTransfer', title: '受理部门', width: "10%" },
+                { field: 'financeTurn', title: '法规管辖地', width: "10%" },
+                { field: 'expectAmount', title: '业务管辖地', width: "10%" },
+                {
+                    field: 'whetherPublic', templet: function (d) {
+                        switch (d.whetherPublic) {
+                            case '1':
+                                return '小额贷款'
+                            case '0':
+                                return '融资担保'
+                            default:
+                                return '未知'
+                        }
+                    }, title: '事项类型', width: "10%"
+                },
+                {
+                    field: 'state', templet: function (d) {
+                        switch (d.state) {
+                            case '2':
+                                return '申报'
+                            case '1':
+                                return '受理'
+                            case '0':
+                                return '审批'
+                            default:
+                                return '待受理'
+                        }
+                    }, title: '状态', width: "10%"
+                },
+                { field: 'createTime', title: '创建时间', width: "7%" },
+                { field: '', align: 'center', toolbar: '#my-apply-table-bar', title: '操作', width: "15%" }
+            ]]
+        });
+
+        // 搜索按钮点击事件
+        $('#need-push-btn-search').click(function () {
+            var value = $('#stock-search-value').val();
+            var financeTurn = $('#stock-search-financeTurn').val();
+            var companyName = $("#companyName").val();
+            table.reload('my-apply-table', {
+                where: {
+                    equityName: value,
+                    financeTurn: financeTurn,
+                    companyName: companyName
+                }
+            });
+        });
+
+
+        $('#require-btn-add').click(function () {
+            showEditModel();
+        });
+
+        // 工具条点击事件
+        table.on('tool(my-apply-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            // layer.msg(layEvent, {icon: 2, time: 1000});
+            if (layEvent === 'progress') { // 进度条
+                showEditModel(data);
+            }else if(layEvent === 'detail'){
+                showEditModel2();
+            } else if (layEvent === 'concern') {
+                layer.confirm('确定关注此需求吗？', function (i) {
+                    data.field.whetherFocus = "1";
+                    admin.req('api-finance/financerequire/updateById' + JSON.stringify(data.field), {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, { icon: 1, time: 500 });
+                        } else {
+                            layer.msg(data.msg, { icon: 2, time: 500 });
+                        }
+                    }, 'delete');
+                    table.reload('my-apply-table', {});
+                })
+            }
+        });
+
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            admin.putTempData('requirePush', data);
+            console.log(data);
+            var title = '审批进度';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/approval/my-progress.html',
+                // area: '83%',
+                area: ['55%', '80%'],
+                finish: function () {
+                    table.reload('my-apply-table', {});
+                },
+                success: function () {
+                    $('.layui-layer').css({
+                        'top': '8%',
+                        'left': '35%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
+                }
+            });
+        };
+
+        //显示详情
+        var showEditModel2 = function (data) {
+            admin.putTempData('requirePush', data);
+            console.log(data);
+            var title = '许可申请详情';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/approval/my-apply-detail.html',
+                // area: '83%',
+                area: ['80%', '80%'],
+                finish: function () {
+                    table.reload('my-apply-table', {});
+                },
+                success: function () {
+                    $('.layui-layer').css({
+                        'top': '8%',
+                        'left': '12%'
+                    })
+                    $('.layui-layer-page .layui-layer-content').css({
+                        'overflow': 'scroll'
+                    })
+                }
+            });
+        };
+
+    });
+</script>

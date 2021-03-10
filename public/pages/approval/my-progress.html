@@ -1,0 +1,105 @@
+<style>
+    .cancel-button{
+        margin-right: 400px;
+        float:right;
+    }
+    .content{
+        width: 720PX;
+    }
+    .content {
+        font-weight: 600;
+    }
+    .content .content-value{
+        color: gray;
+        font-weight: 500;
+    }
+    .progress-div{
+        margin-left: 45px;
+    }
+</style>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+    <legend>审批流水</legend>
+</fieldset>
+<div class="progress-div">
+    <ul class="layui-timeline">
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis"></i>
+            <div class="layui-timeline-content layui-text">
+                <h3 class="layui-timeline-title">2020年8月18日</h3>
+                <ul class="content">
+                    <li>业务：<span class="content-value">办公室审批</span></li>
+                    <li>提交人：<span class="content-value">朱迪</span></li>
+                    <li>说明：<span class="content-value">进行了行政许可申请审批，审批事项：小额金融贷款，审批意见：同意</span></li>
+                </ul>
+            </div>
+        </li>
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis"></i>
+            <div class="layui-timeline-content layui-text">
+                <h3 class="layui-timeline-title">2020年8月16日</h3>
+                <ul class="content">
+                    <li>业务：<span class="content-value">金融监管一处审批</span></li>
+                    <li>提交人：<span class="content-value">白明智</span></li>
+                    <li>说明：<span class="content-value">进行了行政许可申请审批，审批事项：小额金融贷款，审批意见：同意</span></li>
+                </ul>
+            </div>
+        </li>
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis"></i>
+            <div class="layui-timeline-content layui-text">
+                <h3 class="layui-timeline-title">2020年8月15日</h3>
+                <ul class="content">
+                    <li>业务：<span class="content-value">受理</span></li>
+                    <li>提交人：<span class="content-value">李四</span></li>
+                    <li>说明：<span class="content-value">进行了行政许可申请受理，受理事项：小额金融贷款，受理意见：同意受理</span></li>
+                </ul>
+            </div>
+        </li>
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis"></i>
+            <div class="layui-timeline-content layui-text">
+                <h3 class="layui-timeline-title">2020年7月30日</h3>
+                <ul class="content">
+                    <li>业务：<span class="content-value">申报</span></li>
+                    <li>提交人：<span class="content-value">张三</span></li>
+                    <li>说明：<span class="content-value">提交了一个行政许可申请，申请事项：小额金融贷款，申请内容：本公司需要开办小额金融贷款业务</span></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <div class="cancel-button">
+        <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'table', 'layer', 'util', 'config', 'admin', 'upload','laydate'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        //上传
+        var upload = layui.upload;
+        var laydate = layui.laydate;
+        form.render('select')
+        $(".layui-select-title").css('background', '#e6e6e6');
+
+        laydate.render({
+            elem: '#interviewTime' //指定元素
+        });
+
+        layer.load(2);
+        var saveOrUpdate;
+        // 回显product数据
+        layer.closeAll('loading');
+        var requirePush = admin.getTempData('requirePush');
+        console.log(requirePush);
+        $('.layui-form').attr('method', 'POST');
+        if (requirePush) {
+            form.val('component-form-group', requirePush);
+            $('#product-form').attr('method', 'POST');
+            saveOrUpdate = 0;
+        }
+    });
+</script>
