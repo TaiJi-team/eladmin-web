@@ -1,0 +1,69 @@
+<!-- mattertype表单弹窗 -->
+<form id="mattertype-form" lay-filter="mattertype-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">事项类型</label>
+        <div class="layui-input-block">
+            <input name="engName" placeholder="请输入事项类型名称" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <input name="cnName" placeholder="请输入备注" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
+        <button class="layui-btn" lay-filter="mattertype-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+
+<script>
+    layui.use(['layer', 'admin', 'form', 'formSelects'], function () {
+        var layer = layui.layer;
+        var admin = layui.admin;
+        var form = layui.form;
+        var formSelects = layui.formSelects;
+
+        form.render('radio');
+
+        layer.load(2);
+        var saveOrUpdate;
+        // 回显mattertype数据
+        layer.closeAll('loading');
+        var mattertype = admin.getTempData('t_mattertype');
+        console.log(mattertype);
+        $('#mattertype-form').attr('method', 'POST');
+        if (mattertype) {
+          form.val('mattertype-form', mattertype);
+          $('#mattertype-form').attr('method', 'POST');
+          saveOrUpdate = 0;
+        }
+
+        // 表单提交事件
+        form.on('submit(mattertype-form-submit)', function (data) {
+            console.log(saveOrUpdate);
+            var URL;
+            if (saveOrUpdate == 0) {
+              URL = 'api-user/mattertype/update';
+            }else {
+              URL = 'api-user/mattertype/save'
+            }
+            layer.load(2);
+            admin.req(URL, JSON.stringify(data.field), function (data) {
+                layer.closeAll('loading');
+                console.log(data);
+                if (data.code == 0) {
+                    layer.msg(data.msg, {icon: 1, time: 500});
+                    admin.finishPopupCenter();
+                } else {
+                    layer.msg('请求失败', {icon: 2, time: 500});
+                }
+            }, "POST");
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,67 @@
+<style>
+    .supply-input{
+        width: 80%;
+    }
+    #supply-form{
+        margin-top:40px ;
+    }
+</style>
+<form class="layui-form" id="supply-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span style="color: red">*</span>补正时限</label>
+        <div class="layui-input-block">
+            <input id="interviewTime" type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input supply-input">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label"><span style="color: red">*</span>告知原因</label>
+        <div class="layui-input-block">
+            <textarea name="desc" placeholder="请输入补正原因" class="layui-textarea supply-input"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">补正清单</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入需要补正的材料，逗号隔开" autocomplete="off"
+                class="layui-input supply-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="formDemo" type="button">提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+</form>
+<script>
+    layui.use(['form', 'table', 'layer', 'util', 'config', 'admin', 'upload','laydate'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        //上传
+        var upload = layui.upload;
+        var laydate = layui.laydate;
+        form.render('select')
+        $(".layui-select-title").css('background', '#e6e6e6');
+
+        laydate.render({
+            elem: '#interviewTime' //指定元素
+        });
+
+        layer.load(2);
+        var saveOrUpdate;
+        // 回显product数据
+        layer.closeAll('loading');
+        var requirePush = admin.getTempData('requirePush');
+        console.log(requirePush);
+        $('.layui-form').attr('method', 'POST');
+        if (requirePush) {
+            form.val('component-form-group', requirePush);
+            $('#product-form').attr('method', 'POST');
+            saveOrUpdate = 0;
+        }
+    });
+</script>

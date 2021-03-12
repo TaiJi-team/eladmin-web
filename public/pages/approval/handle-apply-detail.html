@@ -1,67 +1,59 @@
 <style>
-    .item-div2 {
+    .item-div3 {
         display: inline-block;
+        margin-left: 40px;
     }
-    .show-div2{
+    .show-div3{
         border-bottom: solid #E4E4E4 1px;
         border-top: solid #E4E4E4 1px;
         height: 390px;
     }
-    .input-div2{
+    .input-div3{
         height: 390px;
         margin-bottom: 20px;
     }
-    .upload-div{
+    .upload-div2{
         height: 100px;
         margin-bottom: 20px;
     }
-    .show-item2{
-      background-color: #f1f1f5;
+    .show-item3{
       width: 400px;
     }
-    .input-item2{
+    .input-item3{
         width: 400px;
     }
-    .select-item2 {
-        width: 300px;
+    .select-item3 {
+        width: 400px;
     }
 
-    .later-window2 {
-        margin-top: 20px;
+    .later-window3 {
+        margin-top: -10px;
     }
 
-    .top-window2 {
+    .top-window3 {
         border: solid #E4E4E4 1px;
-        height: 900px;
+        height: 850px;
     }
 
-    .tab-title2 {
+    .tab-title3 {
         margin-top: -50px;
         background-color: #F3F3F3;
         border-bottom: solid #E4E4E4 1px;
         height: 40px;
     }
 
-    .child-title{
+    .child-title2{
         background-color: #F3F3F3;
         border-bottom: solid #E4E4E4 1px;
         height: 40px;
     }
 
-    .tab-title2-span {
+    .tab-title3-span {
         margin-top: 10px;
         margin-left: 20px;
         display: inline-block
     }
 
-    .top-small-window {
-        float: left;
-        border: #E4E4E4 solid 1px;
-        margin-top: 25px;
-        margin-left: 50px;
-        width: 230px;
-        height: 100px;
-    }
 
     .layadmin-caller {
         background: #fff;
@@ -230,13 +222,12 @@
     </div> -->
     <div class="layui-fluid">
         <div class="layadmin-caller">
-            <div class="top-window2 later-window2">
-                <div class="tab-title2"><span class="tab-title2-span">业务申报</span></div>
+            <div class="top-window3 later-window3">
                 <form class="layui-form" action="">
-                    <div class="layui-form-item item-div2">
+                    <div class="layui-form-item item-div3">
                         <label class="layui-form-label">审批分类</label>
-                        <div class="layui-input-block select-item2">
-                            <select name="city" lay-verify="required">
+                        <div class="layui-input-block select-item3">
+                            <select name="city" disabled>
                                 <option value="">[请选择审批事项分类]</option>
                                 <option value="0">融资担保</option>
                                 <option value="1">小额贷款</option>
@@ -246,180 +237,194 @@
                             </select>
                         </div>
                     </div>
-                    <div class="layui-form-item item-div2">
+                    <div class="layui-form-item item-div3">
                         <label class="layui-form-label">审批事项</label>
-                        <div class="layui-input-block  select-item2">
-                            <select name="city" lay-verify="required">
+                        <div class="layui-input-block  select-item3">
+                            <select name="city" disabled>
                                 <option value="">[请选择审批事项]</option>
                                 <option value="0">小额信用贷款</option>
                                 <option value="1">小额质押贷款</option>
                             </select>
                         </div>
                     </div>
-                    <div class="layui-form-item item-div2">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit lay-filter="formDemo" type="button">查询</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                        </div>
-                    </div>
                 </form>
-                <div class="show-div2">
-                    <div class="child-title"><span class="tab-title2-span">事项信息</span></div>
+                <div class="show-div3">
+                    <div class="child-title2"><span class="tab-title3-span">事项信息</span></div>
                     <form class="layui-form" action="">
-                        <div class="fl layui-form-item item-div2">
+                        <div class="fl layui-form-item item-div3">
                             <label class="layui-form-label">事项名称</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
+                        <div class="layui-form-item item-div3">
                             <label class="layui-form-label">事项编号</label>
                             <div class="layui-input-block">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
+                        <div class="fl layui-form-item item-div3">
                             <label class="layui-form-label">受理部门</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
+                        <div class="layui-form-item item-div3">
                             <label class="layui-form-label">联合机构</label>
                             <div class="layui-input-block">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
+                        <div class="fl layui-form-item item-div3">
                             <label class="layui-form-label">办理事项</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
+                        <div class="layui-form-item item-div3">
                             <label class="layui-form-label">在线支付</label>
                             <div class="layui-input-block">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
+                        <div class="fl layui-form-item item-div3">
                             <label class="layui-form-label">法规管辖地</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
+                        <div class="layui-form-item item-div3">
                             <label class="layui-form-label">咨询电话</label>
                             <div class="layui-input-block">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
+                        <div class="fl layui-form-item item-div3">
                             <label class="layui-form-label">业务管辖地</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
+                        <div class="layui-form-item item-div3">
                             <label class="layui-form-label">事项类型</label>
                             <div class="layui-input-block">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
+                        <div class="fl layui-form-item item-div3">
                             <label class="layui-form-label">备注</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="" class="layui-input show-item2" readonly>
+                                <input type="text" name="" class="layui-input show-item3" readonly>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="input-div2">
-                    <div class="child-title"><span class="tab-title2-span">请在此输入申报信息</span></div>
+                <div class="input-div3">
+                    <div class="child-title2"><span class="tab-title3-span">申报信息</span></div>
                     <form class="layui-form" action="">
-                        <div class="fl layui-form-item item-div2">
-                            <label class="layui-form-label"><span style="color: red;">*</span>业务流水号</label>
+                        <div class="fl layui-form-item item-div3">
+                            <label class="layui-form-label">业务流水号</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="serial" class="layui-input input-item2" lay-verify="required">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
-                            <label class="layui-form-label"><span style="color: red;">*</span>申请单位</label>
+                        <div class="layui-form-item item-div3">
+                            <label class="layui-form-label">申请单位</label>
                             <div class="layui-input-block">
-                                <input type="text" name="applyUnit" class="layui-input input-item2" lay-verify="required">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
-                            <label class="layui-form-label"><span style="color: red;">*</span>申请人名称</label>
+                        <div class="fl layui-form-item item-div3">
+                            <label class="layui-form-label">申请人名称</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="applyName" class="layui-input input-item2" lay-verify="required">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
-                            <label class="layui-form-label"><span style="color: red;">*</span>手机号</label>
+                        <div class="layui-form-item item-div3">
+                            <label class="layui-form-label">手机号</label>
                             <div class="layui-input-block">
-                                <input type="text" name="applyPhone" class="layui-input input-item2" lay-verify="required">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
+                        <div class="fl layui-form-item item-div3">
                             <label class="layui-form-label">单位固话</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="unitPhone" class="layui-input input-item2">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
+                        <div class="layui-form-item item-div3">
                             <label class="layui-form-label">邮箱</label>
                             <div class="layui-input-block">
-                                <input type="text" name="applyMail" class="layui-input input-item2">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
-                            <label class="layui-form-label"><span style="color: red;">*</span>单位地址</label>
+                        <div class="fl layui-form-item item-div3">
+                            <label class="layui-form-label">单位地址</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="compAddress" class="layui-input input-item2" lay-verify="required">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
-                            <label class="layui-form-label"><span style="color: red;">*</span>身份证号</label>
+                        <div class="layui-form-item item-div3">
+                            <label class="layui-form-label">身份证号</label>
                             <div class="layui-input-block">
-                                <input type="text" name="idNum" class="layui-input input-item2" lay-verify="required">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
-                            <label class="layui-form-label"><span style="color: red;">*</span>申请内容</label>
+                        <div class="fl layui-form-item item-div3">
+                            <label class="layui-form-label">提交时间</label>
+                            <div class="layui-input-block ">
+                                <input type="text" name="" id="submitDate"  class="layui-input input-item3" disabled>
+                            </div>
+                        </div>
+                        <div class="layui-form-item item-div3">
+                            <label class="layui-form-label">申请内容</label>
                             <div class="layui-input-block">
-                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
-                        <div class="fl layui-form-item item-div2">
+                        <div class="fl layui-form-item item-div3">
                             <label class="layui-form-label">备注</label>
                             <div class="layui-input-block ">
-                                <input type="text" name="remark" class="layui-input input-item2">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                              <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                              <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                <input type="text" name="" class="layui-input input-item3" readonly>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="upload-div">
+            <div class="upload-div2">
                 <div class="layui-upload-list">
                   <table class="layui-table">
                     <thead>
                       <tr><th>材料名</th>
                       <th>大小</th>
                       <th>状态</th>
-                      <th>操作</th>
                     </tr></thead>
                     <tbody id="demoList"></tbody>
                   </table>
                 </div>
-                <button type="button" class="layui-btn layui-btn-normal" id="testList">选择申报材料</button> 
-                <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+            </div>
+            <div class="input-div3">
+                <div class="child-title2"><span class="tab-title3-span">业务处理</span></div>
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">受理意见</label>
+                            <div class="layui-input-block">
+                                <textarea name="desc" placeholder="请输入受理意见" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">备注</label>
+                            <div class="layui-input-block ">
+                                <textarea name="desc" placeholder="请输入备注" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo" type="button">受理</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo" type="button">驳回</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -450,6 +455,8 @@
             page: 1
             , limit: 10
         }
+        // 重新渲染
+        form.render('select')
         laydate.render({
             elem: '#submitDate' //指定元素
         });
@@ -462,8 +469,7 @@
         var demoListView = $('#demoList')
             , uploadListIns = upload.render({
                 elem: '#testList'
-                ,url: 'http://127.0.0.1:9900/file-center/minioDemo/uploadApply' //上传接口,多个文件多次请求
-                ,headers:{'Authorization': 'Bearer ' + config.getToken().access_token}
+                , url: 'https://httpbin.org/post' //改成您自己的上传接口
                 , accept: 'file'
                 , multiple: true
                 , auto: false
@@ -478,7 +484,6 @@
                             , '<td>等待上传</td>'
                             , '<td>'
                             , '<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
-                            , '<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
                             , '</td>'
                             , '</tr>'].join(''));
                         
@@ -498,13 +503,11 @@
                     });
                 }
                 , done: function (res, index, upload) {
-                    if (res.code == 0) { //上传成功
+                    if (res.files.file) { //上传成功
                         var tr = demoListView.find('tr#upload-' + index)
                             , tds = tr.children();
                         tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
                         tds.eq(3).html(''); //清空操作
-                        //封装文件数据
-                        list[index] = res.datas;
                         return delete this.files[index]; //删除文件队列已经上传成功的文件
                     }
                     this.error(index, upload);
@@ -517,6 +520,39 @@
                 }
             });
 
+
+        // laypage.render({
+        //     elem: 'demo7'
+        //     , count: zs
+        //     , layout: ['count', 'prev', 'page', 'next', 'limit', 'limits']
+        //     , jump: function (obj) {
+        //         var financeOrgTo = {
+        //             page: obj.curr
+        //             , limit: obj.limit
+        //         }
+        //         console.log(financeOrgTo);
+        //         admin.req('api-finance/investorg/getList', JSON.stringify(financeOrgTo), function (data) {
+        //             zs = data.count;
+        //             console.log(data.data);
+        //             list = data.data;
+        //             console.log(list);
+        //         }, 'POST');
+        //         for (i = 0; i < list.length; i++) {
+        //             list[i].id = list[i].id
+        //             console.log(list[i].id)
+        //         }
+        //         var data2 = { //数据
+        //             "title": "Layui常用模块"
+        //             , "list": list
+        //         }
+        //         var getTpl = demo.innerHTML;
+        //         view = document.getElementById('finorg-view');
+        //         laytpl(getTpl).render(data2, function (html) {
+        //             view.innerHTML = html;
+        //         });
+        //     }
+        // });
+
         kvMap.set('comp-auth', '企业认证');
         kvMap.set('fin-org-auth', '金融机构认证');
         kvMap.set('oper-org-auth', '运营机构认证');
@@ -527,68 +563,57 @@
         $('#auth-finorg').find('h2').text(kvMap.get(key));
         $($('#auth-finorg').find('a')[1]).text(kvMap.get(key));
 
-        
-
-        // if (!!localStorage.getItem('url-redirect')) {
-        //     showEditModel();
-        //     localStorage.removeItem('url-redirect')
-        //     // return;
-        // }
-
-        // // 添加按钮点击事件
-        // $('.layui-btn-normal').click(function () {
-        //     showEditModel();
-        // });
-
-
-        // 金融入驻信息保存
-        var finOrgAuth = function (data) {
-            //表单数据formData
-            var formData = {};
-            console.log(data);
-            if (data) {
-                // formData.name = formData.col_name;//金融机构名字
-                formData.investOrg = {
-                    name: data.field.name,
-                    creditCode: data.field.creditCode,
-                    detailAddr: data.field.detailAddr,
-                    busiScope: data.field.busiScope,
-                    busiPeriod: data.field.business_time,
-                    organization: data.field.organization,
-                    investIndus: data.field.investIndus,
-                    financeRound: data.field.financeRound,
-                    fundScale: data.field.fundScale,
-                    investOrgBrief: data.field.investOrgBrief,
-                    investTeamBrief: data.field.investTeamBrief,
-                    investIntentBrief: data.field.investIntentBrief
-                }
-                formData.userOrgOper = {
-                    userName: data.field.lepPhone,
-                    nickName: data.field.operName,
-                    mobile: data.field.operPhone,
-                    idNum: data.field.operCode
-                };
-                formData.userOrgLegper = {
-                    userName: data.field.lepPhone,
-                    nickName: data.field.lepName,
-                    mobile: data.field.lepPhone,
-                    idNum: data.field.lepCode
-                };
-                console.log(formData);
-            }
-
-            admin.req('api-finance/investorg/save', JSON.stringify(formData), function (data) {
-                if (data.code == 0) {
-                    layer.msg('提交成功，待平台审核', { icon: 5, time: 2000 }, function () {
-                        layer.closeAll();
+        //显示表单弹窗
+        var showEditModel = function (data) {
+            var title = '添加投资机构';
+            admin.popupCenter({
+                type: 2,
+                title: title,
+                area: ['1100px', '650px'],
+                path: 'pages/invest/add.html',
+                btn: ['提交', '取消'],
+                success: function (layero, index) {
+                    $('.layui-layer').css({
+                        // 'z-index': '10000000',
+                        // 'width': '86%',
+                        // 'height': '90%',
+                        'top': '8%',
+                        'left': '18%'
                     });
-                } else {
-                    layer.msg(data.msg, { icon: 5, time: 2000 }, function () {
-                        layer.closeAll();
+                    $(':focus').blur();
+                    // 添加form标识
+                    layero.addClass('layui-form');
+                    // 将保存按钮改变成提交按钮
+                    layero.find('.layui-layer-btn0').attr({
+                        'lay-filter': 'component-form-group',
+                        'lay-submit': ''
                     });
-                }
-            }, 'POST');
+
+                },
+                finish: function () {
+                    // table.reload('user-table', {});
+                },
+                yes: function (index, layero) {
+                    form.on('submit(component-form-group)', function (data) {
+                        finOrgAuth(data);
+                    })
+                },
+                cancel: function () {
+
+                },
+            });
+        };
+
+        if (!!localStorage.getItem('url-redirect')) {
+            showEditModel();
+            localStorage.removeItem('url-redirect')
+            // return;
         }
+
+        // 添加按钮点击事件
+        $('.layui-btn-normal').click(function () {
+            showEditModel();
+        });
     });
 
 </script>

@@ -1,0 +1,232 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">事项管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">工作台</a>
+          <a><cite>事项管理</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+      <div class="layui-row layui-col-space15">
+        <div class="layui-col-md4">
+          <div class="layui-form toolbar">
+            <input id="mattertype-search-value" class="layui-input search-input" type="text" placeholder="输入事项类型"/>&emsp;
+            <button id="mattertype-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            <button id="mattertype-btn-add" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
+            </button>
+          </div>
+
+          <table class="layui-table" id="mattertype-table" lay-filter="mattertype-table"></table>
+        </div>
+        <div class="layui-col-md8">
+          <div class="layui-form toolbar">
+            <button id="matterdata-btn-add" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>添加信息</button>
+            <button id="matterdata-btn-update" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>修改信息</button>
+          </div>
+
+          <table class="layui-table" id="matterdata-table" lay-filter="matterdata-table"></table>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+
+<!-- 表格操作列 -->
+<script type="text/html" id="matterdata-table-bar">
+    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="mattertype-table-bar">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+  <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin'], function () {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+
+        // 渲染事项数据表格
+        var mattertype = new Object;
+        table.render({
+            elem: '#matterdata-table',
+            url: config.base_server + 'api-user/matterdata/list',
+            method: 'GET',
+            headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
+            page: true,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'typeId', title: '事项名称'},
+                {field: 'engName', title: '受理部门'},
+                {field: 'cnName', title: '法规管辖地'},
+                {field: 'remark', title: '业务管辖地'},
+                {field: 'code', title: '咨询电话'},
+                {fixed: 'right', align: 'center', toolbar: '#matterdata-table-bar', title: '操作', width: 175},
+            ]],
+        });
+
+        // 渲染事项类型表格
+        table.render({
+          elem: '#mattertype-table',
+          url: config.base_server + 'api-user/mattertype?page=1&limit=50',
+          method: 'GET',
+          headers:{'Authorization': 'Bearer ' + config.getToken().access_token},
+          page: false,
+          cols: [[
+            {field: 'engName', title: '事项类型名称',event: 'setURL', style:'cursor: pointer;'},
+            {field: 'cnName', title: '受理部门'},
+            {fixed: 'right', align: 'center', toolbar: '#mattertype-table-bar', title: '操作'}
+          ]]
+        });
+
+        // matterdata-table工具条点击事件
+        table.on('tool(matterdata-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'del') { // 删除
+                layer.confirm('确定删除此事项数据吗？', function (i) {
+                    layer.close(i);
+                    layer.load(2);
+                    admin.req('api-user/matterdata/deletematter/'+ data.id, {}, function (data) {
+                        layer.closeAll('loading');
+                        if (data.code == 0) {
+                            layer.msg(data.msg, {icon: 1, time: 500});
+                        } else {
+                            layer.msg(data.msg, {icon: 2, time: 500});
+                        }
+                    }, 'delete');
+                    table.reload('matterdata-table',{
+                      page:{
+                        curr: 1
+                      }
+                    });
+                });
+            }
+        });
+
+        // mattertype-table工具条点击事件
+        table.on('tool(mattertype-table)', function (obj) {
+          var data = obj.data;
+          var layEvent = obj.event;
+
+          if (layEvent === 'del') { // 删除
+            layer.confirm('确定删除此事项类型吗？', function (i) {
+              layer.close(i);
+              layer.load(2);
+              admin.req('api-user/mattertype/delete/'+ data.id, {}, function (data) {
+                layer.closeAll('loading');
+                if (data.code == 0) {
+                  layer.msg(data.msg, {icon: 1, time: 500});
+                } else {
+                  layer.msg(data.msg, {icon: 2, time: 500});
+                }
+              }, 'delete');
+              table.reload('mattertype-table',{});
+            });
+          }else if(layEvent === 'edit'){
+            showEditDataTypeModel(data);
+          }else if(layEvent === 'setURL'){
+              mattertype = {
+                id:data.id,
+                cnName: data.cnName
+              };
+              table.reload('matterdata-table',{
+                page:{
+                  curr: 1
+                },
+                where: {typeId: data.id}
+              });
+          }
+        });
+
+        // mattertype-table添加按钮点击事件
+        $('#mattertype-btn-add').click(function () {
+          showEditDataTypeModel();
+        });
+
+        //显示matterdata表单弹窗
+        var showEditDataTypeModel = function (data) {
+          admin.putTempData('t_mattertype', data);
+          console.log(data);
+          console.log('mattertype:' + mattertype);
+          var title = data ? '修改事项类型' : '添加事项类型';
+          admin.popupCenter({
+            title: title,
+            path: 'pages/approval/mattertype_form.html',
+            finish: function () {
+              table.reload('mattertype-table', {});
+            }
+          });
+        };
+
+        // 搜索按钮点击事件
+        $('#mattertype-btn-search').click(function () {
+          var value = $('#mattertype-search-value').val();
+          table.reload('mattertype-table', {where: {engName: value}});
+        });
+
+
+        // matterdata-table添加按钮点击事件
+        $('#matterdata-btn-add').click(function () {
+          showEditModel(undefined,mattertype);
+        });
+
+        //matterdata-table修改按钮点击事件
+        $('#matterdata-btn-update').click(function () {
+            var checkStatus = table.checkStatus('matterdata-table');
+            var data = checkStatus.data;
+            console.log(data);
+            if(data.length < 1) {
+              layer.msg('请选择要编辑的数据', {icon: 2, time: 2000});
+            }else if(data.length > 1){
+              layer.msg('只能选择一条进行编辑', {icon: 2, time: 2000});
+            }else {
+                showEditModel(data,mattertype)
+            }
+        });
+
+        //显示matterdata表单弹窗
+        var showEditModel = function (data,mattertype) {
+            admin.putTempData('t_matterdata', data);
+            if(mattertype){
+               admin.putTempData('mattertype', mattertype);
+              console.log(mattertype);
+            }
+            console.log(data);
+            var title = data ? '修改事项' : '添加事项';
+            admin.popupCenter({
+                title: title,
+                path: 'pages/approval/matterdata_form.html',
+                finish: function () {
+                    table.reload('matterdata-table', {});
+                }
+            });
+        };
+
+        var setStatus = function () {
+            var checkStatus = table.checkStatus('matterdata-table');
+            var data = checkStatus.data;
+            console.log(data);
+            if(data.length < 1) {
+                layer.msg('请选择要编辑的数据', {icon: 2, time: 2000});
+            }else if(data.length > 1){
+                layer.msg('只能选择一条进行编辑', {icon: 2, time: 2000});
+            }else {
+                admin.req('api-user/matterdata/updatematter/'+ data[0].id,{},function (data) {
+                  if(data.code == 0){
+                    layer.msg(data.msg, {icon: 1, time: 500});
+                  }else {
+                    layer.msg(data.msg, {icon: 2, time: 500});
+                  }
+                },'POST')
+                table.reload('matterdata-table',{});
+            }
+        };
+    });
+</script>

@@ -1,0 +1,130 @@
+<!-- matterdata表单弹窗 -->
+<form id="matterdata-form" lay-filter="matterdata-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">事项名称</label>
+        <div class="layui-input-block">
+            <input name="engName" placeholder="请输入事项名称" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">受理部门</label>
+        <div class="layui-input-block">
+            <input name="cnName" placeholder="请输入受理部门" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">联合机构</label>
+        <div class="layui-input-block">
+            <input name="remark" placeholder="请输入联合机构" type="text" class="layui-input" lay-verify="required"
+                   required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">法规管辖地</label>
+        <div class="layui-input-block">
+            <input name="code" placeholder="请输入法规管辖地" type="text" class="layui-input" lay-verify="required"
+                    required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">业务管辖地</label>
+        <div class="layui-input-block">
+            <input name="code" placeholder="请输入业务管辖地" type="text" class="layui-input" lay-verify="required"
+                    required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">咨询电话</label>
+        <div class="layui-input-block">
+            <input name="code" placeholder="请输入咨询电话" type="text" class="layui-input" lay-verify="required"
+                    required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">事项类型</label>
+        <div class="layui-input-block">
+            <select name="typeId" xm-select="typeId" xm-select-search="" xm-select-radio="" lay-verify="required" required>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
+        <button class="layui-btn" lay-filter="matterdata-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+
+<script>
+    layui.use(['layer', 'admin', 'form', 'formSelects'], function () {
+        var layer = layui.layer;
+        var admin = layui.admin;
+        var form = layui.form;
+        var formSelects = layui.formSelects;
+
+        form.render('radio');
+
+        // 获取所有字典类型
+        layer.load(2);
+        var saveOrUpdate;
+        admin.req('api-user/mattertype/findUserById', {}, function (data) {
+            layer.closeAll('loading');
+            console.log(data);
+            if (0 == data.code) {
+                // 渲染多选下拉框
+                var roleSelectData = new Array();
+                var mattertype = admin.getTempData('mattertype');
+                console.log(typeof mattertype);
+                /*if(!mattertype){
+                  roleSelectData.push({name: mattertype.cnName, value: mattertype.id});
+                }else {
+                  for (var i = 0; i < data.datas.length; i++) {
+                    roleSelectData.push({name: data.datas[i].cnName, value: data.datas[i].id});
+                  }
+                }*/
+                for (var i = 0; i < data.datas.length; i++) {
+                  roleSelectData.push({name: data.datas[i].cnName, value: data.datas[i].id});
+                }
+                formSelects.data('typeId', 'local', {arr: roleSelectData});
+
+                // 回显matterdata数据
+                var matterdata = admin.getTempData('t_matterdata');
+                console.log(matterdata);
+                $('#matterdata-form').attr('method', 'POST');
+                if (matterdata) {
+                    form.val('matterdata-form', matterdata[0]);
+                    $('#matterdata-form').attr('method', 'POST');
+                    var rds = new Array();
+                    rds.push(matterdata[0].typeId);
+                    formSelects.value('typeId', rds);
+                    saveOrUpdate = 0;
+                }
+            } else {
+                layer.msg('获取字典类型失败', {icon: 2, time: 500});
+            }
+        }, 'GET');
+
+        // 表单提交事件
+        form.on('submit(matterdata-form-submit)', function (data) {
+            var URL;
+            if (saveOrUpdate == 0) {
+              URL = 'api-user/matterdata/updatematterData';
+            }else {
+              URL = 'api-user/matterdata/savematterData'
+            }
+            layer.load(2);
+            admin.req(URL, JSON.stringify(data.field), function (data) {
+                layer.closeAll('loading');
+                console.log(data);
+                if (data.code == 0) {
+                    layer.msg(data.msg, {icon: 1, time: 500});
+                    admin.finishPopupCenter();
+                } else {
+                    layer.msg('请求失败', {icon: 2, time: 500});
+                }
+            }, "POST");
+            return false;
+        });
+    });
+</script>
