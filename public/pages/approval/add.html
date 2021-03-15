@@ -236,23 +236,16 @@
                     <div class="layui-form-item item-div2">
                         <label class="layui-form-label">审批分类</label>
                         <div class="layui-input-block select-item2">
-                            <select name="city" lay-verify="required">
+                            <select name="city" lay-verify="required" id="matter-type">
                                 <option value="">[请选择审批事项分类]</option>
-                                <option value="0">融资担保</option>
-                                <option value="1">小额贷款</option>
-                                <option value="2">商业保理</option>
-                                <option value="3">典当行</option>
-                                <option value="4">资产管理</option>
                             </select>
                         </div>
                     </div>
                     <div class="layui-form-item item-div2">
                         <label class="layui-form-label">审批事项</label>
                         <div class="layui-input-block  select-item2">
-                            <select name="city" lay-verify="required">
+                            <select name="city" lay-verify="required" id="matter-data">
                                 <option value="">[请选择审批事项]</option>
-                                <option value="0">小额信用贷款</option>
-                                <option value="1">小额质押贷款</option>
                             </select>
                         </div>
                     </div>
@@ -336,7 +329,7 @@
                 </div>
                 <div class="input-div2">
                     <div class="child-title"><span class="tab-title2-span">请在此输入申报信息</span></div>
-                    <form class="layui-form" action="">
+                    <form class="layui-form" action="" lay-filter="apply-form">
                         <div class="fl layui-form-item item-div2">
                             <label class="layui-form-label"><span style="color: red;">*</span>业务流水号</label>
                             <div class="layui-input-block ">
@@ -385,12 +378,6 @@
                                 <input type="text" name="idNum" class="layui-input input-item2" lay-verify="required">
                             </div>
                         </div>
-                        <div class="layui-form-item item-div2">
-                            <label class="layui-form-label"><span style="color: red;">*</span>申请内容</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="" class="layui-input input-item2" lay-verify="required">
-                            </div>
-                        </div>
                         <div class="fl layui-form-item item-div2">
                             <label class="layui-form-label">备注</label>
                             <div class="layui-input-block ">
@@ -399,7 +386,7 @@
                         </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                              <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                              <button id="apply-button" type="button" class="layui-btn" lay-submit="" >立即提交</button>
                               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                             </div>
                         </div>
@@ -445,6 +432,33 @@
         var zs = '';
         var kvMap = new Map();
         var list = new Array();
+        //表单数据formData
+        var formData = {};
+
+        // 添加按钮点击事件
+        layui.$('#apply-button').on('click', function () {
+            // console.log(form.val("apply-form"))方法需要layui2.5以上版本才能使用
+
+            //封装请求参数
+            formData.applyMessage = {
+                serial : $('input[name="serial"]').val(),
+                applyUnit : $('input[name="applyUnit"]').val(),
+                applyName : $('input[name="applyName"]').val(),
+                applyPhone : $('input[name="applyPhone"]').val(),
+                unitPhone : $('input[name="unitPhone"]').val(),
+                applyMail : $('input[name="applyMail"]').val(),
+                compAddress : $('input[name="compAddress"]').val(),
+                idNum : $('input[name="idNum"]').val(),
+                remark : $('input[name="remark"]').val()
+            };
+            formData.list = list;
+            formData.userDeclareBusiness = {
+                matterName : $('input[name="matterName"]').val(),
+                mattId : $('input[name="mattId"]').val(),
+            }
+            applySubmit(formData);
+        });
+
         //分页
         var financeOrgTo = {
             page: 1
@@ -527,59 +541,13 @@
         $('#auth-finorg').find('h2').text(kvMap.get(key));
         $($('#auth-finorg').find('a')[1]).text(kvMap.get(key));
 
-        
 
-        // if (!!localStorage.getItem('url-redirect')) {
-        //     showEditModel();
-        //     localStorage.removeItem('url-redirect')
-        //     // return;
-        // }
-
-        // // 添加按钮点击事件
-        // $('.layui-btn-normal').click(function () {
-        //     showEditModel();
-        // });
-
-
-        // 金融入驻信息保存
-        var finOrgAuth = function (data) {
-            //表单数据formData
-            var formData = {};
+        //行政许可申报
+        var applySubmit = function (data) {
             console.log(data);
-            if (data) {
-                // formData.name = formData.col_name;//金融机构名字
-                formData.investOrg = {
-                    name: data.field.name,
-                    creditCode: data.field.creditCode,
-                    detailAddr: data.field.detailAddr,
-                    busiScope: data.field.busiScope,
-                    busiPeriod: data.field.business_time,
-                    organization: data.field.organization,
-                    investIndus: data.field.investIndus,
-                    financeRound: data.field.financeRound,
-                    fundScale: data.field.fundScale,
-                    investOrgBrief: data.field.investOrgBrief,
-                    investTeamBrief: data.field.investTeamBrief,
-                    investIntentBrief: data.field.investIntentBrief
-                }
-                formData.userOrgOper = {
-                    userName: data.field.lepPhone,
-                    nickName: data.field.operName,
-                    mobile: data.field.operPhone,
-                    idNum: data.field.operCode
-                };
-                formData.userOrgLegper = {
-                    userName: data.field.lepPhone,
-                    nickName: data.field.lepName,
-                    mobile: data.field.lepPhone,
-                    idNum: data.field.lepCode
-                };
-                console.log(formData);
-            }
-
-            admin.req('api-finance/investorg/save', JSON.stringify(formData), function (data) {
+            admin.req('approval-process/applymessage/saveAll', JSON.stringify(formData), function (data) {
                 if (data.code == 0) {
-                    layer.msg('提交成功，待平台审核', { icon: 5, time: 2000 }, function () {
+                    layer.msg('提交成功，待专员受理', { icon: 5, time: 2000 }, function () {
                         layer.closeAll();
                     });
                 } else {
@@ -588,6 +556,21 @@
                     });
                 }
             }, 'POST');
+        }
+
+        //获取事项类型
+        var getMatterType = function () {
+            console.log(data);
+            admin.req('approval-process/licensedirectory/find', JSON.stringify(formData), function (data) {
+                console.log(data);
+                if (data.code == 0) {
+                    $.each(result.data, function (i, v) {
+                        console.log(i + " : " + v.id)
+                        $("#matter-type").append("<option value='" + v.id + "'>" + v.title + "</option>");
+                    });
+                    form.render('select');
+                }
+            }, 'GET');
         }
     });
 
